@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { FaHome, FaSearch } from 'react-icons/fa'
+import { FaHome } from 'react-icons/fa'
 
 export default function LeftColumn() {
 
@@ -8,19 +8,27 @@ export default function LeftColumn() {
         width: 25%;
         border: 1px solid gray;
     `
+    
+    const StyledNavLink = styled(NavLink)`
+        display: flex;
+        justify-content: left;
 
-    const HomeIcon = styled(FaHome)`
-        font-size: x-large;
-    `
-
-    const SearchIcon = styled(FaSearch)`
-        font-size: x-large;
-    `
-
-    const NavItem = styled(NavLink)`
-        font-size: large;
         color: inherit;
         text-decoration: none;
+        padding: 8px;
+        border-radius: 32px;
+
+        &:hover {
+            background-color: #333A;
+        }
+
+        & *:first-child {
+            font-size: x-large;
+        }
+
+        & *:last-child {
+            font-size: large;
+        }
     `
 
     return (
@@ -28,15 +36,11 @@ export default function LeftColumn() {
             <p>Side Bar</p>
 
             <nav>
-                <div>
-                    <HomeIcon/>
-                    <NavItem to='/'>ホーム</NavItem>
-                </div>
+                <StyledNavLink to='/'>
+                    <FaHome />
+                    <span>ホーム</span>
+                </StyledNavLink>
 
-                <div>
-                    <SearchIcon/>
-                    <NavItem to='/search'>検索</NavItem>
-                </div>
             </nav>
         </Root>
     )
