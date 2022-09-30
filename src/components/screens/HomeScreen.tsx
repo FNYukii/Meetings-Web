@@ -4,6 +4,7 @@ import { collection, query, onSnapshot } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
 import FireUser from '../../utilities/FireThread'
 import styled from 'styled-components'
+import ThreadRow from '../parts/ThreadRow'
 
 export default function HomeScreen() {
 
@@ -54,9 +55,7 @@ export default function HomeScreen() {
             {isLoaded &&
                 <div>
                     {threads.map((thread) => (
-                        <div key={thread.id}>
-                            <p>{thread.title}</p>
-                        </div>
+                        <ThreadRow thread={thread} key={thread.id}/>
                     ))}
                 </div>
             }
