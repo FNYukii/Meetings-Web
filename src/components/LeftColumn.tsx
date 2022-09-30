@@ -18,6 +18,7 @@ export default function LeftColumn() {
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/search'>Search</NavLink>
                     <NavLink to='/notifications'>Notifications</NavLink>
+                    <NavLink to='/users/djlakgjlak'>Profile</NavLink>
                 </li>
             </ul>
         </Root>
