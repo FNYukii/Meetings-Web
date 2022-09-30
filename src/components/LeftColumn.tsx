@@ -8,8 +8,15 @@ export default function LeftColumn() {
         width: 25%;
         border: 1px solid gray;
     `
+
+    const LogoNavLink = styled(NavLink)`
+        color: inherit;
+        text-decoration: none;
+        font-size: x-large;
+        padding: 8px;
+    `
     
-    const StyledNavLink = styled(NavLink)`
+    const NavItemNavLink = styled(NavLink)`
         display: flex;
         justify-content: left;
 
@@ -27,19 +34,20 @@ export default function LeftColumn() {
         }
 
         & *:last-child {
+            margin-left: 4px;
             font-size: large;
         }
     `
 
     return (
         <Root>
-            <p>Side Bar</p>
+            <LogoNavLink to='/'>Meetings</LogoNavLink>
 
             <nav>
-                <StyledNavLink to='/'>
+                <NavItemNavLink to='/'>
                     <FaHome />
                     <span>ホーム</span>
-                </StyledNavLink>
+                </NavItemNavLink>
 
             </nav>
         </Root>
