@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { FaHome } from 'react-icons/fa'
+import { FaHome, FaSearch } from 'react-icons/fa'
 
 export default function LeftColumn() {
 
@@ -47,6 +47,11 @@ export default function LeftColumn() {
                 <NavItemNavLink to='/'>
                     <FaHome />
                     <span>ホーム</span>
+                </NavItemNavLink>
+
+                <NavItemNavLink to='/'>
+                    <FaSearch />
+                    <span>検索</span>
                 </NavItemNavLink>
 
             </nav>
