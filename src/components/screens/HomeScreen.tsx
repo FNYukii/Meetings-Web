@@ -10,10 +10,9 @@ export default function HomeScreen() {
 
     // States
     const [threads, setThreads] = useState<Thread[]>([])
-    // const [isLoaded, setIsloaded] = useState(false)
+    const [isLoaded, setIsloaded] = useState(false)
 
     async function startReadingThreads() {
-        // リアルタイムアップデート開始
         const q = query(collection(db, "threads"));
         onSnapshot(q, (querySnapshot) => {
             // 配列threads
@@ -25,7 +24,7 @@ export default function HomeScreen() {
 
             // Stateを更新
             setThreads(threads)
-            // setIsloaded(true)
+            setIsloaded(true)
         });
     }
 
@@ -37,13 +36,19 @@ export default function HomeScreen() {
         <div>
             <p>Home</p>
 
-            <div>
-                {threads.map((thread) => (
-                    <div key={thread.id}>
-                        <p>{thread.title}</p>
-                    </div>
-                ))}
-            </div>
+            {!isLoaded &&
+                <div></div>
+            }
+
+            {isLoaded &&
+                <div>
+                    {threads.map((thread) => (
+                        <div key={thread.id}>
+                            <p>{thread.title}</p>
+                        </div>
+                    ))}
+                </div>
+            }
         </div>
     )
 }
