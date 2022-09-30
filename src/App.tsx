@@ -1,13 +1,13 @@
-import React from 'react'
-import { BrowserRouter, Routes } from 'react-router-dom'
+import LeftColumn from './components/LeftColumn'
+import CenterColumn from './components/CenterColumn'
+import RightColumn from './components/RightColumn'
 
 export default function App() {
     return (
-        <React.StrictMode>
-            <BrowserRouter>
-                <Routes>
-                </Routes>
-            </BrowserRouter>
-        </React.StrictMode>
+        <div>
+            <LeftColumn />
+            <CenterColumn />
+            <RightColumn />
+        </div>
     )
 }
