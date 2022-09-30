@@ -49,7 +49,7 @@ export default function LeftColumn() {
                     <span>ホーム</span>
                 </NavItemNavLink>
 
-                <NavItemNavLink to='/'>
+                <NavItemNavLink to='/search'>
                     <FaSearch />
                     <span>検索</span>
                 </NavItemNavLink>
