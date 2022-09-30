@@ -13,8 +13,6 @@ export default function CenterColumn() {
 
     return (
         <Root>
-            <h1>center</h1>
-
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<HomeScreen />} />

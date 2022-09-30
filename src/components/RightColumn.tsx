@@ -9,7 +9,7 @@ export default function RightColumn() {
 
     return (
         <Root>
-            <h1>right</h1>
+            <p>Recommendation</p>
         </Root>
     )
 }

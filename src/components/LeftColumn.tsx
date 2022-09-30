@@ -9,7 +9,7 @@ export default function LeftColumn() {
 
     return (
         <Root>
-            <h1>left</h1>
+            <p>Side Bar</p>
         </Root>
     )
 }
