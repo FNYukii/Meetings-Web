@@ -10,7 +10,7 @@ export default function App() {
         width: 1200px;
         margin: 0 auto;
         display: flex;
-
+        
         @media(max-width: 1200px) {
             width: 100%;
         }
