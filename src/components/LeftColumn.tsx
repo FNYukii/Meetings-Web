@@ -13,14 +13,15 @@ export default function LeftColumn() {
         <Root>
             <p>Side Bar</p>
 
-            <ul>
-                <li>
-                    <NavLink to='/'>Home</NavLink>
-                    <NavLink to='/search'>Search</NavLink>
-                    <NavLink to='/notifications'>Notifications</NavLink>
-                    <NavLink to='/users/djlakgjlak'>Profile</NavLink>
-                </li>
-            </ul>
+            <nav>
+                <div>
+                    <NavLink to='/'>ホーム</NavLink>
+                </div>
+
+                <div>
+                    <NavLink to='/search'>検索</NavLink>
+                </div>
+            </nav>
         </Root>
     )
 }
