@@ -4,6 +4,9 @@ import RightColumn from './RightColumn'
 
 import styled from 'styled-components'
 
+import { BrowserRouter } from 'react-router-dom'
+
+
 export default function App() {
 
     const Root = styled.div`
@@ -18,9 +21,11 @@ export default function App() {
 
     return (
         <Root>
-            <LeftColumn />
-            <CenterColumn />
-            <RightColumn />
+            <BrowserRouter>
+                <LeftColumn />
+                <CenterColumn />
+                <RightColumn />
+            </BrowserRouter>
         </Root>
     )
 }
