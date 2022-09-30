@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import HomeScreen from './screens/HomeScreen'
 import ThreadScreen from './screens/ThreadScreen'
@@ -14,13 +14,11 @@ export default function CenterColumn() {
 
     return (
         <Root>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<HomeScreen />} />
-                    <Route path='/threads/:id' element={<ThreadScreen />} />
-                    <Route path='*' element={<NotFoundScreen />} />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route path='/' element={<HomeScreen />} />
+                <Route path='/threads/:id' element={<ThreadScreen />} />
+                <Route path='*' element={<NotFoundScreen />} />
+            </Routes>
         </Root>
     )
 }
