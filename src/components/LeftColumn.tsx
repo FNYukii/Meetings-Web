@@ -24,6 +24,7 @@ export default function LeftColumn() {
         text-decoration: none;
         padding: 8px;
         border-radius: 32px;
+        margin-right: 8px;
 
         &:hover {
             background-color: #333A;
