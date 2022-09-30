@@ -3,10 +3,18 @@ import Thread from '../../types/Thread'
 import { collection, query, onSnapshot } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
 import FireUser from '../../utilities/FireThread'
+import styled from 'styled-components'
 
 export default function HomeScreen() {
 
     document.title = 'Meetings'
+
+    const TitleBarDiv = styled.div`
+        border-bottom: 1px solid #AAAA;
+        padding: 8px;
+        font-size: large;
+        font-weight: bold;
+    `
 
     // States
     const [threads, setThreads] = useState<Thread[]>([])
@@ -34,7 +42,10 @@ export default function HomeScreen() {
 
     return (
         <div>
-            <p>Home</p>
+
+            <TitleBarDiv>
+                <span>ホーム</span>
+            </TitleBarDiv>
 
             {!isLoaded &&
                 <div></div>
