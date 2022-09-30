@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Thread from '../../types/Thread'
 import { collection, query, onSnapshot } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
+import FireUser from '../../utilities/FireThread'
 
 export default function HomeScreen() {
 
@@ -9,7 +10,7 @@ export default function HomeScreen() {
 
     // States
     const [threads, setThreads] = useState<Thread[]>([])
-    const [isLoaded, setIsloaded] = useState(false)
+    // const [isLoaded, setIsloaded] = useState(false)
 
     async function startReadingThreads() {
         // リアルタイムアップデート開始
@@ -18,22 +19,13 @@ export default function HomeScreen() {
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
-                const id: string = doc.id
-                const userId: string = doc.data().userId
-                const createdAt: Date = doc.data({ serverTimestamps: "estimate" }).createdAt.toDate()
-                const commentedAt: Date = doc.data({ serverTimestamps: "estimate" }).commentedAt.toDate()
-
-                const title: string = doc.data().title
-                const tags: string[] = doc.data().tags
-
-
-                const thread: Thread = { id: id, userId: userId, createdAt: createdAt, commentedAt: commentedAt, title: title, tags: tags }
+                const thread = FireUser.toThread(doc)
                 threads.push(thread)
             })
 
             // Stateを更新
             setThreads(threads)
-            setIsloaded(true)
+            // setIsloaded(true)
         });
     }
 
