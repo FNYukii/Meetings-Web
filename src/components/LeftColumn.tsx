@@ -1,7 +1,15 @@
+import styled from 'styled-components'
+
 export default function LeftColumn() {
+
+    const Root = styled.div`
+        width: 25%;
+        border: 1px solid gray;
+    `
+
     return (
-        <div>
+        <Root>
             <h1>left</h1>
-        </div>
+        </Root>
     )
 }
