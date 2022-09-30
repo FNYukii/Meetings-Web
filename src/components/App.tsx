@@ -22,12 +22,10 @@ export default function App() {
     return (
         <Root>
             <BrowserRouter>
-
                 <LeftColumn />
                 <CenterColumn />
                 <RightColumn />
             </BrowserRouter>
-
         </Root>
     )
 }
