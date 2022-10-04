@@ -1,15 +1,8 @@
-import styled from 'styled-components'
-
 export default function RightColumn() {
 
-    const Root = styled.div`
-        width: 25%;
-        border: 1px solid #aaaa;
-    `
-
     return (
-        <Root>
+        <div className='border w-1/4'>
             <p>Recommendation</p>
-        </Root>
+        </div>
     )
 }

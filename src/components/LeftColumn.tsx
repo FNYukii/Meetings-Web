@@ -4,18 +4,6 @@ import { FaHome, FaSearch } from 'react-icons/fa'
 
 export default function LeftColumn() {
 
-    const Root = styled.div`
-        width: 25%;
-        border: 1px solid #aaaa;
-    `
-
-    const LogoNavLink = styled(NavLink)`
-        color: inherit;
-        text-decoration: none;
-        font-size: x-large;
-        padding: 8px;
-    `
-    
     const NavItemNavLink = styled(NavLink)`
         display: flex;
         justify-content: left;
@@ -41,8 +29,8 @@ export default function LeftColumn() {
     `
 
     return (
-        <Root>
-            <LogoNavLink to='/'>Meetings</LogoNavLink>
+        <div className='border w-1/4'>
+            <NavLink to='/' className="text-inherit no-underline p-2 text-2xl">Meetings</NavLink>
 
             <nav>
                 <NavItemNavLink to='/'>
@@ -56,6 +44,6 @@ export default function LeftColumn() {
                 </NavItemNavLink>
 
             </nav>
-        </Root>
+        </div>
     )
 }
