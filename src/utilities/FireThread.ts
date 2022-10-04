@@ -17,8 +17,4 @@ export default class FireUser {
         const thread: Thread = { id: id, userId: userId, createdAt: createdAt, commentedAt: commentedAt, title: title, tags: tags }
         return thread
     }
-
-    static async readUsers(): Promise<Thread[]> {
-        return []
-    }
 }
