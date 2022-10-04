@@ -6,7 +6,7 @@ export default function LeftColumn() {
 
     const Root = styled.div`
         width: 25%;
-        border: 1px solid gray;
+        border: 1px solid #aaaa;
     `
 
     const LogoNavLink = styled(NavLink)`
