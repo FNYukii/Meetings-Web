@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Thread from "../../types/Thread"
+import CreatedAtSpan from "./CreatedAtSpan"
 import ThreadMenu from "./ThreadMenu"
 import UserIconNavLink from "./UserIconNavLink"
 
@@ -13,6 +14,7 @@ export default function ThreadRow(props: {thread: Thread}) {
 
     const ContentColumn = styled.div`
         width: 100%;
+        padding-left: 8px;
     `
 
     const TitleRow = styled.div`
@@ -22,7 +24,6 @@ export default function ThreadRow(props: {thread: Thread}) {
 
     const TitleSpan = styled.span`
         font-weight: bold;
-        margin-left: 8px;
     `
 
     return (
@@ -34,6 +35,8 @@ export default function ThreadRow(props: {thread: Thread}) {
                     <TitleSpan>{props.thread.title}</TitleSpan>
                     <ThreadMenu thread={props.thread}/>
                 </TitleRow>
+
+                <CreatedAtSpan/>
             </ContentColumn>
         </Root>
     )
