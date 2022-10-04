@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import Thread from "../../types/Thread"
 import CreatedAtSpan from "./CreatedAtSpan"
 import ThreadMenu from "./ThreadMenu"
@@ -6,38 +5,18 @@ import UserIconNavLink from "./UserIconNavLink"
 
 export default function ThreadRow(props: {thread: Thread}) {
 
-    const Root = styled.div`
-        display: flex;
-        padding: 8px;
-        width: 100%;
-    `
-
-    const ContentColumn = styled.div`
-        width: 100%;
-        padding-left: 8px;
-    `
-
-    const TitleRow = styled.div`
-        display: flex;
-        justify-content: space-between;
-    `
-
-    const TitleSpan = styled.span`
-        font-weight: bold;
-    `
-
     return (
-        <Root>
+        <div className="flex p-2">
             <UserIconNavLink userId={props.thread.userId}/>
 
-            <ContentColumn>
-                <TitleRow>
-                    <TitleSpan>{props.thread.title}</TitleSpan>
+            <div className="pl-2 w-full">
+                <div className="flex justify-between">
+                    <span className="font-bold">{props.thread.title}</span>
                     <ThreadMenu thread={props.thread}/>
-                </TitleRow>
+                </div>
 
                 <CreatedAtSpan/>
-            </ContentColumn>
-        </Root>
+            </div>
+        </div>
     )
 }

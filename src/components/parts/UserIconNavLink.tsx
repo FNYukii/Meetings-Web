@@ -3,17 +3,8 @@ import { NavLink } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../utilities/firebase"
 import FireUser from "../../utilities/FireUser";
-import styled from "styled-components";
-
 
 export default function UserIconNavLink(props: { userId: string }) {
-
-
-    const StyledImg = styled.img`
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-    `
 
     const [iconUrl, setIconUrl] = useState("")
 
@@ -41,7 +32,7 @@ export default function UserIconNavLink(props: { userId: string }) {
     return (
         <div>
             <NavLink to='/'>
-                <StyledImg src={iconUrl} width="100" height="100" alt=""/>
+                <img className="w-12 h-12 rounded-full" src={iconUrl} alt="User icon"/>
             </NavLink>
         </div>
     )
