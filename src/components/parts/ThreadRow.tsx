@@ -1,12 +1,28 @@
+import styled from "styled-components"
 import Thread from "../../types/Thread"
 import UserIconNavLink from "./UserIconNavLink"
 
 export default function ThreadRow(props: {thread: Thread}) {
-    return (
-        <div>
 
+    const Root = styled.div`
+        display: flex;
+        padding: 8px;
+    `
+
+    const TitleSpan = styled.span`
+        font-weight: bold;
+        margin-left: 8px;
+    `
+
+    return (
+        <Root>
             <UserIconNavLink userId={props.thread.userId}/>
-            {props.thread.title}
-        </div>
+
+            <div>
+                <TitleSpan>{props.thread.title}</TitleSpan>
+                
+
+            </div>
+        </Root>
     )
 }
