@@ -1,25 +1,17 @@
 import Thread from "../../types/Thread";
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
-import { FaEllipsisH } from 'react-icons/fa'
+import { VscEllipsis } from 'react-icons/vsc'
 import '@szhsin/react-menu/dist/index.css';
-import styled from "styled-components";
-
 
 export default function ThreadMenu(props: { thread: Thread }) {
 
-    const StyledMenuButton = styled(MenuButton)`
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-
-        border-radius: 50%;
-        color: gray;
-        padding: 4px;
-    `
-
     return (
         <div>
-            <Menu menuButton={<StyledMenuButton><FaEllipsisH/></StyledMenuButton>} direction='right'>
+            <Menu menuButton={
+                <MenuButton className="bg-transparent border-0">
+                    <VscEllipsis className="text-xl text-gray-500"/>
+                </MenuButton>
+            } direction='right'>
                 <MenuItem>スレッドを削除</MenuItem>
             </Menu>
         </div>
