@@ -18,8 +18,10 @@ export default function ThreadMenu(props: { thread: Thread }) {
     `
 
     return (
-        <Menu menuButton={<StyledMenuButton><FaEllipsisH/></StyledMenuButton>} direction='right'>
-            <MenuItem>スレッドを削除</MenuItem>
-        </Menu>
+        <div>
+            <Menu menuButton={<StyledMenuButton><FaEllipsisH/></StyledMenuButton>} direction='right'>
+                <MenuItem>スレッドを削除</MenuItem>
+            </Menu>
+        </div>
     )
 }

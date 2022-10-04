@@ -8,6 +8,16 @@ export default function ThreadRow(props: {thread: Thread}) {
     const Root = styled.div`
         display: flex;
         padding: 8px;
+        width: 100%;
+    `
+
+    const ContentColumn = styled.div`
+        width: 100%;
+    `
+
+    const TitleRow = styled.div`
+        display: flex;
+        justify-content: space-between;
     `
 
     const TitleSpan = styled.span`
@@ -19,11 +29,12 @@ export default function ThreadRow(props: {thread: Thread}) {
         <Root>
             <UserIconNavLink userId={props.thread.userId}/>
 
-            <div>
-                <TitleSpan>{props.thread.title}</TitleSpan>
-                <ThreadMenu thread={props.thread}/>
-
-            </div>
+            <ContentColumn>
+                <TitleRow>
+                    <TitleSpan>{props.thread.title}</TitleSpan>
+                    <ThreadMenu thread={props.thread}/>
+                </TitleRow>
+            </ContentColumn>
         </Root>
     )
 }
