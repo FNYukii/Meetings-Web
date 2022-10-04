@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Thread from "../../types/Thread"
+import ThreadMenu from "./ThreadMenu"
 import UserIconNavLink from "./UserIconNavLink"
 
 export default function ThreadRow(props: {thread: Thread}) {
@@ -20,7 +21,7 @@ export default function ThreadRow(props: {thread: Thread}) {
 
             <div>
                 <TitleSpan>{props.thread.title}</TitleSpan>
-                
+                <ThreadMenu thread={props.thread}/>
 
             </div>
         </Root>
