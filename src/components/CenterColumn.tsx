@@ -9,7 +9,7 @@ export default function CenterColumn() {
 
     const Root = styled.div`
         width: 50%;
-        border: 1px solid gray;
+        border: 1px solid #aaaa;
     `
 
     return (
