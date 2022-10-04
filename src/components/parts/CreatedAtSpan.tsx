@@ -1,12 +1,6 @@
-import styled from "styled-components"
-
 export default function CreatedAtSpan() {
 
-    const StyledSpan = styled.span`
-        color: gray;
-    `
-
     return (
-        <StyledSpan>10h</StyledSpan>
+        <span className="text-gray-500">10h</span>
     )
 }
