@@ -27,7 +27,7 @@ export default function LeftColumn() {
         margin-right: 8px;
 
         &:hover {
-            background-color: #333A;
+            background-color: #AAA3;
         }
 
         & *:first-child {
