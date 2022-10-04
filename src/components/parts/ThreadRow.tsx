@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import Thread from "../../types/Thread"
 import CreatedAtSpan from "./CreatedAtSpan"
 import ThreadMenu from "./ThreadMenu"
