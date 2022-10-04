@@ -1,16 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../utilities/firebase"
+import FireUser from "../../utilities/FireUser";
+import styled from "styled-components";
 
-export default function UserIconNavLink(props: {userId: string}) {
+
+export default function UserIconNavLink(props: { userId: string }) {
+
+
+    const StyledImg = styled.img`
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+    `
 
     const [iconUrl, setIconUrl] = useState("")
 
-    let path = "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+    async function read() {
+        const docRef = doc(db, "users", props.userId);
+        const docSnap = await getDoc(docRef);
+
+        // 失敗
+        if (!docSnap.exists()) {
+            
+        }
+
+        // 成功
+        if (docSnap.exists()) {
+            const user = FireUser.toUser(docSnap)
+            setIconUrl(user.iconUrl)
+        }
+    }
+
+    useEffect(() => {
+        read()
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div>
             <NavLink to='/'>
-                <img src={path} width="100" height="100"/>
+                <StyledImg src={iconUrl} width="100" height="100" alt=""/>
             </NavLink>
         </div>
     )
