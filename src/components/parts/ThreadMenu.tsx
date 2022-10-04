@@ -11,14 +11,14 @@ export default function ThreadMenu(props: { thread: Thread }) {
         background-color: transparent;
         border: none;
         cursor: pointer;
-        
+
         border-radius: 50%;
         color: gray;
         padding: 4px;
     `
 
     return (
-        <Menu menuButton={<StyledMenuButton><FaEllipsisH/></StyledMenuButton>} direction='left'>
+        <Menu menuButton={<StyledMenuButton><FaEllipsisH/></StyledMenuButton>} direction='right'>
             <MenuItem>スレッドを削除</MenuItem>
         </Menu>
     )
