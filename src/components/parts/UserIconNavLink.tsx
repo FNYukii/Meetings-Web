@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../utilities/firebase"
 import FireUser from "../../utilities/FireUser";
+import User from "../../types/User";
 
 export default function UserIconNavLink(props: { userId: string }) {
 
-    const [iconUrl, setIconUrl] = useState("")
+    const [user, setUser] = useState<User>()
 
     async function read() {
         const docRef = doc(db, "users", props.userId);
@@ -20,7 +21,7 @@ export default function UserIconNavLink(props: { userId: string }) {
         // 成功
         if (docSnap.exists()) {
             const user = FireUser.toUser(docSnap)
-            setIconUrl(user.iconUrl)
+            setUser(user)
         }
     }
 
@@ -32,7 +33,7 @@ export default function UserIconNavLink(props: { userId: string }) {
     return (
         <div>
             <NavLink to='/'>
-                <img className="w-12 h-12 rounded-full" src={iconUrl} alt="User icon"/>
+                <img className="w-12 h-12 rounded-full" src={user?.iconUrl} alt="User icon"/>
             </NavLink>
         </div>
     )
