@@ -19,7 +19,7 @@ export default class FireUser {
         return user
     }
 
-    static async readUser(userId: string): Promise<User | null> {
+    static async readUserFromCache(userId: string): Promise<User | null> {
         // キャッシュから読み取り
         const docRef = doc(db, "users", userId);
         const docSnapFromCache = await getDocFromCache(docRef);
