@@ -1,28 +1,15 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../utilities/firebase"
 import FireUser from "../../utilities/FireUser";
 import User from "../../types/User";
 
 export default function UserIconNavLink(props: { userId: string }) {
 
-    const [user, setUser] = useState<User>()
+    const [user, setUser] = useState<User | null>()
 
     async function read() {
-        const docRef = doc(db, "users", props.userId);
-        const docSnap = await getDoc(docRef);
-
-        // 失敗
-        if (!docSnap.exists()) {
-            
-        }
-
-        // 成功
-        if (docSnap.exists()) {
-            const user = FireUser.toUser(docSnap)
-            setUser(user)
-        }
+        const user: User | null = await FireUser.readUser(props.userId)
+        setUser(user)
     }
 
     useEffect(() => {
