@@ -1,5 +1,7 @@
 import User from "../types/User"
 import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../utilities/firebase"
 
 export default class FireUser {
 
@@ -14,6 +16,22 @@ export default class FireUser {
         const likedCommentIds: string[] = document.data().likedCommentIds
 
         const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds }
+        return user
+    }
+
+    static async readUser(userId: string): Promise<User | null> {
+        // Userドキュメントを読み取り
+        const docRef = doc(db, "users", userId);
+        const docSnap = await getDoc(docRef);
+
+        // 失敗
+        if (!docSnap.exists()) {
+            return null
+        }
+        
+        // 成功
+        const document = docSnap
+        const user = this.toUser(document)
         return user
     }
 }
