@@ -1,5 +1,5 @@
 import Thread from "../../types/Thread"
-import CreatedAtSpan from "./CreatedAtSpan"
+import EditDate from "../../utilities/EditDate"
 import ThreadMenu from "./ThreadMenu"
 import UserIconNavLink from "./UserIconNavLink"
 
@@ -15,7 +15,7 @@ export default function ThreadRow(props: {thread: Thread}) {
                     <ThreadMenu thread={props.thread}/>
                 </div>
 
-                <CreatedAtSpan/>
+                <span className="text-gray-500">{EditDate.howManyAgo(props.thread.createdAt)}</span>
             </div>
         </div>
     )
