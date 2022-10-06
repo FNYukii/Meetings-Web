@@ -4,7 +4,7 @@ import { AiOutlineHome, AiOutlineSearch } from 'react-icons/ai'
 export default function LeftColumn() {
     
     return (
-        <div className='w-1/4'>
+        <div className='md:w-1/4 w-1/3'>
             <NavLink to='/' className="text-inherit no-underline p-2 text-3xl font-sans">Meetings</NavLink>
 
             <nav className='mt-2'>
