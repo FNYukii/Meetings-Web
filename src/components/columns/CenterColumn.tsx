@@ -7,7 +7,7 @@ import NotFoundScreen from '../screens/NotFoundScreen'
 export default function CenterColumn() {
 
     return (
-        <div className='w-2/4 border-l border-r border-gray-400 border-opacity-30'>
+        <div className='w-2/4 border-l border-r border-zinc-200 dark:border-zinc-800'>
             <Routes>
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />

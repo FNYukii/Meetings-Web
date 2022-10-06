@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"
 
 export default function CommentRow(props: {comment: Comment}) {
     return (
-        <NavLink to="/" className="flex p-2 hover:bg-gray-400 hover:bg-opacity-10">
+        <NavLink to="/" className="flex p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <UserIconNavLink userId={props.comment.userId}/>
 
             <div className="pl-2 w-full">
