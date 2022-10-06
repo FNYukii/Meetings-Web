@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 export default function App() {
     
     return (
-        <div className='container flex m-auto'>
+        <div className='flex mx-auto large-container'>
             <BrowserRouter>
                 <LeftColumn />
                 <CenterColumn />

@@ -17,3 +17,13 @@
         color: white;
     }
 }
+
+.large-container {
+    width: 1280px;
+}
+
+@media (max-width: 1300px) {
+    .large-container {
+        width: 100%;
+    }
+}
