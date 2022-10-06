@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 
-import HomeScreen from './screens/HomeScreen'
-import ThreadScreen from './screens/ThreadScreen'
-import NotFoundScreen from './screens/NotFoundScreen'
+import HomeScreen from '../screens/HomeScreen'
+import ThreadScreen from '../screens/ThreadScreen'
+import NotFoundScreen from '../screens/NotFoundScreen'
 
 export default function CenterColumn() {
 
@@ -10,7 +10,7 @@ export default function CenterColumn() {
         <div className='w-2/4 border'>
             <Routes>
                 <Route path='/' element={<HomeScreen />} />
-                <Route path='/threads/:id' element={<ThreadScreen />} />
+                <Route path='/threads/:threadId' element={<ThreadScreen />} />
                 <Route path='*' element={<NotFoundScreen />} />
             </Routes>
         </div>
