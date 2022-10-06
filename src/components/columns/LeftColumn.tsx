@@ -4,7 +4,7 @@ import { FaHome, FaSearch } from 'react-icons/fa'
 export default function LeftColumn() {
     
     return (
-        <div className='border w-1/4'>
+        <div className='w-1/4'>
             <NavLink to='/' className="text-inherit no-underline p-2 text-2xl">Meetings</NavLink>
 
             <nav>
