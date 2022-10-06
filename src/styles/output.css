@@ -664,17 +664,13 @@ video {
   --tw-border-opacity: 0.3;
 }
 
-.bg-gray-300 {
+.bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
   background-color: transparent;
-}
-
-.bg-opacity-20 {
-  --tw-bg-opacity: 0.2;
 }
 
 .p-2 {
@@ -748,4 +744,11 @@ video {
 
 .hover\:opacity-60:hover {
   opacity: 0.6;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-zinc-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+  }
 }
