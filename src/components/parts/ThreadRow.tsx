@@ -8,10 +8,10 @@ import UserUserTagSpan from "./UserUserTagSpan"
 export default function ThreadRow(props: { thread: Thread }) {
     
     return (
-        <NavLink to={`/threads/${props.thread.id}`} className="flex p-2 hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <NavLink to={`/threads/${props.thread.id}`} className="flex p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <UserIconNavLink userId={props.thread.userId} />
 
-            <div className="pl-2 w-full">
+            <div className="pl-3 w-full">
                 <div className="flex justify-between">
                     <span className="font-bold">{props.thread.title}</span>
                     <ThreadMenu thread={props.thread} />
@@ -19,10 +19,10 @@ export default function ThreadRow(props: { thread: Thread }) {
 
                 <div>
                     <UserUserTagSpan userId={props.thread.userId} />
-                    <span className="text-gray-500 ml-2">{EditDate.howManyAgo(props.thread.createdAt)}</span>
+                    <span className="text-gray-500 ml-3">{EditDate.howManyAgo(props.thread.createdAt)}</span>
 
                     {props.thread.tags?.map((tag) => (
-                        <span key={tag} className="ml-2">{tag}</span>
+                        <span key={tag} className="ml-3">{tag}</span>
                     ))}
                 </div>
             </div>
