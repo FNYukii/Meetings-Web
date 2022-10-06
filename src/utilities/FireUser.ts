@@ -24,13 +24,19 @@ export default class FireUser {
         const docRef = doc(db, "users", userId);
 
         // TODO: エラー処理
-        const docSnapFromCache = await getDocFromCache(docRef);
-        
-        // 失敗
-        if (!docSnapFromCache.exists()) {
+        try {
+            const docSnapFromCache = await getDocFromCache(docRef);
+            
+            if (docSnapFromCache.exists()) {
+                return this.toUser(docSnapFromCache)
+            } else {
+                return null
+            }
+        } catch (e) {
+
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
-
+    
             // 失敗
             if (!docSnapFromServer.exists()) {
                 return null
@@ -39,9 +45,6 @@ export default class FireUser {
             // 成功
             return this.toUser(docSnapFromServer)
         }
-
-        // 成功
-        return this.toUser(docSnapFromCache)
     }
 
     static async readUser(userId: string): Promise<User | null> {
