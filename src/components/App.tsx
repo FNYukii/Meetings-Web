@@ -1,6 +1,6 @@
-import LeftColumn from './LeftColumn'
-import CenterColumn from './CenterColumn'
-import RightColumn from './RightColumn'
+import LeftColumn from './columns/LeftColumn'
+import CenterColumn from './columns/CenterColumn'
+import RightColumn from './columns/RightColumn'
 
 import { BrowserRouter } from 'react-router-dom'
 
