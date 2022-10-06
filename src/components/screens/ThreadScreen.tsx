@@ -34,8 +34,8 @@ export default function ThreadScreen() {
 
     return (
         <div>
-            <div className="border-b p-2 font-bold text-lg">
-                <span>スレッド</span>
+            <div className='p-2 border-b border-gray-400 border-opacity-30'>
+                <span className='font-bold text-lg'>ホーム</span>
             </div>
 
             <div>
