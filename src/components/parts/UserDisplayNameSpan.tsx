@@ -17,6 +17,6 @@ export default function UserDisplayNameSpan(props: {userId: string}) {
     }, [])
 
     return (
-        <span className="font-bold">@{user?.displayName}</span>
+        <span className="font-bold">{user?.displayName}</span>
     )
 }
