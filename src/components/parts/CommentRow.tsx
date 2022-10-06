@@ -1,4 +1,5 @@
 import Comment from "../../types/Comment"
+import UserDisplayNameSpan from "./UserDisplayNameSpan"
 import UserIconNavLink from "./UserIconNavLink"
 import UserUserTagSpan from "./UserUserTagSpan"
 
@@ -9,7 +10,7 @@ export default function CommentRow(props: {comment: Comment}) {
 
             <div className="pl-2 w-full">
                 <div>
-                    <span className="font-bold">Ayaka</span>
+                    <UserDisplayNameSpan userId={props.comment.userId}/>
                     <UserUserTagSpan userId={props.comment.userId}/>
                 </div>
 
