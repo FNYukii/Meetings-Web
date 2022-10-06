@@ -4,7 +4,7 @@ export default function NotFoundScreen() {
 
     return (
         <div>
-            <div className='p-2 border-b border-zinc-200 dark:border-zinc-800'>
+            <div className='p-2 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-white dark:bg-black'>
                 <span className='font-bold text-lg'>Not Found</span>
             </div>
 
