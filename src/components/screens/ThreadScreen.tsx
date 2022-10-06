@@ -7,6 +7,7 @@ import Comment from "../../types/Comment"
 import CommentRow from "../parts/CommentRow"
 import Thread from "../../types/Thread"
 import FireThread from "../../utilities/FireThread"
+import TitleBar from "../parts/TitleBar"
 
 export default function ThreadScreen() {
 
@@ -47,9 +48,7 @@ export default function ThreadScreen() {
 
     return (
         <div>
-            <div className='p-2 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-white dark:bg-black z-20'>
-                <span className='font-bold text-lg'>{thread !== null ? thread.title : ""}</span>
-            </div>
+            <TitleBar text={thread?.title ?? ""}/>
 
             <div>
                 {comments.map((comment) => (

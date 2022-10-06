@@ -4,6 +4,7 @@ import { collection, query, onSnapshot, orderBy } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
 import FireThread from '../../utilities/FireThread'
 import ThreadRow from '../parts/ThreadRow'
+import TitleBar from '../parts/TitleBar'
 
 export default function HomeScreen() {
 
@@ -35,9 +36,7 @@ export default function HomeScreen() {
 
     return (
         <div>
-            <div className='p-2 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-white dark:bg-black z-20'>
-                <span className='font-bold text-lg'>ホーム</span>
-            </div>
+            <TitleBar text='ホーム'/>
 
             {!isLoaded &&
                 <div></div>
