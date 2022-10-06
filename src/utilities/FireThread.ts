@@ -1,8 +1,9 @@
 import Thread from '../types/Thread'
 
-import { QueryDocumentSnapshot, DocumentData } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer } from "firebase/firestore"
+import { db } from './firebase'
 
-export default class FireUser {
+export default class FireThread {
 
     static toThread(document: QueryDocumentSnapshot<DocumentData>): Thread {
         const id: string = document.id
@@ -16,5 +17,33 @@ export default class FireUser {
 
         const thread: Thread = { id: id, userId: userId, createdAt: createdAt, commentedAt: commentedAt, title: title, tags: tags }
         return thread
+    }
+
+    static async readThreadFromCache(threadId: string): Promise<Thread | null> {
+        // キャッシュから読み取り
+        const docRef = doc(db, "threadId", threadId);
+
+        // TODO: エラー処理
+        try {
+            const docSnapFromCache = await getDocFromCache(docRef);
+            
+            if (docSnapFromCache.exists()) {
+                return this.toThread(docSnapFromCache)
+            } else {
+                return null
+            }
+        } catch (e) {
+
+            // サーバーから読み取り
+            const docSnapFromServer = await getDocFromServer(docRef)
+    
+            // 失敗
+            if (!docSnapFromServer.exists()) {
+                return null
+            }
+            
+            // 成功
+            return this.toThread(docSnapFromServer)
+        }
     }
 }

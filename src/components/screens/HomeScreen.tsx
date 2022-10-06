@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Thread from '../../types/Thread'
 import { collection, query, onSnapshot, orderBy } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
-import FireUser from '../../utilities/FireThread'
+import FireThread from '../../utilities/FireThread'
 import ThreadRow from '../parts/ThreadRow'
 
 export default function HomeScreen() {
@@ -19,7 +19,7 @@ export default function HomeScreen() {
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
-                const thread = FireUser.toThread(doc)
+                const thread = FireThread.toThread(doc)
                 threads.push(thread)
             })
 

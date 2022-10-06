@@ -5,13 +5,23 @@ import { db } from "../../utilities/firebase"
 import FireComment from "../../utilities/FireComment"
 import Comment from "../../types/Comment"
 import CommentRow from "../parts/CommentRow"
+import Thread from "../../types/Thread"
+import FireThread from "../../utilities/FireThread"
 
 export default function ThreadScreen() {
 
     document.title = 'Thread - Meetings'
 
-    let { threadId } = useParams()
+    const { threadId } = useParams()
+    const [thread, setThread] = useState<Thread | null>(null)
     const [comments, setComments] = useState<Comment[]>([])
+
+    async function readThread() {
+        if (threadId !== undefined) {
+            const thread = await FireThread.readThreadFromCache(threadId)
+            setThread(thread)
+        }
+    }
 
     async function startReadingComments() {
         const q = query(collection(db, "comments"), where("threadId", "==", threadId))
@@ -28,6 +38,7 @@ export default function ThreadScreen() {
     }
 
     useEffect(() => {
+        readThread()
         startReadingComments()
         // eslint-disable-next-line
     }, [])
@@ -35,7 +46,7 @@ export default function ThreadScreen() {
     return (
         <div>
             <div className='p-2 border-b border-zinc-200 dark:border-zinc-800'>
-                <span className='font-bold text-lg'>スレッド詳細</span>
+                <span className='font-bold text-lg'>{thread !== null ? thread.title : threadId}</span>
             </div>
 
             <div>
