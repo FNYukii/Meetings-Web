@@ -8,7 +8,7 @@ import UserUserTagSpan from "./UserUserTagSpan"
 export default function ThreadRow(props: { thread: Thread }) {
     
     return (
-        <NavLink to={`/threads/${props.thread.id}`} className="flex p-2 hover:bg-gray-50">
+        <NavLink to={`/threads/${props.thread.id}`} className="flex p-2 hover:bg-gray-400 hover:bg-opacity-10">
             <UserIconNavLink userId={props.thread.userId} />
 
             <div className="pl-2 w-full">
