@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { db } from "../../utilities/firebase"
 import FireComment from "../../utilities/FireComment"
 import Comment from "../../types/Comment"
+import CommentRow from "../parts/CommentRow"
 
 export default function ThreadScreen() {
 
@@ -39,7 +40,7 @@ export default function ThreadScreen() {
 
             <div>
                 {comments.map((comment) => (
-                    <span key={comment.id}>{comment.text}</span>
+                    <CommentRow comment={comment}/>
                 ))}
             </div>
         </div>
