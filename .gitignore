@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # Added
-firebaseConfig.ts
+# firebaseConfig.ts
