@@ -28,11 +28,8 @@ export default function LeftColumn() {
                         <AiOutlineEdit className='text-3xl' />
                         <span className='ml-5 text-xl xl:block hidden'>サインアップ</span>
                     </NavLink>
-
                 </div>
-
             </div>
-
         </div>
     )
 }
