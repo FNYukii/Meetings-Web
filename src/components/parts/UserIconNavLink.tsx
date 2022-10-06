@@ -19,7 +19,7 @@ export default function UserIconNavLink(props: { userId: string }) {
 
     return (
         <div>
-            <NavLink to='/'>
+            <NavLink to={`/users/${props.userId}`} className="hover:opacity-60">
                 <img className="w-12 rounded-full" src={user?.iconUrl} alt="User icon"/>
             </NavLink>
         </div>
