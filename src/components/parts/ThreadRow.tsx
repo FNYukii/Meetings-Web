@@ -10,7 +10,7 @@ export default function ThreadRow(props: { thread: Thread }) {
     return (
         <div className="flex p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
 
-            <NavLink to={`/threads/${props.thread.id}`} className="absolute top-0 left-0 w-full h-full z-0"/>
+            <NavLink to={`/threads/${props.thread.id}`} className="absolute top-0 left-0 w-full h-full"/>
 
             <UserIconNavLink userId={props.thread.userId} />
 
