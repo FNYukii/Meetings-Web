@@ -8,7 +8,7 @@ import SearchScreen from '../screens/SearchScreen'
 export default function CenterColumn() {
 
     return (
-        <div className='md:w-2/4 w-2/3 border-l border-r border-zinc-200 dark:border-zinc-800'>
+        <div className='xl:w-2/4 md:w-7/12 w-10/12 border-l border-r border-zinc-200 dark:border-zinc-800'>
             <Routes>
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
