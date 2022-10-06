@@ -13,7 +13,7 @@ export default function ThreadRow(props: { thread: Thread }) {
 
             <div className="pl-2 w-full">
                 <div className="flex justify-between">
-                    <span className="font-bold hover:underline">{props.thread.title}</span>
+                    <span className="font-bold">{props.thread.title}</span>
                     <ThreadMenu thread={props.thread} />
                 </div>
 
