@@ -36,7 +36,7 @@ export default function HomeScreen() {
     return (
         <div>
 
-            <div className='p-2 border-b border-gray-400 border-opacity-30'>
+            <div className='p-2 border-b border-zinc-200 dark:border-zinc-800'>
                 <span className='font-bold text-lg'>ホーム</span>
             </div>
 
