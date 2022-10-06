@@ -3,7 +3,7 @@ import React from 'react'
 
 import App from './components/App'
 
-import './styles/output.css'
+import './styles/index.css'
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
