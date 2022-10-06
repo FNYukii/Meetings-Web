@@ -10,8 +10,6 @@ import FireThread from "../../utilities/FireThread"
 
 export default function ThreadScreen() {
 
-    document.title = 'Thread - Meetings'
-
     const { threadId } = useParams()
     const [thread, setThread] = useState<Thread | null>(null)
     const [comments, setComments] = useState<Comment[]>([])
@@ -20,6 +18,10 @@ export default function ThreadScreen() {
         if (threadId !== undefined) {
             const thread = await FireThread.readThreadFromCache(threadId)
             setThread(thread)
+
+            if (thread !== null) {
+                document.title = `${thread?.title} - Meetings`
+            }
         }
     }
 
