@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { AiOutlineHome, AiOutlineSearch } from 'react-icons/ai'
+import { AiOutlineHome, AiOutlineSearch, AiOutlineLogin, AiOutlineEdit } from 'react-icons/ai'
 
 export default function LeftColumn() {
 
@@ -17,6 +17,16 @@ export default function LeftColumn() {
                     <NavLink to='/search' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
                         <AiOutlineSearch className='text-3xl' />
                         <span className='ml-5 text-xl xl:block hidden'>検索</span>
+                    </NavLink>
+
+                    <NavLink to='/sign-in' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                        <AiOutlineLogin className='text-3xl' />
+                        <span className='ml-5 text-xl xl:block hidden'>サインイン</span>
+                    </NavLink>
+
+                    <NavLink to='/sign-up' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                        <AiOutlineEdit className='text-3xl' />
+                        <span className='ml-5 text-xl xl:block hidden'>サインアップ</span>
                     </NavLink>
 
                 </div>
