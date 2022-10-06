@@ -9,14 +9,14 @@ export default function LeftColumn() {
                 <NavLink to='/' className="text-inherit no-underline p-2 text-3xl font-sans xl:block hidden">Meetings</NavLink>
 
                 <div>
-                    <NavLink to='/' className="flex p-2 mt-1 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                    <NavLink to='/' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
                         <AiOutlineHome className='text-3xl' />
-                        <span className='ml-3 text-xl xl:block hidden'>ホーム</span>
+                        <span className='ml-5 text-xl xl:block hidden'>ホーム</span>
                     </NavLink>
 
-                    <NavLink to='/search' className="flex p-2 mt-1 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                    <NavLink to='/search' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
                         <AiOutlineSearch className='text-3xl' />
-                        <span className='ml-3 text-xl xl:block hidden'>検索</span>
+                        <span className='ml-5 text-xl xl:block hidden'>検索</span>
                     </NavLink>
 
                 </div>
