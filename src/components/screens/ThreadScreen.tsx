@@ -46,12 +46,12 @@ export default function ThreadScreen() {
     return (
         <div>
             <div className='p-2 border-b border-zinc-200 dark:border-zinc-800 sticky top-0 bg-white dark:bg-black'>
-                <span className='font-bold text-lg'>{thread !== null ? thread.title : threadId}</span>
+                <span className='font-bold text-lg'>{thread !== null ? thread.title : ""}</span>
             </div>
 
             <div>
                 {comments.map((comment) => (
-                    <CommentRow comment={comment}/>
+                    <CommentRow key={comment.id} comment={comment}/>
                 ))}
             </div>
         </div>

@@ -20,13 +20,13 @@ export default class FireThread {
     }
 
     static async readThreadFromCache(threadId: string): Promise<Thread | null> {
-        // キャッシュから読み取り
-        const docRef = doc(db, "threadId", threadId);
 
-        // TODO: エラー処理
+        const docRef = doc(db, "threads", threadId)
+
+        // キャッシュから読み取り
         try {
-            const docSnapFromCache = await getDocFromCache(docRef);
-            
+            const docSnapFromCache = await getDocFromCache(docRef)
+
             if (docSnapFromCache.exists()) {
                 return this.toThread(docSnapFromCache)
             } else {
@@ -36,12 +36,12 @@ export default class FireThread {
 
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
-    
+
             // 失敗
             if (!docSnapFromServer.exists()) {
                 return null
             }
-            
+
             // 成功
             return this.toThread(docSnapFromServer)
         }
