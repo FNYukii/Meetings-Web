@@ -7,7 +7,7 @@ export default function UserUserTagSpan(props: {userId: string}) {
     const [user, setUser] = useState<User | null>()
 
     async function read() {
-        const user: User | null = await FireUser.readUserFromCache(props.userId)
+        const user: User | null = await FireUser.readUser(props.userId)
         setUser(user)
     }
 
