@@ -8,7 +8,7 @@ export default function UserIconNavLink(props: { userId: string }) {
     const [user, setUser] = useState<User | null>()
 
     async function read() {
-        const user: User | null = await FireUser.readUser(props.userId)
+        const user: User | null = await FireUser.readUserFromCache(props.userId)
         setUser(user)
     }
 
