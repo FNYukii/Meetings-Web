@@ -6,7 +6,7 @@ import '@szhsin/react-menu/dist/index.css';
 export default function ThreadMenu(props: { thread: Thread }) {
 
     return (
-        <div className="z-10 hover:bg-zinc-200 dark:hover:bg-zinc-800">
+        <div className="z-10 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-full aspect-square items-center flex p-1">
             <Menu menuButton={
                 <MenuButton className="bg-transparent border-0">
                     <VscEllipsis className="text-xl text-gray-500"/>
