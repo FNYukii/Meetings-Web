@@ -1,4 +1,4 @@
-import { collection, onSnapshot, query, where } from "firebase/firestore"
+import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../../utilities/firebase"
@@ -27,7 +27,7 @@ export default function ThreadScreen() {
     }
 
     async function startReadingComments() {
-        const q = query(collection(db, "comments"), where("threadId", "==", threadId))
+        const q = query(collection(db, "comments"), where("threadId", "==", threadId), orderBy("createdAt"), limit(1000))
         onSnapshot(q, (querySnapshot) => {
 
             let comments: Comment[] = []
