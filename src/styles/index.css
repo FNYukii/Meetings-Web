@@ -13,15 +13,3 @@
         width: 100%;
     }
 }
-
-.popup-menu {
-    background-color: inherit;
-    color: inherit;
-}
-
-@media (prefers-color-scheme: dark) {
-    .popup-menu {
-        background-color: black;
-        color: white;
-    }
-}
