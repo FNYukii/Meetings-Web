@@ -15,7 +15,7 @@ export default function HomeScreen() {
     const [isLoaded, setIsloaded] = useState(false)
 
     async function startReadingThreads() {
-        const q = query(collection(db, "threads"), orderBy("commentedAt", "desc"), limit(50));
+        const q = query(collection(db, "threads"), orderBy("commentedAt", "desc"), limit(50))
         onSnapshot(q, (querySnapshot) => {
             // 配列threads
             let threads: Thread[] = []
@@ -27,12 +27,12 @@ export default function HomeScreen() {
             // Stateを更新
             setThreads(threads)
             setIsloaded(true)
-        });
+        })
     }
 
     useEffect(() => {
         startReadingThreads()
-    }, []);
+    }, [])
 
     return (
         <div>

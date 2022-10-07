@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import FireUser from "../../utilities/FireUser";
-import User from "../../types/User";
+import { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
+import FireUser from "../../utilities/FireUser"
+import User from "../../types/User"
 
 export default function UserIconNavLink(props: { userId: string }) {
 
@@ -15,7 +15,7 @@ export default function UserIconNavLink(props: { userId: string }) {
     useEffect(() => {
         read()
         // eslint-disable-next-line
-    }, []);
+    }, [])
 
     return (
         <div className="hover:opacity-60 z-10 relative w-12 h-11">

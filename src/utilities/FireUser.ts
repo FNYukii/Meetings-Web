@@ -21,9 +21,9 @@ export default class FireUser {
 
     static async readUserFromCache(userId: string): Promise<User | null> {
         // キャッシュから読み取り
-        const docRef = doc(db, "users", userId);
+        const docRef = doc(db, "users", userId)
         try {
-            const docSnapFromCache = await getDocFromCache(docRef);
+            const docSnapFromCache = await getDocFromCache(docRef)
             
             if (docSnapFromCache.exists()) {
                 return this.toUser(docSnapFromCache)

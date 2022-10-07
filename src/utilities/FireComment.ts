@@ -1,6 +1,6 @@
-import { collection, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore";
-import Comment from "../types/Comment";
-import { db } from "./firebase";
+import { collection, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
+import Comment from "../types/Comment"
+import { db } from "./firebase"
 
 export default class FireComment {
 
