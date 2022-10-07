@@ -7,6 +7,7 @@ import ThreadMenu from "./ThreadMenu"
 import UserIconNavLink from "./UserIconNavLink"
 import UserUserTagSpan from "./UserUserTagSpan"
 import Comment from "../../types/Comment"
+import PopupMenu from "./PopupMenu"
 
 export default function ThreadRow(props: { thread: Thread }) {
 
@@ -32,7 +33,8 @@ export default function ThreadRow(props: { thread: Thread }) {
             <div className="pl-3 w-full">
                 <div className="flex justify-between">
                     <span className="font-bold">{props.thread.title}</span>
-                    <ThreadMenu thread={props.thread} />
+                    {/* <ThreadMenu thread={props.thread} /> */}
+                    <PopupMenu />
                 </div>
 
                 <div>
