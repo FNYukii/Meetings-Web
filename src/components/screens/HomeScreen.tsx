@@ -4,7 +4,6 @@ import { collection, query, onSnapshot, orderBy, limit } from "firebase/firestor
 import { db } from "../../utilities/firebase"
 import FireThread from '../../utilities/FireThread'
 import ThreadRow from '../parts/ThreadRow'
-import TitleBar from '../parts/TitleBar'
 import progress from "../../images/progress.svg"
 
 export default function HomeScreen() {
@@ -37,21 +36,25 @@ export default function HomeScreen() {
 
     return (
         <div>
-            <TitleBar text='ホーム' isShowBackButton={false}/>
+            <div className='h-14 sticky top-0 bg-white/70 dark:bg-black/70 z-20 backdrop-blur px-3 flex items-center'>
+                <span className='font-bold text-lg'>ホーム</span>
+            </div>
 
             {!isLoaded &&
                 <div className='flex justify-center'>
-                    <img src={progress} alt='loading'/>
+                    <img src={progress} alt='loading' />
                 </div>
             }
 
             {isLoaded &&
-                <div>
-                    {threads.map((thread) => (
-                        <ThreadRow thread={thread} key={thread.id}/>
-                    ))}
+                <div className='mt-1'>
+                    {
+                        threads.map((thread) => (
+                            <ThreadRow thread={thread} key={thread.id} />
+                        ))
+                    }
                 </div>
             }
-        </div>
+        </div >
     )
 }

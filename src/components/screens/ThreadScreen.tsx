@@ -7,8 +7,8 @@ import Comment from "../../types/Comment"
 import CommentRow from "../parts/CommentRow"
 import Thread from "../../types/Thread"
 import FireThread from "../../utilities/FireThread"
-import TitleBar from "../parts/TitleBar"
 import progress from "../../images/progress.svg"
+import BackButton from "../parts/BackButton"
 
 export default function ThreadScreen() {
 
@@ -51,7 +51,10 @@ export default function ThreadScreen() {
 
     return (
         <div>
-            <TitleBar text={thread?.title ?? ""} isShowBackButton={true} />
+            <div className='h-14 sticky top-0 bg-white/70 dark:bg-black/70 z-20 backdrop-blur px-3 flex items-center'>
+                <BackButton/>
+                <span className='font-bold text-lg'>{thread?.title ?? ""}</span>
+            </div>
 
             {!isLoaded &&
                 <div className='flex justify-center'>
@@ -60,7 +63,7 @@ export default function ThreadScreen() {
             }
 
             {isLoaded &&
-                <div>
+                <div className="mt-1">
                     {comments.map((comment) => (
                         <CommentRow key={comment.id} comment={comment} />
                     ))}
