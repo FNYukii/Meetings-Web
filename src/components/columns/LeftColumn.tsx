@@ -4,9 +4,9 @@ import { AiOutlineHome, AiOutlineSearch, AiOutlineLogin, AiOutlineEdit } from 'r
 export default function LeftColumn() {
 
     return (
-        <div className='xl:w-1/4 md:w-1/12 w-fit xl:justify-start'>
+        <div className='xl:w-1/4 md:w-1/12'>
             <div className='sticky top-0'>
-                <div className='xl:block flex justify-end xl:px-4 px-2'>
+                <div className='xl:block xl:px-4 flex justify-end px-2'>
                     <NavLink to='/' className="text-inherit no-underline p-2 text-3xl font-sans xl:block hidden">Meetings</NavLink>
 
                     <div>
