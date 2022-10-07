@@ -4,20 +4,6 @@
     box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: white;
-        color: black;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: black;
-        color: white;
-    }
-}
-
 .large-container {
     width: 1280px;
 }
