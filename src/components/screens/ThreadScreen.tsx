@@ -8,12 +8,14 @@ import CommentRow from "../parts/CommentRow"
 import Thread from "../../types/Thread"
 import FireThread from "../../utilities/FireThread"
 import TitleBar from "../parts/TitleBar"
+import progress from "../../images/progress.svg"
 
 export default function ThreadScreen() {
 
     const { threadId } = useParams()
     const [thread, setThread] = useState<Thread | null>(null)
     const [comments, setComments] = useState<Comment[]>([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThread() {
         if (threadId !== undefined) {
@@ -37,6 +39,7 @@ export default function ThreadScreen() {
             })
 
             setComments(comments)
+            setIsLoaded(true)
         })
     }
 
@@ -48,13 +51,21 @@ export default function ThreadScreen() {
 
     return (
         <div>
-            <TitleBar text={thread?.title ?? ""} isShowBackButton={true}/>
+            <TitleBar text={thread?.title ?? ""} isShowBackButton={true} />
 
-            <div>
-                {comments.map((comment) => (
-                    <CommentRow key={comment.id} comment={comment}/>
-                ))}
-            </div>
+            {!isLoaded &&
+                <div className='flex justify-center'>
+                    <img src={progress} alt='loading' />
+                </div>
+            }
+
+            {isLoaded &&
+                <div>
+                    {comments.map((comment) => (
+                        <CommentRow key={comment.id} comment={comment} />
+                    ))}
+                </div>
+            }
         </div>
     )
 }
