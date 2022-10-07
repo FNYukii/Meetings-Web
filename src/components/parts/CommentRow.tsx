@@ -8,9 +8,9 @@ import CommentMenu from "./CommentMenu"
 
 export default function CommentRow(props: { comment: Comment }) {
     return (
-        <div className="flex p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+        <div className="flex p-3 relative">
 
-            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full z-0" />
+            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full z-0 hover:bg-zinc-500/20" />
 
             <UserIconNavLink userId={props.comment.userId} />
 
