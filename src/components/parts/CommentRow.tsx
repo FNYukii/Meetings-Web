@@ -34,6 +34,14 @@ export default function CommentRow(props: { comment: Comment }) {
                 <div>
                     <p>{props.comment.text}</p>
                 </div>
+
+                <div className="flex gap-2">
+                    {props.comment.imageUrls.map((url) => (
+                        <div key={url} className="z-10 mt-2 hover:opacity-80">
+                            <img src={url} alt="Attached to comment" className="rounded-xl"/>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
