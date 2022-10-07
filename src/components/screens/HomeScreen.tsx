@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Thread from '../../types/Thread'
-import { collection, query, onSnapshot, orderBy } from "firebase/firestore"
+import { collection, query, onSnapshot, orderBy, limit } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
 import FireThread from '../../utilities/FireThread'
 import ThreadRow from '../parts/ThreadRow'
@@ -15,7 +15,7 @@ export default function HomeScreen() {
     const [isLoaded, setIsloaded] = useState(false)
 
     async function startReadingThreads() {
-        const q = query(collection(db, "threads"), orderBy("createdAt", "desc"));
+        const q = query(collection(db, "threads"), orderBy("commentedAt", "desc"), limit(50));
         onSnapshot(q, (querySnapshot) => {
             // 配列threads
             let threads: Thread[] = []
