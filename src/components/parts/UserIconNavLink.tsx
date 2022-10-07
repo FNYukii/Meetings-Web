@@ -18,7 +18,7 @@ export default function UserIconNavLink(props: { userId: string }) {
     }, []);
 
     return (
-        <div className="hover:opacity-60 z-10 relative w-12 aspect-square">
+        <div className="hover:opacity-60 z-10 relative w-12 h-11">
 
             <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full aspect-square"></div>
             
