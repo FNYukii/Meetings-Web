@@ -18,7 +18,7 @@ export default function CommentMenu(props: { comment: Comment }) {
     }
 
     const menuButton = (
-        <MenuButton className="hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
+        <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
             <VscEllipsis className="text-xl text-gray-500" />
         </MenuButton>
     )
