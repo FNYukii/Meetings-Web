@@ -1,7 +1,8 @@
-import Thread from "../../types/Thread";
-import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
+import Thread from "../../types/Thread"
+import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
 import { VscEllipsis } from 'react-icons/vsc'
-import '@szhsin/react-menu/dist/index.css';
+import '@szhsin/react-menu/dist/index.css'
+import "@szhsin/react-menu/dist/theme-dark.css"
 
 export default function ThreadMenu(props: { thread: Thread }) {
 
@@ -14,8 +15,8 @@ export default function ThreadMenu(props: { thread: Thread }) {
     return (
         <div className="z-10">
 
-            <Menu menuButton={menuButton} menuClassName="popup-menu">
-                <MenuItem className="hover: bg-zinc-900">スレッドを削除</MenuItem>
+            <Menu menuButton={menuButton} theming="dark">
+                <MenuItem>スレッドを削除</MenuItem>
             </Menu>
         </div>
     )
