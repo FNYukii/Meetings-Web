@@ -1,11 +1,11 @@
-import Thread from "../../types/Thread"
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
 import { VscEllipsis } from 'react-icons/vsc'
 import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
+import Comment from "../../types/Comment"
 
-export default function ThreadMenu(props: { thread: Thread }) {
+export default function CommentMenu(props: { comment: Comment }) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -27,7 +27,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
         <div className="z-10">
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-                <MenuItem>スレッドを報告</MenuItem>
+                <MenuItem>コメントを報告</MenuItem>
             </Menu>
         </div>
     )
