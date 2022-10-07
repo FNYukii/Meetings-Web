@@ -18,17 +18,13 @@ export default function UserIconNavLink(props: { userId: string }) {
     }, []);
 
     return (
-        <div className="hover:opacity-60 z-10 relative">
+        <div className="hover:opacity-60 z-10 relative w-12 h-11">
 
-            <NavLink to={`/users/${props.userId}`} className="absolute top-0 left-0 w-full h-full"/>
+            <div className="bg-zinc-100 rounded-full absolute top-0 left-0 w-full h-full"></div>
+            
+            <img className="w-12 rounded-full absolute top-0 left-0 w-full" src={user?.iconUrl} alt="" />
 
-            {user == null &&
-                <div className="w-12 rounded-full"></div>
-            }
-
-            {user != null &&
-                <img className="w-12 rounded-full" src={user?.iconUrl} alt="User icon" />
-            }
+            <NavLink to={`/users/${props.userId}`} className="absolute top-0 left-0 w-full h-full" />
         </div>
     )
 }
