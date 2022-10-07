@@ -6,7 +6,7 @@ export default function NotFoundScreen() {
 
     return (
         <div>
-            <TitleBar text="Not Found" isShowBackButton={false}/>
+            <TitleBar text="Not Found" isShowBackButton={true}/>
 
             <div className="p-2">
                 <p className="text-gray-500 text-center">ページが見つかりませんでした。</p>
