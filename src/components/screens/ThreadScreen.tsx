@@ -48,7 +48,7 @@ export default function ThreadScreen() {
 
     return (
         <div>
-            <TitleBar text={thread?.title ?? ""}/>
+            <TitleBar text={thread?.title ?? ""} isShowBackButton={true}/>
 
             <div>
                 {comments.map((comment) => (

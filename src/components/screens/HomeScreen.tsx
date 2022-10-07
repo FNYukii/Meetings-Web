@@ -36,7 +36,7 @@ export default function HomeScreen() {
 
     return (
         <div>
-            <TitleBar text='ホーム'/>
+            <TitleBar text='ホーム' isShowBackButton={false}/>
 
             {!isLoaded &&
                 <div></div>
