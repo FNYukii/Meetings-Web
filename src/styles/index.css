@@ -4,20 +4,6 @@
     box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: white;
-        color: black;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: black;
-        color: white;
-    }
-}
-
 .large-container {
     width: 1280px;
 }
@@ -25,5 +11,17 @@
 @media (max-width: 1300px) {
     .large-container {
         width: 100%;
+    }
+}
+
+.popup-menu {
+    background-color: inherit;
+    color: inherit;
+}
+
+@media (prefers-color-scheme: dark) {
+    .popup-menu {
+        background-color: black;
+        color: white;
     }
 }

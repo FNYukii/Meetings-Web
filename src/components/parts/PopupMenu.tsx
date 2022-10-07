@@ -13,7 +13,7 @@ export default function PopupMenu() {
             </button>
 
             {isPopup &&
-                <ClickAwayListener onClickAway={() => setIsPopup(false)} className="z-30">
+                <ClickAwayListener onClickAway={() => setIsPopup(false)} className="z-30 top-0 left-0">
                     <div>
                         <button>Delete thread</button>
                     </div>
