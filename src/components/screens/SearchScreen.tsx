@@ -6,7 +6,7 @@ export default function SearchScreen() {
 
     return (
         <div>
-            <TitleBar text="検索"/>
+            <TitleBar text="検索" isShowBackButton={false}/>
         </div>
     )
 }
