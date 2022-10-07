@@ -5,6 +5,7 @@ import { db } from "../../utilities/firebase"
 import FireThread from '../../utilities/FireThread'
 import ThreadRow from '../parts/ThreadRow'
 import TitleBar from '../parts/TitleBar'
+import progress from "../../images/progress.svg"
 
 export default function HomeScreen() {
 
@@ -39,7 +40,9 @@ export default function HomeScreen() {
             <TitleBar text='ホーム' isShowBackButton={false}/>
 
             {!isLoaded &&
-                <div></div>
+                <div className='flex justify-center'>
+                    <img src={progress} alt='loading'/>
+                </div>
             }
 
             {isLoaded &&
