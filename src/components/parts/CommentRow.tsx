@@ -10,7 +10,7 @@ export default function CommentRow(props: { comment: Comment }) {
     return (
         <div className="flex p-3 relative">
 
-            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full z-0 hover:bg-zinc-500/20" />
+            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
 
             <UserIconNavLink userId={props.comment.userId} />
 
