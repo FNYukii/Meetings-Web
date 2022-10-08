@@ -5,6 +5,7 @@ import UserUserTagSpan from "./UserUserTagSpan"
 import EditDate from "../../utilities/EditDate"
 import { NavLink } from "react-router-dom"
 import CommentMenu from "./CommentMenu"
+import ImagesGrid from "./ImagesGrid"
 
 export default function CommentRow(props: { comment: Comment }) {
     return (
@@ -35,11 +36,7 @@ export default function CommentRow(props: { comment: Comment }) {
                     <p>{props.comment.text}</p>
                 </div>
 
-                <div className="flex gap-2">
-                    {props.comment.imageUrls.map((url) => (
-                        <img key={url} src={url} alt="Attached to comment" className="z-10 mt-2 rounded-xl" />
-                    ))}
-                </div>
+                <ImagesGrid imageUrls={props.comment.imageUrls}/>
             </div>
         </div>
     )
