@@ -6,8 +6,29 @@ import EditDate from "../../utilities/EditDate"
 import { NavLink } from "react-router-dom"
 import CommentMenu from "./CommentMenu"
 import ImagesGrid from "./ImagesGrid"
+import { useEffect, useState } from "react"
+import Thread from "../../types/Thread"
+import FireThread from "../../utilities/FireThread"
+import { BsCardText } from "react-icons/bs"
 
-export default function CommentRow(props: { comment: Comment }) {
+export default function CommentRow(props: { comment: Comment, isShowThreadTitle: boolean }) {
+
+    const [thread, setThread] = useState<Thread | null>(null)
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    async function readThread() {
+        const thread = await FireThread.readThreadFromCache(props.comment.threadId)
+        setThread(thread)
+        setIsLoaded(true)
+    }
+
+    useEffect(() => {
+        if (props.isShowThreadTitle) {
+            readThread()
+        }
+        // eslint-disable-next-line
+    }, [])
+
     return (
         <div className="flex p-3 relative">
 
@@ -32,11 +53,18 @@ export default function CommentRow(props: { comment: Comment }) {
                     <CommentMenu comment={props.comment} />
                 </div>
 
-                <div>
-                    <p>{props.comment.text}</p>
-                </div>
+                <p>{props.comment.text}</p>
 
-                <ImagesGrid imageUrls={props.comment.imageUrls}/>
+                <ImagesGrid imageUrls={props.comment.imageUrls} />
+
+                {props.isShowThreadTitle && isLoaded && thread !== null &&
+                    <div className="flex">
+                        <NavLink to={`/threads/${props.comment.threadId}`} className="z-10 flex items-center gap-2 hover:underline">
+                            <BsCardText className="text-zinc-500"/>
+                            <span className="text-zinc-500">{thread.title}</span>
+                        </NavLink>
+                    </div>
+                }
             </div>
         </div>
     )
