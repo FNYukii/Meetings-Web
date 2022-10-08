@@ -43,7 +43,7 @@ export default function ThreadRow(props: { thread: Thread }) {
                     <UserUserTagSpan userId={props.thread.userId} />
                     <span className="text-gray-500">{EditDate.howManyAgo(props.thread.createdAt)}</span>
 
-                    {props.thread.tags?.map((tag) => (
+                    {Object.values(props.thread.tags).map((tag) => (
                         <span key={tag}>{tag}</span>
                     ))}
                 </div>
