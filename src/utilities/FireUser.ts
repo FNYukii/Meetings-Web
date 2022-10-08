@@ -1,5 +1,5 @@
 import User from "../types/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "../utilities/firebase"
 
@@ -43,18 +43,5 @@ export default class FireUser {
             // 成功
             return this.toUser(docSnapFromServer)
         }
-    }
-
-    static async readUser(userId: string): Promise<User | null> {
-        const docRef = doc(db, "users", userId)
-        const docSnap = await getDoc(docRef)
-
-        // 失敗
-        if (!docSnap.exists()) {
-            return null
-        }
-
-        // 成功
-        return this.toUser(docSnap)
     }
 }
