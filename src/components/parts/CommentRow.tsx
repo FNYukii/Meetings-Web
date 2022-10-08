@@ -59,7 +59,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
 
                 {props.isShowThreadTitle && isLoaded && thread !== null &&
                     <div className="flex">
-                        <NavLink to={`/threads/${props.comment.threadId}`} className="z-10 flex items-center gap-2 hover:underline">
+                        <NavLink to={`/threads/${props.comment.threadId}`} className="z-10 flex items-center gap-2 hover:underline hover:decoration-gray-500">
                             <BsCardText className="text-zinc-500"/>
                             <span className="text-zinc-500">{thread.title}</span>
                         </NavLink>
