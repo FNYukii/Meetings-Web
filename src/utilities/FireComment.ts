@@ -93,7 +93,7 @@ export default class FireComment {
 
     static async readCommentsPostedByUser(userId: string): Promise<Comment[] | null> {
 
-        const q = query(collection(db, "comments"), where("userId", "==", userId), orderBy("createdAt"), limit(50))
+        const q = query(collection(db, "comments"), where("userId", "==", userId), orderBy("createdAt", "desc"), limit(50))
 
         try {
             // サーバーorキャッシュから読み取り
