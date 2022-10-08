@@ -9,6 +9,7 @@ import ImagesGrid from "../parts/ImagesGrid"
 import UserDisplayNameSpan from "../parts/UserDisplayNameSpan"
 import UserIconNavLink from "../parts/UserIconNavLink"
 import UserUserTagSpan from "../parts/UserUserTagSpan"
+import progress from "../../images/progress.svg"
 
 export default function CommentScreen() {
 
@@ -16,10 +17,12 @@ export default function CommentScreen() {
 
     const { commentId } = useParams()
     const [comment, setComment] = useState<Comment | null>(null)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComment() {
         const comment = await FireComment.readCommentFromCache(commentId!)
         setComment(comment)
+        setIsLoaded(true)
     }
 
     useEffect(() => {
@@ -37,7 +40,13 @@ export default function CommentScreen() {
                 </div>
             </div>
 
-            {comment !== null &&
+            {!isLoaded &&
+                <div className='flex justify-center'>
+                    <img src={progress} alt='loading' />
+                </div>
+            }
+
+            {isLoaded && comment !== null &&
                 <div className="p-3">
                     <div className="flex justify-between">
                         <div className="flex gap-3">
