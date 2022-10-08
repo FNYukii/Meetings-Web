@@ -4,6 +4,7 @@ import HomeScreen from '../screens/HomeScreen'
 import ThreadScreen from '../screens/ThreadScreen'
 import NotFoundScreen from '../screens/NotFoundScreen'
 import SearchScreen from '../screens/SearchScreen'
+import CommentScreen from '../screens/CommentScreen'
 
 export default function CenterColumn() {
 
@@ -13,6 +14,7 @@ export default function CenterColumn() {
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />
+                <Route path='/comments/:commentId' element={<CommentScreen />} />
                 <Route path='*' element={<NotFoundScreen />} />
             </Routes>
         </div>
