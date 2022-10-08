@@ -1,9 +1,23 @@
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import User from "../../types/User"
+import FireUser from "../../utilities/FireUser"
 import BackButton from "../parts/BackButton"
 
 export default function UserScreen() {
 
     const { userId } = useParams()
+    const [user, setUser] = useState<User | null>(null)
+
+    async function readUser() {
+        const user = await FireUser.readUserFromCache(userId!)
+        setUser(user)
+    }
+
+    useEffect(() => {
+        readUser()
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>
@@ -15,7 +29,10 @@ export default function UserScreen() {
                 </div>
             </div>
 
-            <p>{userId!}</p>
+            <div className="p-3">
+                <p>{userId!}</p>
+                <p>{user?.displayName ?? ""}</p>
+            </div>
         </div>
     )
 }
