@@ -69,8 +69,28 @@ export default function UserScreen() {
                     <p className="mt-2 mx-3">{user!.introduction}</p>
 
                     <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
-                        <NavLink to={`/users/${userId!}`} end className={({ isActive }) => `block w-1/2 text-center p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 ${isActive ? "font-bold" : ""}`}>コメント</NavLink>
-                        <NavLink to={`/users/${userId!}/likes`} end className={({ isActive }) => `block w-1/2 text-center p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 ${isActive ? "font-bold" : ""}`}>いいね</NavLink>
+                        
+                        <NavLink to={`/users/${userId!}`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative ${isActive ? "font-bold" : ""}`}>
+                            {({ isActive }) => (
+                                <div className="text-center p-3">
+                                    <span>コメント</span>
+                                    <div className="absolute bottom-0 left-0 w-full">
+                                        <div className={`h-0.5 mx-3 ${ isActive ? "bg-black dark:bg-white" : ""}`}></div>
+                                    </div>
+                                </div>
+                            )}
+                        </NavLink>
+
+                        <NavLink to={`/users/${userId!}/likes`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative ${isActive ? "font-bold" : ""}`}>
+                            {({ isActive }) => (
+                                <div className="text-center p-3">
+                                    <span>いいね</span>
+                                    <div className="absolute bottom-0 left-0 w-full">
+                                        <div className={`h-0.5 mx-3 ${ isActive ? "bg-black dark:bg-white" : ""}`}></div>
+                                    </div>
+                                </div>
+                            )}
+                        </NavLink>
                     </div>
 
                     <Outlet />
