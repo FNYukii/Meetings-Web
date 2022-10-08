@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { NavLink, useParams } from "react-router-dom"
+import { NavLink, Outlet, useParams } from "react-router-dom"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
 import BackButton from "../parts/BackButton"
@@ -69,9 +69,11 @@ export default function UserScreen() {
                     <p className="mt-2 mx-3">{user!.introduction}</p>
 
                     <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
-                        <NavLink to={`/users/${userId!}`} className="block w-1/2 text-center p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 border-b-2 border-black dark:border-white">コメント</NavLink>
-                        <NavLink to={`/users/${userId!}/likes`} className="block w-1/2 text-center p-3 text-gray-500 hover:bg-zinc-100 dark:hover:bg-zinc-900">いいね</NavLink>
+                        <NavLink to={`/users/${userId!}`} end className={({ isActive }) => `block w-1/2 text-center p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 ${isActive ? "font-bold" : ""}`}>コメント</NavLink>
+                        <NavLink to={`/users/${userId!}/likes`} end className={({ isActive }) => `block w-1/2 text-center p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 ${isActive ? "font-bold" : ""}`}>いいね</NavLink>
                     </div>
+
+                    <Outlet />
                 </div>
             }
         </div>
