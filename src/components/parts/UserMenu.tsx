@@ -1,11 +1,9 @@
-import Thread from "../../types/Thread"
-import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
-import { VscEllipsis } from 'react-icons/vsc'
-import '@szhsin/react-menu/dist/index.css'
-import "@szhsin/react-menu/dist/theme-dark.css"
-import { useState } from "react"
+import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
+import { useState } from "react";
+import { VscEllipsis } from "react-icons/vsc";
+import User from "../../types/User";
 
-export default function ThreadMenu(props: { thread: Thread }) {
+export default function UserMenu(props: {user: User}) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -19,7 +17,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
 
     const menuButton = (
         <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
-            <VscEllipsis className="text-xl text-gray-500" />
+            <VscEllipsis className="text-3xl" />
         </MenuButton>
     )
 
@@ -27,7 +25,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
         <div className="z-10">
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-                <MenuItem>スレッドを報告</MenuItem>
+                <MenuItem>ユーザーを報告</MenuItem>
             </Menu>
         </div>
     )
