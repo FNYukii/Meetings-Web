@@ -46,6 +46,12 @@ export default function CommentScreen() {
                 </div>
             }
 
+            {isLoaded && comment === null &&
+                <div className="p-2">
+                    <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
+                </div>
+            }
+
             {isLoaded && comment !== null &&
                 <div className="p-3">
                     <div className="flex justify-between">
