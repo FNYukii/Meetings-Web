@@ -1,4 +1,4 @@
-import { collection, doc, getDocFromCache, getDocFromServer, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
+import { collection, doc, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
 import Comment from "../types/Comment"
 import { db } from "./firebase"
 
@@ -18,7 +18,7 @@ export default class FireComment {
     }
 
     static async readCommentFromCache(commentId: string): Promise<Comment | null> {
-        
+
         const docRef = doc(db, "comments", commentId)
 
         try {
@@ -49,12 +49,7 @@ export default class FireComment {
 
     static async readFirstCommentFromCache(commentId: string): Promise<Comment | null> {
         // クエリを作成
-        const q = query(
-            collection(db, "comments"),
-            where("threadId", "==", commentId),
-            orderBy("createdAt"),
-            limit(1)
-        )
+        const q = query(collection(db, "comments"), where("threadId", "==", commentId), orderBy("createdAt"), limit(1))
 
         try {
             // キャッシュから読み取り
@@ -93,6 +88,28 @@ export default class FireComment {
 
             // 成功
             return comments[0]
+        }
+    }
+
+    static async readCommentsPostedByUser(userId: string): Promise<Comment[] | null> {
+
+        const q = query(collection(db, "comments"), where("userId", "==", userId), orderBy("createdAt", "desc"), limit(50))
+
+        try {
+            // サーバーorキャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            let comments: Comment[] = []
+            querySnapshot.forEach((doc) => {
+                const comment = this.toComment(doc)
+                comments.push(comment)
+            })
+
+            return comments
+        } catch (error) {
+            // 失敗
+            return null
         }
     }
 }
