@@ -1,5 +1,5 @@
 import User from "../types/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "../utilities/firebase"
 
@@ -20,41 +20,32 @@ export default class FireUser {
     }
 
     static async readUserFromCache(userId: string): Promise<User | null> {
-        // キャッシュから読み取り
+        
         const docRef = doc(db, "users", userId)
+
         try {
+            // キャッシュから読み取り
             const docSnapFromCache = await getDocFromCache(docRef)
-            
-            if (docSnapFromCache.exists()) {
-                return this.toUser(docSnapFromCache)
-            } else {
+
+            // 失敗
+            if (!docSnapFromCache.exists()) {
                 return null
             }
-        } catch (e) {
 
+            //成功
+            return this.toUser(docSnapFromCache)
+
+        } catch (e) {
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
-    
+
             // 失敗
             if (!docSnapFromServer.exists()) {
                 return null
             }
-            
+
             // 成功
             return this.toUser(docSnapFromServer)
         }
-    }
-
-    static async readUser(userId: string): Promise<User | null> {
-        const docRef = doc(db, "users", userId)
-        const docSnap = await getDoc(docRef)
-
-        // 失敗
-        if (!docSnap.exists()) {
-            return null
-        }
-
-        // 成功
-        return this.toUser(docSnap)
     }
 }

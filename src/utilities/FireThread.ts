@@ -19,20 +19,22 @@ export default class FireThread {
     }
 
     static async readThreadFromCache(threadId: string): Promise<Thread | null> {
-
+        
         const docRef = doc(db, "threads", threadId)
 
-        // キャッシュから読み取り
         try {
+            // キャッシュから読み取り
             const docSnapFromCache = await getDocFromCache(docRef)
 
-            if (docSnapFromCache.exists()) {
-                return this.toThread(docSnapFromCache)
-            } else {
+            // 失敗
+            if (!docSnapFromCache.exists()) {
                 return null
             }
-        } catch (e) {
 
+            //成功
+            return this.toThread(docSnapFromCache)
+
+        } catch (e) {
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
 

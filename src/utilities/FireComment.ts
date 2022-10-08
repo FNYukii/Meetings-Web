@@ -1,4 +1,4 @@
-import { collection, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
+import { collection, doc, getDocFromCache, getDocFromServer, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
 import Comment from "../types/Comment"
 import { db } from "./firebase"
 
@@ -17,15 +17,45 @@ export default class FireComment {
         return comment
     }
 
-    static async readFirstCommentFromCache(threadId: string): Promise<Comment | null> {
+    static async readCommentFromCache(commentId: string): Promise<Comment | null> {
+        
+        const docRef = doc(db, "comments", commentId)
+
+        try {
+            // キャッシュから読み取り
+            const docSnapFromCache = await getDocFromCache(docRef)
+
+            // 失敗
+            if (!docSnapFromCache.exists()) {
+                return null
+            }
+
+            //成功
+            return this.toComment(docSnapFromCache)
+
+        } catch (e) {
+            // サーバーから読み取り
+            const docSnapFromServer = await getDocFromServer(docRef)
+
+            // 失敗
+            if (!docSnapFromServer.exists()) {
+                return null
+            }
+
+            // 成功
+            return this.toComment(docSnapFromServer)
+        }
+    }
+
+    static async readFirstCommentFromCache(commentId: string): Promise<Comment | null> {
         // クエリを作成
         const q = query(
             collection(db, "comments"),
-            where("threadId", "==", threadId),
+            where("threadId", "==", commentId),
             orderBy("createdAt"),
             limit(1)
         )
-        
+
         try {
             // キャッシュから読み取り
             const querySnapshot = await getDocsFromCache(q)
@@ -45,7 +75,7 @@ export default class FireComment {
             // 成功
             return comments[0]
 
-        } catch(e) {
+        } catch (e) {
             // サーバーから読み取り
             const querySnapshot = await getDocsFromServer(q)
 
