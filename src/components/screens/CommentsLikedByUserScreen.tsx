@@ -1,6 +1,6 @@
 export default function CommentsLikedByUserScreen() {
     return (
-        <div>
+        <div className="p-3">
             <p>Comments liked</p>
         </div>
     )
