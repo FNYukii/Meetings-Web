@@ -14,8 +14,9 @@ export default function ThreadScreen() {
 
     const { threadId } = useParams()
     const [thread, setThread] = useState<Thread | null>(null)
-    const [comments, setComments] = useState<Comment[]>([])
-    const [isLoaded, setIsLoaded] = useState(false)
+
+    const [comments, setComments] = useState<Comment[] | null>(null)
+    const [isLoadedComments, setIsLoadedComments] = useState(false)
 
     async function readThread() {
         const thread = await FireThread.readThreadFromCache(threadId!)
@@ -37,7 +38,7 @@ export default function ThreadScreen() {
             })
 
             setComments(comments)
-            setIsLoaded(true)
+            setIsLoadedComments(true)
         })
     }
 
@@ -53,20 +54,24 @@ export default function ThreadScreen() {
                 <div className='relative h-14 px-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
-
                     <BackButton />
-
                     <span className='font-bold text-lg'>{thread?.title ?? ""}</span>
                 </div>
             </div>
 
-            {!isLoaded &&
+            {!isLoadedComments &&
                 <div className='flex justify-center'>
                     <img src={progress} alt='loading' />
                 </div>
             }
 
-            {isLoaded &&
+            {isLoadedComments && comments === null &&
+                <div className="p-2">
+                    <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
+                </div>
+            }
+
+            {isLoadedComments && comments !== null &&
                 <div className="mt-1">
                     {comments.map((comment) => (
                         <CommentRow key={comment.id} comment={comment} />
