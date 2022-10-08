@@ -20,9 +20,11 @@ export default class FireUser {
     }
 
     static async readUserFromCache(userId: string): Promise<User | null> {
-        // キャッシュから読み取り
+        
         const docRef = doc(db, "users", userId)
+
         try {
+            // キャッシュから読み取り
             const docSnapFromCache = await getDocFromCache(docRef)
             
             if (docSnapFromCache.exists()) {
@@ -31,7 +33,6 @@ export default class FireUser {
                 return null
             }
         } catch (e) {
-
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
     
