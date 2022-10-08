@@ -26,21 +26,24 @@ export default class FireUser {
         try {
             // キャッシュから読み取り
             const docSnapFromCache = await getDocFromCache(docRef)
-            
-            if (docSnapFromCache.exists()) {
-                return this.toUser(docSnapFromCache)
-            } else {
+
+            // 失敗
+            if (!docSnapFromCache.exists()) {
                 return null
             }
+
+            //成功
+            return this.toUser(docSnapFromCache)
+
         } catch (e) {
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
-    
+
             // 失敗
             if (!docSnapFromServer.exists()) {
                 return null
             }
-            
+
             // 成功
             return this.toUser(docSnapFromServer)
         }
