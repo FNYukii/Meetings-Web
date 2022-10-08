@@ -17,11 +17,15 @@ export default class FireComment {
         return comment
     }
 
-    static async readFirstCommentFromCache(threadId: string): Promise<Comment | null> {
+    static async readCommentFromCache(commentId: string) {
+
+    }
+
+    static async readFirstCommentFromCache(commentId: string): Promise<Comment | null> {
         // クエリを作成
         const q = query(
             collection(db, "comments"),
-            where("threadId", "==", threadId),
+            where("threadId", "==", commentId),
             orderBy("createdAt"),
             limit(1)
         )
