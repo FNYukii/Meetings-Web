@@ -5,6 +5,8 @@ import FireUser from "../../utilities/FireUser"
 import BackButton from "../parts/BackButton"
 import progress from "../../images/progress.svg"
 import UserIcon from "../parts/UserIcon"
+import UserDisplayNameSpan from "../parts/UserDisplayNameSpan"
+import UserUserTagSpan from "../parts/UserUserTagSpan"
 
 export default function UserScreen() {
 
@@ -47,9 +49,18 @@ export default function UserScreen() {
 
             {isLoaded && user !== null &&
                 <div className="p-3">
-                    <UserIcon iconUrl={user!.iconUrl}/>
-                    <p>{userId!}</p>
-                    <p>{user!.displayName}</p>
+                    <div className="flex justify-between">
+                        <div className="flex gap-3">
+                            <UserIcon iconUrl={user!.iconUrl}/>
+
+                            <div className="flex flex-col">
+                                <span className="font-bold">{user!.displayName}</span>
+                                <span className="text-gray-500">@{user!.userTag}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="mt-2">{user!.introduction}</p>
                 </div>
             }
         </div>
