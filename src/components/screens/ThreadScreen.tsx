@@ -18,13 +18,11 @@ export default function ThreadScreen() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThread() {
-        if (threadId !== undefined) {
-            const thread = await FireThread.readThreadFromCache(threadId)
-            setThread(thread)
+        const thread = await FireThread.readThreadFromCache(threadId!)
+        setThread(thread)
 
-            if (thread !== null) {
-                document.title = `${thread?.title} - Meetings`
-            }
+        if (thread !== null) {
+            document.title = `${thread?.title} - Meetings`
         }
     }
 
@@ -56,8 +54,8 @@ export default function ThreadScreen() {
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <BackButton/>
-                    
+                    <BackButton />
+
                     <span className='font-bold text-lg'>{thread?.title ?? ""}</span>
                 </div>
             </div>
