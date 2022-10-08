@@ -45,7 +45,7 @@ export default function CommentsPostedByUserScreen() {
             {isLoaded && comments !== null &&
                 <div>
                     {comments.map((comment) => (
-                        <CommentRow key={comment.id} comment={comment} />
+                        <CommentRow key={comment.id} comment={comment} isShowThreadTitle={true}/>
                     ))}
                 </div>
             }
