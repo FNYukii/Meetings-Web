@@ -49,7 +49,7 @@ export default function HomeScreen() {
             </div>
 
             {!isLoaded &&
-                <div className='flex justify-center'>
+                <div className='flex justify-center p-3'>
                     <img src={progress} alt='loading' />
                 </div>
             }
