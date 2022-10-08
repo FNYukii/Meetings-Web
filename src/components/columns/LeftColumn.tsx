@@ -7,7 +7,7 @@ export default function LeftColumn() {
         <div className='xl:w-1/4 md:w-1/12'>
             <div className='sticky top-0'>
                 <div className='xl:block xl:px-4 flex justify-end px-2'>
-                    <NavLink to='/' className="text-inherit no-underline p-2 text-3xl font-sans xl:block hidden">Meetings</NavLink>
+                    <NavLink to='/' className="text-inherit no-underline p-2 mt-1 text-3xl font-sans xl:block hidden">Meetings</NavLink>
 
                     <div>
                         <NavLink to='/' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
