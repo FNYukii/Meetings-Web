@@ -39,12 +39,12 @@ export default function ThreadRow(props: { thread: Thread }) {
                     <p className="text-gray-500">{firstComment?.text ?? ""}</p>
                 </div>
 
-                <div>
+                <div className="flex gap-2 flex-wrap">
                     <UserUserTagSpan userId={props.thread.userId} />
-                    <span className="text-gray-500 ml-3">{EditDate.howManyAgo(props.thread.createdAt)}</span>
+                    <span className="text-gray-500">{EditDate.howManyAgo(props.thread.createdAt)}</span>
 
                     {props.thread.tags?.map((tag) => (
-                        <span key={tag} className="ml-3">{tag}</span>
+                        <span key={tag}>{tag}</span>
                     ))}
                 </div>
             </div>
