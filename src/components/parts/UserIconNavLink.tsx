@@ -24,7 +24,7 @@ export default function UserIconNavLink(props: { userId: string }) {
             
             <img className="rounded-full absolute top-0 left-0 w-full" src={user?.iconUrl} alt="" />
 
-            <NavLink to={`/users/${props.userId}`} className="absolute top-0 left-0 w-full h-full" />
+            <NavLink to={`/users/${props.userId}`} className="absolute top-0 left-0 w-full h-full rounded-full" />
         </div>
     )
 }
