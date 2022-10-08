@@ -6,14 +6,13 @@ import { db } from './firebase'
 export default class FireThread {
 
     static toThread(document: QueryDocumentSnapshot<DocumentData>): Thread {
-        const id: string = document.id
-        const userId: string = document.data().userId
-        const createdAt: Date = document.data({ serverTimestamps: "estimate" }).createdAt.toDate()
-        const commentedAt: Date = document.data({ serverTimestamps: "estimate" }).commentedAt.toDate()
+        const id: string = document.id ?? ""
+        const userId: string = document.data().userId ?? ""
+        const createdAt: Date = document.data({ serverTimestamps: "estimate" }).createdAt.toDate() ?? new Date()
+        const commentedAt: Date = document.data({ serverTimestamps: "estimate" }).commentedAt.toDate() ?? new Date()
 
-        const title: string = document.data().title
-        const tags: string[] = document.data().tags
-
+        const title: string = document.data().title ?? ""
+        const tags: string[] = document.data().tags ?? ""
 
         const thread: Thread = { id: id, userId: userId, createdAt: createdAt, commentedAt: commentedAt, title: title, tags: tags }
         return thread
