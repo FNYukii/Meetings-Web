@@ -10,17 +10,17 @@ export default function LeftColumn() {
                     <NavLink to='/' className="text-inherit no-underline p-2 mt-1 text-3xl font-sans xl:block hidden">Meetings</NavLink>
 
                     <div>
-                        <NavLink to='/' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                        <NavLink to='/' end className={({ isActive }) => `flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center ${isActive ? "font-bold" : ""}`}>
                             <AiOutlineHome className='text-3xl' />
                             <span className='ml-5 text-xl xl:block hidden'>ホーム</span>
                         </NavLink>
 
-                        <NavLink to='/search' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                        <NavLink to='/search' className={({ isActive }) => `flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center ${isActive ? "font-bold" : ""}`}>
                             <AiOutlineSearch className='text-3xl' />
                             <span className='ml-5 text-xl xl:block hidden'>検索</span>
                         </NavLink>
 
-                        <NavLink to='/sign-in' className="flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center">
+                        <NavLink to='/sign-in' className={({ isActive }) => `flex p-2 mt-2 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full items-center ${isActive ? "font-bold" : ""}`}>
                             <AiOutlineLogin className='text-3xl' />
                             <span className='ml-5 text-xl xl:block hidden'>サインイン</span>
                         </NavLink>
