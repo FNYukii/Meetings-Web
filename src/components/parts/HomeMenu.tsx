@@ -26,8 +26,8 @@ export default function HomeMenu() {
         <div className="z-10">
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-                <MenuItem>作成された日時</MenuItem>
-                <MenuItem>コメントされた日時</MenuItem>
+                <MenuItem>作成された日時順</MenuItem>
+                <MenuItem>コメントされた日時順</MenuItem>
             </Menu>
         </div>
     )
