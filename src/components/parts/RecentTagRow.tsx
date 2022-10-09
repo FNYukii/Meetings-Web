@@ -22,11 +22,13 @@ export default function RecentTagRow(props: { tag: string }) {
             <p>{props.tag}</p>
 
             {!isLoaded &&
-                <p className="text-gray-500 text-sm">-</p>
+                <div className="bg-zinc-100 dark:bg-zinc-800 w-20">
+                    <p className="text-gray-500 text-sm text-transparent">-</p>
+                </div>
             }
 
             {isLoaded && numberOfThread === null &&
-                <p className="text-gray-500">x</p>
+                <p className="text-gray-500">---</p>
             }
 
             {isLoaded && numberOfThread !== null &&
