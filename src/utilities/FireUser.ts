@@ -1,5 +1,5 @@
 import User from "../types/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "../utilities/firebase"
 
@@ -21,7 +21,7 @@ export default class FireUser {
     }
 
     static async readUserFromCache(userId: string): Promise<User | null> {
-        
+
         const docRef = doc(db, "users", userId)
 
         try {
@@ -58,7 +58,7 @@ export default class FireUser {
 
         try {
 
-            const docSnap = await getDoc(docRef) 
+            const docSnap = await getDoc(docRef)
 
             // 失敗
             if (!docSnap.exists()) {
@@ -76,7 +76,42 @@ export default class FireUser {
     }
 
     static async readLikedUsersFromCache(commentId: string): Promise<User[] | null> {
-        return null
+        
+        const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId))
+
+        try {
+
+            // キャッシュから読み取り
+            const querySnapshot = await getDocsFromCache(q)
+
+            // 成功
+            let users: User[] = []
+            querySnapshot.forEach((doc) => {
+                const user = this.toUser(doc)
+                users.push(user)
+            })
+            return users
+
+        } catch (error) {
+
+            try {
+                // サーバーから読み取り
+                const querySnapshot = await getDocsFromServer(q)
+
+                // 成功
+                let users: User[] = []
+                querySnapshot.forEach((doc) => {
+                    const user = this.toUser(doc)
+                    users.push(user)
+                })
+                return users
+
+            } catch (error) {
+
+                // 失敗
+                return null
+            }
+        }
     }
 
     static async readLikedUsers(commentId: string): Promise<User[] | null> {
@@ -84,7 +119,7 @@ export default class FireUser {
         const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId))
 
         try {
-            
+
             // サーバーorキャッシュから読み取り
             const querySnapshot = await getDocs(q)
 

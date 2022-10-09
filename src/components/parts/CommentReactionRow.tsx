@@ -4,13 +4,21 @@ import Comment from "../../types/Comment";
 import User from "../../types/User";
 import FireUser from "../../utilities/FireUser";
 
-export default function CommentReactionRow(props: { comment: Comment }) {
+export default function CommentReactionRow(props: { comment: Comment, isReadFromSeaver: boolean}) {
 
     const [likedUsers, setLikedUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readLikedUsers() {
-        const likedUsers = await FireUser.readLikedUsers(props.comment.id)
+
+        let likedUsers: User[] | null = null
+
+        if (!props.isReadFromSeaver) {
+            likedUsers = await FireUser.readLikedUsersFromCache(props.comment.id)
+        } else {
+            likedUsers = await FireUser.readLikedUsers(props.comment.id)
+        }
+
         setLikedUsers(likedUsers)
         setIsLoaded(true)
     }
