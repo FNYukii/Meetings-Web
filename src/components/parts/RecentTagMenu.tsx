@@ -23,7 +23,7 @@ export default function RecentTagMenu(props: { tag: string }) {
     )
 
     return (
-        <div>
+        <div className='z-10'>
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
                 <MenuItem>興味なし</MenuItem>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
 import FireThread from "../../utilities/FireThread"
 import RecentTagMenu from "./RecentTagMenu"
 
@@ -19,12 +20,15 @@ export default function RecentTagRow(props: { tag: string }) {
     }, [])
 
     return (
-        <div>
+        <div className="relative px-3 py-1">
+
+            <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
+
 
             <div className="flex justify-between">
                 <span>{props.tag}</span>
 
-                <RecentTagMenu tag={props.tag}/>
+                <RecentTagMenu tag={props.tag} />
 
             </div>
 

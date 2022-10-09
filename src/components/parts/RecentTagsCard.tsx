@@ -20,8 +20,8 @@ export default function RecentTagsCard() {
     }, [])
 
     return (
-        <div className="bg-zinc-100 dark:bg-zinc-900 w-full min-h-96 rounded-xl p-3">
-            <p className="font-bold text-lg">最近</p>
+        <div className="bg-zinc-100 dark:bg-zinc-900 w-full min-h-96 rounded-xl pt-3">
+            <p className="font-bold text-lg mx-3">最近</p>
 
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
@@ -42,7 +42,7 @@ export default function RecentTagsCard() {
             }
 
             {isLoaded && tags !== null &&
-                <div className="mt-2 flex flex-col gap-2">
+                <div className="mt-2">
                     {tags.map((tag) => (
                         <RecentTagRow tag={tag} key={tag}/>
                     ))}
