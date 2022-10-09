@@ -4,7 +4,7 @@ import Comment from "../../types/Comment";
 import User from "../../types/User";
 import FireUser from "../../utilities/FireUser";
 
-export default function CommentReactionRow(props: { comment: Comment, isReadFromSeaver: boolean}) {
+export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean}) {
 
     const [likedUsers, setLikedUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -49,7 +49,7 @@ export default function CommentReactionRow(props: { comment: Comment, isReadFrom
             {isLoaded && likedUsers !== null &&
                 <div className="flex">
 
-                    <button className="z-10 flex items-center" onClick={() => console.log("hello")}>
+                    <button className="z-10 flex items-center hover:bg-zinc-100 p-1 rounded-full" onClick={() => console.log("hello")}>
                         <AiOutlineHeart className="text-xl text-gray-500 " />
                         <span className="text-gray-500 ml-1">{likedUsers?.length ?? "0"}</span>
                     </button>

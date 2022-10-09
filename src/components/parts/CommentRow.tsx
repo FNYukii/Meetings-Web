@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom"
 import CommentMenu from "./CommentMenu"
 import CommentImagesGrid from "./CommentImagesGrid"
 import CommentThreadTitle from "./CommentThreadTitle"
-import CommentReactionRow from "./CommentReactionRow"
+import CommentLikeButton from "./CommentLikeButton"
 
 export default function CommentRow(props: { comment: Comment, isShowThreadTitle: boolean }) {
 
@@ -18,9 +18,9 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
 
             <UserIconNavLink userId={props.comment.userId} />
 
-            <div className="pl-3 w-full">
+            <div className="w-full">
 
-                <div className="flex justify-between items-center">
+                <div className="ml-3 flex justify-between items-center">
 
                     <div>
                         <UserDisplayNameSpan userId={props.comment.userId} />
@@ -35,18 +35,20 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                     <CommentMenu comment={props.comment} />
                 </div>
 
-                <p>{props.comment.text}</p>
+                <p className="ml-3">{props.comment.text}</p>
 
-                <CommentImagesGrid imageUrls={props.comment.imageUrls} />
+                <div className="ml-3">
+                    <CommentImagesGrid imageUrls={props.comment.imageUrls} />
+                </div>
 
                 {props.isShowThreadTitle &&
-                    <div className="mt-1">
+                    <div className="mt-1 ml-3">
                         <CommentThreadTitle threadId={props.comment.threadId} />
                     </div>
                 }
 
-                <div className="mt-1">
-                    <CommentReactionRow comment={props.comment} isReadFromSeaver={false}/>
+                <div className="mt-1 ml-2">
+                    <CommentLikeButton comment={props.comment} isReadFromSeaver={false}/>
                 </div>
             </div>
         </div>
