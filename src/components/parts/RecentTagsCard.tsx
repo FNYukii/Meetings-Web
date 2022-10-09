@@ -42,7 +42,7 @@ export default function RecentTagsCard() {
             }
 
             {isLoaded && tags !== null &&
-                <div>
+                <div className="mt-2 flex flex-col gap-2">
                     {tags.map((tag) => (
                         <RecentTagRow tag={tag} key={tag}/>
                     ))}

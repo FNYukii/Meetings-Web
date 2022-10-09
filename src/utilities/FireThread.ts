@@ -19,7 +19,7 @@ export default class FireThread {
     }
 
     static async readThreadFromCache(threadId: string): Promise<Thread | null> {
-        
+
         const docRef = doc(db, "threads", threadId)
 
         try {
@@ -55,7 +55,7 @@ export default class FireThread {
         const q = query(collection(db, "threads"), orderBy("createdAt", "desc"), limit(50))
 
         try {
-            
+
             // サーバー / キャッシュから読み取り
             const querySnapshot = await getDocs(q)
 
@@ -68,7 +68,7 @@ export default class FireThread {
                 const thread = this.toThread(doc)
                 threads.push(thread)
             })
-            
+
             // 配列recentTags
             let recentTags: string[] = []
             threads.forEach(thread => {
@@ -79,8 +79,11 @@ export default class FireThread {
             // 配列recentTagsから重複を排除
             recentTags = recentTags.filter((x, i, self) => self.indexOf(x) === i)
 
+            // 配列になぜか空文字が含まれている現象を確認したので、filterメソッドで削除
+            recentTags = recentTags.filter(item => item !== "")
+
             return recentTags
-            
+
         } catch (error) {
             
             // 読み取り失敗
@@ -93,7 +96,7 @@ export default class FireThread {
         const q = query(collection(db, "threads"), where("tags", "array-contains", tag))
 
         try {
-            
+
             // サーバー / キャッシュから読み取り
             const querySnapshot = await getDocs(q)
 
