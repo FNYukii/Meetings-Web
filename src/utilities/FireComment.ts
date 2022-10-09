@@ -134,26 +134,20 @@ export default class FireComment {
 
         // likedCommentIdsの要素の数だけ、そのcommentを読み取る
         let likedComments: Comment[] = []
-        let readCount = 0
-        likedCommentIds.map(async likedCommentId => {
+        await Promise.all(likedCommentIds.map(async (likedCommentId) => {
 
             // キャッシュからcommentを読み取る
             const comment = await FireComment.readCommentFromCache(likedCommentId)
-            readCount += 1
-            
-            // 読み取りに成功したら配列に追加
-            if (comment !== null) {
-                likedComments.push(comment)
+
+            // 失敗
+            if (comment === null) {
+                return
             }
 
-            // Comment読み取り数がlikedCommentIdsの数に達したら完了
-            if (readCount === likedCommentIds.length) {
+            // 成功
+            likedComments.push(comment)
+        }))
 
-                // TODO: likedCommentsをソートする
-                return likedComments
-            }
-        })
-
-        return null
+        return likedComments
     }
 }
