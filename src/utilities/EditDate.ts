@@ -1,6 +1,8 @@
+import dayjs from "dayjs"
+
 export default class EditDate {
 
-    static howManyAgo(from: Date): string {
+    static toHowManyAgoString(from: Date): string {
         // 差分を生成
         let diff = new Date(new Date().getTime() - from.getTime())
 
@@ -25,5 +27,13 @@ export default class EditDate {
         }
         
         return diff.getUTCSeconds() + '秒前'
+    }
+
+    static toStringUpToMinute(from: Date): string {
+
+        const inputDate = from
+        const outputString = dayjs(inputDate).format('YYYY年M月D日 h時m分')
+
+        return outputString
     }
 }

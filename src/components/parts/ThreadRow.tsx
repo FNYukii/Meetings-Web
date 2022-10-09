@@ -41,7 +41,7 @@ export default function ThreadRow(props: { thread: Thread }) {
 
                 <div className="flex gap-2 flex-wrap">
                     <UserUserTagSpan userId={props.thread.userId} />
-                    <span className="text-gray-500">{EditDate.howManyAgo(props.thread.createdAt)}</span>
+                    <span className="text-gray-500">{EditDate.toHowManyAgoString(props.thread.createdAt)}</span>
 
                     {Object.values(props.thread.tags).map((tag) => (
                         <span key={tag}>{tag}</span>

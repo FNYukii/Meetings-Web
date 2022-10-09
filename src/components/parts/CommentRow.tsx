@@ -47,7 +47,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                             <UserUserTagSpan userId={props.comment.userId} />
                         </span>
 
-                        <span className="text-gray-500 ml-3">{EditDate.howManyAgo(props.comment.createdAt)}</span>
+                        <span className="text-gray-500 ml-3">{EditDate.toHowManyAgoString(props.comment.createdAt)}</span>
                     </div>
 
                     <CommentMenu comment={props.comment} />
