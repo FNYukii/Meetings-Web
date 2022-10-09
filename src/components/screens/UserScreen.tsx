@@ -14,9 +14,12 @@ export default function UserScreen() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readUser() {
-        const user = await FireUser.readUser(userId!)
+        let user = await FireUser.readUserFromCache(userId!)
         setUser(user)
         setIsLoaded(true)
+
+        user = await FireUser.readUser(userId!)
+        setUser(user)
     }
 
     useEffect(() => {
