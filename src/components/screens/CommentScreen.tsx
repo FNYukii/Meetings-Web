@@ -11,6 +11,7 @@ import UserIconNavLink from "../parts/UserIconNavLink"
 import UserUserTagSpan from "../parts/UserUserTagSpan"
 import progress from "../../images/progress.svg"
 import CommentThreadTitle from "../parts/CommentThreadTitle"
+import CommentReactionRow from "../parts/CommentReactionRow"
 
 export default function CommentScreen() {
 
@@ -76,6 +77,10 @@ export default function CommentScreen() {
 
                     <div className="mt-1">
                         <CommentThreadTitle threadId={comment!.threadId}/>
+                    </div>
+
+                    <div className="mt-1">
+                        <CommentReactionRow comment={comment!} isReadFromSeaver={true} />
                     </div>
                 </div>
             }
