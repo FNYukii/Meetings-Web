@@ -11,7 +11,7 @@ import UserIconNavLink from "../parts/UserIconNavLink"
 import UserUserTagSpan from "../parts/UserUserTagSpan"
 import progress from "../../images/progress.svg"
 import CommentThreadTitle from "../parts/CommentThreadTitle"
-import CommentReactionRow from "../parts/CommentReactionRow"
+import CommentLikeButton from "../parts/CommentLikeButton"
 
 export default function CommentScreen() {
 
@@ -55,8 +55,8 @@ export default function CommentScreen() {
             }
 
             {isLoaded && comment !== null &&
-                <div className="p-3">
-                    <div className="flex justify-between">
+                <div className="pt-3 pr-3">
+                    <div className="flex justify-between ml-3">
                         <div className="flex gap-3">
                             <UserIconNavLink userId={comment?.userId ?? ""} />
 
@@ -69,18 +69,20 @@ export default function CommentScreen() {
                         <CommentMenu comment={comment!} />
                     </div>
 
-                    <p className="mt-2">{comment!.text}</p>
+                    <p className="mt-2 ml-3">{comment!.text}</p>
 
-                    <CommentImagesGrid imageUrls={comment!.imageUrls} />
+                    <div className="ml-3">
+                        <CommentImagesGrid imageUrls={comment!.imageUrls} />
+                    </div>
 
-                    <p className="text-gray-500 mt-2">{EditDate.toStringUpToMinute(comment!.createdAt)}</p>
+                    <p className="text-gray-500 mt-2 ml-3">{EditDate.toStringUpToMinute(comment!.createdAt)}</p>
 
-                    <div className="mt-1">
+                    <div className="mt-1 ml-3">
                         <CommentThreadTitle threadId={comment!.threadId}/>
                     </div>
 
-                    <div className="mt-1">
-                        <CommentReactionRow comment={comment!} isReadFromSeaver={true} />
+                    <div className="mt-1 ml-2">
+                        <CommentLikeButton comment={comment!} isReadFromSeaver={true} />
                     </div>
                 </div>
             }
