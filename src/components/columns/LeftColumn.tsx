@@ -35,7 +35,7 @@ export default function LeftColumn() {
                             {({ isActive }) => (
                                 <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
                                     <AiOutlineLogin className={`text-3xl`}/>
-                                    <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>サインイン</span>
+                                    <span className={`ml-5 text-xl xl:block hidden ${isActive ? "" : ""}`}>サインイン</span>
                                 </div>
                             )}
                         </NavLink>
