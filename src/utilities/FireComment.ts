@@ -1,6 +1,7 @@
 import { collection, doc, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
 import Comment from "../types/Comment"
 import { db } from "./firebase"
+import FireUser from "./FireUser"
 
 export default class FireComment {
 
@@ -111,5 +112,48 @@ export default class FireComment {
             // 失敗
             return null
         }
+    }
+
+    static async readCommentsLikedByUser(userId: string): Promise<Comment[] | null> {
+
+        // userをサーバーから読み取る
+        const user = await FireUser.readUser(userId)
+
+        // userが読み取れなかったら失敗
+        if (user === null) {
+            return null
+        }
+
+        // userドキュメントのlikedCommentIdsフィールドの値を取得
+        const likedCommentIds = user.likedCommentIds
+
+        // userがいいねしたコメントが0件なら終了
+        if (likedCommentIds.length === 0) {
+            return []
+        }
+
+        // likedCommentIdsの要素の数だけ、そのcommentを読み取る
+        let likedComments: Comment[] = []
+        let readCount = 0
+        likedCommentIds.map(async likedCommentId => {
+
+            // キャッシュからcommentを読み取る
+            const comment = await FireComment.readCommentFromCache(likedCommentId)
+            readCount += 1
+            
+            // 読み取りに成功したら配列に追加
+            if (comment !== null) {
+                likedComments.push(comment)
+            }
+
+            // Comment読み取り数がlikedCommentIdsの数に達したら完了
+            if (readCount === likedCommentIds.length) {
+
+                // TODO: likedCommentsをソートする
+                return likedComments
+            }
+        })
+
+        return null
     }
 }
