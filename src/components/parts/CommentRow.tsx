@@ -46,7 +46,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                 }
 
                 <div className="mt-1">
-                    <CommentReactionRow comment={props.comment} />
+                    <CommentReactionRow comment={props.comment} isReadFromSeaver={false}/>
                 </div>
             </div>
         </div>
