@@ -62,8 +62,6 @@ export default function CommentScreen() {
                                 <UserDisplayNameSpan userId={comment!.userId} />
                                 <UserUserTagSpan userId={comment!.userId} />
                             </div>
-
-                            <span className="text-gray-500">{EditDate.howManyAgo(comment!.createdAt)}</span>
                         </div>
 
                         <CommentMenu comment={comment!} />
@@ -72,6 +70,8 @@ export default function CommentScreen() {
                     <p className="mt-2">{comment!.text}</p>
 
                     <ImagesGrid imageUrls={comment!.imageUrls} />
+
+                    <p className="text-gray-500 mt-2">{EditDate.toStringUpToMinute(comment!.createdAt)}</p>
                 </div>
             }
         </div>
