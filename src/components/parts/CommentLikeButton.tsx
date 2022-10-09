@@ -10,17 +10,16 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readLikedUsers() {
-
-        let likedUsers: User[] | null = null
-
-        if (!props.isReadFromSeaver) {
-            likedUsers = await FireUser.readLikedUsersFromCache(props.comment.id)
-        } else {
-            likedUsers = await FireUser.readLikedUsers(props.comment.id)
-        }
-
+        
+        let likedUsers = await FireUser.readLikedUsersFromCache(props.comment.id)
         setLikedUsers(likedUsers)
         setIsLoaded(true)
+
+        if (props.isReadFromSeaver) {
+            likedUsers = await FireUser.readLikedUsers(props.comment.id)
+            setLikedUsers(likedUsers)
+            setIsLoaded(true)
+        }
     }
 
     useEffect(() => {
