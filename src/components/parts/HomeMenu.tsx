@@ -17,7 +17,7 @@ export default function HomeMenu() {
     }
 
     const menuButton = (
-        <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
+        <MenuButton className="hover:bg-zinc-300/30 dark:hover:bg-zinc-700/70 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
             <VscEllipsis className="text-3xl" />
         </MenuButton>
     )
