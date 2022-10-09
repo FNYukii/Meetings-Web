@@ -2,7 +2,7 @@ import Comment from "../../types/Comment"
 import UserDisplayNameSpan from "./UserDisplayNameSpan"
 import UserIconNavLink from "./UserIconNavLink"
 import UserUserTagSpan from "./UserUserTagSpan"
-import EditDate from "../../utilities/EditDate"
+import ExDate from "../../utilities/ExDate"
 import { NavLink } from "react-router-dom"
 import CommentMenu from "./CommentMenu"
 import CommentImagesGrid from "./CommentImagesGrid"
@@ -29,7 +29,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                             <UserUserTagSpan userId={props.comment.userId} />
                         </span>
 
-                        <span className="text-gray-500 ml-3">{EditDate.toHowManyAgoString(props.comment.createdAt)}</span>
+                        <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                     </div>
 
                     <CommentMenu comment={props.comment} />

@@ -1,6 +1,6 @@
 import dayjs from "dayjs"
 
-export default class EditDate {
+export default class ExDate {
 
     static toHowManyAgoString(from: Date): string {
         // 差分を生成
