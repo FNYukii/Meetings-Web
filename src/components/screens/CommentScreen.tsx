@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
-import EditDate from "../../utilities/EditDate"
+import ExDate from "../../utilities/ExDate"
 import FireComment from "../../utilities/FireComment"
 import BackButton from "../parts/BackButton"
 import CommentMenu from "../parts/CommentMenu"
@@ -75,7 +75,7 @@ export default function CommentScreen() {
                         <CommentImagesGrid imageUrls={comment!.imageUrls} />
                     </div>
 
-                    <p className="text-gray-500 mt-2 ml-3">{EditDate.toStringUpToMinute(comment!.createdAt)}</p>
+                    <p className="text-gray-500 mt-2 ml-3">{ExDate.toStringUpToMinute(comment!.createdAt)}</p>
 
                     <div className="mt-1 ml-3">
                         <CommentThreadTitle threadId={comment!.threadId}/>

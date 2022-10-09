@@ -2,6 +2,7 @@ import Thread from '../types/Thread'
 
 import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where } from "firebase/firestore"
 import { db } from './firebase'
+import ExString from './ExString'
 
 export default class FireThread {
 
@@ -81,6 +82,9 @@ export default class FireThread {
 
             // 配列になぜか空文字が含まれている現象を確認したので、filterメソッドで削除
             recentTags = recentTags.filter((item) => item !== "")
+
+            // 配列の要素数を制限
+            recentTags = ExString.toLimitedArray(recentTags, 7)
 
             return recentTags
 
