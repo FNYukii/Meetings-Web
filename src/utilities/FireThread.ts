@@ -1,6 +1,6 @@
 import Thread from '../types/Thread'
 
-import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs } from "firebase/firestore"
 import { db } from './firebase'
 
 export default class FireThread {
@@ -47,6 +47,44 @@ export default class FireThread {
             // 成功
             console.log(`Read 1 Thread from server.`)
             return this.toThread(docSnapFromServer)
+        }
+    }
+
+    static async readRecentTags(): Promise<string[] | null> {
+
+        const q = query(collection(db, "threads"), orderBy("createdAt", "desc"), limit(50))
+
+        try {
+            
+            // サーバー / キャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 読み取り成功
+            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+
+            // 配列threads
+            let threads: Thread[] = []
+            querySnapshot.forEach((doc) => {
+                const thread = this.toThread(doc)
+                threads.push(thread)
+            })
+            
+            // 配列recentTags
+            let recentTags: string[] = []
+            threads.forEach(thread => {
+                const tags = thread.tags
+                recentTags = recentTags.concat(tags)
+            })
+
+            // 配列recentTagsから重複を排除
+            recentTags = recentTags.filter((x, i, self) => self.indexOf(x) === i)
+
+            return recentTags
+            
+        } catch (error) {
+            
+            // 読み取り失敗
+            return null
         }
     }
 }
