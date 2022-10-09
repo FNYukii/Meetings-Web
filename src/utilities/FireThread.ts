@@ -1,6 +1,6 @@
 import Thread from '../types/Thread'
 
-import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where } from "firebase/firestore"
 import { db } from './firebase'
 
 export default class FireThread {
@@ -84,6 +84,34 @@ export default class FireThread {
         } catch (error) {
             
             // 読み取り失敗
+            return null
+        }
+    }
+
+    static async readThreadsByTag(tag: string): Promise<Thread[] | null> {
+
+        const q = query(collection(db, "threads"), where("tags", "array-contains", tag))
+
+        try {
+            
+            // サーバー / キャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+
+            // 配列threads
+            let threads: Thread[] = []
+            querySnapshot.forEach((doc) => {
+                const thread = this.toThread(doc)
+                threads.push(thread)
+            })
+
+            return threads
+
+        } catch (error) {
+
+            // 失敗
             return null
         }
     }
