@@ -44,7 +44,7 @@ export default function ThreadRow(props: { thread: Thread }) {
                     <span className="text-gray-500">{ExDate.toHowManyAgoString(props.thread.createdAt)}</span>
 
                     {Object.values(props.thread.tags).map((tag) => (
-                        <span key={tag}>{tag}</span>
+                        <NavLink key={tag} to={`/search?keyword=${tag}`} className="z-10 hover:underline">{tag}</NavLink>
                     ))}
                 </div>
             </div>
