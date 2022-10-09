@@ -1,5 +1,5 @@
 import User from "../types/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "../utilities/firebase"
 
@@ -70,8 +70,36 @@ export default class FireUser {
 
         } catch (error) {
 
+            // 失敗
             return null
         }
+    }
 
+    static async readLikedUsersFromCache(commentId: string): Promise<User[] | null> {
+        return null
+    }
+
+    static async readLikedUsers(commentId: string): Promise<User[] | null> {
+
+        const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId))
+
+        try {
+            
+            // サーバーorキャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            let users: User[] = []
+            querySnapshot.forEach((doc) => {
+                const user = this.toUser(doc)
+                users.push(user)
+            })
+
+            return users
+        } catch (error) {
+
+            // 失敗
+            return null
+        }
     }
 }
