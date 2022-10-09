@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import FireThread from "../../utilities/FireThread"
 import progress from "../../images/progress.svg"
+import RecentTagRow from "./RecentTagRow"
 
 export default function RecentTagsCard() {
 
@@ -19,7 +20,7 @@ export default function RecentTagsCard() {
     }, [])
 
     return (
-        <div className="bg-zinc-100 dark:bg-zinc-900 w-full h-96 rounded-xl p-3">
+        <div className="bg-zinc-100 dark:bg-zinc-900 w-full min-h-96 rounded-xl p-3">
             <p className="font-bold text-lg">最近</p>
 
             {!isLoaded &&
@@ -43,9 +44,7 @@ export default function RecentTagsCard() {
             {isLoaded && tags !== null &&
                 <div>
                     {tags.map((tag) => (
-                        <div key={tag}>
-                            <p className="text-gray-500">{tag}</p>
-                        </div>
+                        <RecentTagRow tag={tag} key={tag}/>
                     ))}
                 </div>
             }
