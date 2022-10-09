@@ -81,7 +81,7 @@ export default function CommentScreen() {
                         <CommentThreadTitle threadId={comment!.threadId}/>
                     </div>
 
-                    <div className="mt-1 ml-2">
+                    <div className="ml-2">
                         <CommentLikeButton comment={comment!} isReadFromSeaver={true} />
                     </div>
                 </div>
