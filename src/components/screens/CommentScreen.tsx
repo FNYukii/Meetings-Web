@@ -10,6 +10,7 @@ import UserDisplayNameSpan from "../parts/UserDisplayNameSpan"
 import UserIconNavLink from "../parts/UserIconNavLink"
 import UserUserTagSpan from "../parts/UserUserTagSpan"
 import progress from "../../images/progress.svg"
+import ThreadTitleWithLink from "../parts/ThreadTitleWithLink"
 
 export default function CommentScreen() {
 
@@ -72,6 +73,10 @@ export default function CommentScreen() {
                     <ImagesGrid imageUrls={comment!.imageUrls} />
 
                     <p className="text-gray-500 mt-2">{EditDate.toStringUpToMinute(comment!.createdAt)}</p>
+
+                    <div className="mt-1">
+                        <ThreadTitleWithLink threadId={comment!.threadId}/>
+                    </div>
                 </div>
             }
         </div>
