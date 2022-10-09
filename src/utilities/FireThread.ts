@@ -32,6 +32,7 @@ export default class FireThread {
             }
 
             //成功
+            console.log(`Read 1 Thread from cache.`)
             return this.toThread(docSnapFromCache)
 
         } catch (e) {
@@ -44,6 +45,7 @@ export default class FireThread {
             }
 
             // 成功
+            console.log(`Read 1 Thread from server.`)
             return this.toThread(docSnapFromServer)
         }
     }

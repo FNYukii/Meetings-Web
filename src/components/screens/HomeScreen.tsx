@@ -18,6 +18,10 @@ export default function HomeScreen() {
     async function startReadingThreads() {
         const q = query(collection(db, "threads"), orderBy("commentedAt", "desc"), limit(50))
         onSnapshot(q, (querySnapshot) => {
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {

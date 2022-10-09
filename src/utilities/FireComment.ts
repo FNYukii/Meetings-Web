@@ -32,6 +32,7 @@ export default class FireComment {
             }
 
             //成功
+            console.log(`Read 1 Comment from cache.`)
             return this.toComment(docSnapFromCache)
 
         } catch (e) {
@@ -44,17 +45,22 @@ export default class FireComment {
             }
 
             // 成功
+            console.log(`Read 1 Comment from server.`)
             return this.toComment(docSnapFromServer)
         }
     }
 
     static async readFirstCommentFromCache(commentId: string): Promise<Comment | null> {
+
         // クエリを作成
         const q = query(collection(db, "comments"), where("threadId", "==", commentId), orderBy("createdAt"), limit(1))
 
         try {
             // キャッシュから読み取り
             const querySnapshot = await getDocsFromCache(q)
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Comments from cache.`)
 
             // 配列comments
             let comments: Comment[] = []
@@ -63,7 +69,7 @@ export default class FireComment {
                 comments.push(comment)
             })
 
-            // 0件なら失敗
+            // 0件なら終了
             if (comments.length === 0) {
                 return null
             }
@@ -75,6 +81,9 @@ export default class FireComment {
             // サーバーから読み取り
             const querySnapshot = await getDocsFromServer(q)
 
+            // 成功
+            console.log(`Read ${querySnapshot.size} Comments from server.`)
+
             // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
@@ -82,7 +91,7 @@ export default class FireComment {
                 comments.push(comment)
             })
 
-            // 0件なら失敗
+            // 0件なら終了
             if (comments.length === 0) {
                 return null
             }
@@ -101,6 +110,9 @@ export default class FireComment {
             const querySnapshot = await getDocs(q)
 
             // 成功
+            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+
+            // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
                 const comment = this.toComment(doc)
