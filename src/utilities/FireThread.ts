@@ -77,10 +77,10 @@ export default class FireThread {
             })
 
             // 配列recentTagsから重複を排除
-            recentTags = recentTags.filter((x, i, self) => self.indexOf(x) === i)
+            recentTags = recentTags.filter((item, index, self) => self.indexOf(item) === index)
 
             // 配列になぜか空文字が含まれている現象を確認したので、filterメソッドで削除
-            recentTags = recentTags.filter(item => item !== "")
+            recentTags = recentTags.filter((item) => item !== "")
 
             return recentTags
 
