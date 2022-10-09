@@ -35,6 +35,7 @@ export default class FireUser {
             }
 
             //成功
+            console.log("Read 1 User from cache.")
             return this.toUser(docSnapFromCache)
 
         } catch (e) {
@@ -48,6 +49,7 @@ export default class FireUser {
             }
 
             // 成功
+            console.log("Read 1 User from server.")
             return this.toUser(docSnapFromServer)
         }
     }
@@ -66,6 +68,7 @@ export default class FireUser {
             }
 
             // 成功
+            console.log("Read 1 User from cache / server.")
             return this.toUser(docSnap)
 
         } catch (error) {
@@ -85,6 +88,9 @@ export default class FireUser {
             const querySnapshot = await getDocsFromCache(q)
 
             // 成功
+            console.log(`Read ${querySnapshot.size} Users from cache.`)
+
+            // 配列users
             let users: User[] = []
             querySnapshot.forEach((doc) => {
                 const user = this.toUser(doc)
@@ -99,6 +105,9 @@ export default class FireUser {
                 const querySnapshot = await getDocsFromServer(q)
 
                 // 成功
+                console.log(`Read ${querySnapshot.size} Users from server.`)
+
+                // 配列users
                 let users: User[] = []
                 querySnapshot.forEach((doc) => {
                     const user = this.toUser(doc)
@@ -124,6 +133,9 @@ export default class FireUser {
             const querySnapshot = await getDocs(q)
 
             // 成功
+            console.log(`Read ${querySnapshot.size} Users from cache / server.`)
+
+            // 配列users
             let users: User[] = []
             querySnapshot.forEach((doc) => {
                 const user = this.toUser(doc)

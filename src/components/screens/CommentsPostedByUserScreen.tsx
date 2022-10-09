@@ -36,7 +36,7 @@ export default function CommentsPostedByUserScreen() {
                 </div>
             }
 
-            {isLoaded && comments !== null && comments.length === 1 &&
+            {isLoaded && comments !== null && comments.length === 0 &&
                 <div className="p-3">
                     <p className="text-gray-500 text-center">結果なし</p>
                 </div>

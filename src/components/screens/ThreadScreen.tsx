@@ -31,6 +31,10 @@ export default function ThreadScreen() {
         const q = query(collection(db, "comments"), where("threadId", "==", threadId), orderBy("createdAt"), limit(1000))
         onSnapshot(q, (querySnapshot) => {
 
+            // 成功
+            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+
+            // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
                 const comment = FireComment.toComment(doc)
