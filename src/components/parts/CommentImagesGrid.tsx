@@ -1,4 +1,4 @@
-export default function ImagesGrid(props: { imageUrls: string[] }) {
+export default function CommentImagesGrid(props: { imageUrls: string[] }) {
     return (
         <div>
             {props.imageUrls.length === 1 &&

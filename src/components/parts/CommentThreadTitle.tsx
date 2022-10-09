@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Thread from "../../types/Thread";
 import FireThread from "../../utilities/FireThread";
 
-export default function ThreadTitleWithLink(props: { threadId: string }) {
+export default function CommentThreadTitle(props: { threadId: string }) {
 
     const [thread, setThread] = useState<Thread | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)

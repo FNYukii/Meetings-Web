@@ -5,8 +5,8 @@ import UserUserTagSpan from "./UserUserTagSpan"
 import EditDate from "../../utilities/EditDate"
 import { NavLink } from "react-router-dom"
 import CommentMenu from "./CommentMenu"
-import ImagesGrid from "./ImagesGrid"
-import ThreadTitleWithLink from "./ThreadTitleWithLink"
+import CommentImagesGrid from "./CommentImagesGrid"
+import CommentThreadTitle from "./CommentThreadTitle"
 
 export default function CommentRow(props: { comment: Comment, isShowThreadTitle: boolean }) {
 
@@ -36,11 +36,11 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
 
                 <p>{props.comment.text}</p>
 
-                <ImagesGrid imageUrls={props.comment.imageUrls} />
+                <CommentImagesGrid imageUrls={props.comment.imageUrls} />
 
                 {props.isShowThreadTitle &&
                     <div className="mt-1">
-                        <ThreadTitleWithLink threadId={props.comment.threadId} />
+                        <CommentThreadTitle threadId={props.comment.threadId} />
                     </div>
                 }
             </div>
