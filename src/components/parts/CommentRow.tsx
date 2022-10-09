@@ -12,7 +12,7 @@ import CommentLikeButton from "./CommentLikeButton"
 export default function CommentRow(props: { comment: Comment, isShowThreadTitle: boolean }) {
 
     return (
-        <div className="flex p-3 relative">
+        <div className="flex pt-3 pl-3 relative">
 
             <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
 
@@ -20,7 +20,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
 
             <div className="w-full">
 
-                <div className="ml-3 flex justify-between items-center">
+                <div className="ml-3 mr-2 flex justify-between items-center">
 
                     <div>
                         <UserDisplayNameSpan userId={props.comment.userId} />
@@ -35,19 +35,19 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                     <CommentMenu comment={props.comment} />
                 </div>
 
-                <p className="ml-3">{props.comment.text}</p>
+                <p className="ml-3 mr-3">{props.comment.text}</p>
 
-                <div className="ml-3">
+                <div className="mx-3">
                     <CommentImagesGrid imageUrls={props.comment.imageUrls} />
                 </div>
 
                 {props.isShowThreadTitle &&
-                    <div className="mt-1 ml-3">
+                    <div className="mt-1 mx-3">
                         <CommentThreadTitle threadId={props.comment.threadId} />
                     </div>
                 }
 
-                <div className="ml-2">
+                <div className="ml-2 mr-3">
                     <CommentLikeButton comment={props.comment} isReadFromSeaver={false}/>
                 </div>
             </div>
