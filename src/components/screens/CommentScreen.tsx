@@ -5,12 +5,12 @@ import EditDate from "../../utilities/EditDate"
 import FireComment from "../../utilities/FireComment"
 import BackButton from "../parts/BackButton"
 import CommentMenu from "../parts/CommentMenu"
-import ImagesGrid from "../parts/ImagesGrid"
+import CommentImagesGrid from "../parts/CommentImagesGrid"
 import UserDisplayNameSpan from "../parts/UserDisplayNameSpan"
 import UserIconNavLink from "../parts/UserIconNavLink"
 import UserUserTagSpan from "../parts/UserUserTagSpan"
 import progress from "../../images/progress.svg"
-import ThreadTitleWithLink from "../parts/ThreadTitleWithLink"
+import CommentThreadTitle from "../parts/CommentThreadTitle"
 
 export default function CommentScreen() {
 
@@ -70,12 +70,12 @@ export default function CommentScreen() {
 
                     <p className="mt-2">{comment!.text}</p>
 
-                    <ImagesGrid imageUrls={comment!.imageUrls} />
+                    <CommentImagesGrid imageUrls={comment!.imageUrls} />
 
                     <p className="text-gray-500 mt-2">{EditDate.toStringUpToMinute(comment!.createdAt)}</p>
 
                     <div className="mt-1">
-                        <ThreadTitleWithLink threadId={comment!.threadId}/>
+                        <CommentThreadTitle threadId={comment!.threadId}/>
                     </div>
                 </div>
             }
