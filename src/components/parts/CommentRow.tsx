@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom"
 import CommentMenu from "./CommentMenu"
 import CommentImagesGrid from "./CommentImagesGrid"
 import CommentThreadTitle from "./CommentThreadTitle"
+import CommentReactionRow from "./CommentReactionRow"
 
 export default function CommentRow(props: { comment: Comment, isShowThreadTitle: boolean }) {
 
@@ -43,6 +44,10 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                         <CommentThreadTitle threadId={props.comment.threadId} />
                     </div>
                 }
+
+                <div className="mt-1">
+                    <CommentReactionRow comment={props.comment} />
+                </div>
             </div>
         </div>
     )
