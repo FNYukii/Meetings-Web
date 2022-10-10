@@ -2,7 +2,7 @@ import Thread from '../types/Thread'
 
 import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where } from "firebase/firestore"
 import { db } from './firebase'
-import ExString from './ExString'
+import ExArray from './ExArray'
 
 export default class FireThread {
 
@@ -84,7 +84,7 @@ export default class FireThread {
             recentTags = recentTags.filter((item) => item !== "")
 
             // 配列の要素数を制限
-            recentTags = ExString.toLimitedArray(recentTags, 7)
+            recentTags = ExArray.toLimited(recentTags, 7)
 
             return recentTags
 

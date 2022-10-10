@@ -1,10 +1,10 @@
-export default class ExString {
+export default class ExArray {
 
-    static toLimitedArray(from: string[], limit: number): string[] {
+    static toLimited(from: Array<any>, limit: number): Array<any> {
 
         const inputItems = from
 
-        let outputItems: string[] = []
+        let outputItems: Array<any> = []
         inputItems.forEach((item) => {
             if (outputItems.length < limit) {
                 outputItems.push(item)
