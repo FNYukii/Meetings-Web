@@ -23,9 +23,7 @@ export default function ThreadScreen() {
         const thread = await FireThread.readThreadFromCache(threadId!)
         setThread(thread)
 
-        if (thread !== null) {
-            document.title = `${thread?.title} - Meetings`
-        }
+        document.title = `${thread?.title ?? "スレッド"} - Meetings`
     }
 
     async function startReadingComments() {
