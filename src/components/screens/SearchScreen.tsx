@@ -43,7 +43,7 @@ export default function SearchScreen() {
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 ml-2 py-2 px-4 rounded-full" placeholder="キーワード" />
+                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} placeholder="キーワード" className="z-10 w-full bg-zinc-100 dark:bg-zinc-800 ml-2 py-2 px-4 rounded-full"/>
                 </div>
             </div>
 

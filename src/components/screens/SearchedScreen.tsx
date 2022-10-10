@@ -1,6 +1,4 @@
 import { useState } from "react"
-import { NavLink } from "react-router-dom"
-import { useLocation } from "react-router-dom"
 
 export default function SearchedScreen(props: { keyword: string }) {
 
