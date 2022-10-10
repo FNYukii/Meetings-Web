@@ -7,8 +7,8 @@ export default function HomeScreen() {
 
     document.title = 'Meetings'
 
-    const [sortSelection, setSortSelection] = useState(1)
-
+    const [selection, setSelection] = useState(1)
+    
     return (
         <div>
             <div className='sticky top-0 z-20'>
@@ -18,15 +18,15 @@ export default function HomeScreen() {
 
                     <span className='font-bold text-lg'>ホーム</span>
 
-                    <HomeMenu selection={sortSelection}/>
+                    <HomeMenu setSelection={setSelection} selection={selection}/>
                 </div>
             </div>
 
-            {sortSelection === 0 &&
+            {selection === 0 &&
                 <ThreadsRecentlyCreatedList />
             }
 
-            {sortSelection === 1 &&
+            {selection === 1 &&
                 <ThreadsRecentlyCommentedList />
             }
         </div >
