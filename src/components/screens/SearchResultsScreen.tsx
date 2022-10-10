@@ -49,9 +49,17 @@ export default function SearchResultsScreen(props: { keyword: string }) {
                 </button>
             </div>
 
-            <SearchThreadsScreen keyword={props.keyword} className={tab === 0 ? "" : "hidden"}/>
-            <SearchCommentsScreen keyword={props.keyword} className={tab === 1 ? "" : "hidden"}/>
-            <SearchUsersScreen keyword={props.keyword} className={tab === 2 ? "" : "hidden"}/>
+            {tab === 0 &&
+                <SearchThreadsScreen keyword={props.keyword} />
+            }
+
+            {tab === 1 &&
+                <SearchCommentsScreen keyword={props.keyword} />
+            }
+
+            {tab === 2 &&
+                <SearchUsersScreen keyword={props.keyword} />
+            }
         </div>
     )
 }
