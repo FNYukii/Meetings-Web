@@ -17,6 +17,7 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
 
     useEffect(() => {
         readThread()
+        // eslint-disable-next-line
     }, [])
 
     return (
