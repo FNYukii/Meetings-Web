@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import RecentImagesScreen from "./RecentImagesScreen"
 import SearchedScreen from "./SearchedScreen";
@@ -11,6 +12,8 @@ export default function SearchScreen() {
 
     const searchedKeyword = (new URLSearchParams(useLocation().search)).get("keyword")
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         setKeyword(searchedKeyword ?? "")
     }, [searchedKeyword])
@@ -22,9 +25,9 @@ export default function SearchScreen() {
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <form className="w-full z-10">
-                        <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} className="bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full w-full" placeholder="キーワード" />
-                    </form>
+                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full" placeholder="キーワード" />
+                    
+                    <button onClick={() => keyword === "" ? navigate("/search") : navigate(`/search?keyword=${keyword}`)} className="z-30 ml-3 hover:opacity-60">Search</button>
                 </div>
             </div>
 
