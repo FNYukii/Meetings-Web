@@ -1,6 +1,9 @@
 import { useState } from "react"
+import SearchCommentsScreen from "./SearchCommentsScreen"
+import SearchThreadsScreen from "./SearchThreadsScreen"
+import SearchUsersScreen from "./SearchUsersScreen"
 
-export default function SearchedScreen(props: { keyword: string }) {
+export default function SearchResultsScreen(props: { keyword: string }) {
 
     const [tab, setTab] = useState(0)
 
@@ -46,7 +49,9 @@ export default function SearchedScreen(props: { keyword: string }) {
                 </button>
             </div>
 
-            <p>{props.keyword} を検索</p>
+            <SearchThreadsScreen keyword={props.keyword} className={tab === 0 ? "" : "hidden"}/>
+            <SearchCommentsScreen keyword={props.keyword} className={tab === 1 ? "" : "hidden"}/>
+            <SearchUsersScreen keyword={props.keyword} className={tab === 2 ? "" : "hidden"}/>
         </div>
     )
 }
