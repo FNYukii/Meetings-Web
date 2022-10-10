@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import BackButton from "../parts/BackButton";
 import RecentImagesScreen from "./RecentImagesScreen"
 import SearchedScreen from "./SearchedScreen";
 
@@ -30,22 +31,26 @@ export default function SearchScreen() {
     useEffect(() => {
         setKeyword(searchedKeyword ?? "")
     }, [searchedKeyword])
-    
+
     return (
         <div>
             <div className='sticky top-0 z-20'>
                 <div className='relative h-14 px-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
 
+                    {searchedKeyword !== null &&
+                        <BackButton className="mr-2"/>
+                    }
+
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full" placeholder="キーワード" />                    
+                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full" placeholder="キーワード" />
                 </div>
             </div>
 
-            <RecentImagesScreen className={searchedKeyword === null ? "" : "hidden"}/>
+            <RecentImagesScreen className={searchedKeyword === null ? "" : "hidden"} />
 
             {searchedKeyword !== null &&
-                <SearchedScreen keyword={`${searchedKeyword}`}/>
+                <SearchedScreen keyword={`${searchedKeyword}`} />
             }
         </div>
     )

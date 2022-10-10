@@ -34,7 +34,7 @@ export default function UserScreen() {
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
                     <div className="flex items-center">
-                        <BackButton />
+                        <BackButton className="mr-4" />
                         <span className='font-bold text-lg'>プロフィール</span>
                     </div>
 

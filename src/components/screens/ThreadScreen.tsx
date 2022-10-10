@@ -66,7 +66,7 @@ export default function ThreadScreen() {
                 <div className='relative h-14 px-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
-                    <BackButton />
+                    <BackButton className="mr-4" />
                     <span className='font-bold text-lg'>{thread?.title ?? ""}</span>
                 </div>
             </div>
