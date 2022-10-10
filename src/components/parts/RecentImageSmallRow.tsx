@@ -38,7 +38,7 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
             {isLoaded && thread !== null &&
                 <div className="relative w-full flex justify-between p-3">
 
-                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10" />
+                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
 
                     <div className="w-full">
 
