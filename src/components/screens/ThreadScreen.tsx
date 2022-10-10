@@ -11,7 +11,7 @@ import progress from "../../images/progress.svg"
 import BackButton from "../parts/BackButton"
 
 export default function ThreadScreen() {
-
+    
     const { threadId } = useParams()
     const [thread, setThread] = useState<Thread | null>(null)
 
