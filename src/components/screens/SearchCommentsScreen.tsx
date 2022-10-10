@@ -9,16 +9,16 @@ export default function SearchCommentsScreen(props: {keyword: string, className?
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    async function readThreads() {
+    async function readComments() {
 
-        const threads = await FireComment.readCommentsByKeyword(props.keyword)
-        setComments(threads)
+        const comments = await FireComment.readCommentsByKeyword(props.keyword)
+        setComments(comments)
         setIsLoaded(true)
     }
 
     useEffect(() => {
 
-        readThreads()
+        readComments()
         // eslint-disable-next-line
     }, [props.keyword])
 

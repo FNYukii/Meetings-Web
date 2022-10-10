@@ -1,5 +1,5 @@
 import User from "../types/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "../utilities/firebase"
 
@@ -143,6 +143,34 @@ export default class FireUser {
             })
 
             return users
+        } catch (error) {
+
+            // 失敗
+            return null
+        }
+    }
+
+    static async readUsersByKeyword(keyword: string): Promise<User[] | null> {
+
+        const q = query(collection(db, "users"), orderBy("displayName"), startAt(keyword), endAt(keyword + '\uf8ff'))
+
+        try {
+
+            // サーバー / キャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Users from cache / server.`)
+
+            // Users
+            let users: User[] = []
+            querySnapshot.forEach((doc) => {
+                const thread = this.toUser(doc)
+                users.push(thread)
+            })
+
+            return users
+
         } catch (error) {
 
             // 失敗
