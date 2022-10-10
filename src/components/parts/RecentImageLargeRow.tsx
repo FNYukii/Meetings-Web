@@ -25,7 +25,7 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
         <div>
 
             {!isLoaded &&
-                <div className="w-full lg:h-80 md:h-60 h-52 bg-zinc-100 dark:bg-zinc-900"></div>
+                <div className="w-full aspect-video bg-zinc-100 dark:bg-zinc-900"></div>
             }
 
             {isLoaded && thread === null &&
@@ -35,7 +35,7 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
             }
 
             {isLoaded && thread !== null &&
-                <div className="relative w-full lg:h-80 md:h-60 h-52">
+                <div className="relative w-full aspect-video">
 
                     <div className="absolute top-0 left-0 w-full h-full bg-zinc-100 dark:bg-zinc-900"></div>
 
