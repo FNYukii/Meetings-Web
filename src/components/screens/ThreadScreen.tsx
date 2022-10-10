@@ -86,7 +86,7 @@ export default function ThreadScreen() {
             {isLoadedComments && comments !== null &&
                 <div className="mt-1">
                     {comments.map((comment) => (
-                        <CommentRow key={comment.id} comment={comment} isShowThreadTitle={false}/>
+                        <CommentRow key={comment.id} comment={comment}/>
                     ))}
                 </div>
             }

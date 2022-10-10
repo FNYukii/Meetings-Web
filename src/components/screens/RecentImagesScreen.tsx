@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
 import progress from "../../images/progress.svg"
-import CommentRow from "../parts/CommentRow"
+import RecentImageLargeRow from "../parts/RecentImageLargeRow"
+import RecentImageSmallRow from "../parts/RecentImageSmallRow"
 
-export default function CommentsPostedByUserScreen() {
+export default function RecentImagesScreen() {
 
-    const { userId } = useParams()
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComments() {
-        const comments = await FireComment.readCommentsPostedByUser(userId!)
+
+        const comments = await FireComment.readCommentsWithImages()
         setComments(comments)
         setIsLoaded(true)
     }
 
     useEffect(() => {
+
         readComments()
-        // eslint-disable-next-line
     }, [])
 
     return (
@@ -31,21 +31,29 @@ export default function CommentsPostedByUserScreen() {
             }
 
             {isLoaded && comments === null &&
-                <div className="p-3">
+                <div className="p-2">
                     <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
                 </div>
             }
 
             {isLoaded && comments !== null && comments.length === 0 &&
-                <div className="p-3">
+                <div className="p-2">
                     <p className="text-gray-500 text-center">結果なし</p>
                 </div>
             }
 
             {isLoaded && comments !== null &&
                 <div>
-                    {comments.map((comment) => (
-                        <CommentRow key={comment.id} comment={comment} showThreadTitle/>
+                    {comments.map((comment, index) => (
+                        <div key={`${index}`}>
+                            {index === 0 &&
+                                <RecentImageLargeRow comment={comment}/>
+                            }
+
+                            {index !== 0 &&
+                                <RecentImageSmallRow comment={comment}/>
+                            }
+                        </div>
                     ))}
                 </div>
             }

@@ -42,7 +42,7 @@ export default function HomeScreen() {
     }
 
     useEffect(() => {
-        
+
         startReadingThreads()
     }, [])
 
@@ -55,7 +55,7 @@ export default function HomeScreen() {
 
                     <span className='font-bold text-lg'>ホーム</span>
 
-                    <HomeMenu/>
+                    <HomeMenu />
                 </div>
             </div>
 
@@ -73,11 +73,9 @@ export default function HomeScreen() {
 
             {isLoaded && threads !== null &&
                 <div className='mt-1'>
-                    {
-                        threads.map((thread) => (
-                            <ThreadRow thread={thread} key={thread.id} />
-                        ))
-                    }
+                    {threads.map((thread) => (
+                        <ThreadRow thread={thread} key={thread.id} />
+                    ))}
                 </div>
             }
         </div >
