@@ -42,9 +42,7 @@ export default function SearchScreen() {
                 </div>
             </div>
 
-            {searchedKeyword === null &&
-                <RecentImagesScreen />
-            }
+            <RecentImagesScreen className={searchedKeyword === null ? "" : "hidden"}/>
 
             {searchedKeyword !== null &&
                 <SearchedScreen keyword={`${searchedKeyword}`}/>

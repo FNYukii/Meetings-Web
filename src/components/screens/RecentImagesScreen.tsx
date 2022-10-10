@@ -5,7 +5,7 @@ import progress from "../../images/progress.svg"
 import RecentImageLargeRow from "../parts/RecentImageLargeRow"
 import RecentImageSmallRow from "../parts/RecentImageSmallRow"
 
-export default function RecentImagesScreen() {
+export default function RecentImagesScreen(props: {className?: string}) {
 
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -23,7 +23,7 @@ export default function RecentImagesScreen() {
     }, [])
 
     return (
-        <div>
+        <div className={props.className}>
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
                     <img src={progress} alt='loading' />
