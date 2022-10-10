@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Comment from "../../types/Comment";
 import Thread from "../../types/Thread";
+import ExDate from "../../utilities/ExDate";
 import FireThread from "../../utilities/FireThread";
 
 export default function RecentImageLargeRow(props: { comment: Comment }) {
@@ -36,11 +37,15 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
             {isLoaded && thread !== null &&
                 <div className="relative w-full h-80">
 
-                    <div className="absolute bottom-0 w-full">
+                    <div className="absolute bottom-0 w-full p-3 bg-gradient-to-t from-black/50 to-transparent">
+                        
+                        <div className="w-full flex justify-between">
 
-                        <div className="p-3 bg-gradient-to-t from-black/50 to-transparent">
-                            <p className="text-white">{thread.title}</p>
+                            <span className="text-white font-bold">{thread.title}</span>
+                            <span className="text-gray-300">{ExDate.toHowManyAgoString(thread.commentedAt)}</span>
                         </div>
+
+                        <p className="text-white text-gray-300">{props.comment.text}</p>
                     </div>
 
                     <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10" />
