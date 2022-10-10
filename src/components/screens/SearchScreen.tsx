@@ -35,15 +35,15 @@ export default function SearchScreen() {
     return (
         <div>
             <div className='sticky top-0 z-20'>
-                <div className='relative h-14 px-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
+                <div className='relative h-14 pl-1 pr-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
 
                     {searchedKeyword !== null &&
-                        <BackButton className="mr-2"/>
+                        <BackButton className=""/>
                     }
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full" placeholder="キーワード" />
+                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 ml-2 py-2 px-4 rounded-full" placeholder="キーワード" />
                 </div>
             </div>
 
