@@ -16,7 +16,9 @@ export default function HomeScreen() {
     const [isLoaded, setIsloaded] = useState(false)
 
     async function startReadingThreads() {
+
         const q = query(collection(db, "threads"), orderBy("commentedAt", "desc"), limit(50))
+
         onSnapshot(q, (querySnapshot) => {
 
             // 成功
@@ -32,10 +34,15 @@ export default function HomeScreen() {
             // Stateを更新
             setThreads(threads)
             setIsloaded(true)
+
+        }, (error) => {
+
+            setIsloaded(true)
         })
     }
 
     useEffect(() => {
+        
         startReadingThreads()
     }, [])
 

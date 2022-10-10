@@ -19,6 +19,7 @@ export default function ThreadScreen() {
     const [isLoadedComments, setIsLoadedComments] = useState(false)
 
     async function readThread() {
+
         const thread = await FireThread.readThreadFromCache(threadId!)
         setThread(thread)
 
@@ -28,7 +29,9 @@ export default function ThreadScreen() {
     }
 
     async function startReadingComments() {
+
         const q = query(collection(db, "comments"), where("threadId", "==", threadId), orderBy("createdAt"), limit(1000))
+
         onSnapshot(q, (querySnapshot) => {
 
             // 成功
@@ -43,10 +46,15 @@ export default function ThreadScreen() {
 
             setComments(comments)
             setIsLoadedComments(true)
+
+        },(error) => {
+
+            setIsLoadedComments(true)
         })
     }
 
     useEffect(() => {
+        
         readThread()
         startReadingComments()
         // eslint-disable-next-line
