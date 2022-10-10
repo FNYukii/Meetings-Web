@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom";
 import RecentImagesScreen from "./RecentImagesScreen"
-import SearchResultScreen from "./SearchResultScreen";
+import SearchedScreen from "./SearchedScreen";
 
 export default function SearchScreen() {
 
@@ -11,6 +11,10 @@ export default function SearchScreen() {
 
     const searchedKeyword = (new URLSearchParams(useLocation().search)).get("keyword")
 
+    useEffect(() => {
+        setKeyword(searchedKeyword ?? "")
+    }, [searchedKeyword])
+    
     return (
         <div>
             <div className='sticky top-0 z-20'>
@@ -19,7 +23,7 @@ export default function SearchScreen() {
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
                     <form onSubmit={() => console.log("hello")} className="w-full z-10">
-                        <input type="search" name="keyword" onChange={(e) => setKeyword(e.target.value)} onSubmit={() => console.log("helo")} className="bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full w-full" placeholder="キーワード" />
+                        <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onSubmit={() => console.log("helo")} className="bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full w-full" placeholder="キーワード" />
                     </form>
                 </div>
             </div>
@@ -29,7 +33,7 @@ export default function SearchScreen() {
             }
 
             {searchedKeyword !== null &&
-                <SearchResultScreen keyword={`${searchedKeyword}`}/>
+                <SearchedScreen keyword={`${searchedKeyword}`}/>
             }
         </div>
     )
