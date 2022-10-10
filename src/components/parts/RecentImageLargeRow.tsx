@@ -37,6 +37,10 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
             {isLoaded && thread !== null &&
                 <div className="relative w-full h-80">
 
+                    <div className="absolute top-0 left-0 w-full h-80 bg-zinc-100 dark:bg-zinc-900"></div>
+
+                    <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="absolute top-0 left-0 w-full h-full object-cover" />
+
                     <div className="absolute bottom-0 w-full p-3 bg-gradient-to-t from-black/50 to-transparent">
                         
                         <div className="w-full flex justify-between">
@@ -49,8 +53,6 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
                     </div>
 
                     <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10" />
-
-                    <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="w-full h-full object-cover" />
                 </div>
             }
         </div>
