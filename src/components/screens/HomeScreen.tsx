@@ -1,51 +1,14 @@
-import { useEffect, useState } from 'react'
-import Thread from '../../types/Thread'
-import { collection, query, onSnapshot, orderBy, limit } from "firebase/firestore"
-import { db } from "../../utilities/firebase"
-import FireThread from '../../utilities/FireThread'
-import ThreadRow from '../parts/ThreadRow'
-import progress from "../../images/progress.svg"
+import { useState } from 'react'
 import HomeMenu from '../parts/HomeMenu'
+import ThreadsRecentlyCommentedList from '../parts/ThreadsRecentlyCommentedList'
+import ThreadsRecentlyCreatedList from '../parts/ThreadsRecentlyCreatedList'
 
 export default function HomeScreen() {
 
     document.title = 'Meetings'
 
-    // States
-    const [threads, setThreads] = useState<Thread[] | null>(null)
-    const [isLoaded, setIsloaded] = useState(false)
-
-    async function startReadingThreads() {
-
-        const q = query(collection(db, "threads"), orderBy("commentedAt", "desc"), limit(50))
-
-        onSnapshot(q, (querySnapshot) => {
-
-            // 成功
-            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
-
-            // 配列threads
-            let threads: Thread[] = []
-            querySnapshot.forEach((doc) => {
-                const thread = FireThread.toThread(doc)
-                threads.push(thread)
-            })
-
-            // Stateを更新
-            setThreads(threads)
-            setIsloaded(true)
-
-        }, (error) => {
-
-            setIsloaded(true)
-        })
-    }
-
-    useEffect(() => {
-
-        startReadingThreads()
-    }, [])
-
+    const [selection, setSelection] = useState(1)
+    
     return (
         <div>
             <div className='sticky top-0 z-20'>
@@ -55,28 +18,16 @@ export default function HomeScreen() {
 
                     <span className='font-bold text-lg'>ホーム</span>
 
-                    <HomeMenu />
+                    <HomeMenu setSelection={setSelection} selection={selection}/>
                 </div>
             </div>
 
-            {!isLoaded &&
-                <div className='flex justify-center p-3'>
-                    <img src={progress} alt='loading' />
-                </div>
+            {selection === 0 &&
+                <ThreadsRecentlyCreatedList />
             }
 
-            {isLoaded && threads === null &&
-                <div className="p-2">
-                    <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
-                </div>
-            }
-
-            {isLoaded && threads !== null &&
-                <div className='mt-1'>
-                    {threads.map((thread) => (
-                        <ThreadRow thread={thread} key={thread.id} />
-                    ))}
-                </div>
+            {selection === 1 &&
+                <ThreadsRecentlyCommentedList />
             }
         </div >
     )

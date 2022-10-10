@@ -5,7 +5,7 @@ import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 import { AiOutlineCheck } from 'react-icons/ai'
 
-export default function HomeMenu(props: { className?: string }) {
+export default function HomeMenu(props: { selection: number, setSelection: React.Dispatch<React.SetStateAction<number>>, className?: string }) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -27,15 +27,18 @@ export default function HomeMenu(props: { className?: string }) {
         <div className={`z-10 ${props.className}`}>
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-                <MenuItem>
-                    <AiOutlineCheck className='text-transparent'/>
+
+                <MenuItem onClick={() => props.setSelection(0)}>
+
+                    <AiOutlineCheck className={props.selection === 0 ? "" : "text-transparent"}/>
                     <span className='ml-2'>作成された日時順</span>
                 </MenuItem>
-                <MenuItem>
-                    <AiOutlineCheck />
+
+                <MenuItem onClick={() => props.setSelection(1)}>
+
+                    <AiOutlineCheck className={props.selection === 1 ? "" : "text-transparent"}/>
                     <span className='ml-2'>コメントされた日時順</span>
                 </MenuItem>
-
             </Menu>
         </div>
     )

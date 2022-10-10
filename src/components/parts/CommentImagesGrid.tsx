@@ -9,6 +9,7 @@ export default function CommentImagesGrid(props: { imageUrls: string[], classNam
 
             {props.imageUrls.length === 2 &&
                 <div className="mt-2 flex aspect-video">
+
                     <div className="w-1/2 h-full pr-1">
                         <img src={props.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
                     </div>
@@ -27,6 +28,7 @@ export default function CommentImagesGrid(props: { imageUrls: string[], classNam
                     </div>
 
                     <div className="w-1/2 h-full pl-1">
+
                         <div className="h-1/2 pb-1">
                             <img src={props.imageUrls[1]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
                         </div>
@@ -42,6 +44,7 @@ export default function CommentImagesGrid(props: { imageUrls: string[], classNam
                 <div className="mt-2 flex aspect-video">
 
                     <div className="w-1/2 h-full pr-1">
+
                         <div className="h-1/2 pb-1">
                             <img src={props.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
                         </div>
@@ -52,6 +55,7 @@ export default function CommentImagesGrid(props: { imageUrls: string[], classNam
                     </div>
 
                     <div className="w-1/2 h-full pl-1">
+                        
                         <div className="h-1/2 pb-1">
                             <img src={props.imageUrls[2]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
                         </div>

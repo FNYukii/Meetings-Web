@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
 import progress from "../../images/progress.svg"
-import RecentImageLargeRow from "../parts/RecentImageLargeRow"
-import RecentImageSmallRow from "../parts/RecentImageSmallRow"
+import RecentImageLargeRow from "./RecentImageLargeRow"
+import RecentImageSmallRow from "./RecentImageSmallRow"
 
-export default function RecentImagesScreen(props: {className?: string}) {
+export default function RecentImagesList(props: {className?: string}) {
 
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)

@@ -6,8 +6,8 @@ import BackButton from "../parts/BackButton"
 import progress from "../../images/progress.svg"
 import UserIcon from "../parts/UserIcon"
 import UserMenu from "../parts/UserMenu"
-import CommentsPostedByUserScreen from "./CommentsPostedByUserScreen"
-import CommentsLikedByUserScreen from "./CommentsLikedByUserScreen"
+import CommentsPostedByUserList from "../parts/CommentsPostedByUserList"
+import CommentsLikedByUserList from "../parts/CommentsLikedByUserList"
 
 export default function UserScreen() {
 
@@ -105,11 +105,11 @@ export default function UserScreen() {
                     </div>
 
                     {tab === 0 &&
-                        <CommentsPostedByUserScreen/>
+                        <CommentsPostedByUserList/>
                     }
 
                     {tab === 1 &&
-                        <CommentsLikedByUserScreen/>
+                        <CommentsLikedByUserList/>
                     }
 
                 </div>
