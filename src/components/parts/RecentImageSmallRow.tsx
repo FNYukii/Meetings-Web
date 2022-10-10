@@ -51,7 +51,7 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
                         <p className="text-gray-500">{props.comment.text} - <UserUserTagSpan userId={props.comment.userId}/></p>
                     </div>
 
-                    <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="ml-3 w-20 aspect-square object-cover rounded-xl border border-zinc-200 dark:border-zinc-800" />
+                    <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="ml-3 w-20 h-20 object-cover rounded-xl border border-zinc-200 dark:border-zinc-800" />
                 </div>
             }
         </div>
