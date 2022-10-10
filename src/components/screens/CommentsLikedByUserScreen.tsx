@@ -45,7 +45,7 @@ export default function CommentsLikedByUserScreen() {
             {isLoaded && comments !== null &&
                 <div>
                     {comments.map((comment) => (
-                        <CommentRow key={comment.id} comment={comment} isShowThreadTitle={true}/>
+                        <CommentRow key={comment.id} comment={comment} showThreadTitle/>
                     ))}
                 </div>
             }

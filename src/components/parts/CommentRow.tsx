@@ -9,7 +9,7 @@ import CommentImagesGrid from "./CommentImagesGrid"
 import CommentThreadTitle from "./CommentThreadTitle"
 import CommentLikeButton from "./CommentLikeButton"
 
-export default function CommentRow(props: { comment: Comment, isShowThreadTitle: boolean }) {
+export default function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
 
     return (
         <div className="flex pt-3 pl-3 relative">
@@ -37,7 +37,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
 
                 <CommentImagesGrid imageUrls={props.comment.imageUrls} className="mx-3"/>
 
-                {props.isShowThreadTitle &&
+                {props.showThreadTitle &&
                     <div className="mt-1 mx-3">
                         <CommentThreadTitle threadId={props.comment.threadId} />
                     </div>

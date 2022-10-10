@@ -38,7 +38,7 @@ export default function RecentImagesScreen() {
             {isLoaded && comments !== null &&
                 <div>
                     {comments.map((comment) => (
-                        <CommentRow key={comment.id} comment={comment} isShowThreadTitle={false}/>
+                        <CommentRow key={comment.id} comment={comment} showThreadTitle/>
                     ))}
                 </div>
             }
