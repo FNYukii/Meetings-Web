@@ -173,7 +173,7 @@ export default class FireComment {
 
     static async readCommentsWithImages(): Promise<Comment[] | null> {
 
-        const q = query(collection(db, "comments"), where("imageUrls", "!=", []), limit(5))
+        const q = query(collection(db, "comments"), where("imageUrls", "!=", []), limit(10))
 
         try {
 
