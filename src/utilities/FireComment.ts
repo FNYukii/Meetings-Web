@@ -201,7 +201,7 @@ export default class FireComment {
 
     static async readCommentsByKeyword(keyword: string): Promise<Comment[] | null> {
 
-        const q = query(collection(db, "comments"), orderBy("text"), startAt(keyword), endAt(keyword + '\uf8ff'))
+        const q = query(collection(db, "comments"), orderBy("text"), startAt(keyword), endAt(keyword + '\uf8ff'), limit(50))
 
         try {
 

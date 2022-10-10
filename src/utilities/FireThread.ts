@@ -97,7 +97,7 @@ export default class FireThread {
 
     static async readThreadsByTag(tag: string): Promise<Thread[] | null> {
 
-        const q = query(collection(db, "threads"), where("tags", "array-contains", tag))
+        const q = query(collection(db, "threads"), where("tags", "array-contains", tag), limit(9999))
 
         try {
 
@@ -125,7 +125,7 @@ export default class FireThread {
 
     static async readThreadsByKeyword(keyword: string): Promise<Thread[] | null> {
 
-        const q = query(collection(db, "threads"), orderBy("title"), startAt(keyword), endAt(keyword + '\uf8ff'))
+        const q = query(collection(db, "threads"), orderBy("title"), startAt(keyword), endAt(keyword + '\uf8ff'), limit(50))
 
         try {
 

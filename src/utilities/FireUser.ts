@@ -1,5 +1,5 @@
 import User from "../types/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "../utilities/firebase"
 
@@ -80,7 +80,7 @@ export default class FireUser {
 
     static async readLikedUsersFromCache(commentId: string): Promise<User[] | null> {
         
-        const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId))
+        const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
         try {
 
@@ -125,7 +125,7 @@ export default class FireUser {
 
     static async readLikedUsers(commentId: string): Promise<User[] | null> {
 
-        const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId))
+        const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
         try {
 
@@ -152,7 +152,7 @@ export default class FireUser {
 
     static async readUsersByKeyword(keyword: string): Promise<User[] | null> {
 
-        const q = query(collection(db, "users"), orderBy("displayName"), startAt(keyword), endAt(keyword + '\uf8ff'))
+        const q = query(collection(db, "users"), orderBy("displayName"), startAt(keyword), endAt(keyword + '\uf8ff'), limit(50))
 
         try {
 
