@@ -32,7 +32,7 @@ export default class ExDate {
     static toStringUpToMinute(from: Date): string {
 
         const inputDate = from
-        const outputString = dayjs(inputDate).format('YYYY年M月D日 h時m分')
+        const outputString = dayjs(inputDate).format('YYYY年M月D日 HH:mm')
 
         return outputString
     }
