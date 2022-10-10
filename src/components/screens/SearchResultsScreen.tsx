@@ -1,15 +1,18 @@
 import { useState } from "react"
+import SearchCommentsScreen from "./SearchCommentsScreen"
+import SearchThreadsScreen from "./SearchThreadsScreen"
+import SearchUsersScreen from "./SearchUsersScreen"
 
-export default function SearchedScreen(props: { keyword: string }) {
+export default function SearchResultsScreen(props: { keyword: string }) {
 
     const [tab, setTab] = useState(0)
 
     return (
         <div>
 
-            <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
+            <div className="flex border-b border-zinc-200 dark:border-zinc-800">
 
-                <button onClick={() => setTab(0)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                <button onClick={() => setTab(0)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
                     <div className="text-center p-3">
 
@@ -21,7 +24,7 @@ export default function SearchedScreen(props: { keyword: string }) {
                     </div>
                 </button>
 
-                <button onClick={() => setTab(1)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                <button onClick={() => setTab(1)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
                     <div className="text-center p-3">
 
@@ -33,7 +36,7 @@ export default function SearchedScreen(props: { keyword: string }) {
                     </div>
                 </button>
 
-                <button onClick={() => setTab(2)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                <button onClick={() => setTab(2)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
                     <div className="text-center p-3">
 
@@ -46,7 +49,9 @@ export default function SearchedScreen(props: { keyword: string }) {
                 </button>
             </div>
 
-            <p>{props.keyword} を検索</p>
+            <SearchThreadsScreen keyword={props.keyword} className={tab === 0 ? "" : "hidden"}/>
+            <SearchCommentsScreen keyword={props.keyword} className={tab === 1 ? "" : "hidden"}/>
+            <SearchUsersScreen keyword={props.keyword} className={tab === 2 ? "" : "hidden"}/>
         </div>
     )
 }

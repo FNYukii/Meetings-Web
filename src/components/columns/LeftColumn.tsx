@@ -13,7 +13,7 @@ export default function LeftColumn() {
                     <div>
                         <NavLink to='/' end className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
                             {({ isActive }) => (
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full'>
                                     <AiFillHome className={`text-3xl ${isActive ? "block": "hidden"}`}/>
                                     <AiOutlineHome className={`text-3xl ${isActive ? "hidden": "block"}`}/>
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>ホーム</span>
@@ -23,7 +23,7 @@ export default function LeftColumn() {
 
                         <NavLink to='/search' className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
                             {({ isActive }) => (
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full'>
                                     <HiSearch className={`text-3xl ${isActive ? "block": "hidden"}`}/>
                                     <HiOutlineSearch className={`text-3xl ${isActive ? "hidden": "block"}`}/>
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>検索</span>
@@ -33,7 +33,7 @@ export default function LeftColumn() {
 
                         <NavLink to='/sign-in' end className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
                             {({ isActive }) => (
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full'>
                                     <AiOutlineLogin className={`text-3xl`}/>
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "" : ""}`}>サインイン</span>
                                 </div>

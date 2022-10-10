@@ -1,4 +1,4 @@
-import { collection, doc, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, where } from "firebase/firestore"
+import { collection, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, startAt, where } from "firebase/firestore"
 import Comment from "../types/Comment"
 import { db } from "./firebase"
 import FireUser from "./FireUser"
@@ -184,6 +184,34 @@ export default class FireComment {
             console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
 
             // 配列comments
+            let comments: Comment[] = []
+            querySnapshot.forEach((doc) => {
+                const comment = this.toComment(doc)
+                comments.push(comment)
+            })
+
+            return comments
+
+        } catch (error) {
+
+            // 失敗
+            return null
+        }
+    }
+
+    static async readCommentsByKeyword(keyword: string): Promise<Comment[] | null> {
+
+        const q = query(collection(db, "comments"), orderBy("text"), startAt(keyword), endAt(keyword + '\uf8ff'), limit(50))
+
+        try {
+
+            // サーバー / キャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+
+            // Comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
                 const comment = this.toComment(doc)

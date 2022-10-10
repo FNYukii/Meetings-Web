@@ -60,7 +60,7 @@ export default function UserScreen() {
                 <div>
                     <div className="flex justify-between mx-3">
                         <div className="flex gap-3">
-                            <UserIcon iconUrl={user!.iconUrl} />
+                            <UserIcon iconUrl={user!.iconUrl} className="h-16"/>
 
                             <div className="flex flex-col">
                                 <span className="font-bold">{user!.displayName}</span>
@@ -73,7 +73,7 @@ export default function UserScreen() {
 
                     <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
                         
-                        <NavLink to={`/users/${userId!}`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative ${isActive ? "font-bold" : ""}`}>
+                        <NavLink to={`/users/${userId!}`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative ${isActive ? "font-bold" : ""}`}>
                             {({ isActive }) => (
                                 <div className="text-center p-3">
                                     <span>コメント</span>
@@ -84,7 +84,7 @@ export default function UserScreen() {
                             )}
                         </NavLink>
 
-                        <NavLink to={`/users/${userId!}/likes`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative ${isActive ? "font-bold" : ""}`}>
+                        <NavLink to={`/users/${userId!}/likes`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative ${isActive ? "font-bold" : ""}`}>
                             {({ isActive }) => (
                                 <div className="text-center p-3">
                                     <span>いいね</span>

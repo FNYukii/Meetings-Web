@@ -1,6 +1,6 @@
 import Thread from '../types/Thread'
 
-import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt } from "firebase/firestore"
 import { db } from './firebase'
 import ExArray from './ExArray'
 
@@ -97,7 +97,7 @@ export default class FireThread {
 
     static async readThreadsByTag(tag: string): Promise<Thread[] | null> {
 
-        const q = query(collection(db, "threads"), where("tags", "array-contains", tag))
+        const q = query(collection(db, "threads"), where("tags", "array-contains", tag), limit(9999))
 
         try {
 
@@ -121,5 +121,62 @@ export default class FireThread {
             // 失敗
             return null
         }
+    }
+
+    static async readThreadsByTitle(keyword: string): Promise<Thread[] | null> {
+
+        const q = query(collection(db, "threads"), orderBy("title"), startAt(keyword), endAt(keyword + '\uf8ff'), limit(50))
+
+        try {
+
+            // サーバー / キャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+
+            // 配列threads
+            let threads: Thread[] = []
+            querySnapshot.forEach((doc) => {
+                const thread = FireThread.toThread(doc)
+                threads.push(thread)
+            })
+
+            return threads
+
+        } catch (error) {
+
+            // 失敗
+            return null
+        }
+    }
+
+    static async readThreadsByKeyword(keyword: string): Promise<Thread[] | null> {
+
+        // タイトルで検索
+        const threadsByTitle = await this.readThreadsByTitle(keyword)
+        if (threadsByTitle === null) {
+            return null
+        }
+
+        // タグで検索
+        const threadsByTag = await this.readThreadsByTag(keyword)
+        if (threadsByTag === null) {
+            return null
+        }
+
+        // 二つの配列を結合
+        const threads = threadsByTitle.concat(threadsByTag)
+
+        let uniqueThreads: Thread[] = []
+        let ids: string[] = []
+        threads.forEach((thread) => {
+            if (!ids.includes(thread.id)) {
+                uniqueThreads.push(thread)
+                ids.push(thread.id)
+            }
+        })
+
+        return uniqueThreads
     }
 }
