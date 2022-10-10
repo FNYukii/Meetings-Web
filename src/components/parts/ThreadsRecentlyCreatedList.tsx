@@ -6,7 +6,7 @@ import FireThread from "../../utilities/FireThread"
 import progress from "../../images/progress.svg"
 import ThreadRow from "./ThreadRow"
 
-export default function ThreadsRecentlyPostedList() {
+export default function ThreadsRecentlyCreatedList() {
     // States
     const [threads, setThreads] = useState<Thread[] | null>(null)
     const [isLoaded, setIsloaded] = useState(false)

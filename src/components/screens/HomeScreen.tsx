@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import HomeMenu from '../parts/HomeMenu'
 import ThreadsRecentlyCommentedList from '../parts/ThreadsRecentlyCommentedList'
-import ThreadsRecentlyPostedList from '../parts/ThreadsRecentlyPostedList'
+import ThreadsRecentlyCreatedList from '../parts/ThreadsRecentlyCreatedList'
 
 export default function HomeScreen() {
 
@@ -23,7 +23,7 @@ export default function HomeScreen() {
             </div>
 
             {sortSelection === 0 &&
-                <ThreadsRecentlyPostedList />
+                <ThreadsRecentlyCreatedList />
             }
 
             {sortSelection === 1 &&
