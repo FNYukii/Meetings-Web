@@ -6,7 +6,7 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
     return (
         <div className="w-full p-3 flex justify-between relative">
 
-            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10" />
+            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
 
             <div>
                 <p>{props.comment.text}</p>
