@@ -5,6 +5,8 @@ import SearchUsersScreen from "./SearchUsersScreen"
 
 export default function SearchResultsScreen(props: { keyword: string }) {
 
+    document.title = `${props.keyword} - 検索 - Meetings`
+
     const [tab, setTab] = useState(0)
 
     return (

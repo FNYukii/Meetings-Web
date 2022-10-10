@@ -17,9 +17,11 @@ export default function UserScreen() {
         let user = await FireUser.readUserFromCache(userId!)
         setUser(user)
         setIsLoaded(true)
+        document.title = `${user?.displayName ?? "User not found"} - Meetings`
 
         user = await FireUser.readUser(userId!)
         setUser(user)
+        document.title = `${user?.displayName ?? "User not found"} - Meetings`
     }
 
     useEffect(() => {

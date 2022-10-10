@@ -11,7 +11,7 @@ import progress from "../../images/progress.svg"
 import BackButton from "../parts/BackButton"
 
 export default function ThreadScreen() {
-
+    
     const { threadId } = useParams()
     const [thread, setThread] = useState<Thread | null>(null)
 
@@ -23,9 +23,7 @@ export default function ThreadScreen() {
         const thread = await FireThread.readThreadFromCache(threadId!)
         setThread(thread)
 
-        if (thread !== null) {
-            document.title = `${thread?.title} - Meetings`
-        }
+        document.title = `${thread?.title ?? "スレッド"} - Meetings`
     }
 
     async function startReadingComments() {
