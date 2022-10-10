@@ -1,7 +1,7 @@
 import { useState } from "react"
-import SearchCommentsScreen from "./SearchCommentsScreen"
-import SearchThreadsScreen from "./SearchThreadsScreen"
-import SearchUsersScreen from "./SearchUsersScreen"
+import SearchCommentsList from "../parts/SearchCommentsList"
+import SearchThreadsList from "../parts/SearchThreadsList"
+import SearchUsersList from "../parts/SearchUsersList"
 
 export default function SearchResultsScreen(props: { keyword: string }) {
 
@@ -52,15 +52,15 @@ export default function SearchResultsScreen(props: { keyword: string }) {
             </div>
 
             {tab === 0 &&
-                <SearchThreadsScreen keyword={props.keyword} />
+                <SearchThreadsList keyword={props.keyword} />
             }
 
             {tab === 1 &&
-                <SearchCommentsScreen keyword={props.keyword} />
+                <SearchCommentsList keyword={props.keyword} />
             }
 
             {tab === 2 &&
-                <SearchUsersScreen keyword={props.keyword} />
+                <SearchUsersList keyword={props.keyword} />
             }
         </div>
     )

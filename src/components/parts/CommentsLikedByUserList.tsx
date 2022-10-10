@@ -1,53 +1,51 @@
 import { useEffect, useState } from "react"
-import User from "../../types/User"
-import FireUser from "../../utilities/FireUser"
+import { useParams } from "react-router-dom"
+import Comment from "../../types/Comment"
+import FireComment from "../../utilities/FireComment"
 import progress from "../../images/progress.svg"
-import UserRow from "../parts/UserRow"
+import CommentRow from "./CommentRow"
 
-export default function SearchUsersScreen(props: { keyword: string, className?: string }) {
+export default function CommentsLikedByUserList() {
 
-    const [users, setUsers] = useState<User[] | null>(null)
+    const { userId } = useParams()
+    const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    async function readUsers() {
-
-        setIsLoaded(false)
-        const users = await FireUser.readUsersByKeyword(props.keyword)
-        setUsers(users)
+    async function readComments() {
+        const comments = await FireComment.readCommentsLikedByUser(userId!)
+        setComments(comments)
         setIsLoaded(true)
     }
 
     useEffect(() => {
-
-        readUsers()
+        readComments()
         // eslint-disable-next-line
-    }, [props.keyword])
+    }, [])
 
     return (
-        <div className={props.className}>
-
+        <div>
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
                     <img src={progress} alt='loading' />
                 </div>
             }
 
-            {isLoaded && users === null &&
+            {isLoaded && comments === null &&
                 <div className="p-3">
                     <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
                 </div>
             }
 
-            {isLoaded && users !== null && users.length === 0 &&
+            {isLoaded && comments !== null && comments.length === 0 &&
                 <div className="p-3">
                     <p className="text-gray-500 text-center">結果なし</p>
                 </div>
             }
 
-            {isLoaded && users !== null &&
+            {isLoaded && comments !== null &&
                 <div>
-                    {users.map((user) => (
-                        <UserRow key={user.id} user={user}/>
+                    {comments.map((comment) => (
+                        <CommentRow key={comment.id} comment={comment} showThreadTitle/>
                     ))}
                 </div>
             }

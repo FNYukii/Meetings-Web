@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react"
-import Comment from "../../types/Comment"
-import FireComment from "../../utilities/FireComment"
+import User from "../../types/User"
+import FireUser from "../../utilities/FireUser"
 import progress from "../../images/progress.svg"
-import CommentRow from "../parts/CommentRow"
+import UserRow from "./UserRow"
 
-export default function SearchCommentsScreen(props: {keyword: string, className?: string}) {
-    
-    const [comments, setComments] = useState<Comment[] | null>(null)
+export default function SearchUsersList(props: { keyword: string, className?: string }) {
+
+    const [users, setUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    async function readComments() {
-        
+    async function readUsers() {
+
         setIsLoaded(false)
-        const comments = await FireComment.readCommentsByKeyword(props.keyword)
-        setComments(comments)
+        const users = await FireUser.readUsersByKeyword(props.keyword)
+        setUsers(users)
         setIsLoaded(true)
     }
 
     useEffect(() => {
 
-        readComments()
+        readUsers()
         // eslint-disable-next-line
     }, [props.keyword])
 
@@ -32,22 +32,22 @@ export default function SearchCommentsScreen(props: {keyword: string, className?
                 </div>
             }
 
-            {isLoaded && comments === null &&
+            {isLoaded && users === null &&
                 <div className="p-3">
                     <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
                 </div>
             }
 
-            {isLoaded && comments !== null && comments.length === 0 &&
+            {isLoaded && users !== null && users.length === 0 &&
                 <div className="p-3">
                     <p className="text-gray-500 text-center">結果なし</p>
                 </div>
             }
 
-            {isLoaded && comments !== null &&
+            {isLoaded && users !== null &&
                 <div>
-                    {comments.map((comment) => (
-                        <CommentRow key={comment.id} comment={comment}/>
+                    {users.map((user) => (
+                        <UserRow key={user.id} user={user}/>
                     ))}
                 </div>
             }

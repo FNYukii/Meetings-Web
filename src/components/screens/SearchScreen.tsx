@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import BackButton from "../parts/BackButton";
-import RecentImagesScreen from "./RecentImagesScreen"
+import RecentImagesList from "../parts/RecentImagesList"
 import SearchResultsScreen from "./SearchResultsScreen";
 
 export default function SearchScreen() {
@@ -47,7 +47,7 @@ export default function SearchScreen() {
                 </div>
             </div>
 
-            <RecentImagesScreen className={searchedKeyword === null ? "" : "hidden"} />
+            <RecentImagesList className={searchedKeyword === null ? "" : "hidden"} />
 
             {searchedKeyword !== null &&
                 <SearchResultsScreen keyword={`${searchedKeyword}`} />

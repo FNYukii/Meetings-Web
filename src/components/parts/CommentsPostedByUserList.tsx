@@ -3,9 +3,9 @@ import { useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
 import progress from "../../images/progress.svg"
-import CommentRow from "../parts/CommentRow"
+import CommentRow from "./CommentRow"
 
-export default function CommentsPostedByUserScreen() {
+export default function CommentsPostedByUserList() {
 
     const { userId } = useParams()
     const [comments, setComments] = useState<Comment[] | null>(null)
