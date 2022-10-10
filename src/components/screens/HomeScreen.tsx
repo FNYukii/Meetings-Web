@@ -18,7 +18,7 @@ export default function HomeScreen() {
 
                     <span className='font-bold text-lg'>ホーム</span>
 
-                    <HomeMenu />
+                    <HomeMenu selection={sortSelection}/>
                 </div>
             </div>
 
