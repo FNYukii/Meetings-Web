@@ -6,6 +6,7 @@ import FireUser from "./FireUser"
 export default class FireComment {
 
     static toComment(document: QueryDocumentSnapshot): Comment {
+        
         const id: string = document.id ?? ""
         const userId: string = document.data().userId ?? ""
         const createdAt: Date = document.data({ serverTimestamps: "estimate" }).createdAt.toDate() ?? new Date()
@@ -23,6 +24,7 @@ export default class FireComment {
         const docRef = doc(db, "comments", commentId)
 
         try {
+
             // キャッシュから読み取り
             const docSnapFromCache = await getDocFromCache(docRef)
 
@@ -36,6 +38,7 @@ export default class FireComment {
             return this.toComment(docSnapFromCache)
 
         } catch (e) {
+
             // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
 
@@ -56,6 +59,7 @@ export default class FireComment {
         const q = query(collection(db, "comments"), where("threadId", "==", commentId), orderBy("createdAt"), limit(1))
 
         try {
+
             // キャッシュから読み取り
             const querySnapshot = await getDocsFromCache(q)
 
@@ -78,6 +82,7 @@ export default class FireComment {
             return comments[0]
 
         } catch (e) {
+
             // サーバーから読み取り
             const querySnapshot = await getDocsFromServer(q)
 
@@ -106,6 +111,7 @@ export default class FireComment {
         const q = query(collection(db, "comments"), where("userId", "==", userId), orderBy("createdAt", "desc"), limit(50))
 
         try {
+
             // サーバーorキャッシュから読み取り
             const querySnapshot = await getDocs(q)
 
@@ -120,7 +126,9 @@ export default class FireComment {
             })
 
             return comments
+
         } catch (error) {
+
             // 失敗
             return null
         }
@@ -161,5 +169,33 @@ export default class FireComment {
         }))
 
         return likedComments
+    }
+
+    static async readCommentsWithImages(): Promise<Comment[] | null> {
+
+        const q = query(collection(db, "comments"), where("imageUrls", "!=", null), limit(5))
+
+        try {
+
+            // サーバーorキャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+
+            // 配列comments
+            let comments: Comment[] = []
+            querySnapshot.forEach((doc) => {
+                const comment = this.toComment(doc)
+                comments.push(comment)
+            })
+
+            return comments
+
+        } catch (error) {
+
+            // 失敗
+            return null
+        }
     }
 }
