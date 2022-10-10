@@ -7,26 +7,26 @@ export default class ExDate {
         let diff = new Date(new Date().getTime() - from.getTime())
 
         if (diff.getUTCFullYear() - 1970) {
-            return diff.getUTCFullYear() - 1970 + '年前'
+            return diff.getUTCFullYear() - 1970 + '年'
         }
         
         if (diff.getUTCMonth()) {
-            return diff.getUTCMonth() + 'ヶ月前'
+            return diff.getUTCMonth() + 'ヶ月'
         }
         
         if (diff.getUTCDate() - 1) {
-            return diff.getUTCDate() - 1 + '日前'
+            return diff.getUTCDate() - 1 + '日'
         }
         
         if (diff.getUTCHours()) {
-            return diff.getUTCHours() + '時間前'
+            return diff.getUTCHours() + '時間'
         }
         
         if (diff.getUTCMinutes()) {
-            return diff.getUTCMinutes() + '分前'
+            return diff.getUTCMinutes() + '分'
         }
         
-        return diff.getUTCSeconds() + '秒前'
+        return diff.getUTCSeconds() + '秒'
     }
 
     static toStringUpToMinute(from: Date): string {
