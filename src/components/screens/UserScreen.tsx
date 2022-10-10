@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react"
-import { NavLink, Outlet, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
 import BackButton from "../parts/BackButton"
 import progress from "../../images/progress.svg"
 import UserIcon from "../parts/UserIcon"
 import UserMenu from "../parts/UserMenu"
+import CommentsPostedByUserScreen from "./CommentsPostedByUserScreen"
+import CommentsLikedByUserScreen from "./CommentsLikedByUserScreen"
 
 export default function UserScreen() {
 
     const { userId } = useParams()
     const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const [tab, setTab] = useState(0)
 
     async function readUser() {
         let user = await FireUser.readUserFromCache(userId!)
@@ -36,7 +40,7 @@ export default function UserScreen() {
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
                     <div className="flex items-center">
-                        <BackButton/>
+                        <BackButton />
                         <span className='font-bold text-lg ml-11'>プロフィール</span>
                     </div>
 
@@ -62,7 +66,7 @@ export default function UserScreen() {
                 <div>
                     <div className="flex justify-between mx-3">
                         <div className="flex gap-3">
-                            <UserIcon iconUrl={user!.iconUrl} className="h-16"/>
+                            <UserIcon iconUrl={user!.iconUrl} className="h-16" />
 
                             <div className="flex flex-col">
                                 <span className="font-bold">{user!.displayName}</span>
@@ -73,32 +77,41 @@ export default function UserScreen() {
 
                     <p className="mt-2 mx-3">{user!.introduction}</p>
 
-                    <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
-                        
-                        <NavLink to={`/users/${userId!}`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative ${isActive ? "font-bold" : ""}`}>
-                            {({ isActive }) => (
-                                <div className="text-center p-3">
-                                    <span>コメント</span>
-                                    <div className="absolute bottom-0 left-0 w-full">
-                                        <div className={`h-0.5 mx-3 ${ isActive ? "bg-black dark:bg-white" : ""}`}></div>
-                                    </div>
-                                </div>
-                            )}
-                        </NavLink>
+                    <div className="flex border-b border-zinc-200 dark:border-zinc-800 mt-3">
 
-                        <NavLink to={`/users/${userId!}/likes`} end className={({ isActive }) => `w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative ${isActive ? "font-bold" : ""}`}>
-                            {({ isActive }) => (
-                                <div className="text-center p-3">
-                                    <span>いいね</span>
-                                    <div className="absolute bottom-0 left-0 w-full">
-                                        <div className={`h-0.5 mx-3 ${ isActive ? "bg-black dark:bg-white" : ""}`}></div>
-                                    </div>
+                        <button onClick={() => setTab(0)} className="w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
+
+                            <div className="text-center p-3">
+
+                                <span className={tab === 0 ? "font-bold" : ""}>コメント</span>
+
+                                <div className="absolute bottom-0 left-0 w-full">
+                                    <div className={`h-0.5 mx-3 ${tab === 0 ? "bg-black dark:bg-white" : ""}`}></div>
                                 </div>
-                            )}
-                        </NavLink>
+                            </div>
+                        </button>
+
+                        <button onClick={() => setTab(1)} className="w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
+
+                            <div className="text-center p-3">
+
+                                <span className={tab === 1 ? "font-bold" : ""}>いいね</span>
+
+                                <div className="absolute bottom-0 left-0 w-full">
+                                    <div className={`h-0.5 mx-3 ${tab === 1 ? "bg-black dark:bg-white" : ""}`}></div>
+                                </div>
+                            </div>
+                        </button>
                     </div>
 
-                    <Outlet />
+                    {tab === 0 &&
+                        <CommentsPostedByUserScreen/>
+                    }
+
+                    {tab === 1 &&
+                        <CommentsLikedByUserScreen/>
+                    }
+
                 </div>
             }
         </div>

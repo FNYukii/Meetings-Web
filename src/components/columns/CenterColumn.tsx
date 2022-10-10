@@ -6,8 +6,6 @@ import NotFoundScreen from '../screens/NotFoundScreen'
 import SearchScreen from '../screens/SearchScreen'
 import CommentScreen from '../screens/CommentScreen'
 import UserScreen from '../screens/UserScreen'
-import CommentsLikedByUserScreen from '../screens/CommentsLikedByUserScreen'
-import CommentsPostedByUserScreen from '../screens/CommentsPostedByUserScreen'
 
 export default function CenterColumn() {
 
@@ -18,11 +16,7 @@ export default function CenterColumn() {
                 <Route path='/search' element={<SearchScreen />} />
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />
                 <Route path='/comments/:commentId' element={<CommentScreen />} />
-
-                <Route path='/users/:userId' element={<UserScreen />}>
-                    <Route path='/users/:userId/' element={<CommentsPostedByUserScreen />} />
-                    <Route path='/users/:userId/likes' element={<CommentsLikedByUserScreen />} />
-                </Route>
+                <Route path='/users/:userId' element={<UserScreen />}/>
                 <Route path='*' element={<NotFoundScreen />} />
             </Routes>
         </div>
