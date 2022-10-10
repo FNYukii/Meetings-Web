@@ -4,7 +4,7 @@ import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 
-export default function HomeMenu() {
+export default function HomeMenu(props: {className?: string}) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -23,7 +23,7 @@ export default function HomeMenu() {
     )
 
     return (
-        <div className="z-10">
+        <div className={`z-10 ${props.className}`}>
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
                 <MenuItem>作成された日時順</MenuItem>
