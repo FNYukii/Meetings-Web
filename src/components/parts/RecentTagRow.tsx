@@ -33,7 +33,7 @@ export default function RecentTagRow(props: { tag: string }) {
             </div>
 
             {!isLoaded &&
-                <div className="bg-zinc-100 dark:bg-zinc-800 w-20">
+                <div className="bg-zinc-200 dark:bg-zinc-800 w-20">
                     <p className="text-gray-500 text-sm text-transparent">-</p>
                 </div>
             }
