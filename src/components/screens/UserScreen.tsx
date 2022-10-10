@@ -60,7 +60,7 @@ export default function UserScreen() {
                 <div>
                     <div className="flex justify-between mx-3">
                         <div className="flex gap-3">
-                            <UserIcon iconUrl={user!.iconUrl} />
+                            <UserIcon iconUrl={user!.iconUrl} className="h-16"/>
 
                             <div className="flex flex-col">
                                 <span className="font-bold">{user!.displayName}</span>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
 import progress from "../../images/progress.svg"
+import UserRow from "../parts/UserRow"
 
 export default function SearchUsersScreen(props: { keyword: string, className?: string }) {
 
@@ -45,9 +46,7 @@ export default function SearchUsersScreen(props: { keyword: string, className?: 
             {isLoaded && users !== null &&
                 <div>
                     {users.map((user) => (
-                        <div>
-                            <p>{user.displayName}</p>
-                        </div>
+                        <UserRow key={user.id} user={user}/>
                     ))}
                 </div>
             }
