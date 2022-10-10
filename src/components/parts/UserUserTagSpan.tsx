@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
 
-export default function UserUserTagSpan(props: {userId: string}) {
+export default function UserUserTagSpan(props: {userId: string, className?: string}) {
 
     const [user, setUser] = useState<User | null>()
 
@@ -17,6 +17,6 @@ export default function UserUserTagSpan(props: {userId: string}) {
     }, [])
 
     return (
-        <span className="text-gray-500">@{user?.userTag}</span>
+        <span className={`text-gray-500 ${props.className}`}>@{user?.userTag}</span>
     )
 }

@@ -25,9 +25,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                     <div>
                         <UserDisplayNameSpan userId={props.comment.userId} />
 
-                        <span className="ml-3">
-                            <UserUserTagSpan userId={props.comment.userId} />
-                        </span>
+                        <UserUserTagSpan userId={props.comment.userId} className="ml-3"/>
 
                         <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                     </div>
@@ -37,9 +35,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
 
                 <p className="ml-3 mr-3">{props.comment.text}</p>
 
-                <div className="mx-3">
-                    <CommentImagesGrid imageUrls={props.comment.imageUrls} />
-                </div>
+                <CommentImagesGrid imageUrls={props.comment.imageUrls} className="mx-3"/>
 
                 {props.isShowThreadTitle &&
                     <div className="mt-1 mx-3">
@@ -47,9 +43,7 @@ export default function CommentRow(props: { comment: Comment, isShowThreadTitle:
                     </div>
                 }
 
-                <div className="ml-2 mr-3">
-                    <CommentLikeButton comment={props.comment} isReadFromSeaver={false}/>
-                </div>
+                <CommentLikeButton comment={props.comment} isReadFromSeaver={false} className="ml-2 mr-3"/>
             </div>
         </div>
     )

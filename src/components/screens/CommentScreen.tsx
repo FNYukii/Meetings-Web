@@ -71,19 +71,13 @@ export default function CommentScreen() {
 
                     <p className="mt-2 ml-3">{comment!.text}</p>
 
-                    <div className="ml-3">
-                        <CommentImagesGrid imageUrls={comment!.imageUrls} />
-                    </div>
+                    <CommentImagesGrid imageUrls={comment!.imageUrls} className="ml-3"/>
 
                     <p className="text-gray-500 mt-2 ml-3">{ExDate.toStringUpToMinute(comment!.createdAt)}</p>
 
-                    <div className="mt-1 ml-3">
-                        <CommentThreadTitle threadId={comment!.threadId}/>
-                    </div>
+                    <CommentThreadTitle threadId={comment!.threadId} className="mt-1 ml-3"/>
 
-                    <div className="ml-2">
-                        <CommentLikeButton comment={comment!} isReadFromSeaver={true} />
-                    </div>
+                    <CommentLikeButton comment={comment!} isReadFromSeaver={true} className="ml-2" />
                 </div>
             }
         </div>

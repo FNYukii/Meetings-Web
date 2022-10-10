@@ -1,6 +1,6 @@
-export default function CommentImagesGrid(props: { imageUrls: string[] }) {
+export default function CommentImagesGrid(props: { imageUrls: string[], className?: string }) {
     return (
-        <div>
+        <div className={props.className}>
             {props.imageUrls.length === 1 &&
                 <div className="mt-2 lg:h-80 md:h-60 h-50">
                     <img src={props.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />

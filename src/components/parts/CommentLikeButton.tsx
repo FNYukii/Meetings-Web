@@ -4,7 +4,7 @@ import Comment from "../../types/Comment";
 import User from "../../types/User";
 import FireUser from "../../utilities/FireUser";
 
-export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean}) {
+export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean, className?: string}) {
 
     const [likedUsers, setLikedUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -28,7 +28,7 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
     }, [])
 
     return (
-        <div>
+        <div className={props.className}>
             {!isLoaded &&
                 <div className="flex">
 

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Thread from "../../types/Thread";
 import FireThread from "../../utilities/FireThread";
 
-export default function CommentThreadTitle(props: { threadId: string }) {
+export default function CommentThreadTitle(props: { threadId: string, className?: string }) {
 
     const [thread, setThread] = useState<Thread | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -21,7 +21,7 @@ export default function CommentThreadTitle(props: { threadId: string }) {
     }, [])
 
     return (
-        <div>
+        <div className={props.className}>
             {isLoaded && thread !== null &&
                 <div className="flex">
                     <NavLink to={`/threads/${props.threadId}`} className="z-10 flex items-center gap-2 hover:underline hover:decoration-gray-500">
