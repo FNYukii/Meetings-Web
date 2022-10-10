@@ -10,7 +10,7 @@ export default function SearchResultsScreen(props: { keyword: string }) {
     return (
         <div>
 
-            <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
+            <div className="flex border-b border-zinc-200 dark:border-zinc-800">
 
                 <button onClick={() => setTab(0)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
