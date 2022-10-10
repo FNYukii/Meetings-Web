@@ -39,12 +39,11 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
                     <div className="absolute bottom-0 w-full">
 
                         <div className="p-3 bg-gradient-to-t from-black/50 to-transparent">
-
                             <p className="text-white">{thread.title}</p>
                         </div>
                     </div>
 
-                    <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10" />
+                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10" />
 
                     <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="w-full h-full object-cover" />
                 </div>
