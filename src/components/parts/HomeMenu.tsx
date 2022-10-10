@@ -3,8 +3,9 @@ import { VscEllipsis } from 'react-icons/vsc'
 import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
+import { AiOutlineCheck } from 'react-icons/ai'
 
-export default function HomeMenu(props: {className?: string}) {
+export default function HomeMenu(props: { className?: string }) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -26,8 +27,15 @@ export default function HomeMenu(props: {className?: string}) {
         <div className={`z-10 ${props.className}`}>
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-                <MenuItem>作成された日時順</MenuItem>
-                <MenuItem>コメントされた日時順</MenuItem>
+                <MenuItem>
+                    <AiOutlineCheck className='text-transparent'/>
+                    <span className='ml-2'>作成された日時順</span>
+                </MenuItem>
+                <MenuItem>
+                    <AiOutlineCheck />
+                    <span className='ml-2'>コメントされた日時順</span>
+                </MenuItem>
+
             </Menu>
         </div>
     )
