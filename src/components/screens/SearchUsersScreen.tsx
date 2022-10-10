@@ -11,6 +11,7 @@ export default function SearchUsersScreen(props: { keyword: string, className?: 
 
     async function readUsers() {
 
+        setIsLoaded(false)
         const users = await FireUser.readUsersByKeyword(props.keyword)
         setUsers(users)
         setIsLoaded(true)

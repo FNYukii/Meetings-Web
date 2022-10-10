@@ -165,8 +165,18 @@ export default class FireThread {
             return null
         }
 
-        let threads = threadsByTitle.concat(threadsByTag)
+        // 二つの配列を結合
+        const threads = threadsByTitle.concat(threadsByTag)
 
-        return threads
+        let uniqueThreads: Thread[] = []
+        let ids: string[] = []
+        threads.forEach((thread) => {
+            if (!ids.includes(thread.id)) {
+                uniqueThreads.push(thread)
+                ids.push(thread.id)
+            }
+        })
+
+        return uniqueThreads
     }
 }

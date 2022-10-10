@@ -10,7 +10,8 @@ export default function SearchThreadsScreen(props: {keyword: string, className?:
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThreads() {
-
+        
+        setIsLoaded(false)
         const threads = await FireThread.readThreadsByKeyword(props.keyword)
         setThreads(threads)
         setIsLoaded(true)

@@ -10,7 +10,8 @@ export default function SearchCommentsScreen(props: {keyword: string, className?
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComments() {
-
+        
+        setIsLoaded(false)
         const comments = await FireComment.readCommentsByKeyword(props.keyword)
         setComments(comments)
         setIsLoaded(true)
