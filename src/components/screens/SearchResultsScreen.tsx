@@ -12,7 +12,7 @@ export default function SearchResultsScreen(props: { keyword: string }) {
 
             <div className="mt-3 flex border-b border-zinc-200 dark:border-zinc-800">
 
-                <button onClick={() => setTab(0)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                <button onClick={() => setTab(0)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
                     <div className="text-center p-3">
 
@@ -24,7 +24,7 @@ export default function SearchResultsScreen(props: { keyword: string }) {
                     </div>
                 </button>
 
-                <button onClick={() => setTab(1)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                <button onClick={() => setTab(1)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
                     <div className="text-center p-3">
 
@@ -36,7 +36,7 @@ export default function SearchResultsScreen(props: { keyword: string }) {
                     </div>
                 </button>
 
-                <button onClick={() => setTab(2)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                <button onClick={() => setTab(2)} className="w-1/3 hover:bg-zinc-100 dark:hover:bg-zinc-800 relative">
 
                     <div className="text-center p-3">
 
