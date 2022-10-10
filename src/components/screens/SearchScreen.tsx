@@ -9,7 +9,7 @@ export default function SearchScreen() {
 
     const [keyword, setKeyword] = useState("")
 
-    const urlParameters = new URLSearchParams(useLocation().search)
+    const searchedKeyword = (new URLSearchParams(useLocation().search)).get("keyword")
 
     return (
         <div>
@@ -24,12 +24,12 @@ export default function SearchScreen() {
                 </div>
             </div>
 
-            {urlParameters.get("keyword") === null &&
+            {searchedKeyword === null &&
                 <RecentImagesScreen />
             }
 
-            {urlParameters.get("keyword") !== null &&
-                <SearchResultScreen keyword={`${urlParameters.get("keyword")}`}/>
+            {searchedKeyword !== null &&
+                <SearchResultScreen keyword={`${searchedKeyword}`}/>
             }
         </div>
     )
