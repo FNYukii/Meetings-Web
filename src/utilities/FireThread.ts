@@ -123,7 +123,7 @@ export default class FireThread {
         }
     }
 
-    static async readThreadsByKeyword(keyword: string): Promise<Thread[] | null> {
+    static async readThreadsByTitle(keyword: string): Promise<Thread[] | null> {
 
         const q = query(collection(db, "threads"), orderBy("title"), startAt(keyword), endAt(keyword + '\uf8ff'), limit(50))
 
@@ -138,7 +138,7 @@ export default class FireThread {
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
-                const thread = this.toThread(doc)
+                const thread = FireThread.toThread(doc)
                 threads.push(thread)
             })
 
@@ -149,5 +149,24 @@ export default class FireThread {
             // 失敗
             return null
         }
+    }
+
+    static async readThreadsByKeyword(keyword: string): Promise<Thread[] | null> {
+
+        // タイトルで検索
+        const threadsByTitle = await this.readThreadsByTitle(keyword)
+        if (threadsByTitle === null) {
+            return null
+        }
+
+        // タグで検索
+        const threadsByTag = await this.readThreadsByTag(keyword)
+        if (threadsByTag === null) {
+            return null
+        }
+
+        let threads = threadsByTitle.concat(threadsByTag)
+
+        return threads
     }
 }
