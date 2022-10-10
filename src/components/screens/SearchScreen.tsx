@@ -14,6 +14,19 @@ export default function SearchScreen() {
 
     const navigate = useNavigate()
 
+    function onSearchBarKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+
+        if (e.code !== "Enter") {
+            return
+        }
+
+        if (keyword === "") {
+            navigate("/search")
+        } else {
+            navigate(`/search?keyword=${keyword}`)
+        }
+    }
+
     useEffect(() => {
         setKeyword(searchedKeyword ?? "")
     }, [searchedKeyword])
@@ -25,9 +38,7 @@ export default function SearchScreen() {
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full" placeholder="キーワード" />
-                    
-                    <button onClick={() => keyword === "" ? navigate("/search") : navigate(`/search?keyword=${keyword}`)} className="z-30 ml-3 hover:opacity-60">Search</button>
+                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} className="z-10 w-full bg-zinc-100 dark:bg-zinc-900 py-2 px-4 rounded-full" placeholder="キーワード" />                    
                 </div>
             </div>
 
