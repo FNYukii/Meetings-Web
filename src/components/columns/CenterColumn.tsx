@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation, useRoutes } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 
 import HomeScreen from '../screens/HomeScreen'
 import ThreadScreen from '../screens/ThreadScreen'
@@ -11,25 +11,15 @@ import ImageModal from '../modals/ImageModal'
 export default function CenterColumn() {
 
     const location = useLocation()
+    const currentPath = location.pathname
+
     const state = location.state as { previousPath?: string }
     const previousPath = state?.previousPath
-
-    console.log(`hello prev: ${previousPath}`)
-    console.log(`hello current: ${location.pathname}`)
-
-    const modalElement = useRoutes([
-        {
-            path: '/images/:imageUrl',
-            element: <ImageModal />
-        }
-    ])
-
-    console.log(`hello modalElement: ${modalElement !== null}`)
 
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
 
-            <Routes location={modalElement !== null ? previousPath : undefined}>
+            <Routes location={previousPath}>
 
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
@@ -39,7 +29,7 @@ export default function CenterColumn() {
                 <Route path='*' element={<NotFoundScreen />} />
             </Routes>
 
-            {modalElement !== null &&
+            {currentPath.includes("/images/") &&
                 <ImageModal/>
             }
         </div>
