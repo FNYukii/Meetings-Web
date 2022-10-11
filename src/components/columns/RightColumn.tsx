@@ -17,7 +17,7 @@ export default function RightColumn() {
                     <span>Copyright <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source code</a>
 
-                    <Link to="/images/:imageUrl" state={{ previousPath: location.pathname }}>Image</Link>
+                    <Link to="/images/fdaglkajlkjl" state={{ previousPath: location.pathname }}>Modal</Link>
                 </p>
             </div>
         </div>
