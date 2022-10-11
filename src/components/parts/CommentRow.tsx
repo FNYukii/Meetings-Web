@@ -12,7 +12,7 @@ import CommentLikeButton from "./CommentLikeButton"
 export default function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
 
     return (
-        <div className="flex pt-3 pl-3 relative">
+        <div className="flex pt-3 pb-1 pl-3 relative">
 
             <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-white/10" />
 
