@@ -34,17 +34,25 @@ export default function CommentScreen() {
 
     return (
         <div>
+
             <div className='sticky top-0 z-20'>
-                <div className='relative h-14 pl-1 pr-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
+
+                <div className='relative h-14 pl-1 pr-3 flex items-center justify-between bg-white/70 dark:bg-black/70 backdrop-blur'>
+
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
-                    <BackButton/>
-                    <span className='font-bold text-lg ml-7'>コメント</span>
+
+                    <div className="flex items-center">
+                        <BackButton />
+                        <span className='font-bold text-lg ml-7'>コメント</span>
+                    </div>
+
+                    <CommentMenu comment={comment!} iconClassName="text-3xl" />
                 </div>
             </div>
 
             {!isLoaded &&
                 <div className='flex justify-center'>
-                    <ProgressImage/>
+                    <ProgressImage />
                 </div>
             }
 
@@ -65,17 +73,15 @@ export default function CommentScreen() {
                                 <UserUserTagSpan userId={comment!.userId} />
                             </div>
                         </div>
-
-                        <CommentMenu comment={comment!} />
                     </div>
 
                     <p className="mt-2 ml-3">{comment!.text}</p>
 
-                    <CommentImagesGrid comment={comment} className="ml-3"/>
+                    <CommentImagesGrid comment={comment} className="ml-3" />
 
                     <p className="text-gray-500 mt-2 ml-3">{ExDate.toStringUpToMinute(comment!.createdAt)}</p>
 
-                    <CommentThreadTitle threadId={comment!.threadId} className="mt-1 ml-3"/>
+                    <CommentThreadTitle threadId={comment!.threadId} className="mt-1 ml-3" />
 
                     <CommentLikeButton comment={comment!} isReadFromSeaver={true} className="ml-2" />
                 </div>

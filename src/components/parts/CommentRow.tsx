@@ -30,7 +30,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
                         <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                     </div>
 
-                    <CommentMenu comment={props.comment} />
+                    <CommentMenu comment={props.comment} iconClassName="text-xl text-gray-500" />
                 </div>
 
                 <p className="ml-3 mr-3">{props.comment.text}</p>
