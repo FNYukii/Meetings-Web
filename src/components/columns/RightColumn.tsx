@@ -18,7 +18,7 @@ export default function RightColumn() {
                     
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source code</a>
 
-                    <Link to="/images/fdaglkajlkjl" state={{ previousPath: location.pathname }} className="hover:underline">Modal</Link>
+                    <Link to="/comments/FydTZYRdqxkKx4X5BNje/images/0" state={{ previousPath: location.pathname }} className="hover:underline">Modal</Link>
                 </div>
             </div>
         </div>
