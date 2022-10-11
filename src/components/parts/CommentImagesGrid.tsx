@@ -1,9 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
 import Comment from "../../types/Comment";
+import CommentImageNavLink from "./CommentImageNavLink";
 
 export default function CommentImagesGrid(props: { comment: Comment, className?: string }) {
-
-    const location = useLocation()
 
     return (
         <div className={props.className}>
@@ -11,10 +9,7 @@ export default function CommentImagesGrid(props: { comment: Comment, className?:
             {props.comment.imageUrls.length === 1 &&
 
                 <div className="mt-2 aspect-video">
-
-                    <Link to={`/comments/${props.comment.id}/images/1`} state={{ previousPath: location.pathname }}>
-                        <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                    </Link>
+                    <CommentImageNavLink comment={props.comment} imageIndex={0} />
                 </div>
             }
 
@@ -24,16 +19,12 @@ export default function CommentImagesGrid(props: { comment: Comment, className?:
 
                     <div className="w-1/2 h-full pr-1">
 
-                        <Link to={`/comments/${props.comment.id}/images/1`} state={{ previousPath: location.pathname }}>
-                            <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                        </Link>
+                        <CommentImageNavLink comment={props.comment} imageIndex={0} />
                     </div>
 
                     <div className="w-1/2 h-full pl-1">
 
-                        <Link to={`/comments/${props.comment.id}/images/2`} state={{ previousPath: location.pathname }}>
-                            <img src={props.comment.imageUrls[1]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                        </Link>
+                        <CommentImageNavLink comment={props.comment} imageIndex={1} />
                     </div>
                 </div>
             }
@@ -44,25 +35,19 @@ export default function CommentImagesGrid(props: { comment: Comment, className?:
 
                     <div className="w-1/2 h-full pr-1">
 
-                        <Link to={`/comments/${props.comment.id}/images/1`} state={{ previousPath: location.pathname }}>
-                            <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                        </Link>
+                        <CommentImageNavLink comment={props.comment} imageIndex={0} />
                     </div>
 
                     <div className="w-1/2 h-full pl-1">
 
                         <div className="h-1/2 pb-1">
 
-                            <Link to={`/comments/${props.comment.id}/images/2`} state={{ previousPath: location.pathname }}>
-                                <img src={props.comment.imageUrls[1]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                            </Link>
+                            <CommentImageNavLink comment={props.comment} imageIndex={1} />
                         </div>
 
                         <div className="h-1/2 pt-1">
 
-                            <Link to={`/comments/${props.comment.id}/images/3`} state={{ previousPath: location.pathname }}>
-                                <img src={props.comment.imageUrls[2]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                            </Link>
+                            <CommentImageNavLink comment={props.comment} imageIndex={2} />
                         </div>
                     </div>
                 </div>
@@ -76,16 +61,12 @@ export default function CommentImagesGrid(props: { comment: Comment, className?:
 
                         <div className="h-1/2 pb-1">
 
-                            <Link to={`/comments/${props.comment.id}/images/1`} state={{ previousPath: location.pathname }}>
-                                <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                            </Link>
+                            <CommentImageNavLink comment={props.comment} imageIndex={0} />
                         </div>
 
                         <div className="h-1/2 pt-1">
 
-                            <Link to={`/comments/${props.comment.id}/images/2`} state={{ previousPath: location.pathname }}>
-                                <img src={props.comment.imageUrls[1]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                            </Link>
+                            <CommentImageNavLink comment={props.comment} imageIndex={1} />
                         </div>
                     </div>
 
@@ -93,16 +74,12 @@ export default function CommentImagesGrid(props: { comment: Comment, className?:
 
                         <div className="h-1/2 pb-1">
 
-                            <Link to={`/comments/${props.comment.id}/images/3`} state={{ previousPath: location.pathname }}>
-                                <img src={props.comment.imageUrls[2]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                            </Link>
+                            <CommentImageNavLink comment={props.comment} imageIndex={2} />
                         </div>
 
                         <div className="h-1/2 pt-1">
 
-                            <Link to={`/comments/${props.comment.id}/images/4`} state={{ previousPath: location.pathname }}>
-                                <img src={props.comment.imageUrls[3]} alt="Attached to comment" className="rounded-xl w-full h-full object-cover border border-zinc-200 dark:border-zinc-800" />
-                            </Link>
+                            <CommentImageNavLink comment={props.comment} imageIndex={3} />
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ export default function ImageModal(props: { className?: string }) {
     document.title = "画像 - Meetings"
 
     const navigate = useNavigate()
-    const { commentId, imageIndex } = useParams()
+    const { commentId, imageNumber } = useParams()
 
     const [comment, setComment] = useState<Comment | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -41,7 +41,7 @@ export default function ImageModal(props: { className?: string }) {
                 }
 
                 {isLoaded && comment !== null &&
-                    <img src={comment.imageUrls[(parseInt(imageIndex!) - 1)]} alt="" />
+                    <img src={comment.imageUrls[(parseInt(imageNumber!) - 1)]} alt="" />
                 }
             </div>
         </div>

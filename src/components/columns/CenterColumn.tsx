@@ -28,7 +28,7 @@ export default function CenterColumn() {
             </Routes>
 
             <Routes>
-                <Route path='/comments/:commentId/images/:imageIndex' element={<ImageModal />} />
+                <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
             </Routes>
         </div>
     )
