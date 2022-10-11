@@ -17,7 +17,24 @@ export default function RecentTagMenu(props: { tag: string, setIsShow: React.Dis
     }
 
     function makeUninterested() {
-        console.log("HELLO")
+
+        // 興味なしtagsをlocalStorageから取得
+        let uninterestedTags: string[] = []
+        const uninterestedTagsJson = localStorage.getItem('uninterestedTagsJson')
+
+        if (uninterestedTagsJson === null) {
+            uninterestedTags = []
+        } else {
+            uninterestedTags = JSON.parse(uninterestedTagsJson)
+        }
+
+        // 興味なしtagsにタグを追加
+        uninterestedTags.push(props.tag)
+        
+        // 興味なしtagsをlocalStorageに追加
+        localStorage.setItem('uninterestedTagsJson', JSON.stringify(uninterestedTags, undefined, 1))
+
+        // RecentTagRowを非表示に
         props.setIsShow(false)
     }
 
