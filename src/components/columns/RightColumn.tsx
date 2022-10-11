@@ -12,13 +12,13 @@ export default function RightColumn() {
                 
                 <RecentTagsCard />
 
-                <p className="mt-3 text-gray-500 text-sm flex gap-3">
+                <div className="mt-3 text-gray-500 text-sm flex flex-wrap gap-3">
 
                     <span>Copyright <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source code</a>
 
-                    <Link to="/images/fdaglkajlkjl" state={{ previousPath: location.pathname }}>Modal</Link>
-                </p>
+                    <Link to="/images/fdaglkajlkjl" state={{ previousPath: location.pathname }} className="hover:underline">Modal</Link>
+                </div>
             </div>
         </div>
     )
