@@ -71,7 +71,7 @@ export default function CommentScreen() {
 
                     <p className="mt-2 ml-3">{comment!.text}</p>
 
-                    <CommentImagesGrid imageUrls={comment!.imageUrls} className="ml-3"/>
+                    <CommentImagesGrid comment={comment} className="ml-3"/>
 
                     <p className="text-gray-500 mt-2 ml-3">{ExDate.toStringUpToMinute(comment!.createdAt)}</p>
 

@@ -6,6 +6,8 @@ import progress from "../../images/progress.svg"
 
 export default function ImageModal(props: { className?: string }) {
 
+    document.title = "画像 - Meetings"
+
     const navigate = useNavigate()
     const { commentId, imageIndex } = useParams()
 
@@ -39,7 +41,7 @@ export default function ImageModal(props: { className?: string }) {
                 }
 
                 {isLoaded && comment !== null &&
-                    <img src={comment.imageUrls[parseInt(imageIndex!)]} alt="" />
+                    <img src={comment.imageUrls[(parseInt(imageIndex!) - 1)]} alt="" />
                 }
             </div>
         </div>
