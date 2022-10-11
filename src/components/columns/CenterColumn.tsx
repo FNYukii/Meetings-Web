@@ -21,8 +21,8 @@ export default function CenterColumn() {
         }
     ])
 
-    console.log(`modalElement ${modalElement}`)
-    console.log(`background ${background}`)
+    console.log(`modalElement: ${modalElement !== null}`)
+    console.log(`background: ${background}`)
 
 
     return (
