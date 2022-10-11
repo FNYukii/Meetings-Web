@@ -1,9 +1,8 @@
-export default function ImageModal() {
+export default function ImageModal(props: {className?: string}) {
+
     return (
-        <div>
-
+        <div className={props.className}>
             <div className="z-30 fixed top-0 left-0 w-full h-full bg-black/30"></div>
-
         </div>
     )
 }
