@@ -9,8 +9,31 @@ export default function RecentTagsCard() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readTags() {
+
+        // Firestoreから最近のtagsを読み取り
         const tags = await FireThread.readRecentTags()
-        setTags(tags)
+
+        // 興味なしtagsをlocalStorageから取得
+        let uninterestedTags: string[] = []
+        const uninterestedTagsJson = localStorage.getItem('uninterestedTagsJson')
+
+        if (uninterestedTagsJson === null) {
+            uninterestedTags = []
+        } else {
+            uninterestedTags = JSON.parse(uninterestedTagsJson)
+        }
+
+        // 配列tagsから興味なしtagsを削除
+        let recommendedTags: string[] = []
+        if (tags !== null) {
+            tags.forEach((tag) => {
+                if (!uninterestedTags.includes(tag)) {
+                    recommendedTags.push(tag)
+                }
+            })
+        }
+
+        setTags(tags !== null ? recommendedTags : null)
         setIsLoaded(true)
     }
 
@@ -36,7 +59,7 @@ export default function RecentTagsCard() {
             }
 
             {isLoaded && tags !== null && tags.length === 0 &&
-                <div className="pt-1">
+                <div className="pt-1 px-3">
                     <p className="text-gray-500">結果なし</p>
                 </div>
             }
