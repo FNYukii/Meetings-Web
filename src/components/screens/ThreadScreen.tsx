@@ -7,8 +7,8 @@ import Comment from "../../types/Comment"
 import CommentRow from "../parts/CommentRow"
 import Thread from "../../types/Thread"
 import FireThread from "../../utilities/FireThread"
-import progress from "../../images/progress.svg"
 import BackButton from "../parts/BackButton"
+import ProgressImage from "../parts/ProgressImage"
 
 export default function ThreadScreen() {
     
@@ -71,7 +71,7 @@ export default function ThreadScreen() {
 
             {!isLoadedComments &&
                 <div className='flex justify-center p-3'>
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 </div>
             }
 

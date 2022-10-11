@@ -3,8 +3,8 @@ import { useEffect, useState } from "react"
 import Thread from "../../types/Thread"
 import { db } from "../../utilities/firebase"
 import FireThread from "../../utilities/FireThread"
-import progress from "../../images/progress.svg"
 import ThreadRow from "./ThreadRow"
+import ProgressImage from "./ProgressImage"
 
 export default function ThreadsRecentlyCommentedList() {
 
@@ -47,7 +47,7 @@ export default function ThreadsRecentlyCommentedList() {
         <div>
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 </div>
             }
 

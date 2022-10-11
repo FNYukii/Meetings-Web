@@ -9,9 +9,9 @@ import CommentImagesGrid from "../parts/CommentImagesGrid"
 import UserDisplayNameSpan from "../parts/UserDisplayNameSpan"
 import UserIconNavLink from "../parts/UserIconNavLink"
 import UserUserTagSpan from "../parts/UserUserTagSpan"
-import progress from "../../images/progress.svg"
 import CommentThreadTitle from "../parts/CommentThreadTitle"
 import CommentLikeButton from "../parts/CommentLikeButton"
+import ProgressImage from "../parts/ProgressImage"
 
 export default function CommentScreen() {
 
@@ -44,7 +44,7 @@ export default function CommentScreen() {
 
             {!isLoaded &&
                 <div className='flex justify-center'>
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 </div>
             }
 

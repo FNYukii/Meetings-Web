@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
-import progress from "../../images/progress.svg"
 import CommentRow from "./CommentRow"
+import ProgressImage from "./ProgressImage"
 
 export default function CommentsPostedByUserList() {
 
@@ -26,7 +26,7 @@ export default function CommentsPostedByUserList() {
         <div>
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 </div>
             }
 

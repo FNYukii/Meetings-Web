@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
 import BackButton from "../parts/BackButton"
-import progress from "../../images/progress.svg"
 import UserIcon from "../parts/UserIcon"
 import UserMenu from "../parts/UserMenu"
 import CommentsPostedByUserList from "../parts/CommentsPostedByUserList"
 import CommentsLikedByUserList from "../parts/CommentsLikedByUserList"
+import ProgressImage from "../parts/ProgressImage"
 
 export default function UserScreen() {
 
@@ -52,7 +52,7 @@ export default function UserScreen() {
 
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 </div>
             }
 

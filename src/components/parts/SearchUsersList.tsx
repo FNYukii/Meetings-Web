@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
-import progress from "../../images/progress.svg"
+import ProgressImage from "./ProgressImage"
 import UserRow from "./UserRow"
 
 export default function SearchUsersList(props: { keyword: string, className?: string }) {
@@ -28,7 +28,7 @@ export default function SearchUsersList(props: { keyword: string, className?: st
 
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 </div>
             }
 

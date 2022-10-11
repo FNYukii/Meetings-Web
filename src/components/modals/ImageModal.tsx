@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
-import progress from "../../images/progress.svg"
+import ProgressImage from "../parts/ProgressImage"
 
 export default function ImageModal(props: { className?: string }) {
 
@@ -33,7 +33,7 @@ export default function ImageModal(props: { className?: string }) {
             <div className="absolute">
 
                 {!isLoaded &&
-                    <img src={progress} alt='loading' />
+                    <ProgressImage/>
                 }
 
                 {isLoaded && comment === null &&
