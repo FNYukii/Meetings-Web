@@ -17,7 +17,7 @@ export default function RecentTagMenu(props: { tag: string, setIsShow: React.Dis
     }
 
     function makeUninterested() {
-
+        
         // 興味なしtagsをlocalStorageから取得
         let uninterestedTags: string[] = []
         const uninterestedTagsJson = localStorage.getItem('uninterestedTagsJson')

@@ -59,7 +59,7 @@ export default function RecentTagsCard() {
             }
 
             {isLoaded && tags !== null && tags.length === 0 &&
-                <div className="pt-1">
+                <div className="pt-1 px-3">
                     <p className="text-gray-500">結果なし</p>
                 </div>
             }
