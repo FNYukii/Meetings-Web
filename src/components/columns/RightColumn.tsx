@@ -1,9 +1,6 @@
-import { Link, useLocation } from "react-router-dom";
 import RecentTagsCard from "../parts/RecentTagsCard";
 
 export default function RightColumn() {
-
-    const location = useLocation()
 
     return (
         <div className='xl:w-1/4 md:w-4/12 md:block hidden'>
