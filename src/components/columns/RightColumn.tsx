@@ -1,6 +1,9 @@
+import { Link, useLocation } from "react-router-dom";
 import RecentTagsCard from "../parts/RecentTagsCard";
 
 export default function RightColumn() {
+
+    const location = useLocation()
 
     return (
         <div className='xl:w-1/4 md:w-4/12 md:block hidden'>
@@ -13,6 +16,8 @@ export default function RightColumn() {
 
                     <span>Copyright <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source code</a>
+
+                    <Link to="/images/:imageUrl" state={{ previousPath: location.pathname }}>Image</Link>
                 </p>
             </div>
         </div>
