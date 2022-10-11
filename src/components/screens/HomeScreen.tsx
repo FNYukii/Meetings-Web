@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ImageModal from '../modals/ImageModal'
 import HomeMenu from '../parts/HomeMenu'
 import ThreadsRecentlyCommentedList from '../parts/ThreadsRecentlyCommentedList'
 import ThreadsRecentlyCreatedList from '../parts/ThreadsRecentlyCreatedList'
@@ -29,6 +30,8 @@ export default function HomeScreen() {
             {selection === 1 &&
                 <ThreadsRecentlyCommentedList />
             }
+
+            <ImageModal/>
         </div >
     )
 }
