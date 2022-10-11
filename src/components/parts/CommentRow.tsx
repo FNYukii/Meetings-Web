@@ -35,7 +35,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
 
                 <p className="ml-3 mr-3">{props.comment.text}</p>
 
-                <CommentImagesGrid imageUrls={props.comment.imageUrls} className="mx-3"/>
+                <CommentImagesGrid comment={props.comment} className="mx-3"/>
 
                 {props.showThreadTitle &&
                     <div className="mt-1 mx-3">
