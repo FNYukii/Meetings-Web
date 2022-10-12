@@ -19,7 +19,7 @@ export default function LeftColumn() {
 
                             {({ isActive }) => (
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
                                     <AiFillHome className={`text-3xl ${isActive ? "block": "hidden"}`}/>
                                     <AiOutlineHome className={`text-3xl ${isActive ? "hidden": "block"}`}/>
@@ -32,7 +32,7 @@ export default function LeftColumn() {
                             
                             {({ isActive }) => (
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
                                     <HiSearch className={`text-3xl ${isActive ? "block": "hidden"}`}/>
                                     <HiOutlineSearch className={`text-3xl ${isActive ? "hidden": "block"}`}/>
@@ -45,7 +45,7 @@ export default function LeftColumn() {
 
                             {({ isActive }) => (
                                 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
                                     <AiOutlineLogin className={`text-3xl`}/>
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "" : ""}`}>サインイン</span>

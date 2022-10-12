@@ -32,7 +32,7 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
             {!isLoaded &&
                 <div className="flex">
 
-                    <button className="z-10 flex items-center p-1 rounded-full pointer-events-auto hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={() => console.log("hello")}>
+                    <button className="z-10 flex items-center p-1 rounded-full pointer-events-auto hover:bg-zinc-100 dark:hover:bg-zinc-900" onClick={() => console.log("hello")}>
                         <AiOutlineHeart className="text-xl text-gray-500 " />
                         <span className="text-gray-500 ml-1">0</span>
                     </button>
@@ -48,7 +48,7 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
             {isLoaded && likedUsers !== null &&
                 <div className="flex">
 
-                    <button className="z-10 flex items-center p-1 rounded-full pointer-events-auto hover:bg-zinc-100 dark:hover:bg-zinc-800" onClick={() => console.log("hello")}>
+                    <button className="z-10 flex items-center p-1 rounded-full pointer-events-auto hover:bg-zinc-100 dark:hover:bg-zinc-900" onClick={() => console.log("hello")}>
                         <AiOutlineHeart className="text-xl text-gray-500 " />
                         <span className="text-gray-500 ml-1">{likedUsers?.length ?? "0"}</span>
                     </button>

@@ -18,7 +18,7 @@ export default function HomeMenu(props: { selection: number, setSelection: React
     }
 
     const menuButton = (
-        <MenuButton className="hover:bg-zinc-300/30 dark:hover:bg-zinc-700/70 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
+        <MenuButton className="hover:bg-zinc-300/30 dark:hover:bg-zinc-700/50 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
             <VscEllipsis className="text-3xl" />
         </MenuButton>
     )

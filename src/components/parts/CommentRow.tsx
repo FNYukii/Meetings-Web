@@ -43,7 +43,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
 
                     {props.showThreadTitle &&
                         <div className="mt-1 mx-3">
-                            <CommentThreadTitle threadId={props.comment.threadId} />
+                            <CommentThreadTitle threadId={props.comment.threadId} className="pointer-events-auto" />
                         </div>
                     }
 
