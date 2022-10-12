@@ -10,14 +10,13 @@ import ImageModal from '../modals/ImageModal'
 import ReportModal from '../modals/ReportModal'
 
 export default function CenterColumn() {
-
-    const location = useLocation()
-    const state = location.state as { previousPath?: string }
-
+    
     // 現在アドレスバーに入力されているURL
+    const location = useLocation()
     const currentPath = location.pathname
 
     // ひとつ前のページのURL or ホームのURL
+    const state = location.state as { previousPath?: string }
     const previousPath: string | undefined = state?.previousPath ?? "/"
 
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
