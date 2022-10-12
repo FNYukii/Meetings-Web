@@ -8,6 +8,9 @@ export default function ImageModal(props: { className?: string }) {
 
     document.title = "画像 - Meetings"
 
+    const body = document.body
+    body.style.overflowY = "hidden"
+
     const navigate = useNavigate()
     const { commentId, imageNumber } = useParams()
 
@@ -25,10 +28,15 @@ export default function ImageModal(props: { className?: string }) {
         // eslint-disable-next-line
     }, [])
 
+    function closeModal() {
+        body.style.overflowY = ""
+        navigate(-1)
+    }
+
     return (
         <div className={`${props.className} z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center`}>
 
-            <div className="w-full h-full bg-black/80" onClick={() => navigate(-1)}></div>
+            <div className="w-full h-full bg-black/80" onClick={closeModal}></div>
 
             <div className="absolute">
 
