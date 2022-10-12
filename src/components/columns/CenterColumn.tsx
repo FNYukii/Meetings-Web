@@ -7,6 +7,7 @@ import SearchScreen from '../screens/SearchScreen'
 import CommentScreen from '../screens/CommentScreen'
 import UserScreen from '../screens/UserScreen'
 import ImageModal from '../modals/ImageModal'
+import ReportModal from '../modals/ReportModal'
 
 export default function CenterColumn() {
 
@@ -18,11 +19,14 @@ export default function CenterColumn() {
 
     // ひとつ前のページのURL or ホームのURL
     const previousPath: string | undefined = state?.previousPath ?? "/"
+
+    const isShowImageModal = currentPath.includes("/images")
+    const isShowReportModal = currentPath.includes("/report")
     
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
 
-            <Routes location={currentPath.includes("/images/") ? previousPath : currentPath}>
+            <Routes location={isShowImageModal || isShowReportModal ? previousPath : currentPath}>
 
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
@@ -33,7 +37,9 @@ export default function CenterColumn() {
             </Routes>
 
             <Routes>
+
                 <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
+                <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
             </Routes>
         </div>
     )
