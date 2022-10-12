@@ -19,14 +19,14 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
 
     const menuButton = (
         <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
-            <VscEllipsis className={`${props.iconClassName}`} />
+            <VscEllipsis className={`${props.iconClassName} pointer-events-auto`} />
         </MenuButton>
     )
 
     return (
         <div className="z-10">
 
-            <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
+            <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
                 <MenuItem>コメントを報告</MenuItem>
             </Menu>
         </div>

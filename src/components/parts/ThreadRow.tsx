@@ -35,7 +35,7 @@ export default function ThreadRow(props: { thread: Thread }) {
 
                     <div className="flex justify-between mr-2">
                         <span className="font-bold">{props.thread.title}</span>
-                        <ThreadMenu thread={props.thread} iconClassName="pointer-events-auto" />
+                        <ThreadMenu thread={props.thread}/>
                     </div>
 
                     <div className="mr-3">
