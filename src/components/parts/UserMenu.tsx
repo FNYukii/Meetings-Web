@@ -1,9 +1,12 @@
 import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import { useState } from "react";
 import { VscEllipsis } from "react-icons/vsc";
+import { Link, useLocation } from "react-router-dom";
 import User from "../../types/User";
 
-export default function UserMenu(props: {user: User}) {
+export default function UserMenu(props: { user: User }) {
+
+    const location = useLocation()
 
     const [isDark, setIsDark] = useState(false)
 
@@ -25,7 +28,9 @@ export default function UserMenu(props: {user: User}) {
         <div className="z-10">
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-                <MenuItem>ユーザーを報告</MenuItem>
+                <MenuItem>
+                    <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }}>ユーザーを報告</Link>
+                </MenuItem>
             </Menu>
         </div>
     )

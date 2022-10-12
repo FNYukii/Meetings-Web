@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { AiOutlineClose } from "react-icons/ai"
 import { useNavigate, useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
@@ -56,7 +55,7 @@ export default function ImageModal(props: { className?: string }) {
             </div>
 
             <button onClick={closeModal} className="absolute top-0 left-0 m-3 p-3 hover:bg-white/20 rounded-full">
-                <MdOutlineClose className="text-2xl"/>
+                <MdOutlineClose className="text-2xl text-white"/>
             </button>
         </div>
     )

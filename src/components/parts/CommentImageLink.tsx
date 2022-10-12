@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import Comment from "../../types/Comment";
 
-export default function CommentImageNavLink(props: { comment: Comment, imageIndex: number }) {
+export default function CommentImageLink(props: { comment: Comment, imageIndex: number }) {
 
     const location = useLocation()
 
