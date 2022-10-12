@@ -18,7 +18,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
 
             <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-100 dark:hover:bg-zinc-900" />
 
-            <div className="z-10 flex pt-3 pb-1 pl-3">
+            <div className="flex pt-3 pb-1 pl-3">
 
                 <UserIconNavLink userId={props.comment.userId} />
 
