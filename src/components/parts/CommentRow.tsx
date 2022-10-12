@@ -14,13 +14,15 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
     return (
         <div className="relative">
 
-            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-white/10" />
+            {/* <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-white/10" /> */}
 
-            <div className="flex pt-3 pb-1 pl-3">
+            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-100 dark:hover:bg-zinc-900" />
+
+            <div className="z-10 flex pt-3 pb-1 pl-3">
 
                 <UserIconNavLink userId={props.comment.userId} />
 
-                <div className="w-full">
+                <div className="w-full z-10 pointer-events-none">
 
                     <div className="ml-3 mr-2 flex justify-between items-center">
 
@@ -32,7 +34,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
                             <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                         </div>
 
-                        <CommentMenu comment={props.comment} iconClassName="text-xl text-gray-500" />
+                        <CommentMenu comment={props.comment} iconClassName="text-xl text-gray-500 pointer-events-auto" />
                     </div>
 
                     <p className="ml-3 mr-3">{props.comment.text}</p>

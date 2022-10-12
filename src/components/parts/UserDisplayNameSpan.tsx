@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import User from "../../types/User"
 import FireUser from "../../utilities/FireUser"
 
-export default function UserDisplayNameSpan(props: {userId: string}) {
+export default function UserDisplayNameSpan(props: {userId: string, className?: string}) {
 
     const [user, setUser] = useState<User | null>()
 
@@ -17,6 +17,6 @@ export default function UserDisplayNameSpan(props: {userId: string}) {
     }, [])
 
     return (
-        <span className="font-bold">{user?.displayName}</span>
+        <span className={`font-bold ${props.className}`}>{user?.displayName}</span>
     )
 }
