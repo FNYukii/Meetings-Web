@@ -24,14 +24,14 @@ export default function ReportModal(props: { className?: string }) {
 
             <div className="absolute bg-white p-6 rounded-xl">
 
-                <p className="text-xl">
+                <h2 className="text-2xl">
 
                     <span>
                         {collectionName === "threads" &&
                             <span>スレッド</span>
                         }
 
-                        {collectionName === "commments" &&
+                        {collectionName === "comments" &&
                             <span>コメント</span>
                         }
 
@@ -41,10 +41,11 @@ export default function ReportModal(props: { className?: string }) {
                     </span>
 
                     <span>を報告</span>
-                </p>
+                </h2>
 
-                <p>collection: {collectionName}</p>
-                <p>documentId: {documentId}</p>
+                <h3 className="text-xl">種類を選択</h3>
+                
+                <h3 className="text-xl">詳細を入力</h3>
             </div>
         </div>
     )
