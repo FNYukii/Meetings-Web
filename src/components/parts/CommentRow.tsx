@@ -12,39 +12,45 @@ import CommentLikeButton from "./CommentLikeButton"
 export default function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
 
     return (
-        <div className="flex pt-3 pb-1 pl-3 relative">
+        <div className="relative">
 
             <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-white/10" />
 
-            <UserIconNavLink userId={props.comment.userId} />
+            <div className="flex pt-3 pb-1 pl-3">
 
-            <div className="w-full">
+                <UserIconNavLink userId={props.comment.userId} />
 
-                <div className="ml-3 mr-2 flex justify-between items-center">
+                <div className="w-full">
 
-                    <div>
-                        <UserDisplayNameSpan userId={props.comment.userId} />
+                    <div className="ml-3 mr-2 flex justify-between items-center">
 
-                        <UserUserTagSpan userId={props.comment.userId} className="ml-3"/>
+                        <div>
+                            <UserDisplayNameSpan userId={props.comment.userId} />
 
-                        <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
+                            <UserUserTagSpan userId={props.comment.userId} className="ml-3" />
+
+                            <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
+                        </div>
+
+                        <CommentMenu comment={props.comment} iconClassName="text-xl text-gray-500" />
                     </div>
 
-                    <CommentMenu comment={props.comment} iconClassName="text-xl text-gray-500" />
+                    <p className="ml-3 mr-3">{props.comment.text}</p>
+
+                    <CommentImagesGrid comment={props.comment} className="mx-3" />
+
+                    {props.showThreadTitle &&
+                        <div className="mt-1 mx-3">
+                            <CommentThreadTitle threadId={props.comment.threadId} />
+                        </div>
+                    }
+
+                    <CommentLikeButton comment={props.comment} isReadFromSeaver={false} className="ml-2 mr-3" />
                 </div>
 
-                <p className="ml-3 mr-3">{props.comment.text}</p>
-
-                <CommentImagesGrid comment={props.comment} className="mx-3"/>
-
-                {props.showThreadTitle &&
-                    <div className="mt-1 mx-3">
-                        <CommentThreadTitle threadId={props.comment.threadId} />
-                    </div>
-                }
-
-                <CommentLikeButton comment={props.comment} isReadFromSeaver={false} className="ml-2 mr-3"/>
             </div>
+
+
         </div>
     )
 }
