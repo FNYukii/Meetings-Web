@@ -20,7 +20,7 @@ export default function CenterColumn() {
     const previousPath: string | undefined = state?.previousPath ?? "/"
 
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
-    const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20}$/)
+    const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
 
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>

@@ -4,8 +4,11 @@ import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 import Comment from "../../types/Comment"
+import { Link, useLocation } from 'react-router-dom'
 
 export default function CommentMenu(props: { comment: Comment, iconClassName?: string }) {
+
+    const location = useLocation()
 
     const [isDark, setIsDark] = useState(false)
 
@@ -27,7 +30,9 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
         <div className="z-10">
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
-                <MenuItem>コメントを報告</MenuItem>
+                <MenuItem>
+                    <Link to={`/report/comments/${props.comment.id}`} state={{ previousPath: location.pathname }}>コメントを報告</Link>
+                </MenuItem>
             </Menu>
         </div>
     )
