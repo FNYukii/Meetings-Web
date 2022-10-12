@@ -20,9 +20,9 @@ export default function CenterColumn() {
     // ひとつ前のページのURL or ホームのURL
     const previousPath: string | undefined = state?.previousPath ?? "/"
 
-    const isShowImageModal = currentPath.includes("/images")
-    const isShowReportModal = currentPath.includes("/report")
-    
+    const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
+    const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20}$/)
+
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
 
@@ -38,8 +38,13 @@ export default function CenterColumn() {
 
             <Routes>
 
-                <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
-                <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
+                {isShowImageModal &&
+                    <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
+                }
+
+                {isShowReportModal &&
+                    <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
+                }
             </Routes>
         </div>
     )
