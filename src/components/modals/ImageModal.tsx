@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
+import { AiOutlineClose } from "react-icons/ai"
 import { useNavigate, useParams } from "react-router-dom"
 import Comment from "../../types/Comment"
 import FireComment from "../../utilities/FireComment"
 import ProgressImage from "../parts/ProgressImage"
+import { MdOutlineClose } from "react-icons/md"
 
 export default function ImageModal(props: { className?: string }) {
 
@@ -52,6 +54,10 @@ export default function ImageModal(props: { className?: string }) {
                     <img src={comment.imageUrls[(parseInt(imageNumber!) - 1)]} alt="" />
                 }
             </div>
+
+            <button onClick={closeModal} className="absolute top-0 left-0 m-3 p-3 hover:bg-white/20 rounded-full">
+                <MdOutlineClose className="text-2xl"/>
+            </button>
         </div>
     )
 }
