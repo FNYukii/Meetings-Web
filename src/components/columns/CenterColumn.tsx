@@ -12,12 +12,17 @@ export default function CenterColumn() {
 
     const location = useLocation()
     const state = location.state as { previousPath?: string }
+
+    // 現在アドレスバーに入力されているURL
+    const currentPath = location.pathname
+
+    // ひとつ前のページのURL or ホームのURL
     const previousPath: string | undefined = state?.previousPath ?? "/"
     
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
 
-            <Routes location={location.pathname.includes("/images/") ? previousPath : location.pathname}>
+            <Routes location={currentPath.includes("/images/") ? previousPath : currentPath}>
 
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
