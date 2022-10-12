@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom"
 
 export default function ReportModal(props: { className?: string }) {
 
+    document.title = "報告 - Meetings"
+
     const navigate = useNavigate()
 
     const { collectionName, documentId } = useParams()
