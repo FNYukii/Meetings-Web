@@ -16,7 +16,7 @@ export default function ReportModal(props: { className?: string }) {
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
 
-            <div className="w-full h-full bg-black/80" onClick={closeModal}></div>
+            <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={closeModal}></div>
 
             <div className="absolute bg-white p-3">
                 <p>hello</p>
