@@ -16,7 +16,7 @@ export default function CenterColumn() {
     const location = useLocation()
     const keyword = (new URLSearchParams(location.search)).get("keyword")
     const currentPath = location.pathname
-    const currentPathWithQueryParam = keyword === null ? currentPath : `${currentPath}?keyword=${keyword}`
+    const currentUrl = keyword === null ? currentPath : `${currentPath}?keyword=${keyword}`
 
     // ひとつ前のページのURL or ホームのURL
     const state = location.state as { previousPath?: string }
@@ -32,7 +32,7 @@ export default function CenterColumn() {
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
 
-            <Routes location={isShowModal ? previousPath : currentPathWithQueryParam}>
+            <Routes location={isShowModal ? previousPath : currentUrl}>
 
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
