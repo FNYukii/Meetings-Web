@@ -1,20 +1,34 @@
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
+import FireReports from "../../utilities/FireReports"
 
 export default function ReportModal(props: { className?: string }) {
 
     const navigate = useNavigate()
-    // eslint-disable-next-line
     const { collectionName, documentId } = useParams()
     const body = document.body
 
-    // eslint-disable-next-line
-    const [radioSelection, setRadioSelection] = useState<number | null>(null)
-
+    const [probremIndex, setProbremIndex] = useState<number | null>(null)
+    const [detail, setDetail] = useState("")
+    
     function closeModal() {
         body.style.overflowY = ""
         navigate(-1)
+    }
+
+    function create() {
+
+        if (probremIndex === null) {
+            return
+        }
+
+        const result = FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
+
+        if (result !== null) {
+            alert("報告を送信しました。")
+            closeModal()
+        }
     }
 
     useEffect(() => {
@@ -53,39 +67,40 @@ export default function ReportModal(props: { className?: string }) {
                 </h2>
 
                 <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
+
                     <legend className="text-xl">カテゴリ</legend>
 
                     <div className="mt-2 ml-1">
-                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
+                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(0)} />
                         <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(1)} />
+                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(1)} />
                         <label htmlFor="radio02" className="pl-3 cursor-pointer">センシティブ</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(2)} />
+                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(2)} />
                         <label htmlFor="radio03" className="pl-3 cursor-pointer">スパム</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(3)} />
+                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(3)} />
                         <label htmlFor="radio04" className="pl-3 cursor-pointer">事実に反する</label>
                     </div>
                 </fieldset>
 
                 <fieldset className="mt-5 mx-3">
+
                     <legend className="text-xl">詳細</legend>
 
-                    <textarea placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
+                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">
-                    <button className="font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900">送信</button>
+                    <button onClick={() => create()} disabled={probremIndex === null || detail === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex !== null && detail !== "" ? "" : "text-gray-500 hover:bg-transparent"}`}>送信</button>
                 </div>
-
             </div>
         </div>
     )
