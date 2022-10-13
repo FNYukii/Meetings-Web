@@ -5,9 +5,11 @@ import { useNavigate, useParams } from "react-router-dom"
 export default function ReportModal(props: { className?: string }) {
 
     const navigate = useNavigate()
+    // eslint-disable-next-line
     const { collectionName, documentId } = useParams()
     const body = document.body
 
+    // eslint-disable-next-line
     const [radioSelection, setRadioSelection] = useState(0)
 
     function closeModal() {
@@ -18,7 +20,7 @@ export default function ReportModal(props: { className?: string }) {
     useEffect(() => {
         document.title = "報告 - Meetings"
         body.style.overflowY = "hidden"
-    }, [])
+    })
 
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
