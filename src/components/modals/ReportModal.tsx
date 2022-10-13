@@ -9,7 +9,7 @@ export default function ReportModal(props: { className?: string }) {
     const { collectionName, documentId } = useParams()
     const body = document.body
 
-    const [radioSelection, setRadioSelection] = useState<number | null>(null)
+    const [probremIndex, setProbremIndex] = useState<number | null>(null)
     const [detail, setDetail] = useState("")
 
     function closeModal() {
@@ -19,11 +19,11 @@ export default function ReportModal(props: { className?: string }) {
 
     function create() {
 
-        if (radioSelection === null) {
+        if (probremIndex === null) {
             return
         }
 
-        const result = FireReports.createReport(documentId!, collectionName!, radioSelection, detail)
+        const result = FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
 
         if (result !== null) {
             closeModal()
@@ -69,22 +69,22 @@ export default function ReportModal(props: { className?: string }) {
                     <legend className="text-xl">カテゴリ</legend>
 
                     <div className="mt-2 ml-1">
-                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
+                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(0)} />
                         <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(1)} />
+                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(1)} />
                         <label htmlFor="radio02" className="pl-3 cursor-pointer">センシティブ</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(2)} />
+                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(2)} />
                         <label htmlFor="radio03" className="pl-3 cursor-pointer">スパム</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(3)} />
+                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(3)} />
                         <label htmlFor="radio04" className="pl-3 cursor-pointer">事実に反する</label>
                     </div>
                 </fieldset>
@@ -96,7 +96,7 @@ export default function ReportModal(props: { className?: string }) {
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">
-                    <button onClick={() => create()} className="font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900">送信</button>
+                    <button onClick={() => create()} disabled={probremIndex === null || detail === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex !== null && detail !== "" ? "" : "text-gray-500 hover:bg-transparent"}`}>送信</button>
                 </div>
             </div>
         </div>
