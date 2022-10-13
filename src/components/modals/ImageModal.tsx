@@ -11,6 +11,8 @@ export default function ImageModal(props: { className?: string }) {
     const navigate = useNavigate()
     const { commentId, imageNumber } = useParams()
 
+    const imageIndex = parseInt(imageNumber!) - 1
+
     const [comment, setComment] = useState<Comment | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -44,6 +46,10 @@ export default function ImageModal(props: { className?: string }) {
 
                 {isLoaded && comment === null &&
                     <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
+                }
+
+                {isLoaded && comment !== null && comment.imageUrls[imageIndex] === undefined &&
+                    <p className="text-gray-500 text-center">画像が存在しません。</p>
                 }
 
                 {isLoaded && comment !== null &&
