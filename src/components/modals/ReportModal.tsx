@@ -25,7 +25,7 @@ export default function ReportModal(props: { className?: string }) {
 
             <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={closeModal}></div>
 
-            <div className="absolute bg-white dark:bg-black pt-3 pb-6 pl-3 pr-6 rounded-xl width-600">
+            <div className="absolute bg-white dark:bg-black pt-3 pb-3 pl-3 pr-3 rounded-xl width-600">
 
                 <button onClick={closeModal} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
@@ -74,12 +74,15 @@ export default function ReportModal(props: { className?: string }) {
                     </div>
                 </fieldset>
 
-                <fieldset className="mt-5 ml-3">
+                <fieldset className="mt-5 mx-3">
                     <legend className="text-xl">詳細</legend>
 
                     <textarea placeholder="報告する理由を詳しく入力してください" className="resize-none mt-3 p-3 border rounded-md border-gray-500 placeholder:text-gray-500 w-full" />
                 </fieldset>
 
+                <div className="mt-3 flex justify-end">
+                    <button className="font-bold p-3 rounded-md hover:bg-zinc-100">送信</button>
+                </div>
 
             </div>
         </div>
