@@ -11,7 +11,7 @@ export default function ReportModal(props: { className?: string }) {
 
     const [probremIndex, setProbremIndex] = useState<number | null>(null)
     const [detail, setDetail] = useState("")
-
+    
     function closeModal() {
         body.style.overflowY = ""
         navigate(-1)
@@ -66,6 +66,7 @@ export default function ReportModal(props: { className?: string }) {
                 </h2>
 
                 <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
+
                     <legend className="text-xl">カテゴリ</legend>
 
                     <div className="mt-2 ml-1">
@@ -90,6 +91,7 @@ export default function ReportModal(props: { className?: string }) {
                 </fieldset>
 
                 <fieldset className="mt-5 mx-3">
+
                     <legend className="text-xl">詳細</legend>
 
                     <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
