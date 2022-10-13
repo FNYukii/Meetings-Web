@@ -1,21 +1,21 @@
+import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
 export default function ReportModal(props: { className?: string }) {
 
-    document.title = "報告 - Meetings"
-
     const navigate = useNavigate()
-
     const { collectionName, documentId } = useParams()
-
     const body = document.body
-    body.style.overflowY = "hidden"
 
     function closeModal() {
         body.style.overflowY = ""
-
         navigate(-1)
     }
+    
+    useEffect(() => {
+        document.title = "報告 - Meetings"
+        body.style.overflowY = "hidden"
+    }, [])
 
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
