@@ -49,7 +49,7 @@ export default function SearchScreen() {
                         <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onFocus={() => setIsSearchBarFocused(true)} onBlur={() => setIsSearchBarFocused(false)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 outline-blue-500 rounded-full"/>
 
                         {isSearchBarFocused &&
-                            <button onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-blue-500 rounded-full hover:bg-blue-400">
+                            <button onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-blue-500 rounded-full hover:opacity-60">
                                 <MdOutlineClose className="text-white" />
                             </button>
                         }
