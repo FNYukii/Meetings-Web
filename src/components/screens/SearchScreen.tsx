@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { MdOutlineClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import BackButton from "../parts/BackButton";
@@ -26,7 +27,7 @@ export default function SearchScreen() {
         } else {
             navigate(`/search?keyword=${keyword}`)
         }
-     }
+    }
 
     useEffect(() => {
         setKeyword(searchedKeyword ?? "")
@@ -43,8 +44,13 @@ export default function SearchScreen() {
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <form className="z-10 w-full ml-3" onSubmit={(e) => onSubmit(e)}>
-                        <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 rounded-full" />
+                    <form onSubmit={(e) => onSubmit(e)} className="z-10 w-full ml-3 relative flex items-center">
+
+                        <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 rounded-full"/>
+
+                        <button onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-gray-500 rounded-full hover:opacity-60">
+                            <MdOutlineClose className="text-white" />
+                        </button>
                     </form>
                 </div>
             </div>
