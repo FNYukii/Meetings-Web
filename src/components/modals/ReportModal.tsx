@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
+import FireReports from "../../utilities/FireReports"
 
 export default function ReportModal(props: { className?: string }) {
 
@@ -9,12 +10,25 @@ export default function ReportModal(props: { className?: string }) {
     const { collectionName, documentId } = useParams()
     const body = document.body
 
-    // eslint-disable-next-line
     const [radioSelection, setRadioSelection] = useState<number | null>(null)
+    const [detail, setDetail] = useState("")
 
     function closeModal() {
         body.style.overflowY = ""
         navigate(-1)
+    }
+
+    function create() {
+
+        if (radioSelection === null) {
+            return
+        }
+
+        const result = FireReports.createReport(documentId!, collectionName!, radioSelection, detail)
+
+        if (result !== null) {
+            closeModal()
+        }
     }
 
     useEffect(() => {
@@ -79,11 +93,11 @@ export default function ReportModal(props: { className?: string }) {
                 <fieldset className="mt-5 mx-3">
                     <legend className="text-xl">詳細</legend>
 
-                    <textarea placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
+                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">
-                    <button className="font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900">送信</button>
+                    <button onClick={() => create()} className="font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900">送信</button>
                 </div>
 
             </div>
