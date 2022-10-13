@@ -8,6 +8,7 @@ import CommentScreen from '../screens/CommentScreen'
 import UserScreen from '../screens/UserScreen'
 import ImageModal from '../modals/ImageModal'
 import ReportModal from '../modals/ReportModal'
+import EmptyModal from '../modals/EmptyModal'
 
 export default function CenterColumn() {
 
@@ -26,7 +27,7 @@ export default function CenterColumn() {
 
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
-            
+
             <Routes location={isShowModal ? previousPath : currentPath}>
 
                 <Route path='/' element={<HomeScreen />} />
@@ -41,6 +42,7 @@ export default function CenterColumn() {
 
                 <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
                 <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
+                <Route path='*' element={<EmptyModal/>}/>
             </Routes>
         </div>
     )
