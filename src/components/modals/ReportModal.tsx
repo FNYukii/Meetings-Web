@@ -24,7 +24,7 @@ export default function ReportModal(props: { className?: string }) {
 
             <div className="absolute bg-white p-6 rounded-xl">
 
-                <h2 className="text-2xl">
+                <h2 className="text-2xl font-bold">
 
                     <span>
                         {collectionName === "threads" &&
@@ -43,9 +43,24 @@ export default function ReportModal(props: { className?: string }) {
                     <span>を報告</span>
                 </h2>
 
-                <h3 className="text-xl">種類を選択</h3>
-                
-                <h3 className="text-xl">詳細を入力</h3>
+                <fieldset className="mt-2 flex gap-1 flex-col">
+                    <legend className="text-xl">カテゴリを選択</legend>
+
+                    <div>
+                        <input type="radio" id="alpha" name="drone" className="p-3 cursor-pointer scale-125" />
+                        <label htmlFor="alpha" className="pl-3 cursor-pointer">alpha</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="bravo" name="drone" className="p-3 cursor-pointer scale-125" />
+                        <label htmlFor="bravo" className="pl-3 cursor-pointer">bravo</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="charlie" name="drone" className="p-3 cursor-pointer scale-125" />
+                        <label htmlFor="charlie" className="pl-3 cursor-pointer">charlie</label>
+                    </div>
+                </fieldset>
             </div>
         </div>
     )
