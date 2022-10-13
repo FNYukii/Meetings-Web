@@ -15,18 +15,18 @@ export default function SearchScreen() {
 
     const navigate = useNavigate()
 
-    function onSearchBarKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
-        if (e.code !== "Enter") {
-            return
-        }
+        // フォーム送信を無効
+        e.preventDefault()
 
+        // 検索結果画面へルーティング
         if (keyword === "") {
             navigate("/search")
         } else {
             navigate(`/search?keyword=${keyword}`)
         }
-    }
+     }
 
     useEffect(() => {
         setKeyword(searchedKeyword ?? "")
@@ -38,12 +38,14 @@ export default function SearchScreen() {
                 <div className='relative h-14 pl-1 pr-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
 
                     {searchedKeyword !== null &&
-                        <BackButton className=""/>
+                        <BackButton className="" />
                     }
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                    <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={(e) => onSearchBarKeyDown(e)} placeholder="キーワード" autoComplete="off" className="z-10 w-full bg-zinc-100 dark:bg-zinc-800 ml-2 py-2 px-4 rounded-full"/>
+                    <form className="z-10 w-full ml-3" onSubmit={(e) => onSubmit(e)}>
+                        <input type="search" name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 rounded-full" />
+                    </form>
                 </div>
             </div>
 
