@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import FireUser from "../../utilities/FireUser"
-import User from "../../types/User"
+import User from "../../entities/User"
 
 export default function UserIconNavLink(props: { userId: string }) {
 

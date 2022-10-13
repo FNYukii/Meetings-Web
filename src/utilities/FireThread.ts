@@ -1,4 +1,4 @@
-import Thread from '../types/Thread'
+import Thread from '../entities/Thread'
 
 import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt } from "firebase/firestore"
 import { db } from './firebase'

@@ -2,7 +2,7 @@ import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import { useState } from "react";
 import { VscEllipsis } from "react-icons/vsc";
 import { Link, useLocation } from "react-router-dom";
-import User from "../../types/User";
+import User from "../../entities/User";
 
 export default function UserMenu(props: { user: User }) {
 

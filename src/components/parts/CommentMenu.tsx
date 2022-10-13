@@ -3,7 +3,7 @@ import { VscEllipsis } from 'react-icons/vsc'
 import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
-import Comment from "../../types/Comment"
+import Comment from "../../entities/Comment"
 import { Link, useLocation } from 'react-router-dom'
 
 export default function CommentMenu(props: { comment: Comment, iconClassName?: string }) {

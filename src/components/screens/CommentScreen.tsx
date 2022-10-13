@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Comment from "../../types/Comment"
+import Comment from "../../entities/Comment"
 import ExDate from "../../utilities/ExDate"
 import FireComment from "../../utilities/FireComment"
 import BackButton from "../parts/BackButton"

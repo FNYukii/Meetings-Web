@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import Comment from "../../types/Comment"
+import Comment from "../../entities/Comment"
 import FireComment from "../../utilities/FireComment"
 import ProgressImage from "../parts/ProgressImage"
 import { MdOutlineClose } from "react-icons/md"

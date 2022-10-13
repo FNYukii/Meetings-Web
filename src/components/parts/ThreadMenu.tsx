@@ -1,4 +1,4 @@
-import Thread from "../../types/Thread"
+import Thread from "../../entities/Thread"
 import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
 import { VscEllipsis } from 'react-icons/vsc'
 import '@szhsin/react-menu/dist/index.css'

@@ -1,6 +1,6 @@
 import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestore"
 import { useEffect, useState } from "react"
-import Thread from "../../types/Thread"
+import Thread from "../../entities/Thread"
 import { db } from "../../utilities/firebase"
 import FireThread from "../../utilities/FireThread"
 import ThreadRow from "./ThreadRow"

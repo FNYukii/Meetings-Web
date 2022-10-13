@@ -1,4 +1,4 @@
-import Comment from "../../types/Comment"
+import Comment from "../../entities/Comment"
 import UserDisplayNameSpan from "./UserDisplayNameSpan"
 import UserIconNavLink from "./UserIconNavLink"
 import UserUserTagSpan from "./UserUserTagSpan"

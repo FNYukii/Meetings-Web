@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import User from "../../types/User";
+import User from "../../entities/User";
 import UserDisplayNameSpan from "./UserDisplayNameSpan";
 import UserIcon from "./UserIcon";
 import UserUserTagSpan from "./UserUserTagSpan";

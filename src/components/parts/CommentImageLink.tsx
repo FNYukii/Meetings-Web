@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import Comment from "../../types/Comment";
+import Comment from "../../entities/Comment";
 
 export default function CommentImageLink(props: { comment: Comment, imageIndex: number }) {
 

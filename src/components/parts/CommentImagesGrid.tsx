@@ -1,4 +1,4 @@
-import Comment from "../../types/Comment";
+import Comment from "../../entities/Comment";
 import CommentImageLink from "./CommentImageLink";
 
 export default function CommentImagesGrid(props: { comment: Comment, className?: string }) {

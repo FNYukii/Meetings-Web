@@ -1,5 +1,5 @@
 import { collection, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, startAt, where } from "firebase/firestore"
-import Comment from "../types/Comment"
+import Comment from "../entities/Comment"
 import { db } from "./firebase"
 import FireUser from "./FireUser"
 

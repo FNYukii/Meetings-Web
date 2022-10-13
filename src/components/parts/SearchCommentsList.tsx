@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Comment from "../../types/Comment"
+import Comment from "../../entities/Comment"
 import FireComment from "../../utilities/FireComment"
 import progress from "../../images/progress.svg"
 import CommentRow from "./CommentRow"

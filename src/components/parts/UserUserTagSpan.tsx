@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import User from "../../types/User"
+import User from "../../entities/User"
 import FireUser from "../../utilities/FireUser"
 
 export default function UserUserTagSpan(props: {userId: string, className?: string}) {

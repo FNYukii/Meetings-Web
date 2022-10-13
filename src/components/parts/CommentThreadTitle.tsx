@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineProfile } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import Thread from "../../types/Thread";
+import Thread from "../../entities/Thread";
 import FireThread from "../../utilities/FireThread";
 
 export default function CommentThreadTitle(props: { threadId: string, className?: string }) {

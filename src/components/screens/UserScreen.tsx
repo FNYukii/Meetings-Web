@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import User from "../../types/User"
+import User from "../../entities/User"
 import FireUser from "../../utilities/FireUser"
 import BackButton from "../parts/BackButton"
 import UserIcon from "../parts/UserIcon"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiOutlineExclamationCircle, AiOutlineHeart } from "react-icons/ai";
-import Comment from "../../types/Comment";
-import User from "../../types/User";
+import Comment from "../../entities/Comment";
+import User from "../../entities/User";
 import FireUser from "../../utilities/FireUser";
 
 export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean, className?: string}) {

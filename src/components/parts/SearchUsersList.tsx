@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import User from "../../types/User"
+import User from "../../entities/User"
 import FireUser from "../../utilities/FireUser"
 import ProgressImage from "./ProgressImage"
 import UserRow from "./UserRow"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Thread from "../../types/Thread"
+import Thread from "../../entities/Thread"
 import FireThread from "../../utilities/FireThread"
 import progress from "../../images/progress.svg"
 import ThreadRow from "./ThreadRow"

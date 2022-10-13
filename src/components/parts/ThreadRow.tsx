@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import Thread from "../../types/Thread"
+import Thread from "../../entities/Thread"
 import ExDate from "../../utilities/ExDate"
 import FireComment from "../../utilities/FireComment"
 import ThreadMenu from "./ThreadMenu"
 import UserIconNavLink from "./UserIconNavLink"
 import UserUserTagSpan from "./UserUserTagSpan"
-import Comment from "../../types/Comment"
+import Comment from "../../entities/Comment"
 
 export default function ThreadRow(props: { thread: Thread }) {
 
