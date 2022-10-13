@@ -7,11 +7,7 @@ import { MdOutlineClose } from "react-icons/md"
 
 export default function ImageModal(props: { className?: string }) {
 
-    document.title = "画像 - Meetings"
-
     const body = document.body
-    body.style.overflowY = "hidden"
-
     const navigate = useNavigate()
     const { commentId, imageNumber } = useParams()
 
@@ -25,6 +21,7 @@ export default function ImageModal(props: { className?: string }) {
     }
 
     useEffect(() => {
+        body.style.overflowY = "hidden"
         readComment()
         // eslint-disable-next-line
     }, [])
