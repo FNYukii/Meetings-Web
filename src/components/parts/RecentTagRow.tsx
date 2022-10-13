@@ -24,26 +24,34 @@ export default function RecentTagRow(props: { tag: string, removeTag: (tag: stri
 
             <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
 
-            <div className="flex justify-between">
-                <span>{props.tag}</span>
+            <div>
+                {!isLoaded &&
+                    <div className="flex justify-between">
+                        <span className="text-transparent bg-zinc-200 dark:bg-zinc-800">------</span>
+                    </div>
+                }
 
-                <RecentTagMenu tag={props.tag} removeTag={props.removeTag}/>
-
+                {isLoaded && numberOfThread !== null &&
+                    <div className="flex justify-between">
+                        <span>{props.tag}</span>
+                        <RecentTagMenu tag={props.tag} removeTag={props.removeTag} />
+                    </div>
+                }
             </div>
 
-            {!isLoaded &&
-                <div className="bg-zinc-200 dark:bg-zinc-800 w-20">
-                    <p className="text-gray-500 text-sm text-transparent">-</p>
-                </div>
-            }
+            <div className="mt-1">
+                {!isLoaded &&
+                    <span className="text-sm text-transparent bg-zinc-200 dark:bg-zinc-800">----------</span>
+                }
 
-            {isLoaded && numberOfThread === null &&
-                <p className="text-gray-500">---</p>
-            }
+                {isLoaded && numberOfThread === null &&
+                    <p className="text-gray-500">---</p>
+                }
 
-            {isLoaded && numberOfThread !== null &&
-                <p className="text-gray-500 text-sm">{numberOfThread}件のスレッド</p>
-            }
+                {isLoaded && numberOfThread !== null &&
+                    <p className="text-gray-500 text-sm">{numberOfThread}件のスレッド</p>
+                }
+            </div>
         </div>
     )
 }
