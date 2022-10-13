@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import FireThread from "../../utilities/FireThread"
+import FireThreads from "../../utilities/FireThreads"
 import progress from "../../images/progress.svg"
 import RecentTagRow from "./RecentTagRow"
 
@@ -11,7 +11,7 @@ export default function RecentTagsCard() {
     async function readTags() {
 
         // Firestoreから最近のtagsを読み取り
-        const tags = await FireThread.readRecentTags()
+        const tags = await FireThreads.readRecentTags()
 
         // 興味なしtagsをlocalStorageから取得
         let uninterestedTags: string[] = []

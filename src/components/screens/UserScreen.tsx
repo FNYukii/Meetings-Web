@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import User from "../../entities/User"
-import FireUser from "../../utilities/FireUser"
+import FireUsers from "../../utilities/FireUsers"
 import BackButton from "../parts/BackButton"
 import UserIcon from "../parts/UserIcon"
 import UserMenu from "../parts/UserMenu"
@@ -18,12 +18,12 @@ export default function UserScreen() {
     const [tab, setTab] = useState(0)
 
     async function readUser() {
-        let user = await FireUser.readUserFromCache(userId!)
+        let user = await FireUsers.readUserFromCache(userId!)
         setUser(user)
         setIsLoaded(true)
         document.title = `${user?.displayName ?? "User not found"} - Meetings`
 
-        user = await FireUser.readUser(userId!)
+        user = await FireUsers.readUser(userId!)
         setUser(user)
         document.title = `${user?.displayName ?? "User not found"} - Meetings`
     }

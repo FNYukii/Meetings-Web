@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Thread from "../../entities/Thread"
-import FireThread from "../../utilities/FireThread"
+import FireThreads from "../../utilities/FireThreads"
 import progress from "../../images/progress.svg"
 import ThreadRow from "./ThreadRow"
 
@@ -12,7 +12,7 @@ export default function SearchThreadsList(props: {keyword: string, className?: s
     async function readThreads() {
         
         setIsLoaded(false)
-        const threads = await FireThread.readThreadsByKeyword(props.keyword)
+        const threads = await FireThreads.readThreadsByKeyword(props.keyword)
         setThreads(threads)
         setIsLoaded(true)
     }

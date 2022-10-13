@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import User from "../../entities/User"
-import FireUser from "../../utilities/FireUser"
+import FireUsers from "../../utilities/FireUsers"
 
 export default function UserDisplayNameSpan(props: {userId: string, className?: string}) {
 
     const [user, setUser] = useState<User | null>()
 
     async function read() {
-        const user: User | null = await FireUser.readUserFromCache(props.userId)
+        const user: User | null = await FireUsers.readUserFromCache(props.userId)
         setUser(user)
     }
 

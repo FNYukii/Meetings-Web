@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import User from "../../entities/User"
-import FireUser from "../../utilities/FireUser"
+import FireUsers from "../../utilities/FireUsers"
 import ProgressImage from "./ProgressImage"
 import UserRow from "./UserRow"
 
@@ -12,7 +12,7 @@ export default function SearchUsersList(props: { keyword: string, className?: st
     async function readUsers() {
 
         setIsLoaded(false)
-        const users = await FireUser.readUsersByKeyword(props.keyword)
+        const users = await FireUsers.readUsersByKeyword(props.keyword)
         setUsers(users)
         setIsLoaded(true)
     }

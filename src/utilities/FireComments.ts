@@ -1,9 +1,9 @@
 import { collection, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, startAt, where } from "firebase/firestore"
 import Comment from "../entities/Comment"
 import { db } from "./firebase"
-import FireUser from "./FireUser"
+import FireUsers from "./FireUsers"
 
-export default class FireComment {
+export default class FireComments {
 
     static toComment(document: QueryDocumentSnapshot): Comment {
         
@@ -137,7 +137,7 @@ export default class FireComment {
     static async readCommentsLikedByUser(userId: string): Promise<Comment[] | null> {
 
         // userをサーバーから読み取る
-        const user = await FireUser.readUser(userId)
+        const user = await FireUsers.readUser(userId)
 
         // userが読み取れなかったら失敗
         if (user === null) {
@@ -157,7 +157,7 @@ export default class FireComment {
         await Promise.all(likedCommentIds.map(async (likedCommentId) => {
 
             // キャッシュからcommentを読み取る
-            const comment = await FireComment.readCommentFromCache(likedCommentId)
+            const comment = await FireComments.readCommentFromCache(likedCommentId)
 
             // 失敗
             if (comment === null) {

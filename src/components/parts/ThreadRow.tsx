@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import Thread from "../../entities/Thread"
 import ExDate from "../../utilities/ExDate"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import ThreadMenu from "./ThreadMenu"
 import UserIconNavLink from "./UserIconNavLink"
 import UserUserTagSpan from "./UserUserTagSpan"
@@ -13,7 +13,7 @@ export default function ThreadRow(props: { thread: Thread }) {
     const [firstComment, setFirstComment] = useState<Comment | null>(null)
 
     async function readFirstComment() {
-        const comment = await FireComment.readFirstCommentFromCache(props.thread.id)
+        const comment = await FireComments.readFirstCommentFromCache(props.thread.id)
         setFirstComment(comment)
     }
 

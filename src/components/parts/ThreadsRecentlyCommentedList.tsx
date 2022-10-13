@@ -2,7 +2,7 @@ import { collection, limit, onSnapshot, orderBy, query } from "firebase/firestor
 import { useEffect, useState } from "react"
 import Thread from "../../entities/Thread"
 import { db } from "../../utilities/firebase"
-import FireThread from "../../utilities/FireThread"
+import FireThreads from "../../utilities/FireThreads"
 import ThreadRow from "./ThreadRow"
 import ProgressImage from "./ProgressImage"
 
@@ -24,7 +24,7 @@ export default function ThreadsRecentlyCommentedList() {
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
-                const thread = FireThread.toThread(doc)
+                const thread = FireThreads.toThread(doc)
                 threads.push(thread)
             })
 

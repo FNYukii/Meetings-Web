@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineProfile } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import Thread from "../../entities/Thread";
-import FireThread from "../../utilities/FireThread";
+import FireThreads from "../../utilities/FireThreads";
 
 export default function CommentThreadTitle(props: { threadId: string, className?: string }) {
 
@@ -10,7 +10,7 @@ export default function CommentThreadTitle(props: { threadId: string, className?
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThread() {
-        const thread = await FireThread.readThreadFromCache(props.threadId)
+        const thread = await FireThreads.readThreadFromCache(props.threadId)
         setThread(thread)
         setIsLoaded(true)
     }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineExclamationCircle, AiOutlineHeart } from "react-icons/ai";
 import Comment from "../../entities/Comment";
 import User from "../../entities/User";
-import FireUser from "../../utilities/FireUser";
+import FireUsers from "../../utilities/FireUsers";
 
 export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean, className?: string}) {
 
@@ -11,12 +11,12 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
 
     async function readLikedUsers() {
         
-        let likedUsers = await FireUser.readLikedUsersFromCache(props.comment.id)
+        let likedUsers = await FireUsers.readLikedUsersFromCache(props.comment.id)
         setLikedUsers(likedUsers)
         setIsLoaded(true)
 
         if (props.isReadFromSeaver) {
-            likedUsers = await FireUser.readLikedUsers(props.comment.id)
+            likedUsers = await FireUsers.readLikedUsers(props.comment.id)
             setLikedUsers(likedUsers)
             setIsLoaded(true)
         }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import FireUser from "../../utilities/FireUser"
+import FireUsers from "../../utilities/FireUsers"
 import User from "../../entities/User"
 
 export default function UserIconNavLink(props: { userId: string }) {
@@ -8,7 +8,7 @@ export default function UserIconNavLink(props: { userId: string }) {
     const [user, setUser] = useState<User | null>()
 
     async function read() {
-        const user: User | null = await FireUser.readUserFromCache(props.userId)
+        const user: User | null = await FireUsers.readUserFromCache(props.userId)
         setUser(user)
     }
 

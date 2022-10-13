@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Comment from "../../entities/Comment"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import CommentRow from "./CommentRow"
 import ProgressImage from "./ProgressImage"
 
@@ -12,7 +12,7 @@ export default function CommentsPostedByUserList() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComments() {
-        const comments = await FireComment.readCommentsPostedByUser(userId!)
+        const comments = await FireComments.readCommentsPostedByUser(userId!)
         setComments(comments)
         setIsLoaded(true)
     }

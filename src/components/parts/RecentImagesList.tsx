@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Comment from "../../entities/Comment"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import progress from "../../images/progress.svg"
 import RecentImageLargeRow from "./RecentImageLargeRow"
 import RecentImageSmallRow from "./RecentImageSmallRow"
@@ -12,7 +12,7 @@ export default function RecentImagesList(props: {className?: string}) {
 
     async function readComments() {
 
-        const comments = await FireComment.readCommentsWithImages()
+        const comments = await FireComments.readCommentsWithImages()
         setComments(comments)
         setIsLoaded(true)
     }

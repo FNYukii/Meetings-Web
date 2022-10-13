@@ -4,7 +4,7 @@ import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromSe
 import { db } from './firebase'
 import ExArray from './ExArray'
 
-export default class FireThread {
+export default class FireThreads {
 
     static toThread(document: QueryDocumentSnapshot<DocumentData>): Thread {
         const id: string = document.id ?? ""
@@ -138,7 +138,7 @@ export default class FireThread {
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
-                const thread = FireThread.toThread(doc)
+                const thread = FireThreads.toThread(doc)
                 threads.push(thread)
             })
 

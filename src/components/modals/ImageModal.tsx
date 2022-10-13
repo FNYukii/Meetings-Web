@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Comment from "../../entities/Comment"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import ProgressImage from "../parts/ProgressImage"
 import { MdOutlineClose } from "react-icons/md"
 
@@ -17,7 +17,7 @@ export default function ImageModal(props: { className?: string }) {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComment() {
-        const comment = await FireComment.readCommentFromCache(commentId!)
+        const comment = await FireComments.readCommentFromCache(commentId!)
         setComment(comment)
         setIsLoaded(true)
     }

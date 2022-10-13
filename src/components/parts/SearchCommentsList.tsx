@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Comment from "../../entities/Comment"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import progress from "../../images/progress.svg"
 import CommentRow from "./CommentRow"
 
@@ -12,7 +12,7 @@ export default function SearchCommentsList(props: {keyword: string, className?: 
     async function readComments() {
         
         setIsLoaded(false)
-        const comments = await FireComment.readCommentsByKeyword(props.keyword)
+        const comments = await FireComments.readCommentsByKeyword(props.keyword)
         setComments(comments)
         setIsLoaded(true)
     }

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import Comment from "../../entities/Comment"
 import Thread from "../../entities/Thread"
 import ExDate from "../../utilities/ExDate"
-import FireThread from "../../utilities/FireThread"
+import FireThreads from "../../utilities/FireThreads"
 import UserUserTagSpan from "./UserUserTagSpan"
 
 export default function RecentImageSmallRow(props: { comment: Comment }) {
@@ -12,7 +12,7 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThread() {
-        const thread = await FireThread.readThreadFromCache(props.comment.threadId)
+        const thread = await FireThreads.readThreadFromCache(props.comment.threadId)
         setThread(thread)
         setIsLoaded(true)
     }

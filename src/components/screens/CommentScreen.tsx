@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Comment from "../../entities/Comment"
 import ExDate from "../../utilities/ExDate"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import BackButton from "../parts/BackButton"
 import CommentMenu from "../parts/CommentMenu"
 import CommentImagesGrid from "../parts/CommentImagesGrid"
@@ -22,7 +22,7 @@ export default function CommentScreen() {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComment() {
-        const comment = await FireComment.readCommentFromCache(commentId!)
+        const comment = await FireComments.readCommentFromCache(commentId!)
         setComment(comment)
         setIsLoaded(true)
     }

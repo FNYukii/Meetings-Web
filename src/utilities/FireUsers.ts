@@ -1,9 +1,9 @@
 import User from "../entities/User"
 import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit } from "firebase/firestore"
 import { doc } from "firebase/firestore"
-import { db } from "../utilities/firebase"
+import { db } from "./firebase"
 
-export default class FireUser {
+export default class FireUsers {
 
     static toUser(document: QueryDocumentSnapshot<DocumentData>): User {
 

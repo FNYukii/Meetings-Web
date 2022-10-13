@@ -2,11 +2,11 @@ import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/f
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { db } from "../../utilities/firebase"
-import FireComment from "../../utilities/FireComment"
+import FireComments from "../../utilities/FireComments"
 import Comment from "../../entities/Comment"
 import CommentRow from "../parts/CommentRow"
 import Thread from "../../entities/Thread"
-import FireThread from "../../utilities/FireThread"
+import FireThreads from "../../utilities/FireThreads"
 import BackButton from "../parts/BackButton"
 import ProgressImage from "../parts/ProgressImage"
 
@@ -20,7 +20,7 @@ export default function ThreadScreen() {
 
     async function readThread() {
 
-        const thread = await FireThread.readThreadFromCache(threadId!)
+        const thread = await FireThreads.readThreadFromCache(threadId!)
         setThread(thread)
 
         document.title = `${thread?.title ?? "スレッド"} - Meetings`
@@ -38,7 +38,7 @@ export default function ThreadScreen() {
             // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
-                const comment = FireComment.toComment(doc)
+                const comment = FireComments.toComment(doc)
                 comments.push(comment)
             })
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import FireThread from "../../utilities/FireThread"
+import FireThreads from "../../utilities/FireThreads"
 import RecentTagMenu from "./RecentTagMenu"
 
 export default function RecentTagRow(props: { tag: string }) {
@@ -11,7 +11,7 @@ export default function RecentTagRow(props: { tag: string }) {
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThreads() {
-        const threads = await FireThread.readThreadsByTag(props.tag)
+        const threads = await FireThreads.readThreadsByTag(props.tag)
         setNumberOfThread(threads?.length ?? null)
         setIsLoaded(true)
     }
