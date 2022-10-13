@@ -14,11 +14,15 @@ export default function CenterColumn() {
 
     // 現在アドレスバーに入力されているURL
     const location = useLocation()
+    const keyword = (new URLSearchParams(location.search)).get("keyword")
     const currentPath = location.pathname
+    const currentPathWithQueryParam = keyword === null ? currentPath : `${currentPath}?keyword=${keyword}`
 
     // ひとつ前のページのURL or ホームのURL
     const state = location.state as { previousPath?: string }
     const previousPath: string | undefined = state?.previousPath ?? "/"
+
+    console.log(`currentPath: ${currentPath}`)
 
     // Modalの表示のboolean
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
@@ -28,7 +32,7 @@ export default function CenterColumn() {
     return (
         <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
 
-            <Routes location={isShowModal ? previousPath : currentPath}>
+            <Routes location={isShowModal ? previousPath : currentPathWithQueryParam}>
 
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
