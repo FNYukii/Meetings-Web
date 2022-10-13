@@ -26,6 +26,7 @@ export default function ReportModal(props: { className?: string }) {
         const result = FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
 
         if (result !== null) {
+            alert("報告を送信しました。")
             closeModal()
         }
     }
