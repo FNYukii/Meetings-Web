@@ -31,7 +31,7 @@ export default function ReportModal(props: { className?: string }) {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <h2 className="text-2xl font-bold ml-3">
+                <h2 className="mt-3 text-2xl font-bold ml-3">
 
                     <span>
                         {collectionName === "threads" &&
@@ -50,11 +50,11 @@ export default function ReportModal(props: { className?: string }) {
                     <span>を報告</span>
                 </h2>
 
-                <fieldset className="mt-3 ml-3 flex gap-2 flex-col">
+                <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
                     <legend className="text-xl">カテゴリ</legend>
 
-                    <div className="mt-1 ml-1">
-                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
+                    <div className="mt-2 ml-1">
+                        <input type="radio" id="radio01" name="category" checked className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
                         <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
                     </div>
 
@@ -74,10 +74,10 @@ export default function ReportModal(props: { className?: string }) {
                     </div>
                 </fieldset>
 
-                <fieldset className="mt-3 ml-3">
+                <fieldset className="mt-5 ml-3">
                     <legend className="text-xl">詳細</legend>
 
-                    <textarea placeholder="報告する理由を詳しく入力してください" className="resize-none mt-1 p-3 border rounded-md border-zinc-500 w-full" />
+                    <textarea placeholder="報告する理由を詳しく入力してください" className="resize-none mt-3 p-3 border rounded-md border-gray-500 placeholder:text-gray-500 w-full" />
                 </fieldset>
 
 
