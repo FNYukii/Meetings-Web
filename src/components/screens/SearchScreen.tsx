@@ -8,13 +8,11 @@ import SearchResultsScreen from "./SearchResultsScreen";
 
 export default function SearchScreen() {
 
-    document.title = "検索 - Meetings"
+    const searchedKeyword = (new URLSearchParams(useLocation().search)).get("keyword")
+    const navigate = useNavigate()
 
     const [keyword, setKeyword] = useState("")
-
-    const searchedKeyword = (new URLSearchParams(useLocation().search)).get("keyword")
-
-    const navigate = useNavigate()
+    const [isSearchBarFocused, setIsSearchBarFocused] = useState(false)
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -30,6 +28,8 @@ export default function SearchScreen() {
     }
 
     useEffect(() => {
+
+        document.title = "検索 - Meetings"
         setKeyword(searchedKeyword ?? "")
     }, [searchedKeyword])
 
@@ -46,11 +46,13 @@ export default function SearchScreen() {
 
                     <form onSubmit={(e) => onSubmit(e)} className="z-10 w-full ml-3 relative flex items-center">
 
-                        <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 rounded-full"/>
+                        <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onFocus={() => setIsSearchBarFocused(true)} onBlur={() => setIsSearchBarFocused(false)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 outline-blue-500 rounded-full"/>
 
-                        <button onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-gray-500 rounded-full hover:opacity-60">
-                            <MdOutlineClose className="text-white" />
-                        </button>
+                        {isSearchBarFocused &&
+                            <button onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-blue-500 rounded-full hover:bg-blue-400">
+                                <MdOutlineClose className="text-white" />
+                            </button>
+                        }
                     </form>
                 </div>
             </div>
