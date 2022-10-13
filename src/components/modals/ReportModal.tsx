@@ -70,14 +70,14 @@ export default function ReportModal(props: { className?: string }) {
 
                     <div className="ml-1">
                         <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onClick={() => setRadioSelection(3)} />
-                        <label htmlFor="radio04" className="pl-3 cursor-pointer">虚偽</label>
+                        <label htmlFor="radio04" className="pl-3 cursor-pointer">事実に反する</label>
                     </div>
                 </fieldset>
 
                 <fieldset className="mt-5 mx-3">
                     <legend className="text-xl">詳細</legend>
 
-                    <textarea placeholder="報告する理由を詳しく入力してください" className="resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
+                    <textarea placeholder="具体的に説明してください" className="resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">
