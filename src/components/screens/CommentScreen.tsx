@@ -46,7 +46,9 @@ export default function CommentScreen() {
                         <span className='font-bold text-lg ml-7'>コメント</span>
                     </div>
 
-                    <CommentMenu comment={comment!} iconClassName="text-3xl" />
+                    {isLoaded && comment !== null &&
+                        <CommentMenu comment={comment} iconClassName="text-3xl" />
+                    }
                 </div>
             </div>
 
