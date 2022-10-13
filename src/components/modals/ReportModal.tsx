@@ -10,7 +10,7 @@ export default function ReportModal(props: { className?: string }) {
     const body = document.body
 
     // eslint-disable-next-line
-    const [radioSelection, setRadioSelection] = useState(0)
+    const [radioSelection, setRadioSelection] = useState<number | null>(null)
 
     function closeModal() {
         body.style.overflowY = ""
@@ -56,7 +56,7 @@ export default function ReportModal(props: { className?: string }) {
                     <legend className="text-xl">カテゴリ</legend>
 
                     <div className="mt-2 ml-1">
-                        <input type="radio" id="radio01" name="category" defaultChecked className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
+                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
                         <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
                     </div>
 
