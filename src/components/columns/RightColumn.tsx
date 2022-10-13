@@ -11,7 +11,7 @@ export default function RightColumn() {
 
                 <div className="mt-3 text-gray-500 text-sm flex flex-wrap gap-3">
 
-                    <span>Copyright <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
+                    <span>© <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
                     
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source</a>
                 </div>
