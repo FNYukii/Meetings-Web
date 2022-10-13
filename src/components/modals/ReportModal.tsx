@@ -6,7 +6,6 @@ import FireReports from "../../utilities/FireReports"
 export default function ReportModal(props: { className?: string }) {
 
     const navigate = useNavigate()
-    // eslint-disable-next-line
     const { collectionName, documentId } = useParams()
     const body = document.body
 
@@ -99,7 +98,6 @@ export default function ReportModal(props: { className?: string }) {
                 <div className="mt-3 flex justify-end">
                     <button onClick={() => create()} className="font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900">送信</button>
                 </div>
-
             </div>
         </div>
     )
