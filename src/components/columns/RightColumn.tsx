@@ -13,7 +13,7 @@ export default function RightColumn() {
 
                     <span>Copyright <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
                     
-                    <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source code</a>
+                    <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source</a>
                 </div>
             </div>
         </div>
