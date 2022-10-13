@@ -56,22 +56,22 @@ export default function ReportModal(props: { className?: string }) {
                     <legend className="text-xl">カテゴリ</legend>
 
                     <div className="mt-2 ml-1">
-                        <input type="radio" id="radio01" name="category" checked className="p-3 cursor-pointer scale-125" onClick={() => setRadioSelection(0)} />
+                        <input type="radio" id="radio01" name="category" defaultChecked className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(0)} />
                         <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onClick={() => setRadioSelection(1)} />
+                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(1)} />
                         <label htmlFor="radio02" className="pl-3 cursor-pointer">センシティブ</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onClick={() => setRadioSelection(2)} />
+                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(2)} />
                         <label htmlFor="radio03" className="pl-3 cursor-pointer">スパム</label>
                     </div>
 
                     <div className="ml-1">
-                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onClick={() => setRadioSelection(3)} />
+                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setRadioSelection(3)} />
                         <label htmlFor="radio04" className="pl-3 cursor-pointer">事実に反する</label>
                     </div>
                 </fieldset>
