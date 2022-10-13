@@ -37,6 +37,33 @@ export default function RecentTagsCard() {
         setIsLoaded(true)
     }
 
+    const removeTag = (uninterestedTag: string) => {
+
+        if (tags === null) {
+            return
+        }
+
+        // 興味なしtagsを生成
+        let uninterestedTags: string[] = []
+        const uninterestedTagsJson = localStorage.getItem('uninterestedTagsJson')
+
+        if (uninterestedTagsJson === null) {
+            uninterestedTags = []
+        } else {
+            uninterestedTags = JSON.parse(uninterestedTagsJson)
+        }
+
+        // 興味なしtagsにタグを追加
+        uninterestedTags.push(uninterestedTag)
+        
+        // 興味なしtagsをlocalStorageに追加
+        localStorage.setItem('uninterestedTagsJson', JSON.stringify(uninterestedTags, undefined, 1))
+
+        // Stateのtagsを変更
+        const newTags = tags.filter(tag => tag !== uninterestedTag)
+        setTags(newTags)
+    }
+
     useEffect(() => {
         readTags()
         // eslint-disable-next-line
@@ -67,7 +94,7 @@ export default function RecentTagsCard() {
             {isLoaded && tags !== null &&
                 <div className="mt-2">
                     {tags.map((tag) => (
-                        <RecentTagRow tag={tag} key={tag}/>
+                        <RecentTagRow tag={tag} key={tag} removeTag={removeTag}/>
                     ))}
                 </div>
             }

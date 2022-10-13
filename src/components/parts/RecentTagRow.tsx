@@ -3,9 +3,7 @@ import { NavLink } from "react-router-dom"
 import FireThreads from "../../utilities/FireThreads"
 import RecentTagMenu from "./RecentTagMenu"
 
-export default function RecentTagRow(props: { tag: string }) {
-
-    const [isShow, setIsShow] = useState(true)
+export default function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) {
 
     const [numberOfThread, setNumberOfThread] = useState<number | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -22,15 +20,14 @@ export default function RecentTagRow(props: { tag: string }) {
     }, [])
 
     return (
-        <div className={`relative pl-3 pr-2 py-2 ${isShow ? "" : "hidden"}`}>
+        <div className={`relative pl-3 pr-2 py-2`}>
 
             <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
-
 
             <div className="flex justify-between">
                 <span>{props.tag}</span>
 
-                <RecentTagMenu tag={props.tag} setIsShow={setIsShow}/>
+                <RecentTagMenu tag={props.tag} removeTag={props.removeTag}/>
 
             </div>
 

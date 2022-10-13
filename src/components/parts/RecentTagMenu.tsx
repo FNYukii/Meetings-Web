@@ -4,7 +4,7 @@ import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 
-export default function RecentTagMenu(props: { tag: string, setIsShow: React.Dispatch<React.SetStateAction<boolean>> }) {
+export default function RecentTagMenu(props: { tag: string, removeTag: (tag: string) => void }) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -14,28 +14,6 @@ export default function RecentTagMenu(props: { tag: string, setIsShow: React.Dis
         ).matches;
 
         setIsDark(isDark)
-    }
-
-    function makeUninterested() {
-        
-        // 興味なしtagsをlocalStorageから取得
-        let uninterestedTags: string[] = []
-        const uninterestedTagsJson = localStorage.getItem('uninterestedTagsJson')
-
-        if (uninterestedTagsJson === null) {
-            uninterestedTags = []
-        } else {
-            uninterestedTags = JSON.parse(uninterestedTagsJson)
-        }
-
-        // 興味なしtagsにタグを追加
-        uninterestedTags.push(props.tag)
-        
-        // 興味なしtagsをlocalStorageに追加
-        localStorage.setItem('uninterestedTagsJson', JSON.stringify(uninterestedTags, undefined, 1))
-
-        // RecentTagRowを非表示に
-        props.setIsShow(false)
     }
 
     const menuButton = (
@@ -48,7 +26,7 @@ export default function RecentTagMenu(props: { tag: string, setIsShow: React.Dis
         <div>
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
                 <MenuItem>
-                    <button onClick={makeUninterested}>興味なし</button>
+                    <button onClick={() => props.removeTag(props.tag)}>興味なし</button>
                 </MenuItem>
             </Menu>
         </div>
