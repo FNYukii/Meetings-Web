@@ -21,9 +21,7 @@ export default function CenterColumn() {
     // ひとつ前のページのURL or ホームのURL
     const state = location.state as { previousPath?: string }
     const previousPath: string | undefined = state?.previousPath ?? "/"
-
-    console.log(`currentPath: ${currentPath}`)
-
+    
     // Modalの表示のboolean
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
     const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
