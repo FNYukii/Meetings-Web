@@ -34,7 +34,7 @@ export default function SignInModal() {
                     <h2 className="text-2xl font-bold">サインイン</h2>
 
                     <input type="text" placeholder="メールアドレス" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500"/>
-                    <input type="text" placeholder="パスワード" className="mt-3 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500"/>
+                    <input type="text" placeholder="パスワード" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500"/>
                 </div>
 
                 <div className="mt-3 flex justify-end">
