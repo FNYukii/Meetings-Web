@@ -3,6 +3,7 @@ import { AiOutlineHome, AiFillHome, AiOutlineLogin } from 'react-icons/ai'
 import { HiSearch, HiOutlineSearch } from "react-icons/hi"
 import { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { BsPerson, BsPersonFill } from "react-icons/bs"
 
 export default function LeftColumn(props: { className?: string }) {
 
@@ -42,8 +43,9 @@ export default function LeftColumn(props: { className?: string }) {
 
                                 <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
-                                    <AiFillHome className={`text-3xl ${isActive ? "block" : "hidden"}`} />
                                     <AiOutlineHome className={`text-3xl ${isActive ? "hidden" : "block"}`} />
+                                    <AiFillHome className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>ホーム</span>
                                 </div>
                             )}
@@ -55,8 +57,9 @@ export default function LeftColumn(props: { className?: string }) {
 
                                 <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
-                                    <HiSearch className={`text-3xl ${isActive ? "block" : "hidden"}`} />
                                     <HiOutlineSearch className={`text-3xl ${isActive ? "hidden" : "block"}`} />
+                                    <HiSearch className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>検索</span>
                                 </div>
                             )}
@@ -80,8 +83,9 @@ export default function LeftColumn(props: { className?: string }) {
 
                                     <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
-                                        <HiSearch className={`text-3xl ${isActive ? "block" : "hidden"}`} />
-                                        <HiOutlineSearch className={`text-3xl ${isActive ? "hidden" : "block"}`} />
+                                        <BsPerson className={`text-3xl ${isActive ? "hidden" : "block"}`} />
+                                        <BsPersonFill className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+
                                         <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>プロフィール</span>
                                     </div>
                                 )}
