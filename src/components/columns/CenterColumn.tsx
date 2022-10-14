@@ -10,7 +10,7 @@ import ImageModal from '../modals/ImageModal'
 import ReportModal from '../modals/ReportModal'
 import EmptyModal from '../modals/EmptyModal'
 
-export default function CenterColumn() {
+export default function CenterColumn(props: {className?: string}) {
 
     // 現在アドレスバーに入力されているURL
     const location = useLocation()
@@ -28,7 +28,7 @@ export default function CenterColumn() {
     const isShowModal = isShowImageModal || isShowReportModal ? true : false
 
     return (
-        <div className='xl:w-2/4 md:w-7/12 w-full min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800'>
+        <div className={`min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800 ${props.className}`}>
 
             <Routes location={isShowModal ? previousPath : currentUrl}>
 

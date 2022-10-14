@@ -2,10 +2,10 @@ import { NavLink } from 'react-router-dom'
 import { AiOutlineHome, AiFillHome, AiOutlineLogin } from 'react-icons/ai'
 import { HiSearch, HiOutlineSearch } from "react-icons/hi"
 
-export default function LeftColumn() {
+export default function LeftColumn(props: {className?: string}) {
 
     return (
-        <div className='xl:w-1/4 md:w-1/12'>
+        <div className={props.className}>
 
             <div className='sticky top-0'>
 

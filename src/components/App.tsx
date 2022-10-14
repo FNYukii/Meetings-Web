@@ -10,9 +10,9 @@ export default function App() {
     return (
         <div className='flex mx-auto xl:width-1280 w-full'>
             <BrowserRouter>
-                <LeftColumn />
-                <CenterColumn />
-                <RightColumn />
+                <LeftColumn className='xl:w-1/4 md:w-1/12'/>
+                <CenterColumn className='xl:w-2/4 md:w-7/12 w-full'/>
+                <RightColumn className='xl:w-1/4 md:w-4/12 md:block hidden'/>
             </BrowserRouter>
         </div>
     )
