@@ -9,6 +9,7 @@ import UserScreen from '../screens/UserScreen'
 import ImageModal from '../modals/ImageModal'
 import ReportModal from '../modals/ReportModal'
 import EmptyModal from '../modals/EmptyModal'
+import SignInModal from '../modals/SignInModal'
 
 export default function CenterColumn(props: {className?: string}) {
 
@@ -25,7 +26,8 @@ export default function CenterColumn(props: {className?: string}) {
     // Modalの表示のboolean
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
     const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
-    const isShowModal = isShowImageModal || isShowReportModal ? true : false
+    const isSignInModal = currentPath === "/sign-in"
+    const isShowModal = isShowImageModal || isShowReportModal || isSignInModal ? true : false
 
     return (
         <div className={`min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800 ${props.className}`}>
@@ -37,6 +39,7 @@ export default function CenterColumn(props: {className?: string}) {
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />
                 <Route path='/comments/:commentId' element={<CommentScreen />} />
                 <Route path='/users/:userId' element={<UserScreen />} />
+
                 <Route path='*' element={<NotFoundScreen />} />
             </Routes>
 
@@ -44,6 +47,8 @@ export default function CenterColumn(props: {className?: string}) {
 
                 <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
                 <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
+                <Route path='/sign-in' element={<SignInModal />} />
+
                 <Route path='*' element={<EmptyModal/>}/>
             </Routes>
         </div>
