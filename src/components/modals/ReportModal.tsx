@@ -99,7 +99,7 @@ export default function ReportModal(props: { className?: string }) {
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">
-                    <button onClick={() => create()} disabled={probremIndex === null || detail === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex !== null && detail !== "" ? "" : "text-gray-500 hover:bg-transparent"}`}>送信</button>
+                    <button onClick={() => create()} disabled={probremIndex === null || detail === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex !== null && detail !== "" ? "" : "text-gray-400 dark:text-gray-600 hover:bg-transparent"}`}>送信</button>
                 </div>
             </div>
         </div>
