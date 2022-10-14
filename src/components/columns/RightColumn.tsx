@@ -1,4 +1,3 @@
-import FireAuth from "../../utilities/FireAuth";
 import RecentTagsCard from "../parts/RecentTagsCard";
 
 export default function RightColumn(props: {className?: string}) {
@@ -16,8 +15,6 @@ export default function RightColumn(props: {className?: string}) {
                     
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source</a>
                 </div>
-
-                <p>{FireAuth.uid ()?? "null"}</p>
             </div>
         </div>
     )
