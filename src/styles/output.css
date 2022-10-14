@@ -797,6 +797,10 @@ video {
   gap: 0.5rem;
 }
 
+.overscroll-y-none {
+  overscroll-behavior-y: none;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1167,6 +1171,11 @@ video {
   .dark\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  }
+
+  .dark\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
   }
 
   .dark\:hover\:bg-zinc-900:hover {
