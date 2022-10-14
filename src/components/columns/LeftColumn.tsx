@@ -9,9 +9,9 @@ export default function LeftColumn(props: { className?: string }) {
 
     const location = useLocation()
     const [uid, setUid] = useState<string | null>(null)
-
-    async function listenUid() {
-
+    
+    useEffect(() => {
+        
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -20,10 +20,6 @@ export default function LeftColumn(props: { className?: string }) {
                 setUid(null)
             }
         })
-    }
-
-    useEffect(() => {
-        listenUid()
     }, [])
 
     return (
