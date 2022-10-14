@@ -19,7 +19,7 @@ export default function ThreadsRecentlyCommentedList() {
         onSnapshot(q, (querySnapshot) => {
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []

@@ -33,7 +33,7 @@ export default function ThreadScreen() {
         onSnapshot(q, (querySnapshot) => {
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // 配列comments
             let comments: Comment[] = []

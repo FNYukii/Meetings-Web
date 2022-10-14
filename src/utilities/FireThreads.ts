@@ -61,7 +61,7 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 読み取り成功
-            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []
@@ -105,7 +105,7 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []
@@ -133,7 +133,7 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Threads from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []

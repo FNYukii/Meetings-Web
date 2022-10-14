@@ -68,7 +68,7 @@ export default class FireUsers {
             }
 
             // 成功
-            console.log("Read 1 User from cache / server.")
+            console.log("Read 1 User from server / cache.")
             return this.toUser(docSnap)
 
         } catch (error) {
@@ -133,7 +133,7 @@ export default class FireUsers {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Users from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Users from server / cache.`)
 
             // 配列users
             let users: User[] = []
@@ -160,7 +160,7 @@ export default class FireUsers {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Users from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Users from server / cache.`)
 
             // Users
             let users: User[] = []

@@ -116,7 +116,7 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // 配列comments
             let comments: Comment[] = []
@@ -181,7 +181,7 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // 配列comments
             let comments: Comment[] = []
@@ -209,7 +209,7 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from cache / server.`)
+            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // Comments
             let comments: Comment[] = []
