@@ -2,18 +2,31 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "fir
 
 export default class FireAuth {
 
+    static uid(): string | null {
+
+        const auth = getAuth()
+        const uid = auth.currentUser?.uid
+
+        if (uid) {
+            return uid
+        } else {
+            return null
+        }
+    }
+
     static async signUp(): Promise<string | null> {
         return null
     }
 
-    static async signIn(email: string, password: string) {
+    static async signIn(email: string, password: string): Promise<string | null> {
 
         const auth = getAuth()
-        createUserWithEmailAndPassword(auth, email, password)
+        return createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
 
                 // 成功
                 const uid = userCredential.user.uid
+                return uid
             })
             .catch((error) => {
 
@@ -22,15 +35,21 @@ export default class FireAuth {
             })
     }
 
-    static async signOut() {
+    static async signOut(): Promise<string | null> {
+
+        const uid = this.uid()
+
+        if (uid === null) {
+            return null
+        }
 
         const auth = getAuth()
-        auth.signOut()
+        return auth.signOut()
             .then(() => {
-
+                return uid
             })
             .catch((error) => {
-                
+                return null
             })
     }
 }
