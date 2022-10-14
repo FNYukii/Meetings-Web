@@ -1,8 +1,10 @@
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AiOutlineHome, AiFillHome, AiOutlineLogin } from 'react-icons/ai'
 import { HiSearch, HiOutlineSearch } from "react-icons/hi"
 
-export default function LeftColumn(props: {className?: string}) {
+export default function LeftColumn(props: { className?: string }) {
+
+    const location = useLocation()
 
     return (
         <div className={props.className}>
@@ -21,37 +23,34 @@ export default function LeftColumn(props: {className?: string}) {
 
                                 <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
-                                    <AiFillHome className={`text-3xl ${isActive ? "block": "hidden"}`}/>
-                                    <AiOutlineHome className={`text-3xl ${isActive ? "hidden": "block"}`}/>
+                                    <AiFillHome className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+                                    <AiOutlineHome className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>ホーム</span>
                                 </div>
                             )}
                         </NavLink>
 
                         <NavLink to='/search' className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
-                            
+
                             {({ isActive }) => (
 
                                 <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
-                                    <HiSearch className={`text-3xl ${isActive ? "block": "hidden"}`}/>
-                                    <HiOutlineSearch className={`text-3xl ${isActive ? "hidden": "block"}`}/>
+                                    <HiSearch className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+                                    <HiOutlineSearch className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                     <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>検索</span>
                                 </div>
                             )}
                         </NavLink>
 
-                        <NavLink to='/sign-in' end className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
+                        <Link to='/sign-in' state={{ previousPath: location.pathname }} className="block mt-2 rounded-full">
 
-                            {({ isActive }) => (
-                                
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                            <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
 
-                                    <AiOutlineLogin className={`text-3xl`}/>
-                                    <span className={`ml-5 text-xl xl:block hidden ${isActive ? "" : ""}`}>サインイン</span>
-                                </div>
-                            )}
-                        </NavLink>
+                                <AiOutlineLogin className={`text-3xl`} />
+                                <span className={`ml-5 text-xl xl:block hidden`}>サインイン</span>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
