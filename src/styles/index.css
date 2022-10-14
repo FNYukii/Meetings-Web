@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 @layer components {
     .width-1280 {
         width: 1280px;

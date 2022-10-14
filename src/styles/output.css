@@ -1067,12 +1067,6 @@ video {
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .placeholder\:text-gray-500::-webkit-input-placeholder {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1219,12 +1213,6 @@ video {
 
   .md\:w-4\/12 {
     width: 33.333333%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:width-1280 {
-    width: 1280px;
   }
 }
 
