@@ -2,22 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.large-container {
-    width: 1280px;
-}
-
-@media (max-width: 1300px) {
-    .large-container {
-        width: 100%;
+@layer components {
+    .width-1280 {
+        width: 1280px;
     }
-}
 
-.width-600 {
-    width: 600px;
+    .width-600 {
+        width: 800px;
+    }
 }
