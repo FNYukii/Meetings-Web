@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
+import FireAuth from "../../utilities/FireAuth"
 
 
 export default function SignInModal() {
@@ -10,15 +11,32 @@ export default function SignInModal() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    useEffect(() => {
+
+        document.title = "サインイン - Meetings"
+        body.style.overflowY = "hidden"
+    })
+
     function closeModal() {
+
         body.style.overflowY = ""
         navigate(-1)
     }
 
-    useEffect(() => {
-        document.title = "サインイン - Meetings"
-        body.style.overflowY = "hidden"
-    })
+    async function signIn() {
+
+        const result = await FireAuth.signIn(email, password)
+
+        // 成功
+        if (result !== null) {
+            closeModal()
+            return
+        }
+
+        // 失敗
+        setEmail("")
+        setPassword("")
+    }
 
     return (
         <div className="z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center">
@@ -40,7 +58,7 @@ export default function SignInModal() {
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <button disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
+                    <button onClick={signIn} disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
                 </div>
             </div>
         </div>
