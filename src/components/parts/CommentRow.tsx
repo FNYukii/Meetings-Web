@@ -24,14 +24,14 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
 
                 <div className="w-full z-10 pointer-events-none">
 
-                    <div className="ml-3 mr-2 flex justify-between items-center">
+                    <div className="ml-3 mr-2 flex justify-between">
 
-                        <div>
+                        <div className="flex flex-wrap gap-x-3">
                             <UserDisplayNameSpan userId={props.comment.userId} />
 
-                            <UserUserTagSpan userId={props.comment.userId} className="ml-3" />
+                            <UserUserTagSpan userId={props.comment.userId}/>
 
-                            <span className="text-gray-500 ml-3">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
+                            <span className="text-gray-500">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                         </div>
 
                         <CommentMenu comment={props.comment} iconClassName="text-xl text-gray-500" />
