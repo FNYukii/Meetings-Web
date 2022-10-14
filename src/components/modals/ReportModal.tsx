@@ -41,7 +41,7 @@ export default function ReportModal(props: { className?: string }) {
 
             <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={closeModal}></div>
 
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600">
+            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12">
 
                 <button onClick={closeModal} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
