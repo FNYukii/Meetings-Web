@@ -18,6 +18,8 @@
     }
 }
 
-.width-600 {
-    width: 600px;
+@layer components {
+    .width-600 {
+        width: 800px;
+    }
 }

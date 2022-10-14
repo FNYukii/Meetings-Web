@@ -549,6 +549,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.width-600 {
+  width: 800px;
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -1079,10 +1083,6 @@ video {
   }
 }
 
-.width-600 {
-  width: 600px;
-}
-
 .placeholder\:text-gray-500::-webkit-input-placeholder {
   --tw-text-opacity: 1;
   color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -1211,6 +1211,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:width-600 {
+    width: 800px;
+  }
+
   .md\:block {
     display: block;
   }
