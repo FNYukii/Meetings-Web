@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default class FireAuth {
 
@@ -14,14 +14,10 @@ export default class FireAuth {
         }
     }
 
-    static async signUp(): Promise<string | null> {
-        return null
-    }
-
     static async signIn(email: string, password: string): Promise<string | null> {
 
         const auth = getAuth()
-        return createUserWithEmailAndPassword(auth, email, password)
+        return signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
 
                 // 成功
