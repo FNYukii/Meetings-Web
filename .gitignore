@@ -24,4 +24,3 @@ yarn-error.log*
 
 # Added
 .env
-src/styles/output.css
