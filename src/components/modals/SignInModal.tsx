@@ -32,10 +32,13 @@ export default function SignInModal() {
                 <div className="px-3">
 
                     <h2 className="text-2xl font-bold">サインイン</h2>
+
+                    <input type="text" placeholder="メールアドレス" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500"/>
+                    <input type="text" placeholder="パスワード" className="mt-3 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500"/>
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <button className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 $`}>送信</button>
+                    <button className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 $`}>サインイン</button>
                 </div>
             </div>
         </div>
