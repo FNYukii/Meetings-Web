@@ -31,7 +31,7 @@ export default function AddCommentModal() {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <div className="px-3">
+                <div className="mt-3 px-3">
 
                     <p className="text-2xl font-bold">新しいコメント</p>
                 </div>
