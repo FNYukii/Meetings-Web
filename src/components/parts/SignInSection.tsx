@@ -44,7 +44,7 @@ export default function SignInSection(props: {setIsShowSignUpSection: React.Disp
 
             <div className="mt-3 pl-3 flex justify-between items-center">
 
-                <button onClick={() => props.setIsShowSignUpSection(true)} className="hover:underline h-fit">新しいアカウントを作成</button>
+                <button onClick={() => props.setIsShowSignUpSection(true)} className="hover:underline h-fit text-gray-500">新しいアカウントを作成</button>
                 <button onClick={signIn} disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
             </div>
         </div>
