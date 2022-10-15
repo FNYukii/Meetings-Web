@@ -3,11 +3,11 @@ import { useParams } from "react-router-dom"
 import User from "../../entities/User"
 import FireUsers from "../../utilities/FireUsers"
 import BackButton from "../parts/buttons/BackButton"
-import UserIcon from "../parts/imgs/UserIcon"
+import UserIcon from "../parts/images/UserIcon"
 import UserMenu from "../parts/menus/UserMenu"
 import CommentsPostedByUserList from "../parts/lists/CommentsPostedByUserList"
 import CommentsLikedByUserList from "../parts/lists/CommentsLikedByUserList"
-import ProgressImage from "../parts/imgs/ProgressImage"
+import ProgressImage from "../parts/images/ProgressImage"
 
 export default function UserScreen() {
 

@@ -11,7 +11,7 @@ import UserIconNavLink from "../parts/links/UserIconNavLink"
 import UserUserTagSpan from "../parts/spans/UserUserTagSpan"
 import CommentThreadTitle from "../parts/links/CommentThreadTitle"
 import CommentLikeButton from "../parts/buttons/CommentLikeButton"
-import ProgressImage from "../parts/imgs/ProgressImage"
+import ProgressImage from "../parts/images/ProgressImage"
 
 export default function CommentScreen() {
 

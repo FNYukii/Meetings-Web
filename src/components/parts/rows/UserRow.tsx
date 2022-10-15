@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import User from "../../../entities/User";
 import UserDisplayNameSpan from "../spans/UserDisplayNameSpan";
-import UserIcon from "../imgs/UserIcon";
+import UserIcon from "../images/UserIcon";
 import UserUserTagSpan from "../spans/UserUserTagSpan";
 
 export default function UserRow(props: {user: User, className?: string}) {

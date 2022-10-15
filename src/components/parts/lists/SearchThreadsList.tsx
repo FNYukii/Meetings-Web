@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Thread from "../../../entities/Thread"
 import FireThreads from "../../../utilities/FireThreads"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 import ThreadRow from "../rows/ThreadRow"
 
 export default function SearchThreadsList(props: {keyword: string, className?: string}) {

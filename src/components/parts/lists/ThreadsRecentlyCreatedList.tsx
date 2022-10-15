@@ -4,7 +4,7 @@ import Thread from "../../../entities/Thread"
 import { db } from "../../../utilities/firebase"
 import FireThreads from "../../../utilities/FireThreads"
 import ThreadRow from "../rows/ThreadRow"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 
 export default function ThreadsRecentlyCreatedList() {
     // States

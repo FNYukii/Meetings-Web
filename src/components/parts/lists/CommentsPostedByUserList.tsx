@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import Comment from "../../../entities/Comment"
 import FireComments from "../../../utilities/FireComments"
 import CommentRow from "../rows/CommentRow"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 
 export default function CommentsPostedByUserList() {
 

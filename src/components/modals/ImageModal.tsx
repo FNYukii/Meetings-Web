@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Comment from "../../entities/Comment"
 import FireComments from "../../utilities/FireComments"
-import ProgressImage from "../parts/imgs/ProgressImage"
+import ProgressImage from "../parts/images/ProgressImage"
 import { MdOutlineClose } from "react-icons/md"
 
 export default function ImageModal(props: { className?: string }) {

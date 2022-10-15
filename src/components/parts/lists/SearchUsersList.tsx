@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import User from "../../../entities/User"
 import FireUsers from "../../../utilities/FireUsers"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 import UserRow from "../rows/UserRow"
 
 export default function SearchUsersList(props: { keyword: string, className?: string }) {

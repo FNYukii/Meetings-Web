@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Comment from "../../../entities/Comment"
 import FireComments from "../../../utilities/FireComments"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 import RecentImageLargeRow from "../rows/RecentImageLargeRow"
 import RecentImageSmallRow from "../rows/RecentImageSmallRow"
 

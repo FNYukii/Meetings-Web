@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import FireThreads from "../../../utilities/FireThreads"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 import RecentTagRow from "../rows/RecentTagRow"
 
 export default function RecentTagsCard() {

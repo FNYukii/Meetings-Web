@@ -8,7 +8,7 @@ import CommentRow from "../parts/rows/CommentRow"
 import Thread from "../../entities/Thread"
 import FireThreads from "../../utilities/FireThreads"
 import BackButton from "../parts/buttons/BackButton"
-import ProgressImage from "../parts/imgs/ProgressImage"
+import ProgressImage from "../parts/images/ProgressImage"
 
 export default function ThreadScreen() {
     

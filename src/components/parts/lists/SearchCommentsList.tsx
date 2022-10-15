@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Comment from "../../../entities/Comment"
 import FireComments from "../../../utilities/FireComments"
-import ProgressImage from "../imgs/ProgressImage"
+import ProgressImage from "../images/ProgressImage"
 import CommentRow from "../rows/CommentRow"
 
 export default function SearchCommentsList(props: {keyword: string, className?: string}) {
