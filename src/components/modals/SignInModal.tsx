@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
-import SignInSection from "../parts/SignInSection"
-import SignUpSection from "../parts/SignUpSection"
+import SignInSection from "../parts/sections/SignInSection"
+import SignUpSection from "../parts/sections/SignUpSection"
 
 
 export default function SignInModal() {

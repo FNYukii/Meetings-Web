@@ -1,7 +1,7 @@
 import { useState } from "react"
-import SearchCommentsList from "../parts/SearchCommentsList"
-import SearchThreadsList from "../parts/SearchThreadsList"
-import SearchUsersList from "../parts/SearchUsersList"
+import SearchCommentsList from "../parts/lists/SearchCommentsList"
+import SearchThreadsList from "../parts/lists/SearchThreadsList"
+import SearchUsersList from "../parts/lists/SearchUsersList"
 
 export default function SearchResultsScreen(props: { keyword: string }) {
 
