@@ -97,7 +97,7 @@ export default function ReportModal(props: { className?: string }) {
 
                     <legend className="text-xl">詳細</legend>
 
-                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
+                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">

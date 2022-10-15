@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 
@@ -6,6 +6,7 @@ export default function AddCommentModal() {
 
     const navigate = useNavigate()
     const body = document.body
+    const [text, setText] = useState("")
 
     useEffect(() => {
 
@@ -34,6 +35,12 @@ export default function AddCommentModal() {
                 <div className="mt-3 px-3">
 
                     <p className="text-2xl font-bold">新しいコメント</p>
+
+                    <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                </div>
+
+                <div className="mt-3 flex justify-end">
+                    <button disabled={text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
                 </div>
 
             </div>
