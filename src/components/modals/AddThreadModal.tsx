@@ -2,11 +2,14 @@ import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 
-export default function AddCommentModal() {
+export default function AddThreadModal() {
 
     const navigate = useNavigate()
     const body = document.body
+
+    const [title, setTitle] = useState("")
     const [text, setText] = useState("")
+
 
     useEffect(() => {
 
@@ -34,14 +37,17 @@ export default function AddCommentModal() {
 
                 <div className="mt-3 px-3">
 
-                    <p className="text-2xl font-bold">新しいコメント</p>
+                    <p className="text-2xl font-bold">新しいスレッド</p>
 
-                    <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="mt-5 h-24 resize-none p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+                    <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <button disabled={text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>追加</button>
+                    <button disabled={title === "" || text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>作成</button>
                 </div>
+
+                
 
             </div>
         </div>

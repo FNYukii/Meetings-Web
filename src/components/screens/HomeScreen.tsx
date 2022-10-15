@@ -1,13 +1,14 @@
-import { useState } from 'react'
-import HomeMenu from '../parts/menus/HomeMenu'
+import { useEffect } from 'react'
 import ThreadsRecentlyCommentedList from '../parts/lists/ThreadsRecentlyCommentedList'
-import ThreadsRecentlyCreatedList from '../parts/lists/ThreadsRecentlyCreatedList'
+import { Link } from 'react-router-dom'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 export default function HomeScreen() {
 
-    document.title = 'Meetings'
-
-    const [selection, setSelection] = useState(1)
+    useEffect(() => {
+        
+        document.title = 'Meetings'
+    }, [])
     
     return (
         <div>
@@ -18,17 +19,13 @@ export default function HomeScreen() {
 
                     <span className='font-bold text-lg'>ホーム</span>
 
-                    <HomeMenu setSelection={setSelection} selection={selection}/>
+                    <Link to={`/new`} className="z-10 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                        <AiOutlinePlus className="text-2xl" />
+                    </Link>
                 </div>
             </div>
 
-            {selection === 0 &&
-                <ThreadsRecentlyCreatedList />
-            }
-
-            {selection === 1 &&
-                <ThreadsRecentlyCommentedList />
-            }
+            <ThreadsRecentlyCommentedList />
         </div >
     )
 }
