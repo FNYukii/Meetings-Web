@@ -46,7 +46,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
 
-                {uid === null &&
+                {uid !== props.thread.userId &&
 
                     <MenuItem>
 
@@ -58,7 +58,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
                     </MenuItem>
                 }
 
-                {uid !== null &&
+                {uid === props.thread.userId &&
 
                     <MenuItem>
 
