@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom"
 import { db } from "../../utilities/firebase"
 import FireComments from "../../utilities/FireComments"
 import Comment from "../../entities/Comment"
-import CommentRow from "../parts/CommentRow"
+import CommentRow from "../parts/rows/CommentRow"
 import Thread from "../../entities/Thread"
 import FireThreads from "../../utilities/FireThreads"
-import BackButton from "../parts/BackButton"
-import ProgressImage from "../parts/ProgressImage"
+import BackButton from "../parts/buttons/BackButton"
+import ProgressImage from "../parts/images/ProgressImage"
 
 export default function ThreadScreen() {
     

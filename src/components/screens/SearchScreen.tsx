@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import BackButton from "../parts/BackButton";
-import RecentImagesList from "../parts/RecentImagesList"
+import BackButton from "../parts/buttons/BackButton";
+import RecentImagesList from "../parts/lists/RecentImagesList"
 import SearchResultsScreen from "./SearchResultsScreen";
 
 export default function SearchScreen() {

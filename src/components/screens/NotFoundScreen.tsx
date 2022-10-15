@@ -1,4 +1,4 @@
-import BackButton from "../parts/BackButton"
+import BackButton from "../parts/buttons/BackButton"
 
 export default function NotFoundScreen() {
 

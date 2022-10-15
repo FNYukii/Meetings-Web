@@ -1,4 +1,4 @@
-import RecentTagsCard from "../parts/RecentTagsCard";
+import RecentTagsCard from "../parts/sections/RecentTagsCard";
 
 export default function RightColumn(props: {className?: string}) {
 

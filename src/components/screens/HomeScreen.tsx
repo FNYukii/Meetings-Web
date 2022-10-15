@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import HomeMenu from '../parts/HomeMenu'
-import ThreadsRecentlyCommentedList from '../parts/ThreadsRecentlyCommentedList'
-import ThreadsRecentlyCreatedList from '../parts/ThreadsRecentlyCreatedList'
+import HomeMenu from '../parts/menus/HomeMenu'
+import ThreadsRecentlyCommentedList from '../parts/lists/ThreadsRecentlyCommentedList'
+import ThreadsRecentlyCreatedList from '../parts/lists/ThreadsRecentlyCreatedList'
 
 export default function HomeScreen() {
 
