@@ -5,8 +5,9 @@ import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { FiFlag } from "react-icons/fi"
 
-export default function ThreadMenu(props: { thread: Thread}) {
+export default function ThreadMenu(props: { thread: Thread }) {
 
     const location = useLocation()
 
@@ -31,7 +32,10 @@ export default function ThreadMenu(props: { thread: Thread}) {
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
                 <MenuItem>
-                    <Link to={`/report/threads/${props.thread.id}`} state={{ previousPath: location.pathname }}>スレッドを報告</Link>
+                    <Link to={`/report/threads/${props.thread.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                        <FiFlag className='text-gray-500' />
+                        <span>スレッドを報告</span>
+                    </Link>
                 </MenuItem>
             </Menu>
         </div>

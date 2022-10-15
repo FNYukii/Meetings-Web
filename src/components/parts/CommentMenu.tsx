@@ -5,6 +5,7 @@ import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 import Comment from "../../entities/Comment"
 import { Link, useLocation } from 'react-router-dom'
+import { FiFlag } from 'react-icons/fi'
 
 export default function CommentMenu(props: { comment: Comment, iconClassName?: string }) {
 
@@ -31,7 +32,10 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
                 <MenuItem>
-                    <Link to={`/report/comments/${props.comment.id}`} state={{ previousPath: location.pathname }}>コメントを報告</Link>
+                    <Link to={`/report/comments/${props.comment.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                        <FiFlag className='text-gray-500'/>
+                        <span>コメントを報告</span>
+                    </Link>
                 </MenuItem>
             </Menu>
         </div>

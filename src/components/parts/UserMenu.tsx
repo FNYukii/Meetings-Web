@@ -1,6 +1,7 @@
 import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { FiFlag } from "react-icons/fi";
 import { VscEllipsis } from "react-icons/vsc";
 import { Link, useLocation } from "react-router-dom";
 import User from "../../entities/User";
@@ -46,7 +47,10 @@ export default function UserMenu(props: { user: User }) {
                 {uid === null &&
                     <div>
                         <MenuItem>
-                            <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }}>ユーザーを報告</Link>
+                            <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                                <FiFlag className='text-gray-500' />
+                                <span>ユーザーを報告</span>
+                            </Link>
                         </MenuItem>
                     </div>
                 }
