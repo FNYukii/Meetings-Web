@@ -36,11 +36,11 @@ export default function AddCommentModal() {
 
                     <p className="text-2xl font-bold">新しいコメント</p>
 
-                    <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                    <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="mt-5 h-24 resize-none p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <button disabled={text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
+                    <button disabled={text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>追加</button>
                 </div>
 
             </div>
