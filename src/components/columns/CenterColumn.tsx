@@ -26,8 +26,8 @@ export default function CenterColumn(props: {className?: string}) {
     // Modalの表示のboolean
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
     const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
-    const isSignInModal = currentPath === "/sign-in"
-    const isShowModal = isShowImageModal || isShowReportModal || isSignInModal ? true : false
+    const isShowSignInModal = currentPath === "/sign-in"
+    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal ? true : false
 
     return (
         <div className={`min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800 ${props.className}`}>
