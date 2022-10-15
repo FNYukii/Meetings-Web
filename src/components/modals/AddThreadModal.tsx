@@ -36,7 +36,7 @@ export default function AddThreadModal() {
 
                     <p className="text-2xl font-bold">新しいスレッド</p>
 
-                    <textarea value={title} onChange={(e) => setTitle(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
                 </div>
 
                 <div className="mt-3 flex justify-end">
