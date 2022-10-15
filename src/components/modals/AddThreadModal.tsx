@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 
@@ -6,6 +6,7 @@ export default function AddThreadModal() {
 
     const navigate = useNavigate()
     const body = document.body
+    const [title, setTitle] = useState("")
 
     useEffect(() => {
 
@@ -30,6 +31,17 @@ export default function AddThreadModal() {
                 <button onClick={closeModal} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
+
+                <div className="mt-3 px-3">
+
+                    <p className="text-2xl font-bold">新しいスレッド</p>
+
+                    <textarea value={title} onChange={(e) => setTitle(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                </div>
+
+                <div className="mt-3 flex justify-end">
+                    <button disabled={title === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
+                </div>
 
                 
 
