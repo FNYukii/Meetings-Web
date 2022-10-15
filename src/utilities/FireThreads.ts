@@ -190,7 +190,7 @@ export default class FireThreads {
             })
             .catch((error) => {
                 
-                console.log("Failed to thread deletion.")
+                console.log(`Failed to thread deletion. ${error}`)
                 return null
             })
     }
