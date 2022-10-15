@@ -72,7 +72,7 @@ export default function ThreadScreen() {
                         <span className='font-bold text-lg ml-6'>{thread?.title ?? ""}</span>
                     </div>
 
-                    <Link to="/new-comment" state={{ previousPath: location.pathname }} className="z-10 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                    <Link to={`/threads/${threadId}/new`} state={{ previousPath: location.pathname }} className="z-10 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
                         <AiOutlinePlus className="text-2xl" />
                     </Link>
                 </div>
