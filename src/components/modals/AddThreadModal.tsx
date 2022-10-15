@@ -44,7 +44,7 @@ export default function AddThreadModal() {
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <button disabled={title === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
+                    <button disabled={title === "" || text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
                 </div>
 
                 
