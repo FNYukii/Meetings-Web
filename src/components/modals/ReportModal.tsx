@@ -32,9 +32,11 @@ export default function ReportModal(props: { className?: string }) {
     }
 
     useEffect(() => {
+        
         document.title = "報告 - Meetings"
         body.style.overflowY = "hidden"
-    })
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
@@ -47,7 +49,7 @@ export default function ReportModal(props: { className?: string }) {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <h2 className="mt-3 text-2xl font-bold ml-3">
+                <p className="mt-3 text-2xl font-bold ml-3">
 
                     <span>
                         {collectionName === "threads" &&
@@ -64,7 +66,7 @@ export default function ReportModal(props: { className?: string }) {
                     </span>
 
                     <span>を報告</span>
-                </h2>
+                </p>
 
                 <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
 
@@ -95,7 +97,7 @@ export default function ReportModal(props: { className?: string }) {
 
                     <legend className="text-xl">詳細</legend>
 
-                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-500 bg-transparent placeholder:text-gray-500 w-full" />
+                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                 </fieldset>
 
                 <div className="mt-3 flex justify-end">
