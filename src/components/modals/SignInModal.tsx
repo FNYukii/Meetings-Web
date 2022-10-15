@@ -16,7 +16,8 @@ export default function SignInModal() {
 
         document.title = "サインイン - Meetings"
         body.style.overflowY = "hidden"
-    })
+        // eslint-disable-next-line
+    }, [])
 
     function closeModal() {
 

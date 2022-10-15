@@ -9,9 +9,10 @@ export default function AddCommentModal() {
 
     useEffect(() => {
 
-        document.title = "サインイン - Meetings"
+        document.title = "新規コメント - Meetings"
         body.style.overflowY = "hidden"
-    })
+        // eslint-disable-next-line
+    }, [])
 
     function closeModal() {
 

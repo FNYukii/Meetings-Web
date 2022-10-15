@@ -32,9 +32,11 @@ export default function ReportModal(props: { className?: string }) {
     }
 
     useEffect(() => {
+        
         document.title = "報告 - Meetings"
         body.style.overflowY = "hidden"
-    })
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
