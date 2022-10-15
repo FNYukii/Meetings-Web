@@ -36,7 +36,7 @@ export default function SignInSection(props: {setIsShowSignUpSection: React.Disp
 
             <div className="px-3 mt-3">
 
-                <h2 className="text-2xl font-bold">サインイン</h2>
+                <p className="text-2xl font-bold">サインイン</p>
 
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="メールアドレス" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500" />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="パスワード" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500" />

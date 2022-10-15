@@ -47,7 +47,7 @@ export default function ReportModal(props: { className?: string }) {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <h2 className="mt-3 text-2xl font-bold ml-3">
+                <p className="mt-3 text-2xl font-bold ml-3">
 
                     <span>
                         {collectionName === "threads" &&
@@ -64,7 +64,7 @@ export default function ReportModal(props: { className?: string }) {
                     </span>
 
                     <span>を報告</span>
-                </h2>
+                </p>
 
                 <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
 

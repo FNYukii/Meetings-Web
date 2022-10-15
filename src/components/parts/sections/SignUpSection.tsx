@@ -30,7 +30,7 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
 
             <div className="px-3 mt-3">
 
-                <h2 className="text-2xl font-bold">アカウントを作成</h2>
+                <p className="text-2xl font-bold">アカウントを作成</p>
 
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="メールアドレス" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500" />
 
