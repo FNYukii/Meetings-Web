@@ -46,27 +46,28 @@ export default function ThreadMenu(props: { thread: Thread }) {
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
 
                 {uid === null &&
-                    <div>
-                        <MenuItem>
-                            <Link to={`/report/threads/${props.thread.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
-                                <FiFlag className='text-gray-500' />
-                                <span>スレッドを報告</span>
-                            </Link>
-                        </MenuItem>
-                    </div>
+
+                    <MenuItem>
+
+                        <Link to={`/report/threads/${props.thread.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                            
+                            <FiFlag className='text-gray-500' />
+                            <span>スレッドを報告</span>
+                        </Link>
+                    </MenuItem>
                 }
 
                 {uid !== null &&
-                    <div>
-                        <MenuItem>
-                            <button className="flex items-center gap-3 text-red-500">
-                                <FiTrash/>
-                                <span>スレッドを削除</span>
-                            </button>
-                        </MenuItem>
-                    </div>
+
+                    <MenuItem>
+
+                        <button className="flex items-center gap-3 text-red-500">
+
+                            <FiTrash />
+                            <span>スレッドを削除</span>
+                        </button>
+                    </MenuItem>
                 }
-                
             </Menu>
         </div>
     )
