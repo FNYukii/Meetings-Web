@@ -12,8 +12,14 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
 
     async function signUp() {
 
-        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
+        // userTagの形式を確認
+        if (!userTag.match(/^\w{5,}$/)) {
+            alert("ユーザータグの形式が不正です。")
+            return
+        }
 
+        // userTagの重複を確認
+        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
         }
