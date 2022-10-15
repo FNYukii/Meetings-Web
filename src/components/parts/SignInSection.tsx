@@ -34,7 +34,7 @@ export default function SignInSection() {
     return (
         <div>
 
-            <div className="px-3">
+            <div className="px-3 mt-3">
 
                 <h2 className="text-2xl font-bold">サインイン</h2>
 
