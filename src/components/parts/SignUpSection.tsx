@@ -1,4 +1,5 @@
 import { useState } from "react"
+import FireUsers from "../../utilities/FireUsers"
 
 export default function SignUpSection(props: {setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>>}) {
 
@@ -8,6 +9,15 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
 
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
+
+    async function signUp() {
+
+        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
+
+        if (isUserTagDuplicate) {
+            alert("そのユーザータグは既に利用されています。")
+        }
+    }
 
     return (
         <div>
@@ -28,7 +38,7 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
             <div className="mt-3 pl-3 flex justify-between items-center">
 
                 <button onClick={() => props.setIsShowSignUpSection(false)} className="hover:underline h-fit text-gray-500">既存のアカウントを使う</button>
-                <button disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインアップ</button>
+                <button onClick={() => signUp()} disabled={email === "" || password === "" || password !== password2 || displayName === "" || userTag === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" || password !== password2 || displayName === "" || userTag === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインアップ</button>
             </div>
         </div>
     )
