@@ -14,6 +14,12 @@ export default class FireAuth {
         }
     }
 
+    static uidFromLocalStorage(): string | null {
+
+        const uid = localStorage.getItem('uid')
+        return uid
+    }
+
     static async signIn(email: string, password: string): Promise<string | null> {
 
         const auth = getAuth()

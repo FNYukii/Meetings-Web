@@ -4,20 +4,28 @@ import { HiSearch, HiOutlineSearch } from "react-icons/hi"
 import { useEffect, useState } from 'react'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { BsPerson, BsPersonFill } from "react-icons/bs"
+import FireAuth from '../../utilities/FireAuth'
 
 export default function LeftColumn(props: { className?: string }) {
 
     const location = useLocation()
-    const [uid, setUid] = useState<string | null>(null)
+    const [uid, setUid] = useState<string | null>(FireAuth.uidFromLocalStorage())
     
     useEffect(() => {
         
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUid(user.uid)
+
+                const uid = user.uid
+
+                setUid(uid)
+                localStorage.setItem('uid', uid)
+
             } else {
+
                 setUid(null)
+                localStorage.removeItem('uid')
             }
         })
     }, [])
