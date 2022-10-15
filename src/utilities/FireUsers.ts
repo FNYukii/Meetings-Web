@@ -35,7 +35,7 @@ export default class FireUsers {
             }
 
             //成功
-            console.log("Read 1 User from cache.")
+            // console.log("Read 1 User from cache.")
             return this.toUser(docSnapFromCache)
 
         } catch (e) {
@@ -88,7 +88,7 @@ export default class FireUsers {
             const querySnapshot = await getDocsFromCache(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Users from cache.`)
+            // console.log(`Read ${querySnapshot.size} Users from cache.`)
 
             // 配列users
             let users: User[] = []

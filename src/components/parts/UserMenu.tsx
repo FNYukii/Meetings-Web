@@ -45,22 +45,22 @@ export default function UserMenu(props: { user: User }) {
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
 
                 {uid === null &&
-                    <div>
-                        <MenuItem>
-                            <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
-                                <FiFlag className='text-gray-500' />
-                                <span>ユーザーを報告</span>
-                            </Link>
-                        </MenuItem>
-                    </div>
+
+                    <MenuItem>
+
+                        <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+
+                            <FiFlag className='text-gray-500' />
+                            <span>ユーザーを報告</span>
+                        </Link>
+                    </MenuItem>
                 }
 
                 {uid !== null &&
-                    <div>
-                        <MenuItem>
-                            <button onClick={() => FireAuth.signOut()}>サインアウト</button>
-                        </MenuItem>
-                    </div>
+
+                    <MenuItem>
+                        <button onClick={() => FireAuth.signOut()}>サインアウト</button>
+                    </MenuItem>
                 }
             </Menu>
         </div>

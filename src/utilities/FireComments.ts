@@ -34,7 +34,7 @@ export default class FireComments {
             }
 
             //成功
-            console.log(`Read 1 Comment from cache.`)
+            // console.log(`Read 1 Comment from cache.`)
             return this.toComment(docSnapFromCache)
 
         } catch (e) {
@@ -64,7 +64,7 @@ export default class FireComments {
             const querySnapshot = await getDocsFromCache(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from cache.`)
+            // console.log(`Read ${querySnapshot.size} Comments from cache.`)
 
             // 配列comments
             let comments: Comment[] = []
