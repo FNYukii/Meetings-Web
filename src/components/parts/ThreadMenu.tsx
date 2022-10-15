@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { FiFlag, FiTrash } from "react-icons/fi"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
+import FireThreads from "../../utilities/FireThreads"
 
 export default function ThreadMenu(props: { thread: Thread }) {
 
@@ -50,7 +51,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
                     <MenuItem>
 
                         <Link to={`/report/threads/${props.thread.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
-                            
+
                             <FiFlag className='text-gray-500' />
                             <span>スレッドを報告</span>
                         </Link>
@@ -61,7 +62,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
 
                     <MenuItem>
 
-                        <button className="flex items-center gap-3 text-red-500">
+                        <button onClick={() => FireThreads.deleteThread(uid)} className="flex items-center gap-3 text-red-500">
 
                             <FiTrash />
                             <span>スレッドを削除</span>

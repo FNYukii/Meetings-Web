@@ -33,7 +33,7 @@ export default class FireThreads {
             }
 
             //成功
-            console.log(`Read 1 Thread from cache.`)
+            // console.log(`Read 1 Thread from cache.`)
             return this.toThread(docSnapFromCache)
 
         } catch (e) {
