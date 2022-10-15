@@ -180,7 +180,7 @@ export default class FireUsers {
 
     static async readIsUserTagDuplicate(userTag: string): Promise<boolean | null> {
 
-        const q = query(collection(db, "users"))
+        const q = query(collection(db, "users"), where("userTag", "==" , userTag))
 
         try {
             // サーバーから読み取り
@@ -188,23 +188,9 @@ export default class FireUsers {
 
             // 成功
             console.log(`Read ${querySnapshot.size} Users from server.`)
-
-            // 配列users
-            let users: User[] = []
-            querySnapshot.forEach((doc) => {
-                const user = this.toUser(doc)
-                users.push(user)
-            })
-
-            // 配列userTags
-            let userTags: string[] = []
-            users.forEach((user) => {
-                const userTag = user.userTag
-                userTags.push(userTag)
-            })
-
+            
             // 重複している
-            if (userTags.includes(userTag)) {
+            if (querySnapshot.size !== 0) {
                 return true
             }
 
