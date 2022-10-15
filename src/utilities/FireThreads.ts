@@ -1,6 +1,6 @@
 import Thread from '../entities/Thread'
 
-import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt, deleteDoc } from "firebase/firestore"
 import { db } from './firebase'
 import ExArray from './ExArray'
 
@@ -89,7 +89,7 @@ export default class FireThreads {
             return recentTags
 
         } catch (error) {
-            
+
             // 読み取り失敗
             return null
         }
@@ -178,5 +178,20 @@ export default class FireThreads {
         })
 
         return uniqueThreads
+    }
+
+    static async deleteThread(threadId: string): Promise<string | null> {
+
+        return deleteDoc(doc(db, "threads", threadId))
+            .then(() => {
+
+                console.log("Delete 1 Thread.")
+                return threadId
+            })
+            .catch((error) => {
+                
+                console.log("Failed to thread deletion.")
+                return null
+            })
     }
 }
