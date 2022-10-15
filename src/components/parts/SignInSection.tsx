@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../utilities/FireAuth"
 
-export default function SignInSection() {
+export default function SignInSection(props: {setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>>}) {
 
     const navigate = useNavigate()
     const body = document.body
@@ -42,7 +42,9 @@ export default function SignInSection() {
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="パスワード" className="mt-5 p-2 w-full rounded-md border border-gray-500 bg-transparent placeholder:text-gray-500" />
             </div>
 
-            <div className="mt-3 flex justify-end">
+            <div className="mt-3 ml-3 flex justify-between">
+
+                <button onClick={() => props.setIsShowSignUpSection(true)} className="hover:underline h-fit">サインアップ</button>
                 <button onClick={signIn} disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
             </div>
         </div>

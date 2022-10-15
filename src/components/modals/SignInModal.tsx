@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import SignInSection from "../parts/SignInSection"
+import SignUpSection from "../parts/SignUpSection"
 
 
 export default function SignInModal() {
 
     const navigate = useNavigate()
     const body = document.body
+
+    const [isShowSignUpSection, setIsShowSignUpSection] = useState(false)
 
     useEffect(() => {
 
@@ -32,7 +35,13 @@ export default function SignInModal() {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <SignInSection/>
+                {!isShowSignUpSection &&
+                    <SignInSection setIsShowSignUpSection={setIsShowSignUpSection}/>
+                }
+
+                {isShowSignUpSection &&
+                    <SignUpSection setIsShowSignUpSection={setIsShowSignUpSection}/>
+                }
             </div>
         </div>
     )
