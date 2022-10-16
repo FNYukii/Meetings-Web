@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
+import FireThreads from "../../utilities/FireThreads"
 
 export default function AddThreadModal() {
 
@@ -9,7 +10,7 @@ export default function AddThreadModal() {
 
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
-
+    const [isSubmited, setIsSubmited] = useState(false)
 
     useEffect(() => {
 
@@ -24,9 +25,24 @@ export default function AddThreadModal() {
         navigate(-1)
     }
 
-    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
         e.preventDefault()
+        setIsSubmited(true)
+
+        // スレッドを作成
+        const threadId = await FireThreads.createThread(title, [])
+
+        // 失敗
+        if (threadId === null) {
+
+            setIsSubmited(false)
+            alert("スレッドの作成に失敗しました。")
+            return
+        }
+
+        // 成功
+        closeModal()
     }
 
     return (
@@ -51,7 +67,7 @@ export default function AddThreadModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <button disabled={title === "" || text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>作成</button>
+                        <button disabled={title === "" || text === "" || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || text === "" || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>作成</button>
                     </div>
                 </form>
             </div>

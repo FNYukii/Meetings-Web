@@ -45,7 +45,7 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
                         <div className="w-full flex justify-between">
 
                             <span className="font-bold">{thread.title}</span>
-                            <span className="text-gray-500">{ExDate.toHowManyAgoString(thread.commentedAt)}</span>
+                            <span className="text-gray-500">{ExDate.toHowManyAgoString(thread.createdAt)}</span>
                         </div>
 
                         <p className="text-gray-500">{props.comment.text} - <UserUserTagSpan userId={props.comment.userId}/></p>

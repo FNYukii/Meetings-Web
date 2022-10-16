@@ -10,8 +10,8 @@ export default class FireThreads {
     static toThread(document: QueryDocumentSnapshot<DocumentData>): Thread {
         const id: string = document.id ?? ""
         const userId: string = document.data().userId ?? ""
-        const createdAt: Date = document.data({ serverTimestamps: "estimate" }).createdAt.toDate() ?? new Date()
-        const commentedAt: Date = document.data({ serverTimestamps: "estimate" }).commentedAt.toDate() ?? new Date()
+        const createdAt: Date = document.data({ serverTimestamps: "estimate" }).createdAt.toDate()
+        const commentedAt: Date | null = document.data({ serverTimestamps: "estimate" }).commentedAt?.toDate()
 
         const title: string = document.data().title ?? ""
         const tags: string[] = document.data().tags ?? ""
