@@ -6,8 +6,7 @@ import FireUsers from "../../../utilities/FireUsers"
 export default function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const navigate = useNavigate()
-    const body = document.body
-
+    
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
@@ -15,12 +14,6 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
     const [isSubmited, setIsSubmited] = useState(false)
-
-    function closeModal() {
-
-        body.style.overflowY = ""
-        navigate(-1)
-    }
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
@@ -63,7 +56,7 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         }
 
         // 成功
-        closeModal()
+        navigate(-1)
     }
 
     return (
