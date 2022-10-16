@@ -5,17 +5,10 @@ import FireAuth from "../../../utilities/FireAuth"
 export default function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const navigate = useNavigate()
-    const body = document.body
-
+    
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isSubmited, setIsSubmited] = useState(false)
-
-    function closeModal() {
-
-        body.style.overflowY = ""
-        navigate(-1)
-    }
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
@@ -35,7 +28,7 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
         }
 
         // 成功
-        closeModal()
+        navigate(-1)
     }
 
     return (
