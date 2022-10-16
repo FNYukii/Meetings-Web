@@ -25,10 +25,15 @@ export default function NewThreadLink() {
     }, [])
 
     return (
-        <div>
+        <div className="z-10">
+
             {uid !== null &&
-                <Link to={`/new`} className="z-10 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
-                    <AiOutlinePlus className="text-2xl" />
+
+                <Link to={`/new`}>
+
+                    <div className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                        <AiOutlinePlus className="text-2xl" />
+                    </div>
                 </Link>
             }
         </div>
