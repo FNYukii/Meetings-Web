@@ -1,10 +1,10 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
 
 export default class FireAuth {
 
     static uid(): string | null {
 
-        const auth = getAuth()
         const uid = auth.currentUser?.uid
 
         if (uid) {
@@ -22,7 +22,6 @@ export default class FireAuth {
 
     static async signIn(email: string, password: string): Promise<string | null> {
 
-        const auth = getAuth()
         return signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
 
@@ -38,7 +37,7 @@ export default class FireAuth {
     }
 
     static async signUp(email: string, password: string): Promise<string | null> {
-        const auth = getAuth()
+
         return createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 
@@ -62,7 +61,6 @@ export default class FireAuth {
             return null
         }
 
-        const auth = getAuth()
         return auth.signOut()
             .then(() => {
                 return uid
