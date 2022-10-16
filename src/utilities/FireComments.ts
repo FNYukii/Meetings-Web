@@ -228,7 +228,7 @@ export default class FireComments {
         }
     }
 
-    static async createComments(threadId: string, text: string, imageUrls: string[]): Promise<string | null> {
+    static async createComment(threadId: string, text: string, imageUrls: string[]): Promise<string | null> {
 
         // サインインしていないなら終了　
         const uid = FireAuth.uid()
@@ -252,6 +252,7 @@ export default class FireComments {
 
         } catch (error) {
 
+            console.log(`Failed to comment creation. ${error}`)
             return null
         }
     }
