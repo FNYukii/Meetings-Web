@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import FireComments from "../../utilities/FireComments"
 
 export default function AddCommentModal() {
 
+    const { threadId } = useParams()
     const navigate = useNavigate()
     const body = document.body
     const [text, setText] = useState("")
@@ -19,6 +21,21 @@ export default function AddCommentModal() {
 
         body.style.overflowY = ""
         navigate(-1)
+    }
+
+    async function create() {
+
+        const commentId = await FireComments.createComment(threadId!, text, [])
+
+        // 失敗
+        if (commentId === null) {
+
+            alert("コメントの追加に失敗しました。")
+            return
+        }
+
+        // 成功
+        closeModal()
     }
 
     return (
@@ -40,7 +57,7 @@ export default function AddCommentModal() {
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <button disabled={text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>追加</button>
+                    <button onClick={create} disabled={text === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>追加</button>
                 </div>
 
             </div>

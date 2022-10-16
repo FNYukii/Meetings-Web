@@ -1,5 +1,6 @@
-import { collection, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, startAt, where } from "firebase/firestore"
+import { addDoc, collection, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, serverTimestamp, startAt, where } from "firebase/firestore"
 import Comment from "../entities/Comment"
+import FireAuth from "./FireAuth"
 import { db } from "./firebase"
 import FireUsers from "./FireUsers"
 
@@ -223,6 +224,35 @@ export default class FireComments {
         } catch (error) {
 
             // 失敗
+            return null
+        }
+    }
+
+    static async createComment(threadId: string, text: string, imageUrls: string[]): Promise<string | null> {
+
+        // サインインしていないなら終了　
+        const uid = FireAuth.uid()
+
+        if (uid === null) {
+            return null
+        }
+
+        try {
+
+            const ref = await addDoc(collection(db, "comments"), {
+                createdAt: serverTimestamp(),
+                threadId: threadId,
+                userId: uid,
+                text: text,
+                imageUrls: imageUrls
+            })
+
+            console.log("Add 1 Comment.")
+            return ref.id
+
+        } catch (error) {
+
+            console.log(`Failed to comment creation. ${error}`)
             return null
         }
     }
