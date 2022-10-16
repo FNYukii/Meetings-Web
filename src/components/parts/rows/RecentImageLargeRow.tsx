@@ -46,7 +46,7 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
                         <div className="w-full flex justify-between">
 
                             <span className="text-white font-bold">{thread.title}</span>
-                            <span className="text-gray-300">{ExDate.toHowManyAgoString(thread.commentedAt)}</span>
+                            <span className="text-gray-300">{ExDate.toHowManyAgoString(thread.createdAt)}</span>
                         </div>
 
                         <p className="text-white text-gray-300">{props.comment.text}</p>

@@ -6,10 +6,10 @@ import FireComments from "../../../utilities/FireComments"
 import ProgressImage from "../images/ProgressImage"
 import CommentRow from "../rows/CommentRow"
 
-export default function CommentsInThreadList(props: {threadId: string}) {
+export default function CommentsInThreadList(props: { threadId: string }) {
 
     const [comments, setComments] = useState<Comment[] | null>(null)
-    const [isLoadedComments, setIsLoadedComments] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     async function startReadingComments() {
 
@@ -28,11 +28,11 @@ export default function CommentsInThreadList(props: {threadId: string}) {
             })
 
             setComments(comments)
-            setIsLoadedComments(true)
+            setIsLoaded(true)
 
         }, (error) => {
 
-            setIsLoadedComments(true)
+            setIsLoaded(true)
         })
     }
 
@@ -44,19 +44,25 @@ export default function CommentsInThreadList(props: {threadId: string}) {
 
     return (
         <div>
-            {!isLoadedComments &&
+            {!isLoaded &&
                 <div className='flex justify-center p-3'>
                     <ProgressImage />
                 </div>
             }
 
-            {isLoadedComments && comments === null &&
+            {isLoaded && comments === null &&
                 <div className="p-2">
                     <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
                 </div>
             }
 
-            {isLoadedComments && comments !== null &&
+            {isLoaded && comments !== null && comments.length === 0 &&
+                <div className="p-3">
+                    <p className="text-gray-500 text-center">結果なし</p>
+                </div>
+            }
+
+            {isLoaded && comments !== null &&
                 <div className="mt-1">
                     {comments.map((comment) => (
                         <CommentRow key={comment.id} comment={comment} />
