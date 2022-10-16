@@ -1,5 +1,5 @@
 import User from "../entities/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "./firebase"
 
@@ -79,7 +79,7 @@ export default class FireUsers {
     }
 
     static async readLikedUsersFromCache(commentId: string): Promise<User[] | null> {
-        
+
         const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
         try {
@@ -180,7 +180,7 @@ export default class FireUsers {
 
     static async readIsUserTagDuplicate(userTag: string): Promise<boolean | null> {
 
-        const q = query(collection(db, "users"), where("userTag", "==" , userTag))
+        const q = query(collection(db, "users"), where("userTag", "==", userTag))
 
         try {
             // サーバーから読み取り
@@ -188,7 +188,7 @@ export default class FireUsers {
 
             // 成功
             console.log(`Read ${querySnapshot.size} Users from server.`)
-            
+
             // 重複している
             if (querySnapshot.size !== 0) {
                 return true
@@ -200,6 +200,24 @@ export default class FireUsers {
         } catch (error) {
 
             // 失敗
+            return null
+        }
+    }
+
+    static async createUser(uid: string, displayName: string, userTag: string): Promise<string | null> {
+
+        try {
+
+            await setDoc(doc(db, "users", uid), {
+                createdAt: serverTimestamp(),
+                displayName: displayName,
+                userTag: userTag
+            })
+
+            return uid
+
+        } catch (error) {
+
             return null
         }
     }
