@@ -11,28 +11,40 @@ export default function ReportModal(props: { className?: string }) {
 
     const [probremIndex, setProbremIndex] = useState<number | null>(null)
     const [detail, setDetail] = useState("")
-    
+    const [isSubmited, setIsSubmited] = useState(false)
+
     function closeModal() {
         body.style.overflowY = ""
         navigate(-1)
     }
 
-    function create() {
+    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+
+        e.preventDefault()
+        setIsSubmited(true)
 
         if (probremIndex === null) {
+            setIsSubmited(false)
             return
         }
 
-        const result = FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
+        const reportId = FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
 
-        if (result !== null) {
-            alert("報告を送信しました。")
-            closeModal()
+        // 失敗
+        if (reportId === null) {
+            alert("報告の送信に失敗。")
+            setIsSubmited(false)
+
+            return
         }
+
+        // 成功
+        alert("報告を送信しました。")
+        closeModal()
     }
 
     useEffect(() => {
-        
+
         document.title = "報告 - Meetings"
         body.style.overflowY = "hidden"
         // eslint-disable-next-line
@@ -68,41 +80,44 @@ export default function ReportModal(props: { className?: string }) {
                     <span>を報告</span>
                 </p>
 
-                <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
+                <form onSubmit={(e) => onSubmit(e)}>
 
-                    <legend className="text-xl">カテゴリ</legend>
+                    <fieldset className="mt-5 ml-3 flex gap-2 flex-col">
 
-                    <div className="mt-2 ml-1">
-                        <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(0)} />
-                        <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
+                        <legend className="text-xl">カテゴリ</legend>
+
+                        <div className="mt-2 ml-1">
+                            <input type="radio" id="radio01" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(0)} />
+                            <label htmlFor="radio01" className="pl-3 cursor-pointer">暴力的</label>
+                        </div>
+
+                        <div className="ml-1">
+                            <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(1)} />
+                            <label htmlFor="radio02" className="pl-3 cursor-pointer">センシティブ</label>
+                        </div>
+
+                        <div className="ml-1">
+                            <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(2)} />
+                            <label htmlFor="radio03" className="pl-3 cursor-pointer">スパム</label>
+                        </div>
+
+                        <div className="ml-1">
+                            <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(3)} />
+                            <label htmlFor="radio04" className="pl-3 cursor-pointer">事実に反する</label>
+                        </div>
+                    </fieldset>
+
+                    <fieldset className="mt-5 mx-3">
+
+                        <legend className="text-xl">詳細</legend>
+
+                        <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                    </fieldset>
+
+                    <div className="mt-3 flex justify-end">
+                        <button type="submit" disabled={probremIndex === null || detail === "" || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex === null || detail === "" || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
                     </div>
-
-                    <div className="ml-1">
-                        <input type="radio" id="radio02" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(1)} />
-                        <label htmlFor="radio02" className="pl-3 cursor-pointer">センシティブ</label>
-                    </div>
-
-                    <div className="ml-1">
-                        <input type="radio" id="radio03" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(2)} />
-                        <label htmlFor="radio03" className="pl-3 cursor-pointer">スパム</label>
-                    </div>
-
-                    <div className="ml-1">
-                        <input type="radio" id="radio04" name="category" className="p-3 cursor-pointer scale-125" onChange={() => setProbremIndex(3)} />
-                        <label htmlFor="radio04" className="pl-3 cursor-pointer">事実に反する</label>
-                    </div>
-                </fieldset>
-
-                <fieldset className="mt-5 mx-3">
-
-                    <legend className="text-xl">詳細</legend>
-
-                    <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
-                </fieldset>
-
-                <div className="mt-3 flex justify-end">
-                    <button onClick={() => create()} disabled={probremIndex === null || detail === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex !== null && detail !== "" ? "" : "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent"}`}>送信</button>
-                </div>
+                </form>
             </div>
         </div>
     )
