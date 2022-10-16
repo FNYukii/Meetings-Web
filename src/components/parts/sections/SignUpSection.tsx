@@ -1,7 +1,12 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import FireAuth from "../../../utilities/FireAuth"
 import FireUsers from "../../../utilities/FireUsers"
 
 export default function SignUpSection(props: {setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>>}) {
+
+    const navigate = useNavigate()
+    const body = document.body
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -9,6 +14,12 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
 
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
+
+    function closeModal() {
+
+        body.style.overflowY = ""
+        navigate(-1)
+    }
 
     async function signUp() {
 
@@ -23,6 +34,23 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
         }
+
+        // サインアップ
+        const result = await FireAuth.signUp(email, password, displayName, userTag)
+
+        // 失敗
+        if (result === null) {
+            setEmail("")
+            setPassword("")
+            setPassword2("")
+            setDisplayName("")
+            setUserTag("")
+
+            return
+        }
+
+        // 成功
+        closeModal()
     }
 
     return (
