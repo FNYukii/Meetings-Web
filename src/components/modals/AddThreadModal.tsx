@@ -18,12 +18,16 @@ export default function AddThreadModal() {
         document.title = "新規コメント - Meetings"
         document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        // eslint-disable-next-line
-    }, [])
+
+        return () => {
+            document.removeEventListener("keydown", onKeyDown, false)
+            body.style.overflowY = ""
+        }
+
+    })
 
     function closeModal() {
 
-        body.style.overflowY = ""
         navigate(-1)
     }
 

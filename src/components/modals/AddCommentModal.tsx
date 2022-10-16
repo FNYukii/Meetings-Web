@@ -15,14 +15,25 @@ export default function AddCommentModal() {
     useEffect(() => {
 
         document.title = "新規コメント - Meetings"
+        document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        // eslint-disable-next-line
-    }, [])
+        
+        return () => {
+            document.removeEventListener("keydown", onKeyDown, false)
+            body.style.overflowY = ""
+        }
+    })
 
     function closeModal() {
-
-        body.style.overflowY = ""
+        
         navigate(-1)
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+
+        if (event.key === "Escape") {
+            closeModal()
+        }
     }
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
