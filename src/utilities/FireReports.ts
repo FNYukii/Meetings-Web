@@ -11,7 +11,7 @@ export default class FireReports {
 
         try {
 
-            const docRef = await addDoc(collection(db, "reports"), {
+            const ref = await addDoc(collection(db, "reports"), {
                 createdAt: serverTimestamp(),
                 targetId: targetId,
                 in: targetCollectionName,
@@ -21,7 +21,7 @@ export default class FireReports {
 
             console.log("Add 1 Report.")
 
-            return docRef.id
+            return ref.id
 
         } catch (error) {
 
