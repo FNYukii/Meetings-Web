@@ -37,7 +37,7 @@ export default class FireAuth {
             })
     }
 
-    static async signUp(email: string, password: string, displayName: string, userTag: string): Promise<string | null> {
+    static async signUp(email: string, password: string): Promise<string | null> {
         const auth = getAuth()
         return createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {

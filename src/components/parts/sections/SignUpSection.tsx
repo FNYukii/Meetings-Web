@@ -36,10 +36,10 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
         }
 
         // サインアップ
-        const result = await FireAuth.signUp(email, password, displayName, userTag)
+        const uid = await FireAuth.signUp(email, password)
 
         // 失敗
-        if (result === null) {
+        if (uid === null) {
             setEmail("")
             setPassword("")
             setPassword2("")
@@ -49,6 +49,16 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
             return
         }
 
+        // 成功
+        // Userドキュメントを追加
+        const userId = await FireUsers.createUser(uid, displayName, userTag)
+
+        // 失敗
+        if (userId === null) {
+            FireAuth.signOut()
+            return
+        }
+ 
         // 成功
         closeModal()
     }
