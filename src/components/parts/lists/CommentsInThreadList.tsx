@@ -1,0 +1,68 @@
+import { collection, limit, onSnapshot, orderBy, query, where } from "firebase/firestore"
+import { useEffect, useState } from "react"
+import Comment from "../../../entities/Comment"
+import { db } from "../../../utilities/firebase"
+import FireComments from "../../../utilities/FireComments"
+import ProgressImage from "../images/ProgressImage"
+import CommentRow from "../rows/CommentRow"
+
+export default function CommentsInThreadList(props: {threadId: string}) {
+
+    const [comments, setComments] = useState<Comment[] | null>(null)
+    const [isLoadedComments, setIsLoadedComments] = useState(false)
+
+    async function startReadingComments() {
+
+        const q = query(collection(db, "comments"), where("threadId", "==", props.threadId), orderBy("createdAt"), limit(1000))
+
+        onSnapshot(q, (querySnapshot) => {
+
+            // 成功
+            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
+
+            // 配列comments
+            let comments: Comment[] = []
+            querySnapshot.forEach((doc) => {
+                const comment = FireComments.toComment(doc)
+                comments.push(comment)
+            })
+
+            setComments(comments)
+            setIsLoadedComments(true)
+
+        }, (error) => {
+
+            setIsLoadedComments(true)
+        })
+    }
+
+    useEffect(() => {
+
+        startReadingComments()
+        // eslint-disable-next-line
+    }, [])
+
+    return (
+        <div>
+            {!isLoadedComments &&
+                <div className='flex justify-center p-3'>
+                    <ProgressImage />
+                </div>
+            }
+
+            {isLoadedComments && comments === null &&
+                <div className="p-2">
+                    <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
+                </div>
+            }
+
+            {isLoadedComments && comments !== null &&
+                <div className="mt-1">
+                    {comments.map((comment) => (
+                        <CommentRow key={comment.id} comment={comment} />
+                    ))}
+                </div>
+            }
+        </div>
+    )
+}
