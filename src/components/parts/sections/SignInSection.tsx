@@ -18,17 +18,16 @@ export default function SignInSection(props: {setIsShowSignUpSection: React.Disp
 
     async function signIn() {
 
-        const result = await FireAuth.signIn(email, password)
-
-        // 成功
-        if (result !== null) {
-            closeModal()
+        const uid = await FireAuth.signIn(email, password)
+        
+        // 失敗
+        if (uid === null) {
+            alert("サインインに失敗しました。")
             return
         }
-
-        // 失敗
-        setEmail("")
-        setPassword("")
+        
+        // 成功
+        closeModal()
     }
 
     return (

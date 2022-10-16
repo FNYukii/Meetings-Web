@@ -40,12 +40,7 @@ export default function SignUpSection(props: {setIsShowSignUpSection: React.Disp
 
         // 失敗
         if (uid === null) {
-            setEmail("")
-            setPassword("")
-            setPassword2("")
-            setDisplayName("")
-            setUserTag("")
-
+            alert("サインアップに失敗しました。")
             return
         }
 
