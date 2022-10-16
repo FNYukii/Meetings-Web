@@ -2,9 +2,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AiOutlineHome, AiFillHome, AiOutlineLogin } from 'react-icons/ai'
 import { HiSearch, HiOutlineSearch } from "react-icons/hi"
 import { useEffect, useState } from 'react'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged } from 'firebase/auth'
 import { BsPerson, BsPersonFill } from "react-icons/bs"
 import FireAuth from '../../utilities/FireAuth'
+import { auth } from '../../utilities/firebase'
 
 export default function LeftColumn(props: { className?: string }) {
 
@@ -12,8 +13,7 @@ export default function LeftColumn(props: { className?: string }) {
     const [uid, setUid] = useState<string | null>(FireAuth.uidFromLocalStorage())
     
     useEffect(() => {
-        
-        const auth = getAuth();
+
         onAuthStateChanged(auth, (user) => {
             if (user) {
 
