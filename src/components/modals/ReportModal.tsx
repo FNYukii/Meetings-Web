@@ -13,11 +13,6 @@ export default function ReportModal(props: { className?: string }) {
     const [detail, setDetail] = useState("")
     const [isSubmited, setIsSubmited] = useState(false)
 
-    function closeModal() {
-        body.style.overflowY = ""
-        navigate(-1)
-    }
-
     function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
         e.preventDefault()
@@ -40,24 +35,36 @@ export default function ReportModal(props: { className?: string }) {
 
         // 成功
         alert("報告を送信しました。")
-        closeModal()
+        navigate(-1)
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+
+        if (event.key === "Escape") {
+            navigate(-1)
+        }
     }
 
     useEffect(() => {
 
         document.title = "報告 - Meetings"
+        document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        // eslint-disable-next-line
-    }, [])
+        
+        return () => {
+            body.style.overflowY = ""
+            document.removeEventListener("keydown", onKeyDown, false)
+        }
+    })
 
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
 
-            <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={closeModal}></div>
+            <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={() => navigate(-1)}></div>
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12">
 
-                <button onClick={closeModal} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
+                <button onClick={() => navigate(-1)} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 

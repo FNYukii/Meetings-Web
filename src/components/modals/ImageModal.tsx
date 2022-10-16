@@ -23,20 +23,29 @@ export default function ImageModal(props: { className?: string }) {
     }
 
     useEffect(() => {
-        body.style.overflowY = "hidden"
-        readComment()
-        // eslint-disable-next-line
-    }, [])
 
-    function closeModal() {
-        body.style.overflowY = ""
-        navigate(-1)
+        readComment()
+
+        document.addEventListener("keydown", onKeyDown, false)
+        body.style.overflowY = "hidden"
+        
+        return () => {
+            body.style.overflowY = ""
+            document.removeEventListener("keydown", onKeyDown, false)
+        }
+    })
+
+    const onKeyDown = (event: KeyboardEvent) => {
+
+        if (event.key === "Escape") {
+            navigate(-1)
+        }
     }
 
     return (
         <div className={`${props.className} z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center`}>
 
-            <div className="w-full h-full bg-black/80" onClick={closeModal}></div>
+            <div className="w-full h-full bg-black/80" onClick={() => navigate(-1)}></div>
 
             <div className="absolute">
 
@@ -57,7 +66,7 @@ export default function ImageModal(props: { className?: string }) {
                 }
             </div>
 
-            <button onClick={closeModal} className="absolute top-0 left-0 m-3 p-3 hover:bg-white/20 rounded-full">
+            <button onClick={() => navigate(-1)} className="absolute top-0 left-0 m-3 p-3 bg-black/40 hover:bg-white/20 rounded-full">
                 <MdOutlineClose className="text-2xl text-white"/>
             </button>
         </div>
