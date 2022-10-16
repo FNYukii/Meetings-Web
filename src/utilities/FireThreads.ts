@@ -220,6 +220,7 @@ export default class FireThreads {
             .catch((error) => {
                 
                 console.log(`Failed to thread deletion. ${error}`)
+                alert(`スレッドの削除に失敗しました。\n${error}`)
                 return null
             })
     }

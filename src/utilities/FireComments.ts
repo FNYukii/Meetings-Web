@@ -268,6 +268,7 @@ export default class FireComments {
             .catch((error) => {
                 
                 console.log(`Failed to comment deletion. ${error}`)
+                alert(`コメントの削除に失敗しました。\n${error}`)
                 return null
             })
     }
