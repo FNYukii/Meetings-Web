@@ -1,8 +1,9 @@
 import Thread from '../entities/Thread'
 
-import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt, deleteDoc } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt, deleteDoc, addDoc, serverTimestamp } from "firebase/firestore"
 import { db } from './firebase'
 import ExArray from './ExArray'
+import FireAuth from './FireAuth'
 
 export default class FireThreads {
 
@@ -178,6 +179,34 @@ export default class FireThreads {
         })
 
         return uniqueThreads
+    }
+
+    static async createThread(title: string, tags: string[]): Promise<string | null> {
+
+        // サインインしていないなら終了　
+        const uid = FireAuth.uid()
+
+        if (uid === null) {
+            return null
+        }
+
+        try {
+
+            const ref = await addDoc(collection(db, "threads"), {
+                createdAt: serverTimestamp(),
+                userId: uid,
+                title: title,
+                tags: tags
+            })
+
+            console.log("Add 1 Thread.")
+            return ref.id
+
+        } catch (error) {
+
+            console.log(`Failed to thread creation. ${error}`)
+            return null
+        }
     }
 
     static async deleteThread(threadId: string): Promise<string | null> {
