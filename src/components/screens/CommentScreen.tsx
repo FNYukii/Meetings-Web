@@ -9,7 +9,7 @@ import CommentImagesGrid from "../parts/sections/CommentImagesGrid"
 import UserDisplayNameSpan from "../parts/spans/UserDisplayNameSpan"
 import UserIconNavLink from "../parts/links/UserIconNavLink"
 import UserUserTagSpan from "../parts/spans/UserUserTagSpan"
-import CommentThreadTitle from "../parts/links/CommentThreadTitle"
+import ThreadTitleLink from "../parts/links/ThreadTitleLink"
 import CommentLikeButton from "../parts/buttons/CommentLikeButton"
 import ProgressImage from "../parts/images/ProgressImage"
 
@@ -83,7 +83,7 @@ export default function CommentScreen() {
 
                     <p className="text-gray-500 mt-2 ml-3">{ExDate.toStringUpToMinute(comment!.createdAt)}</p>
 
-                    <CommentThreadTitle threadId={comment!.threadId} className="mt-1 ml-3" />
+                    <ThreadTitleLink threadId={comment!.threadId} className="mt-1 ml-3" />
 
                     <CommentLikeButton comment={comment!} isReadFromSeaver={true} className="ml-2" />
                 </div>

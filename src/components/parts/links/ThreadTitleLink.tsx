@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import Thread from "../../../entities/Thread";
 import FireThreads from "../../../utilities/FireThreads";
 
-export default function CommentThreadTitle(props: { threadId: string, className?: string }) {
+export default function ThreadTitleLink(props: { threadId: string, className?: string }) {
 
     const [thread, setThread] = useState<Thread | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -21,10 +21,14 @@ export default function CommentThreadTitle(props: { threadId: string, className?
     }, [])
 
     return (
-        <div className={props.className}>
+        <div className={`${props.className} ${thread === null ? "" : "mt-1"}`}>
+
             {isLoaded && thread !== null &&
+
                 <div className="flex">
+
                     <NavLink to={`/threads/${props.threadId}`} className="z-10 flex items-center gap-2 hover:underline hover:decoration-gray-500">
+
                         <AiOutlineProfile className="text-zinc-500 text-xl" />
                         <span className="text-zinc-500">{thread.title}</span>
                     </NavLink>

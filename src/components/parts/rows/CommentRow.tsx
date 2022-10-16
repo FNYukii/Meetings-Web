@@ -6,7 +6,7 @@ import ExDate from "../../../utilities/ExDate"
 import { NavLink } from "react-router-dom"
 import CommentMenu from "../menus/CommentMenu"
 import CommentImagesGrid from "../sections/CommentImagesGrid"
-import CommentThreadTitle from "../links/CommentThreadTitle"
+import ThreadTitleLink from "../links/ThreadTitleLink"
 import CommentLikeButton from "../buttons/CommentLikeButton"
 
 export default function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
@@ -42,8 +42,8 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
                     <CommentImagesGrid comment={props.comment} className="mx-3" />
 
                     {props.showThreadTitle &&
-                        <div className="mt-1 mx-3">
-                            <CommentThreadTitle threadId={props.comment.threadId} className="pointer-events-auto" />
+                        <div className="mx-3">
+                            <ThreadTitleLink threadId={props.comment.threadId} className="pointer-events-auto" />
                         </div>
                     }
 
