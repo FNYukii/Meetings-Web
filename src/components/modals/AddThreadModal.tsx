@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
+import FireComments from "../../utilities/FireComments"
 import FireThreads from "../../utilities/FireThreads"
 
 export default function AddThreadModal() {
@@ -42,6 +43,8 @@ export default function AddThreadModal() {
         }
 
         // 成功
+        // コメントを作成
+        await FireComments.createComment(threadId, text, [])
         closeModal()
     }
 
