@@ -9,7 +9,6 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
     const [isSubmited, setIsSubmited] = useState(false)
 
     function closeModal() {
@@ -29,7 +28,7 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
 
         // 失敗
         if (uid === null) {
-            
+
             alert("サインインに失敗しました。")
             setIsSubmited(false)
             return
