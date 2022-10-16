@@ -16,6 +16,7 @@ export default function AddThreadModal() {
     useEffect(() => {
 
         document.title = "新規コメント - Meetings"
+        document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
         // eslint-disable-next-line
     }, [])
@@ -24,6 +25,13 @@ export default function AddThreadModal() {
 
         body.style.overflowY = ""
         navigate(-1)
+    }
+
+    function onKeyDown(event: KeyboardEvent) {
+
+        if (event.key === "Escape") {
+            closeModal()
+        }
     }
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
