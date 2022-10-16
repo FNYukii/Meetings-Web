@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import ThreadsRecentlyCommentedList from '../parts/lists/ThreadsRecentlyCommentedList'
-import { Link } from 'react-router-dom'
-import { AiOutlinePlus } from 'react-icons/ai'
+import NewThreadLink from '../parts/links/NewThreadLink'
 
 export default function HomeScreen() {
 
@@ -19,9 +18,7 @@ export default function HomeScreen() {
 
                     <span className='font-bold text-lg'>ホーム</span>
 
-                    <Link to={`/new`} className="z-10 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
-                        <AiOutlinePlus className="text-2xl" />
-                    </Link>
+                    <NewThreadLink/>
                 </div>
             </div>
 
