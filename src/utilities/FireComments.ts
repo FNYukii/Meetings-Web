@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, serverTimestamp, startAt, where } from "firebase/firestore"
+import { addDoc, collection, deleteDoc, doc, endAt, getDocFromCache, getDocFromServer, getDocs, getDocsFromCache, getDocsFromServer, limit, orderBy, query, QueryDocumentSnapshot, serverTimestamp, startAt, where } from "firebase/firestore"
 import Comment from "../entities/Comment"
 import FireAuth from "./FireAuth"
 import { db } from "./firebase"
@@ -255,5 +255,20 @@ export default class FireComments {
             console.log(`Failed to comment creation. ${error}`)
             return null
         }
+    }
+
+    static async deleteComment(commentId: string): Promise<string | null> {
+
+        return deleteDoc(doc(db, "comments", commentId))
+            .then(() => {
+
+                console.log("Delete 1 Comment.")
+                return commentId
+            })
+            .catch((error) => {
+                
+                console.log(`Failed to comment deletion. ${error}`)
+                return null
+            })
     }
 }
