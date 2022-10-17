@@ -59,7 +59,7 @@ export default function UserMenu(props: { user: User }) {
                 {uid !== null &&
 
                     <MenuItem>
-                        <button onClick={() => FireAuth.signOut()}>サインアウト</button>
+                        <button onClick={() => FireAuth.signOut()} className="text-red-500">サインアウト</button>
                     </MenuItem>
                 }
             </Menu>
