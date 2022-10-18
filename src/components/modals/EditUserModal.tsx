@@ -1,13 +1,36 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
+import FireAuth from "../../utilities/FireAuth"
+import FireUsers from "../../utilities/FireUsers"
 
 export default function EditUserModal() {
 
     const navigate = useNavigate()
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
-    const [detail, setDetail] = useState("")
+    const [introduction, setIntroduction] = useState("")
+
+    useEffect(() => {
+        readUser()
+    })
+
+    async function readUser() {
+
+        const uid = FireAuth.uid()
+        if (uid === null) {
+            return
+        }
+
+        const user = await FireUsers.readUser(uid)
+        if (user === null) {
+            return
+        }
+
+        setDisplayName(user.displayName)
+        setUserTag(user.userTag)
+        setIntroduction(user.introduction)
+    }
 
     function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -32,11 +55,11 @@ export default function EditUserModal() {
                         <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
                         <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
 
-                        <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="自己紹介" className="mt-5 h-24 resize-none p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                        <textarea value={introduction} onChange={(e) => setIntroduction(e.target.value)} placeholder="自己紹介" className="mt-5 h-24 resize-none p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <button type="submit" disabled={displayName === "" || userTag === "" || detail === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || userTag === "" || detail === ""? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
+                        <button type="submit" disabled={displayName === "" || userTag === "" || introduction === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || userTag === "" || introduction === ""? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
                     </div>
                 </form>
             </div>
