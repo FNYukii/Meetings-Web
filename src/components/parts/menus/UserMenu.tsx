@@ -1,6 +1,7 @@
 import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { AiOutlineEdit, AiOutlineLogout } from "react-icons/ai";
 import { FiFlag } from "react-icons/fi";
 import { VscEllipsis } from "react-icons/vsc";
 import { Link, useLocation } from "react-router-dom";
@@ -59,12 +60,19 @@ export default function UserMenu(props: { user: User }) {
                 {uid !== null &&
 
                     <div>
+
                         <MenuItem>
-                            <button onClick={() => FireAuth.signOut()} className="text-red-500">サインアウト</button>
+                            <button onClick={() => FireAuth.signOut()} className="flex items-center gap-3 text-red-500">
+                                <AiOutlineLogout/>
+                                <span>サインアウト</span>
+                            </button>
                         </MenuItem>
 
                         <MenuItem>
-                            <Link to="/settings/profile" state={{ previousPath: location.pathname}}>プロフィールを編集</Link>
+                            <Link to="/settings/profile" state={{ previousPath: location.pathname}} className="flex items-center gap-3">
+                                <AiOutlineEdit/>
+                                <span>プロフィールを編集</span>
+                            </Link>
                         </MenuItem>
                     </div>
                 }
