@@ -12,6 +12,7 @@ import EmptyModal from '../modals/EmptyModal'
 import SignInModal from '../modals/SignInModal'
 import AddCommentModal from '../modals/AddCommentModal'
 import AddThreadModal from '../modals/AddThreadModal'
+import EditUserModal from '../modals/EditUserModal'
 
 export default function CenterColumn(props: {className?: string}) {
 
@@ -29,10 +30,11 @@ export default function CenterColumn(props: {className?: string}) {
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
     const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
     const isShowSignInModal = currentPath === "/sign-in"
-
     const isShowAddCommentModal = currentPath.match(/^\/threads\/\w{20}\/new$/)
     const isShowAddThreadModal = currentPath === "/new"
-    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal ? true : false
+    const isShowEditUserModal = currentPath === "/settings/profile"
+
+    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal || isShowEditUserModal ? true : false
 
     return (
         <div className={`min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800 ${props.className}`}>
@@ -55,6 +57,7 @@ export default function CenterColumn(props: {className?: string}) {
                 <Route path='/sign-in' element={<SignInModal />} />
                 <Route path='/new' element={<AddThreadModal />} />
                 <Route path='/threads/:threadId/new' element={<AddCommentModal />} />
+                <Route path='/settings/profile' element={<EditUserModal />} />
 
                 <Route path='*' element={<EmptyModal/>}/>
             </Routes>
