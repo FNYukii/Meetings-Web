@@ -58,9 +58,15 @@ export default function UserMenu(props: { user: User }) {
 
                 {uid !== null &&
 
-                    <MenuItem>
-                        <button onClick={() => FireAuth.signOut()} className="text-red-500">サインアウト</button>
-                    </MenuItem>
+                    <div>
+                        <MenuItem>
+                            <button onClick={() => FireAuth.signOut()} className="text-red-500">サインアウト</button>
+                        </MenuItem>
+
+                        <MenuItem>
+                            <Link to="/settings/profile" state={{ previousPath: location.pathname}}>プロフィールを編集</Link>
+                        </MenuItem>
+                    </div>
                 }
             </Menu>
         </div>
