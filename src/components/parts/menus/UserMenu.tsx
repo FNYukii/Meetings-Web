@@ -45,7 +45,7 @@ export default function UserMenu(props: { user: User }) {
 
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
 
-                {uid === null &&
+                {uid !== props.user.id &&
 
                     <MenuItem>
 
@@ -56,7 +56,7 @@ export default function UserMenu(props: { user: User }) {
                     </MenuItem>
                 }
 
-                {uid !== null &&
+                {uid === props.user.id &&
 
                     <div>
 
