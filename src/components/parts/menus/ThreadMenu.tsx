@@ -50,7 +50,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
 
                     <MenuItem>
                         <Link to={`/report/threads/${props.thread.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
-                            <FiFlag className='text-gray-500' />
+                            <FiFlag className='text-gray-500 text-xl' />
                             <span>スレッドを報告</span>
                         </Link>
                     </MenuItem>
@@ -60,7 +60,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
 
                     <MenuItem>
                         <button onClick={() => FireThreads.deleteThread(uid)} className="flex items-center gap-3 text-red-500">
-                            <FiTrash />
+                            <FiTrash className="text-xl"/>
                             <span>スレッドを削除</span>
                         </button>
                     </MenuItem>

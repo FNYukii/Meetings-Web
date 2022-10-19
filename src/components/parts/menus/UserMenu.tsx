@@ -50,8 +50,7 @@ export default function UserMenu(props: { user: User }) {
                     <MenuItem>
 
                         <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
-
-                            <FiFlag className='text-gray-500' />
+                            <FiFlag className='text-gray-500 text-xl' />
                             <span>ユーザーを報告</span>
                         </Link>
                     </MenuItem>
@@ -63,14 +62,14 @@ export default function UserMenu(props: { user: User }) {
 
                         <MenuItem>
                             <button onClick={() => FireAuth.signOut()} className="flex items-center gap-3 text-red-500">
-                                <AiOutlineLogout/>
+                                <AiOutlineLogout className='text-xl'/>
                                 <span>サインアウト</span>
                             </button>
                         </MenuItem>
 
                         <MenuItem>
                             <Link to="/settings/profile" state={{ previousPath: location.pathname}} className="flex items-center gap-3">
-                                <AiOutlineEdit/>
+                                <AiOutlineEdit className='text-xl text-gray-500'/>
                                 <span>プロフィールを編集</span>
                             </Link>
                         </MenuItem>
