@@ -224,7 +224,7 @@ export default class FireUsers {
         }
     }
 
-    static async updateUser(userId: string, displayName: string, userTag: string, introduction: string, iconUrl: string): Promise<string | null> {
+    static async updateUser(userId: string, displayName: string, userTag: string, introduction: string, iconUrl: string | null): Promise<string | null> {
 
         const ref = doc(db, "users", userId)
 
@@ -233,8 +233,7 @@ export default class FireUsers {
             await updateDoc(ref, {
                 displayName: displayName,
                 userTag: userTag,
-                introduction: introduction,
-                iconUrl: iconUrl
+                introduction: introduction
             })
 
             console.log(`Updated 1 User.`)
