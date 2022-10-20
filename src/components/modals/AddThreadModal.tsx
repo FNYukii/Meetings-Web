@@ -13,6 +13,9 @@ export default function AddThreadModal() {
     const [text, setText] = useState("")
     const [isSubmited, setIsSubmited] = useState(false)
 
+    const titleMax = 100
+    const commentTextMax = 300
+
     useEffect(() => {
 
         document.title = "新規コメント - Meetings"
@@ -78,7 +81,7 @@ export default function AddThreadModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <button disabled={title === "" || text === "" || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || text === "" || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>作成</button>
+                        <button disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || title.length > titleMax || text === "" || text.length > commentTextMax || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>作成</button>
                     </div>
                 </form>
             </div>
