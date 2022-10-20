@@ -33,7 +33,8 @@ export default function ImageModal(props: { className?: string }) {
             body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
         }
-    })
+        // eslint-disable-next-line
+    }, [])
 
     const onKeyDown = (event: KeyboardEvent) => {
 

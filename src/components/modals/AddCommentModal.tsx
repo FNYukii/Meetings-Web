@@ -22,7 +22,8 @@ export default function AddCommentModal() {
             document.removeEventListener("keydown", onKeyDown, false)
             body.style.overflowY = ""
         }
-    })
+        // eslint-disable-next-line
+    }, [])
 
     const onKeyDown = (event: KeyboardEvent) => {
 
