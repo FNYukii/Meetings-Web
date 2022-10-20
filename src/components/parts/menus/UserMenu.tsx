@@ -59,19 +59,18 @@ export default function UserMenu(props: { user: User }) {
                 {uid === props.user.id &&
 
                     <div>
-
                         <MenuItem>
-                            <button onClick={() => FireAuth.signOut()} className="flex items-center gap-3 text-red-500">
-                                <AiOutlineLogout className='text-xl'/>
-                                <span>サインアウト</span>
-                            </button>
+                            <Link to="/settings/profile" state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                                <AiOutlineEdit className='text-xl text-gray-500' />
+                                <span>プロフィールを編集</span>
+                            </Link>
                         </MenuItem>
 
                         <MenuItem>
-                            <Link to="/settings/profile" state={{ previousPath: location.pathname}} className="flex items-center gap-3">
-                                <AiOutlineEdit className='text-xl text-gray-500'/>
-                                <span>プロフィールを編集</span>
-                            </Link>
+                            <button onClick={() => FireAuth.signOut()} className="flex items-center gap-3 text-red-500">
+                                <AiOutlineLogout className='text-xl' />
+                                <span>サインアウト</span>
+                            </button>
                         </MenuItem>
                     </div>
                 }

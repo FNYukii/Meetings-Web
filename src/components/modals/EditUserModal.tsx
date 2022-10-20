@@ -26,7 +26,8 @@ export default function EditUserModal() {
             body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
         }
-    })
+        // eslint-disable-next-line
+    }, [])
 
     const onKeyDown = (event: KeyboardEvent) => {
 
@@ -53,10 +54,26 @@ export default function EditUserModal() {
         setIsLoaded(true)
     }
 
-    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        alert("hello")
+        // ログイン状態を確認
+        const uid = FireAuth.uid()
+        if (uid === null) {
+            return
+        }
+
+        // userドキュメントを更新
+        const userId = await FireUsers.updateUser(uid, displayName, userTag, introduction, null)
+
+        // 失敗
+        if (userId === null) {
+            alert("プロフィールの更新に失敗しました。")
+            return
+        }
+
+        // 成功
+        navigate(-1)
     }
 
     return (
@@ -69,6 +86,8 @@ export default function EditUserModal() {
                 <button onClick={() => navigate(-1)} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
+
+                <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
                 {!isLoaded &&
                     <div className='flex justify-center p-3'>

@@ -199,7 +199,7 @@ export default class FireThreads {
                 tags: tags
             })
 
-            console.log("Add 1 Thread.")
+            console.log("Added 1 Thread.")
             return ref.id
 
         } catch (error) {
@@ -214,13 +214,12 @@ export default class FireThreads {
         return deleteDoc(doc(db, "threads", threadId))
             .then(() => {
 
-                console.log("Delete 1 Thread.")
+                console.log("Deleted 1 Thread.")
                 return threadId
             })
             .catch((error) => {
                 
                 console.log(`Failed to thread deletion. ${error}`)
-                alert(`スレッドの削除に失敗しました。\n${error}`)
                 return null
             })
     }

@@ -24,7 +24,8 @@ export default function AddThreadModal() {
             body.style.overflowY = ""
         }
 
-    })
+        // eslint-disable-next-line
+    }, [])
 
     function onKeyDown(event: KeyboardEvent) {
 

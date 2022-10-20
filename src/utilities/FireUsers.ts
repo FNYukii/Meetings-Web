@@ -1,5 +1,5 @@
 import User from "../entities/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "./firebase"
 
@@ -214,12 +214,35 @@ export default class FireUsers {
                 userTag: userTag
             })
 
-            console.log("Add 1 User.")
+            console.log("Added 1 User.")
 
             return uid
 
         } catch (error) {
 
+            return null
+        }
+    }
+
+    static async updateUser(userId: string, displayName: string, userTag: string, introduction: string, iconUrl: string | null): Promise<string | null> {
+
+        const ref = doc(db, "users", userId)
+
+        try {
+
+            await updateDoc(ref, {
+                displayName: displayName,
+                userTag: userTag,
+                introduction: introduction
+            })
+
+            console.log(`Updated 1 User.`)
+
+            return ""
+            
+        } catch (error) {
+            
+            console.log(`Failed to update User. ${error}`)
             return null
         }
     }

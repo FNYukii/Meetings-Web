@@ -36,7 +36,9 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
                 setUid(null)
             }
         })
-    })
+
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className={props.className}>

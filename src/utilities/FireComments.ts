@@ -247,7 +247,7 @@ export default class FireComments {
                 imageUrls: imageUrls
             })
 
-            console.log("Add 1 Comment.")
+            console.log("Added 1 Comment.")
             return ref.id
 
         } catch (error) {
@@ -262,13 +262,12 @@ export default class FireComments {
         return deleteDoc(doc(db, "comments", commentId))
             .then(() => {
 
-                console.log("Delete 1 Comment.")
+                console.log("Deleted 1 Comment.")
                 return commentId
             })
             .catch((error) => {
                 
                 console.log(`Failed to comment deletion. ${error}`)
-                alert(`コメントの削除に失敗しました。\n${error}`)
                 return null
             })
     }

@@ -55,7 +55,9 @@ export default function ReportModal(props: { className?: string }) {
             body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
         }
-    })
+
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
