@@ -59,7 +59,7 @@ export default function ThreadMenu(props: { thread: Thread }) {
                 {uid === props.thread.userId &&
 
                     <MenuItem>
-                        <button onClick={() => FireThreads.deleteThread(uid)} className="flex items-center gap-3 text-red-500">
+                        <button onClick={() => FireThreads.deleteThread(props.thread.id)} className="flex items-center gap-3 text-red-500">
                             <FiTrash className="text-xl"/>
                             <span>スレッドを削除</span>
                         </button>

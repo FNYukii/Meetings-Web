@@ -43,19 +43,18 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
 
     return (
         <div className="z-10">
-
+            
             <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
 
                 {uid === props.comment.userId &&
 
                     <MenuItem>
-                        <button onClick={() => FireComments.deleteComment(uid)} className="flex items-center gap-3 text-red-500">
+                        <button onClick={() => FireComments.deleteComment(props.comment.id)} className="flex items-center gap-3 text-red-500">
                             <FiTrash className='text-xl'/>
                             <span>コメントを削除</span>
                         </button>
                     </MenuItem>
                 }
-
 
                 {uid !== props.comment.userId &&
 
