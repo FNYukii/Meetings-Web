@@ -214,7 +214,7 @@ export default class FireUsers {
                 userTag: userTag
             })
 
-            console.log("Add 1 User.")
+            console.log("Added 1 User.")
 
             return uid
 
