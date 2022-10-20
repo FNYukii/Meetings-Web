@@ -70,6 +70,8 @@ export default function EditUserModal() {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
+                <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
+
                 {!isLoaded &&
                     <div className='flex justify-center p-3'>
                         <ProgressImage />
