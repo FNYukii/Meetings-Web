@@ -13,6 +13,8 @@ export default function ReportModal(props: { className?: string }) {
     const [detail, setDetail] = useState("")
     const [isSubmited, setIsSubmited] = useState(false)
 
+    const detailMax = 300
+
     function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
         e.preventDefault()
@@ -124,7 +126,7 @@ export default function ReportModal(props: { className?: string }) {
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">
-                        <button type="submit" disabled={probremIndex === null || detail === "" || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex === null || detail === "" || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
+                        <button type="submit" disabled={probremIndex === null || detail === "" || detail.length > detailMax || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex === null || detail === "" || detail.length > detailMax || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
                     </div>
                 </form>
             </div>

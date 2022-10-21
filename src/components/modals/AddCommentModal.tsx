@@ -12,6 +12,8 @@ export default function AddCommentModal() {
     const [text, setText] = useState("")
     const [isSubmited, setIsSubmited] = useState(false)
 
+    const textMax = 300
+
     useEffect(() => {
 
         document.title = "新規コメント - Meetings"
@@ -71,7 +73,7 @@ export default function AddCommentModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <button disabled={text === "" || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>追加</button>
+                        <button disabled={text === "" || text.length > textMax || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${text === "" || text.length > textMax || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>追加</button>
                     </div>
                 </form>
             </div>
