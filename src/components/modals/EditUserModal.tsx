@@ -15,6 +15,10 @@ export default function EditUserModal() {
 
     const [isLoaded, setIsLoaded] = useState(false)
 
+    const displayNameMax = 30
+    const userTagMax = 30
+    const introductionMax = 300
+
     useEffect(() => {
         readUser()
 
@@ -106,7 +110,7 @@ export default function EditUserModal() {
                         </div>
 
                         <div className="mt-3 flex justify-end">
-                            <button type="submit" disabled={displayName === "" || userTag === "" || introduction === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || userTag === "" || introduction === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
+                            <button type="submit" disabled={displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
                         </div>
                     </form>
                 }
