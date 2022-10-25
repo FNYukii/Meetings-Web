@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
-import ProgressImage from "../images/ProgressImage"
+import SubmitButton from "../buttons/SubmitButton"
 
 export default function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
@@ -49,13 +49,7 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(true)} className="hover:underline h-fit">新しいアカウントを作成</button>
 
-                    {!isLoading &&
-                        <button type="submit" disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
-                    }
-
-                    {isLoading &&
-                        <ProgressImage className="mr-3" />
-                    }
+                    <SubmitButton text="サインイン" isDiabled={email === "" || password === ""} isLoading={isLoading}/>
                 </div>
             </form>
         </div>
