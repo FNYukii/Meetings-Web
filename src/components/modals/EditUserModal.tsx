@@ -67,6 +67,19 @@ export default function EditUserModal() {
             return
         }
 
+        // userTagの形式を確認
+        if (!userTag.match(/^\w{5,}$/)) {
+            alert("ユーザータグの形式が不正です。")
+            return
+        }
+
+        // userTagの重複を確認
+        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
+        if (isUserTagDuplicate) {
+            alert("そのユーザータグは既に利用されています。")
+            return
+        }
+
         // userドキュメントを更新
         const userId = await FireUsers.updateUser(uid, displayName, userTag, introduction, null)
 
