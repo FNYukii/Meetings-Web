@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import FireUsers from "../../../utilities/FireUsers"
 import User from "../../../entities/User"
 
-export default function UserIconNavLink(props: { userId: string }) {
+export default function UserIconLink(props: { userId: string }) {
 
     const [user, setUser] = useState<User | null>(null)
 

@@ -4,7 +4,7 @@ import Thread from "../../../entities/Thread"
 import ExDate from "../../../utilities/ExDate"
 import FireComments from "../../../utilities/FireComments"
 import ThreadMenu from "../menus/ThreadMenu"
-import UserIconNavLink from "../links/UserIconNavLink"
+import UserIconLink from "../links/UserIconNavLink"
 import UserUserTagSpan from "../spans/UserUserTagSpan"
 import Comment from "../../../entities/Comment"
 
@@ -29,7 +29,7 @@ export default function ThreadRow(props: { thread: Thread }) {
 
             <div className="flex pt-3 pb-2 pl-3 z-10">
 
-                <UserIconNavLink userId={props.thread.userId} />
+                <UserIconLink userId={props.thread.userId} />
 
                 <div className="pl-3 w-full z-10 pointer-events-none">
 

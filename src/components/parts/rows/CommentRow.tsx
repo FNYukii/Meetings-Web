@@ -1,6 +1,6 @@
 import Comment from "../../../entities/Comment"
 import UserDisplayNameSpan from "../spans/UserDisplayNameSpan"
-import UserIconNavLink from "../links/UserIconNavLink"
+import UserIconLink from "../links/UserIconNavLink"
 import UserUserTagSpan from "../spans/UserUserTagSpan"
 import ExDate from "../../../utilities/ExDate"
 import { NavLink } from "react-router-dom"
@@ -18,7 +18,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
 
             <div className="flex pt-3 pb-1 pl-3">
 
-                <UserIconNavLink userId={props.comment.userId} />
+                <UserIconLink userId={props.comment.userId} />
 
                 <div className="w-full z-10 pointer-events-none">
 

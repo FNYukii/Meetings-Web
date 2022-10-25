@@ -7,7 +7,7 @@ import BackButton from "../parts/buttons/BackButton"
 import CommentMenu from "../parts/menus/CommentMenu"
 import CommentImagesGrid from "../parts/sections/CommentImagesGrid"
 import UserDisplayNameSpan from "../parts/spans/UserDisplayNameSpan"
-import UserIconNavLink from "../parts/links/UserIconNavLink"
+import UserIconLink from "../parts/links/UserIconNavLink"
 import UserUserTagSpan from "../parts/spans/UserUserTagSpan"
 import ThreadTitleLink from "../parts/links/ThreadTitleLink"
 import CommentLikeButton from "../parts/buttons/CommentLikeButton"
@@ -68,7 +68,7 @@ export default function CommentScreen() {
                 <div className="pt-3 pr-3">
                     <div className="flex justify-between ml-3">
                         <div className="flex gap-3">
-                            <UserIconNavLink userId={comment?.userId ?? ""} />
+                            <UserIconLink userId={comment?.userId ?? ""} />
 
                             <div className="flex flex-col">
                                 <UserDisplayNameSpan userId={comment!.userId} />
