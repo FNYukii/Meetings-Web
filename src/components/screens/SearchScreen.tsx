@@ -39,7 +39,7 @@ export default function SearchScreen() {
                 <div className='relative h-14 pl-1 pr-3 flex items-center bg-white/70 dark:bg-black/70 backdrop-blur'>
 
                     {searchedKeyword !== null &&
-                        <BackButton className="" />
+                        <BackButton />
                     }
 
                     <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
@@ -49,7 +49,7 @@ export default function SearchScreen() {
                         <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} onFocus={() => setIsSearchBarFocused(true)} onBlur={() => setIsSearchBarFocused(false)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 outline-blue-500 rounded-full"/>
 
                         {isSearchBarFocused &&
-                            <button onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-blue-500 rounded-full hover:opacity-60">
+                            <button type="button" onClick={() => setKeyword("")} className="absolute right-0 mr-2 p-1 bg-blue-500 rounded-full hover:opacity-60">
                                 <MdOutlineClose className="text-white" />
                             </button>
                         }
