@@ -1,7 +1,8 @@
 import User from "../entities/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "./firebase"
+import FireAuth from "./FireAuth"
 
 export default class FireUsers {
 
@@ -96,6 +97,7 @@ export default class FireUsers {
                 const user = this.toUser(doc)
                 users.push(user)
             })
+
             return users
 
         } catch (error) {
@@ -113,6 +115,7 @@ export default class FireUsers {
                     const user = this.toUser(doc)
                     users.push(user)
                 })
+
                 return users
 
             } catch (error) {
@@ -143,6 +146,7 @@ export default class FireUsers {
             })
 
             return users
+
         } catch (error) {
 
             // 失敗
@@ -264,10 +268,66 @@ export default class FireUsers {
 
             console.log(`Updated 1 User.`)
 
-            return ""
-            
+            return userId
+
         } catch (error) {
-            
+
+            console.log(`Failed to update User. ${error}`)
+            return null
+        }
+    }
+
+    static async likeComment(commentId: string): Promise<string | null> {
+
+        // サインインしていないなら終了　
+        const uid = FireAuth.uid()
+
+        if (uid === null) {
+            return null
+        }
+
+        const ref = doc(db, "users", uid)
+
+        try {
+
+            await updateDoc(ref, {
+                likedCommentIds: arrayUnion(commentId)
+            })
+
+            console.log(`Updated 1 User.`)
+
+            return uid
+
+        } catch (error) {
+
+            console.log(`Failed to update User. ${error}`)
+            return null
+        }
+    }
+
+    static async unlikeComment(commentId: string): Promise<string | null> {
+
+        // サインインしていないなら終了　
+        const uid = FireAuth.uid()
+
+        if (uid === null) {
+            return null
+        }
+
+        const ref = doc(db, "users", uid)
+
+        try {
+
+            await updateDoc(ref, {
+                likedCommentIds: arrayRemove(commentId)
+            })
+
+            console.log(`Updated 1 User.`)
+
+            return uid
+
+        } catch (error) {
+
             console.log(`Failed to update User. ${error}`)
             return null
         }
