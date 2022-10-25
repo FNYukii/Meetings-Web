@@ -79,7 +79,7 @@ export default class FireUsers {
         }
     }
 
-    static async readLikedUserIdsFromCache(commentId: string): Promise<string[] | null> {
+    static async readLikedUsersFromCache(commentId: string): Promise<User[] | null> {
 
         const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
@@ -98,14 +98,7 @@ export default class FireUsers {
                 users.push(user)
             })
 
-            // 配列userIds
-            let userIds: string[] = []
-            users.forEach((user) => {
-                const userId = user.id
-                userIds.push(userId)
-            })
-
-            return userIds
+            return users
 
         } catch (error) {
 
@@ -123,14 +116,7 @@ export default class FireUsers {
                     users.push(user)
                 })
 
-                // 配列userIds
-                let userIds: string[] = []
-                users.forEach((user) => {
-                    const userId = user.id
-                    userIds.push(userId)
-                })
-
-                return userIds
+                return users
 
             } catch (error) {
 
@@ -140,7 +126,7 @@ export default class FireUsers {
         }
     }
 
-    static async readLikedUserIds(commentId: string): Promise<string[] | null> {
+    static async readLikedUsers(commentId: string): Promise<User[] | null> {
 
         const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
@@ -159,14 +145,7 @@ export default class FireUsers {
                 users.push(user)
             })
 
-            // 配列userIds
-            let userIds: string[] = []
-            users.forEach((user) => {
-                const userId = user.id
-                userIds.push(userId)
-            })
-
-            return userIds
+            return users
 
         } catch (error) {
 

@@ -2,12 +2,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { AiOutlineExclamationCircle, AiOutlineHeart } from "react-icons/ai";
 import Comment from "../../../entities/Comment";
+import User from "../../../entities/User";
 import { auth } from "../../../utilities/firebase";
 import FireUsers from "../../../utilities/FireUsers";
 
 export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean, className?: string}) {
 
-    const [likedUserIds, setLikedUserIds] = useState<string[] | null>(null)
+    const [likedUsers, setLikedUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
     const [uid, setUid] = useState<string | null>(null)
@@ -28,13 +29,13 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
 
     async function readLikedUsers() {
         
-        let likedUsers = await FireUsers.readLikedUserIdsFromCache(props.comment.id)
-        setLikedUserIds(likedUsers)
+        let likedUsers = await FireUsers.readLikedUsersFromCache(props.comment.id)
+        setLikedUsers(likedUsers)
         setIsLoaded(true)
 
         if (props.isReadFromSeaver) {
-            likedUsers = await FireUsers.readLikedUserIds(props.comment.id)
-            setLikedUserIds(likedUsers)
+            likedUsers = await FireUsers.readLikedUsers(props.comment.id)
+            setLikedUsers(likedUsers)
             setIsLoaded(true)
         }
     }
@@ -42,7 +43,7 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
     async function onClick() {
 
         // likedUserIdsの読み込みに失敗しているなら終了
-        if (!likedUserIds) {
+        if (!likedUsers) {
             return
         }
 
@@ -86,18 +87,18 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
                 </div>
             }
 
-            {isLoaded && likedUserIds === null &&
+            {isLoaded && likedUsers === null &&
                 <div>
                     <AiOutlineExclamationCircle className="text-gray-500 pointer-events-auto text-xl"/>
                 </div>
             }
 
-            {isLoaded && likedUserIds !== null &&
+            {isLoaded && likedUsers !== null &&
                 <div className="flex">
 
                     <button onClick={() => onClick()} disabled={uid === null} className={`z-10 flex items-center p-1 rounded-full pointer-events-auto ${uid === null ? "" : "hover:bg-zinc-100 dark:hover:bg-zinc-900 transition"}`}>
                         <AiOutlineHeart className="text-xl text-gray-500 " />
-                        <span className="text-gray-500 ml-1">{likedUserIds?.length ?? "0"}</span>
+                        <span className="text-gray-500 ml-1">{likedUsers?.length ?? "0"}</span>
                     </button>
                 </div>
             }
