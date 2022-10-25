@@ -90,7 +90,7 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(false)} className="hover:underline h-fit">既存のアカウントを使う</button>
 
-                    <SubmitButton text="サインアップ" isLoading={isLoading} isDiabled={email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || isLoading} />
+                    <SubmitButton text="サインアップ" isLoading={isLoading} disabled={email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax} />
                 </div>
             </form>
         </div>

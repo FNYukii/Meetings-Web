@@ -49,7 +49,7 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(true)} className="hover:underline h-fit">新しいアカウントを作成</button>
 
-                    <SubmitButton text="サインイン" isDiabled={email === "" || password === ""} isLoading={isLoading}/>
+                    <SubmitButton text="サインイン" disabled={email === "" || password === ""} isLoading={isLoading}/>
                 </div>
             </form>
         </div>

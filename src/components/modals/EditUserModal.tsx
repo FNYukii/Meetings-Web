@@ -3,21 +3,25 @@ import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../utilities/FireAuth"
 import FireUsers from "../../utilities/FireUsers"
+import SubmitButton from "../parts/buttons/SubmitButton"
 import ProgressImage from "../parts/images/ProgressImage"
 
 export default function EditUserModal() {
 
     const navigate = useNavigate()
+    const body = document.body
+
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
     const [introduction, setIntroduction] = useState("")
-    const body = document.body
-
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const displayNameMax = 30
     const userTagMax = 30
     const introductionMax = 300
+
 
     useEffect(() => {
         readUser()
@@ -61,15 +65,20 @@ export default function EditUserModal() {
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
+        setIsLoading(true)
+
         // ログイン状態を確認
         const uid = FireAuth.uid()
         if (uid === null) {
+
+            setIsLoading(false)
             return
         }
 
         // userTagの形式を確認
         if (!userTag.match(/^\w{5,}$/)) {
             alert("ユーザータグの形式が不正です。")
+            setIsLoading(false)
             return
         }
 
@@ -77,6 +86,7 @@ export default function EditUserModal() {
         const isUserTagDuplicate = await FireUsers.readIsMyUserTagDuplicate(userTag)
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
+            setIsLoading(false)
             return
         }
 
@@ -86,6 +96,7 @@ export default function EditUserModal() {
         // 失敗
         if (userId === null) {
             alert("プロフィールの更新に失敗しました。")
+            setIsLoading(false)
             return
         }
 
@@ -127,7 +138,7 @@ export default function EditUserModal() {
                             </div>
 
                             <div className="mt-3 flex justify-end">
-                                <button type="submit" disabled={displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
+                                <SubmitButton text="保存" isLoading={isLoading} disabled={displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax} />
                             </div>
                         </form>
                     </div>

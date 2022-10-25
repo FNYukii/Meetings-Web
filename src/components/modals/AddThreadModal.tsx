@@ -3,6 +3,7 @@ import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import FireThreads from "../../utilities/FireThreads"
+import SubmitButton from "../parts/buttons/SubmitButton"
 
 export default function AddThreadModal() {
 
@@ -11,7 +12,7 @@ export default function AddThreadModal() {
 
     const [title, setTitle] = useState("")
     const [text, setText] = useState("")
-    const [isSubmited, setIsSubmited] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const titleMax = 100
     const commentTextMax = 300
@@ -40,7 +41,7 @@ export default function AddThreadModal() {
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
         e.preventDefault()
-        setIsSubmited(true)
+        setIsLoading(true)
 
         // スレッドを作成
         const threadId = await FireThreads.createThread(title, [])
@@ -48,7 +49,7 @@ export default function AddThreadModal() {
         // 失敗
         if (threadId === null) {
 
-            setIsSubmited(false)
+            setIsLoading(false)
             alert("スレッドの作成に失敗しました。")
             return
         }
@@ -80,8 +81,8 @@ export default function AddThreadModal() {
                         <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                     </div>
 
-                    <div className="mt-3 flex justify-end">
-                        <button disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${title === "" || title.length > titleMax || text === "" || text.length > commentTextMax || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>作成</button>
+                    <div className="mt-3 flex justify-end">                        
+                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax} />
                     </div>
                 </form>
             </div>
