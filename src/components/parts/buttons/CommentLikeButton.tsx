@@ -85,10 +85,13 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
         // いいねを実行
         if (likedCommentIds.includes(props.comment.id)) {
 
+            // いいねを解除
             await FireUsers.unlikeComment(props.comment.id)
 
         } else {
 
+            // いいね
+            likedCommentIds.push(props.comment.id)
             await FireUsers.likeComment(props.comment.id)
         }
 
