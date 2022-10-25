@@ -25,7 +25,7 @@ export default function EditUserModal() {
         document.title = "プロフィールを編集 - Meetings"
         document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        
+
         return () => {
             body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
@@ -104,7 +104,6 @@ export default function EditUserModal() {
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
                 {!isLoaded &&
                     <div className='flex justify-center p-3'>
@@ -113,19 +112,25 @@ export default function EditUserModal() {
                 }
 
                 {isLoaded &&
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <div className="px-3 mt-3">
 
-                            <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
-                            <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+                    <div>
+                        
+                        <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
-                            <textarea value={introduction} onChange={(e) => setIntroduction(e.target.value)} placeholder="自己紹介" className="mt-5 h-24 resize-none p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
-                        </div>
+                        <form onSubmit={(e) => onSubmit(e)}>
+                            <div className="px-3 mt-3">
 
-                        <div className="mt-3 flex justify-end">
-                            <button type="submit" disabled={displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
-                        </div>
-                    </form>
+                                <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+                                <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+
+                                <textarea value={introduction} onChange={(e) => setIntroduction(e.target.value)} placeholder="自己紹介" className="mt-5 h-24 resize-none p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                            </div>
+
+                            <div className="mt-3 flex justify-end">
+                                <button type="submit" disabled={displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>保存</button>
+                            </div>
+                        </form>
+                    </div>
                 }
             </div>
         </div>
