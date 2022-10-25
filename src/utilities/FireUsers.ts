@@ -274,7 +274,7 @@ export default class FireUsers {
         }
     }
 
-    static async likeComment(commentId: string) {
+    static async likeComment(commentId: string): Promise<string | null> {
 
         // サインインしていないなら終了　
         const uid = FireAuth.uid()
@@ -302,7 +302,7 @@ export default class FireUsers {
         }
     }
 
-    static async unlikeComment(commentId: string) {
+    static async unlikeComment(commentId: string): Promise<string | null> {
 
         // サインインしていないなら終了　
         const uid = FireAuth.uid()

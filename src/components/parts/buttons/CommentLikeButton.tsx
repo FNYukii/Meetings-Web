@@ -13,19 +13,6 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
 
     const [uid, setUid] = useState<string | null>(null)
 
-    async function readLikedUsers() {
-        
-        let likedUsers = await FireUsers.readLikedUsersFromCache(props.comment.id)
-        setLikedUsers(likedUsers)
-        setIsLoaded(true)
-
-        if (props.isReadFromSeaver) {
-            likedUsers = await FireUsers.readLikedUsers(props.comment.id)
-            setLikedUsers(likedUsers)
-            setIsLoaded(true)
-        }
-    }
-
     useEffect(() => {
         readLikedUsers()
 
@@ -39,6 +26,23 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
 
         // eslint-disable-next-line
     }, [])
+
+    async function readLikedUsers() {
+        
+        let likedUsers = await FireUsers.readLikedUsersFromCache(props.comment.id)
+        setLikedUsers(likedUsers)
+        setIsLoaded(true)
+
+        if (props.isReadFromSeaver) {
+            likedUsers = await FireUsers.readLikedUsers(props.comment.id)
+            setLikedUsers(likedUsers)
+            setIsLoaded(true)
+        }
+    }
+
+    async function onClick() {
+
+    }
 
     return (
         <div className={props.className}>
@@ -61,7 +65,7 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
             {isLoaded && likedUsers !== null &&
                 <div className="flex">
 
-                    <button disabled={uid === null} className={`z-10 flex items-center p-1 rounded-full pointer-events-auto ${uid === null ? "" : "hover:bg-zinc-100 dark:hover:bg-zinc-900 transition"}`}>
+                    <button onClick={() => onClick()} disabled={uid === null} className={`z-10 flex items-center p-1 rounded-full pointer-events-auto ${uid === null ? "" : "hover:bg-zinc-100 dark:hover:bg-zinc-900 transition"}`}>
                         <AiOutlineHeart className="text-xl text-gray-500 " />
                         <span className="text-gray-500 ml-1">{likedUsers?.length ?? "0"}</span>
                     </button>
