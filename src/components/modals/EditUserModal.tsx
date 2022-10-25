@@ -74,7 +74,7 @@ export default function EditUserModal() {
         }
 
         // userTagの重複を確認
-        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
+        const isUserTagDuplicate = await FireUsers.readIsMyUserTagDuplicate(userTag)
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
             return
