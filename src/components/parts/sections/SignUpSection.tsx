@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
 import FireUsers from "../../../utilities/FireUsers"
+import SubmitButton from "../buttons/SubmitButton"
 
 export default function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
@@ -13,14 +14,14 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
 
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
-    const [isSubmited, setIsSubmited] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const displayNameMax = 30
     const userTagMax = 30
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
-        setIsSubmited(true)
+        setIsLoading(true)
 
         // フォーム送信を無効
         e.preventDefault()
@@ -28,6 +29,7 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         // userTagの形式を確認
         if (!userTag.match(/^\w{5,}$/)) {
             alert("ユーザータグの形式が不正です。")
+            setIsLoading(false)
             return
         }
 
@@ -35,6 +37,7 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
+            setIsLoading(false)
             return
         }
 
@@ -44,8 +47,8 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         // 失敗
         if (uid === null) {
 
-            setIsSubmited(false)
             alert("サインアップに失敗しました。")
+            setIsLoading(false)
             return
         }
 
@@ -56,6 +59,8 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         // 失敗
         if (userId === null) {
             FireAuth.signOut()
+            alert("サインアップに失敗しました。")
+            setIsLoading(false)
             return
         }
 
@@ -84,7 +89,8 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
                 <div className="mt-3 pl-3 flex justify-between items-center">
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(false)} className="hover:underline h-fit">既存のアカウントを使う</button>
-                    <button type="submit" disabled={email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインアップ</button>
+
+                    <SubmitButton text="サインアップ" isLoading={isLoading} isDiabled={email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || isLoading} />
                 </div>
             </form>
         </div>
