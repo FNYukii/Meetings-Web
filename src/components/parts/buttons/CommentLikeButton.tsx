@@ -90,11 +90,11 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
 
         if (likedCommentIds.includes(props.comment.id)) {
 
-            FireUsers.unlikeComment(props.comment.id)
+            await FireUsers.unlikeComment(props.comment.id)
 
         } else {
 
-            FireUsers.likeComment(props.comment.id)
+            await FireUsers.likeComment(props.comment.id)
         }
 
         readLikedUsers()
