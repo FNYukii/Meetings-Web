@@ -45,7 +45,7 @@ export default function LeftColumn(props: { className?: string }) {
 
                             {({ isActive }) => (
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
 
                                     <AiOutlineHome className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                     <AiFillHome className={`text-3xl ${isActive ? "block" : "hidden"}`} />
@@ -59,7 +59,7 @@ export default function LeftColumn(props: { className?: string }) {
 
                             {({ isActive }) => (
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
 
                                     <HiOutlineSearch className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                     <HiSearch className={`text-3xl ${isActive ? "block" : "hidden"}`} />
@@ -72,7 +72,7 @@ export default function LeftColumn(props: { className?: string }) {
                         {uid === null &&
                             <Link to='/sign-in' state={{ previousPath: location.pathname }} className="block mt-2 rounded-full">
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
 
                                     <AiOutlineLogin className={`text-3xl`} />
                                     <span className={`ml-5 text-xl xl:block hidden`}>サインイン</span>
@@ -85,7 +85,7 @@ export default function LeftColumn(props: { className?: string }) {
 
                                 {({ isActive }) => (
 
-                                    <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 p-2 rounded-full'>
+                                    <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
 
                                         <BsPerson className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                         <BsPersonFill className={`text-3xl ${isActive ? "block" : "hidden"}`} />

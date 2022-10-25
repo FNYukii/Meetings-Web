@@ -14,9 +14,7 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
     return (
         <div className="relative">
 
-            {/* <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-white/10" /> */}
-
-            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-100 dark:hover:bg-zinc-900" />
+            <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-100 dark:hover:bg-zinc-900 transition" />
 
             <div className="flex pt-3 pb-1 pl-3">
 

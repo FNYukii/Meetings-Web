@@ -35,7 +35,7 @@ export default function UserMenu(props: { user: User }) {
     }
 
     const menuButton = (
-        <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
+        <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 transition rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
             <VscEllipsis className="text-3xl" />
         </MenuButton>
     )

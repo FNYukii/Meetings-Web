@@ -52,7 +52,7 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
                         <p className="text-white text-gray-300">{props.comment.text}</p>
                     </div>
 
-                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10 dark:hover:bg-white/10" />
+                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-black/10 dark:hover:bg-white/10 transition" />
                 </div>
             }
         </div>
