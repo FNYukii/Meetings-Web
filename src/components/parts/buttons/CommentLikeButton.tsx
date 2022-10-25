@@ -73,21 +73,16 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
         }
 
         // ログインしていないなら終了
-        if (uid === null) {
+        if (!uid) {
             return
         }
 
-        // ログイン中のユーザーのlikedCommentIdsを読み取り
-        const user = await FireUsers.readUser(uid)
-
-        // 失敗
-        if (user === null) {
+        // likedCommentIdsの読み取りに失敗しているなら終了
+        if (!likedCommentIds) {
             return
         }
 
-        // 成功
-        const likedCommentIds = user.likedCommentIds
-
+        // いいねを実行
         if (likedCommentIds.includes(props.comment.id)) {
 
             await FireUsers.unlikeComment(props.comment.id)
