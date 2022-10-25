@@ -4,7 +4,7 @@ import Thread from "../../../entities/Thread"
 import ExDate from "../../../utilities/ExDate"
 import FireComments from "../../../utilities/FireComments"
 import ThreadMenu from "../menus/ThreadMenu"
-import UserIconLink from "../links/UserIconNavLink"
+import UserIconLink from "../links/UserIconLink"
 import UserUserTagSpan from "../spans/UserUserTagSpan"
 import Comment from "../../../entities/Comment"
 

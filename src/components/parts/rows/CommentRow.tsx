@@ -1,6 +1,6 @@
 import Comment from "../../../entities/Comment"
 import UserDisplayNameSpan from "../spans/UserDisplayNameSpan"
-import UserIconLink from "../links/UserIconNavLink"
+import UserIconLink from "../links/UserIconLink"
 import UserUserTagSpan from "../spans/UserUserTagSpan"
 import ExDate from "../../../utilities/ExDate"
 import { NavLink } from "react-router-dom"
