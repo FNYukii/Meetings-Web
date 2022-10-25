@@ -1,18 +1,19 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
+import ProgressImage from "../images/ProgressImage"
 
 export default function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const navigate = useNavigate()
-    
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [isSubmited, setIsSubmited] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
-        setIsSubmited(true)
+        setIsLoading(true)
 
         // フォーム送信を無効
         e.preventDefault()
@@ -23,7 +24,7 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
         if (uid === null) {
 
             alert("サインインに失敗しました。")
-            setIsSubmited(false)
+            setIsLoading(false)
             return
         }
 
@@ -47,7 +48,14 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
                 <div className="mt-3 pl-3 flex justify-between items-center">
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(true)} className="hover:underline h-fit">新しいアカウントを作成</button>
-                    <button type="submit" disabled={email === "" || password === "" || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
+
+                    {!isLoading &&
+                        <button type="submit" disabled={email === "" || password === ""} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${email === "" || password === "" ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>サインイン</button>
+                    }
+
+                    {isLoading &&
+                        <ProgressImage className="mr-3" />
+                    }
                 </div>
             </form>
         </div>
