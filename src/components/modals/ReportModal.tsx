@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
 import FireReports from "../../utilities/FireReports"
+import SubmitButton from "../parts/buttons/SubmitButton"
 
 export default function ReportModal(props: { className?: string }) {
 
@@ -11,32 +12,32 @@ export default function ReportModal(props: { className?: string }) {
 
     const [probremIndex, setProbremIndex] = useState<number | null>(null)
     const [detail, setDetail] = useState("")
-    const [isSubmited, setIsSubmited] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const detailMax = 300
 
-    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
         e.preventDefault()
-        setIsSubmited(true)
+        setIsLoading(true)
 
         if (probremIndex === null) {
-            setIsSubmited(false)
+
+            setIsLoading(false)
             return
         }
 
-        const reportId = FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
+        const reportId = await FireReports.createReport(documentId!, collectionName!, probremIndex, detail)
 
         // 失敗
         if (reportId === null) {
             alert("報告の送信に失敗。")
-            setIsSubmited(false)
-
+            
+            setIsLoading(false)
             return
         }
 
         // 成功
-        alert("報告を送信しました。")
         navigate(-1)
     }
 
@@ -126,7 +127,7 @@ export default function ReportModal(props: { className?: string }) {
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">
-                        <button type="submit" disabled={probremIndex === null || detail === "" || detail.length > detailMax || isSubmited} className={`font-bold p-3 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-900 ${probremIndex === null || detail === "" || detail.length > detailMax || isSubmited ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>送信</button>
+                        <SubmitButton text="送信" isLoading={isLoading} isDiabled={probremIndex === null || detail === "" || detail.length > detailMax || isLoading} />
                     </div>
                 </form>
             </div>
