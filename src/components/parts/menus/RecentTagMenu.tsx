@@ -18,7 +18,7 @@ export default function RecentTagMenu(props: { tag: string, removeTag: (tag: str
     }
 
     const menuButton = (
-        <MenuButton className="hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
+        <MenuButton className="hover:bg-zinc-200 dark:hover:bg-zinc-700 transition rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
             <VscEllipsis className="z-10 text-xl text-gray-500" />
         </MenuButton>
     )

@@ -22,7 +22,7 @@ export default function RecentTagRow(props: { tag: string, removeTag: (tag: stri
     return (
         <div className={`relative pl-3 pr-2 py-2`}>
 
-            <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20" />
+            <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20 transition" />
 
             <div>
                 {!isLoaded &&
