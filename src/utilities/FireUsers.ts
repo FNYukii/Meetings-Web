@@ -13,7 +13,7 @@ export default class FireUsers {
         const displayName: string = document.data().displayName ?? ""
         const introduction: string = document.data().introduction ?? ""
 
-        const iconUrl: string = document.data().iconUrl ?? ""
+        const iconUrl: string = document.data().iconUrl
         const likedCommentIds: string[] = document.data().likedCommentIds ?? []
 
         const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds }

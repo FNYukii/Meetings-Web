@@ -4,7 +4,7 @@ type User = {
 
     displayName: string
     introduction: string
-    iconUrl: string
+    iconUrl: string | null
     likedCommentIds: string[]
 }
 
