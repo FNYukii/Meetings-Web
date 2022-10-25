@@ -35,6 +35,7 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
+            return
         }
 
         // サインアップ
