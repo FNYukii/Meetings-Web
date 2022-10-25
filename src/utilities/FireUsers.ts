@@ -79,7 +79,7 @@ export default class FireUsers {
         }
     }
 
-    static async readLikedUsersFromCache(commentId: string): Promise<User[] | null> {
+    static async readLikedUserIdsFromCache(commentId: string): Promise<string[] | null> {
 
         const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
@@ -97,7 +97,15 @@ export default class FireUsers {
                 const user = this.toUser(doc)
                 users.push(user)
             })
-            return users
+
+            // 配列userIds
+            let userIds: string[] = []
+            users.forEach((user) => {
+                const userId = user.id
+                userIds.push(userId)
+            })
+
+            return userIds
 
         } catch (error) {
 
@@ -114,7 +122,15 @@ export default class FireUsers {
                     const user = this.toUser(doc)
                     users.push(user)
                 })
-                return users
+
+                // 配列userIds
+                let userIds: string[] = []
+                users.forEach((user) => {
+                    const userId = user.id
+                    userIds.push(userId)
+                })
+
+                return userIds
 
             } catch (error) {
 
@@ -124,7 +140,7 @@ export default class FireUsers {
         }
     }
 
-    static async readLikedUsers(commentId: string): Promise<User[] | null> {
+    static async readLikedUserIds(commentId: string): Promise<string[] | null> {
 
         const q = query(collection(db, "users"), where("likedCommentIds", "array-contains", commentId), limit(9999))
 
@@ -143,7 +159,15 @@ export default class FireUsers {
                 users.push(user)
             })
 
-            return users
+            // 配列userIds
+            let userIds: string[] = []
+            users.forEach((user) => {
+                const userId = user.id
+                userIds.push(userId)
+            })
+
+            return userIds
+
         } catch (error) {
 
             // 失敗
@@ -266,9 +290,9 @@ export default class FireUsers {
             console.log(`Updated 1 User.`)
 
             return userId
-            
+
         } catch (error) {
-            
+
             console.log(`Failed to update User. ${error}`)
             return null
         }
@@ -294,9 +318,9 @@ export default class FireUsers {
             console.log(`Updated 1 User.`)
 
             return uid
-            
+
         } catch (error) {
-            
+
             console.log(`Failed to update User. ${error}`)
             return null
         }
@@ -322,9 +346,9 @@ export default class FireUsers {
             console.log(`Updated 1 User.`)
 
             return uid
-            
+
         } catch (error) {
-            
+
             console.log(`Failed to update User. ${error}`)
             return null
         }
