@@ -33,12 +33,7 @@ export default function AddThreadModal() {
     }, [])
 
     function addTag() {
-
-        const newTags = tags
-        newTags.push("apple")
-        setTags(newTags)
-
-        console.log(`tags: ${tags}`)
+        setTags([...tags, 'apple'])
     }
 
     function onKeyDown(event: KeyboardEvent) {
