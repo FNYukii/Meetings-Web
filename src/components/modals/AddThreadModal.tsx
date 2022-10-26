@@ -34,12 +34,18 @@ export default function AddThreadModal() {
     }, [])
 
     function addTag() {
-        setTags([...tags, 'apple'])
+        setTags([...tags, ""])
     }
 
-    function removeTag(tagIndex: number) {
+    function editTag(index: number, tag: string) {
         setTags(
-            tags.filter((tag, index) => (index !== tagIndex))
+            tags.map((t, i) => (i === index ? tag : t))
+        )
+    }
+
+    function removeTag(index: number) {
+        setTags(
+            tags.filter((tag, i) => (i !== index))
         )
     }
 
@@ -56,7 +62,7 @@ export default function AddThreadModal() {
         setIsLoading(true)
 
         // スレッドを作成
-        const threadId = await FireThreads.createThread(title, [])
+        const threadId = await FireThreads.createThread(title, tags)
 
         // 失敗
         if (threadId === null) {
@@ -96,7 +102,7 @@ export default function AddThreadModal() {
                             <div key={index} className="mt-3 flex items-center gap-3">
 
                                 <AiOutlineTag className="text-gray-500" />
-                                <input type="text" placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
+                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
 
                                 <button type="button" onClick={() => removeTag(index)}>
                                     <MdOutlineClose className="text-xl text-gray-500 hover:text-gray-400 dark:hover:text-gray-600"/>
