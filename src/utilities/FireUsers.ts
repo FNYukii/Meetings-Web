@@ -183,7 +183,7 @@ export default class FireUsers {
         }
     }
 
-    static async readIsMyUserTagDuplicate(userTag: string): Promise<boolean | null> {
+    static async readNumberOfUserTagUsed(userTag: string): Promise<number | null> {
 
         const q = query(collection(db, "users"), where("userTag", "==", userTag))
 
@@ -194,13 +194,7 @@ export default class FireUsers {
             // 成功
             console.log(`Read ${querySnapshot.size} Users from server.`)
 
-            // 重複している
-            if (querySnapshot.size > 1) {
-                return true
-            }
-
-            // 重複していない
-            return false
+            return querySnapshot.size
 
         } catch (error) {
 
@@ -237,7 +231,7 @@ export default class FireUsers {
 
             await updateDoc(ref, {
                 displayName: displayName,
-                userTag: userTag,
+                // userTag: userTag,
                 introduction: introduction
             })
 
