@@ -86,10 +86,9 @@ export default function AddThreadModal() {
 
                         {tags.map((tag, index) => (
 
-                            <div key={index}>
-                                <p>{tag}</p>
+                            <div key={index} className="mt-3">
+                                <input type="text" placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
                             </div>
-
                         ))}
 
                         <button type="button" onClick={addTag} className="mt-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">タグを追加</button>
