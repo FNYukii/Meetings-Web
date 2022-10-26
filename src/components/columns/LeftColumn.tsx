@@ -37,15 +37,15 @@ export default function LeftColumn(props: { className?: string }) {
 
                 <div className='xl:block xl:px-4 flex justify-end px-2 pt-1'>
 
-                    <NavLink to='/' className="text-inherit no-underline w-fit p-2 text-3xl font-sans xl:block hidden" onClick={() => window.scrollTo(0, 0)}>Meetings</NavLink>
+                    <NavLink to='/' className="text-inherit no-underline w-fit p-3 text-3xl font-sans xl:block hidden" onClick={() => window.scrollTo(0, 0)}>Meetings</NavLink>
 
                     <div>
 
-                        <NavLink to='/' end className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
+                        <NavLink to='/' end className="block mt-1 rounded-full" onClick={() => window.scrollTo(0, 0)}>
 
                             {({ isActive }) => (
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-3 rounded-full'>
 
                                     <AiOutlineHome className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                     <AiFillHome className={`text-3xl ${isActive ? "block" : "hidden"}`} />
@@ -55,11 +55,11 @@ export default function LeftColumn(props: { className?: string }) {
                             )}
                         </NavLink>
 
-                        <NavLink to='/search' className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
+                        <NavLink to='/search' className="block mt-1 rounded-full" onClick={() => window.scrollTo(0, 0)}>
 
                             {({ isActive }) => (
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-3 rounded-full'>
 
                                     <HiOutlineSearch className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                     <HiSearch className={`text-3xl ${isActive ? "block" : "hidden"}`} />
@@ -70,9 +70,9 @@ export default function LeftColumn(props: { className?: string }) {
                         </NavLink>
 
                         {uid === null &&
-                            <Link to='/sign-in' state={{ previousPath: location.pathname }} className="block mt-2 rounded-full">
+                            <Link to='/sign-in' state={{ previousPath: location.pathname }} className="block mt-1 rounded-full">
 
-                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
+                                <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-3 rounded-full'>
 
                                     <AiOutlineLogin className={`text-3xl`} />
                                     <span className={`ml-5 text-xl xl:block hidden`}>サインイン</span>
@@ -81,11 +81,11 @@ export default function LeftColumn(props: { className?: string }) {
                         }
 
                         {uid !== null &&
-                            <NavLink to={`/users/${uid}`} className="block mt-2 rounded-full" onClick={() => window.scrollTo(0, 0)}>
+                            <NavLink to={`/users/${uid}`} className="block mt-1 rounded-full" onClick={() => window.scrollTo(0, 0)}>
 
                                 {({ isActive }) => (
 
-                                    <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-2 rounded-full'>
+                                    <div className='flex items-center hover:bg-zinc-100 dark:hover:bg-zinc-900 transition p-3 rounded-full'>
 
                                         <BsPerson className={`text-3xl ${isActive ? "hidden" : "block"}`} />
                                         <BsPersonFill className={`text-3xl ${isActive ? "block" : "hidden"}`} />
