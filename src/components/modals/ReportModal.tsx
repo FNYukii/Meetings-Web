@@ -3,6 +3,7 @@ import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
 import FireReports from "../../utilities/FireReports"
 import SubmitButton from "../parts/buttons/SubmitButton"
+import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
 export default function ReportModal(props: { className?: string }) {
 
@@ -122,8 +123,8 @@ export default function ReportModal(props: { className?: string }) {
                     <fieldset className="mt-5 mx-3">
 
                         <legend className="text-xl">詳細</legend>
-
-                        <textarea value={detail} onChange={(e) => setDetail(e.target.value)} placeholder="具体的に説明してください" className="h-24 resize-none mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                        
+                        <DynamicTextarea value={detail} setValue={setDetail} className="mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full"/>
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">
