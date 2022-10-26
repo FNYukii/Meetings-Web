@@ -11,6 +11,7 @@ export default function AddThreadModal() {
     const body = document.body
 
     const [title, setTitle] = useState("")
+    const [tags, setTags] = useState<string[]>([])
     const [text, setText] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
@@ -30,6 +31,15 @@ export default function AddThreadModal() {
 
         // eslint-disable-next-line
     }, [])
+
+    function addTag() {
+
+        const newTags = tags
+        newTags.push("apple")
+        setTags(newTags)
+
+        console.log(`tags: ${tags}`)
+    }
 
     function onKeyDown(event: KeyboardEvent) {
 
@@ -79,7 +89,15 @@ export default function AddThreadModal() {
 
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
 
-                        <button type="button" className="mt-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">タグを追加</button>
+                        {tags.map((tag, index) => (
+
+                            <div key={index}>
+                                <p>{tag}</p>
+                            </div>
+
+                        ))}
+
+                        <button type="button" onClick={addTag} className="mt-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">タグを追加</button>
 
                         <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                     </div>
