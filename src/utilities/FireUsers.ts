@@ -183,32 +183,6 @@ export default class FireUsers {
         }
     }
 
-    static async readIsUserTagDuplicate(userTag: string): Promise<boolean | null> {
-
-        const q = query(collection(db, "users"), where("userTag", "==", userTag))
-
-        try {
-            // サーバーから読み取り
-            const querySnapshot = await getDocsFromServer(q)
-
-            // 成功
-            console.log(`Read ${querySnapshot.size} Users from server.`)
-
-            // 重複している
-            if (querySnapshot.size !== 0) {
-                return true
-            }
-
-            // 重複していない
-            return false
-
-        } catch (error) {
-
-            // 失敗
-            return null
-        }
-    }
-
     static async readIsMyUserTagDuplicate(userTag: string): Promise<boolean | null> {
 
         const q = query(collection(db, "users"), where("userTag", "==", userTag))
