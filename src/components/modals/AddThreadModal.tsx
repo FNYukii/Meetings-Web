@@ -88,8 +88,13 @@ export default function AddThreadModal() {
                         {tags.map((tag, index) => (
 
                             <div key={index} className="mt-3 flex items-center gap-3">
+
                                 <AiOutlineTag className="text-gray-500" />
                                 <input type="text" placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
+
+                                <button type="button">
+                                    <MdOutlineClose className="text-xl text-gray-500 hover:text-gray-400 dark:hover:text-gray-600"/>
+                                </button>
                             </div>
                         ))}
 
