@@ -37,7 +37,7 @@ export default function CenterColumn(props: {className?: string}) {
     const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal || isShowEditUserModal ? true : false
 
     return (
-        <div className={`min-h-screen border-l border-r border-zinc-200 dark:border-zinc-800 ${props.className}`}>
+        <div className={`min-h-screen border-l sm:border-r border-zinc-200 dark:border-zinc-800 ${props.className}`}>
 
             <Routes location={isShowModal ? previousPath : currentUrl}>
 
