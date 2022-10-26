@@ -124,7 +124,7 @@ export default function ReportModal(props: { className?: string }) {
 
                         <legend className="text-xl">詳細</legend>
                         
-                        <DynamicTextarea value={detail} setValue={setDetail} className="mt-3 p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full"/>
+                        <DynamicTextarea value={detail} setValue={setDetail} placeholder="具体的に入力してください" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">
