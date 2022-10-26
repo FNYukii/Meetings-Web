@@ -3,6 +3,7 @@ import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import SubmitButton from "../parts/buttons/SubmitButton"
+import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
 export default function AddCommentModal() {
 
@@ -70,7 +71,7 @@ export default function AddCommentModal() {
 
                         <p className="text-2xl font-bold">新しいコメント</p>
 
-                        <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="mt-5 h-24 resize-none p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
                     </div>
 
                     <div className="mt-3 flex justify-end">
