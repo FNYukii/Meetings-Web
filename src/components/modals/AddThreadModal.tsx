@@ -100,23 +100,28 @@ export default function AddThreadModal() {
 
                         {tags.map((tag, index) => (
 
-                            <div key={index} className="mt-3 flex items-center gap-3">
+                            <div key={index} className="mt-3 flex items-center">
 
                                 <AiOutlineTag className="text-gray-500" />
-                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="ml-3 py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                                <button type="button" onClick={() => removeTag(index)}>
-                                    <MdOutlineClose className="text-xl text-gray-500 hover:text-gray-400 dark:hover:text-gray-600"/>
+                                <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                                    <MdOutlineClose className="text-xl text-gray-500" />
                                 </button>
                             </div>
                         ))}
+                    </div>
 
-                        <button type="button" onClick={addTag} className="mt-3 flex items-center gap-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">
+                    <div className="px-1">
+
+                        <button type="button" onClick={addTag} className="mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
                             <AiOutlinePlus />
                             <span>タグを追加</span>
                         </button>
-                        
-                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
+                    </div>
+
+                    <div className="px-3">
+                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </div>
 
                     <div className="mt-3 flex justify-end">
