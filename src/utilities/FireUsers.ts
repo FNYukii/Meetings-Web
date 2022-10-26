@@ -3,6 +3,7 @@ import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer,
 import { doc } from "firebase/firestore"
 import { db } from "./firebase"
 import FireAuth from "./FireAuth"
+import ExString from "./ExString"
 
 export default class FireUsers {
 
@@ -234,14 +235,14 @@ export default class FireUsers {
         }
     }
 
-    static async createUser(uid: string, displayName: string, userTag: string): Promise<string | null> {
+    static async createUser(uid: string, displayName: string): Promise<string | null> {
 
         try {
 
             await setDoc(doc(db, "users", uid), {
                 createdAt: serverTimestamp(),
                 displayName: displayName,
-                userTag: userTag
+                userTag: ExString.randomText()
             })
 
             console.log("Added 1 User.")
