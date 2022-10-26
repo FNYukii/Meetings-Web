@@ -5,6 +5,7 @@ import FireAuth from "../../utilities/FireAuth"
 import FireUsers from "../../utilities/FireUsers"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import ProgressImage from "../parts/images/ProgressImage"
+import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
 export default function EditUserModal() {
 
@@ -138,10 +139,10 @@ export default function EditUserModal() {
                         <form onSubmit={(e) => onSubmit(e)}>
                             <div className="px-3 mt-3">
 
-                                <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
-                                <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+                                <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                                <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                                <textarea value={introduction} onChange={(e) => setIntroduction(e.target.value)} placeholder="自己紹介" className="mt-5 h-24 resize-none p-3 border rounded-md border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                                <DynamicTextarea value={introduction} setValue={setIntroduction} placeholder="自己紹介" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
                             </div>
 
                             <div className="mt-3 flex justify-end">

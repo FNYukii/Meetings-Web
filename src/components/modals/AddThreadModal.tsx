@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import FireThreads from "../../utilities/FireThreads"
 import SubmitButton from "../parts/buttons/SubmitButton"
+import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
 export default function AddThreadModal() {
 
@@ -95,14 +96,14 @@ export default function AddThreadModal() {
 
                         <p className="text-2xl font-bold">新しいスレッド</p>
 
-                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
                         {tags.map((tag, index) => (
 
                             <div key={index} className="mt-3 flex items-center gap-3">
 
                                 <AiOutlineTag className="text-gray-500" />
-                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
+                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
                                 <button type="button" onClick={() => removeTag(index)}>
                                     <MdOutlineClose className="text-xl text-gray-500 hover:text-gray-400 dark:hover:text-gray-600"/>
@@ -114,8 +115,8 @@ export default function AddThreadModal() {
                             <AiOutlinePlus />
                             <span>タグを追加</span>
                         </button>
-
-                        <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
+                        
+                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
                     </div>
 
                     <div className="mt-3 flex justify-end">
