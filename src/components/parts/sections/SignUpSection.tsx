@@ -13,11 +13,9 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
     const [password2, setPassword2] = useState("")
 
     const [displayName, setDisplayName] = useState("")
-    const [userTag, setUserTag] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
     const displayNameMax = 30
-    const userTagMax = 30
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
 
@@ -25,21 +23,6 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
 
         // フォーム送信を無効
         e.preventDefault()
-
-        // userTagの形式を確認
-        if (!userTag.match(/^\w{5,}$/)) {
-            alert("ユーザータグの形式が不正です。")
-            setIsLoading(false)
-            return
-        }
-
-        // userTagの重複を確認
-        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
-        if (isUserTagDuplicate) {
-            alert("そのユーザータグは既に利用されています。")
-            setIsLoading(false)
-            return
-        }
 
         // サインアップ
         const uid = await FireAuth.signUp(email, password)
@@ -54,7 +37,7 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
 
         // 成功
         // Userドキュメントを追加
-        const userId = await FireUsers.createUser(uid, displayName, userTag)
+        const userId = await FireUsers.createUser(uid, displayName)
 
         // 失敗
         if (userId === null) {
@@ -83,14 +66,13 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
                     <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="パスワードを確認" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
 
                     <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="mt-10 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
-                    <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
                 </div>
 
                 <div className="mt-3 pl-3 flex justify-between items-center">
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(false)} className="hover:underline h-fit">既存のアカウントを使う</button>
 
-                    <SubmitButton text="サインアップ" isLoading={isLoading} disabled={email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax} />
+                    <SubmitButton text="サインアップ" isLoading={isLoading} disabled={email === "" || password === "" || password !== password2 || displayName === "" || displayName.length > displayNameMax} />
                 </div>
             </form>
         </div>
