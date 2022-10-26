@@ -37,6 +37,12 @@ export default function AddThreadModal() {
         setTags([...tags, 'apple'])
     }
 
+    function removeTag(tagIndex: number) {
+        setTags(
+            tags.filter((tag, index) => (index !== tagIndex))
+        )
+    }
+
     function onKeyDown(event: KeyboardEvent) {
 
         if (event.key === "Escape") {
@@ -92,7 +98,7 @@ export default function AddThreadModal() {
                                 <AiOutlineTag className="text-gray-500" />
                                 <input type="text" placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
 
-                                <button type="button">
+                                <button type="button" onClick={() => removeTag(index)}>
                                     <MdOutlineClose className="text-xl text-gray-500 hover:text-gray-400 dark:hover:text-gray-600"/>
                                 </button>
                             </div>
