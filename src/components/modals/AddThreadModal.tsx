@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { AiOutlinePlus, AiOutlineTag } from "react-icons/ai"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
@@ -11,6 +12,7 @@ export default function AddThreadModal() {
     const body = document.body
 
     const [title, setTitle] = useState("")
+    const [tags, setTags] = useState<string[]>([])
     const [text, setText] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
@@ -31,6 +33,22 @@ export default function AddThreadModal() {
         // eslint-disable-next-line
     }, [])
 
+    function addTag() {
+        setTags([...tags, ""])
+    }
+
+    function editTag(index: number, tag: string) {
+        setTags(
+            tags.map((t, i) => (i === index ? tag : t))
+        )
+    }
+
+    function removeTag(index: number) {
+        setTags(
+            tags.filter((tag, i) => (i !== index))
+        )
+    }
+
     function onKeyDown(event: KeyboardEvent) {
 
         if (event.key === "Escape") {
@@ -44,7 +62,7 @@ export default function AddThreadModal() {
         setIsLoading(true)
 
         // スレッドを作成
-        const threadId = await FireThreads.createThread(title, [])
+        const threadId = await FireThreads.createThread(title, tags)
 
         // 失敗
         if (threadId === null) {
@@ -78,10 +96,29 @@ export default function AddThreadModal() {
                         <p className="text-2xl font-bold">新しいスレッド</p>
 
                         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 p-2 w-full rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500" />
+
+                        {tags.map((tag, index) => (
+
+                            <div key={index} className="mt-3 flex items-center gap-3">
+
+                                <AiOutlineTag className="text-gray-500" />
+                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
+
+                                <button type="button" onClick={() => removeTag(index)}>
+                                    <MdOutlineClose className="text-xl text-gray-500 hover:text-gray-400 dark:hover:text-gray-600"/>
+                                </button>
+                            </div>
+                        ))}
+
+                        <button type="button" onClick={addTag} className="mt-3 flex items-center gap-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">
+                            <AiOutlinePlus />
+                            <span>タグを追加</span>
+                        </button>
+
                         <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                     </div>
 
-                    <div className="mt-3 flex justify-end">                        
+                    <div className="mt-3 flex justify-end">
                         <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax} />
                     </div>
                 </form>
