@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { AiOutlinePlus, AiOutlineTag } from "react-icons/ai"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
@@ -86,17 +87,21 @@ export default function AddThreadModal() {
 
                         {tags.map((tag, index) => (
 
-                            <div key={index} className="mt-3">
+                            <div key={index} className="mt-3 flex items-center gap-3">
+                                <AiOutlineTag className="text-gray-500" />
                                 <input type="text" placeholder="タグ" className="border-b p-2 focus:outline-none focus:border-sky-500" />
                             </div>
                         ))}
 
-                        <button type="button" onClick={addTag} className="mt-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">タグを追加</button>
+                        <button type="button" onClick={addTag} className="mt-3 flex items-center gap-3 text-gray-500 hover:text-gray-400 dark:hover:text-gray-600">
+                            <AiOutlinePlus />
+                            <span>タグを追加</span>
+                        </button>
 
                         <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="コメント" className="h-24 resize-none mt-3 p-3 rounded-md border border-gray-400 dark:border-gray-600 bg-transparent placeholder:text-gray-500 w-full" />
                     </div>
 
-                    <div className="mt-3 flex justify-end">                        
+                    <div className="mt-3 flex justify-end">
                         <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax} />
                     </div>
                 </form>
