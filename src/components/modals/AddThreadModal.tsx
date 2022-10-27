@@ -102,10 +102,10 @@ export default function AddThreadModal() {
 
                         {tags.map((tag, index) => (
 
-                            <div key={index} className="mt-3 flex items-center">
+                            <div key={index} className="mt-3 flex items-center w-1/2">
 
                                 <AiOutlineTag className="text-gray-500" />
-                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="ml-3 py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} maxLength={tagMax} placeholder="タグ" className="ml-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
                                 <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
                                     <MdOutlineClose className="text-xl text-gray-500" />
