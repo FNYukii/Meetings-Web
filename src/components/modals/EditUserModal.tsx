@@ -76,27 +76,27 @@ export default function EditUserModal() {
             return
         }
 
-        // // userTagの形式を確認
-        // if (!userTag.match(/^\w{5,}$/)) {
-        //     alert("ユーザータグの形式が不正です。")
-        //     setIsLoading(false)
-        //     return
-        // }
+        // userTagの形式を確認
+        if (!userTag.match(/^\w{5,}$/)) {
+            alert("ユーザータグの形式が不正です。")
+            setIsLoading(false)
+            return
+        }
 
-        // // userTagの重複を確認
-        // const numberOfUserTagUsed = await FireUsers.readNumberOfUserTagUsed(userTag)
+        // userTagの重複を確認
+        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
 
-        // if (!numberOfUserTagUsed) {
-        //     alert("ユーザータグの重複の確認に失敗しました。")
-        //     setIsLoading(false)
-        //     return
-        // }
+        if (isUserTagDuplicate === null) {
+            alert("ユーザータグの重複の確認に失敗しました。")
+            setIsLoading(false)
+            return
+        }
 
-        // if (numberOfUserTagUsed > 1) {
-        //     alert("そのユーザータグは既に利用されています。")
-        //     setIsLoading(false)
-        //     return
-        // }
+        if (isUserTagDuplicate) {
+            alert("そのユーザータグは既に利用されています。")
+            setIsLoading(false)
+            return
+        }
 
         // userドキュメントを更新
         const userId = await FireUsers.updateUser(uid, displayName, userTag, introduction, null)
