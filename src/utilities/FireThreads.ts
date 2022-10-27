@@ -52,6 +52,28 @@ export default class FireThreads {
         }
     }
 
+    static async readThreadFromServer(threadId: string) : Promise<Thread | null> {
+
+        const docRef = doc(db, "threads", threadId)
+
+        try {
+            // キャッシュから読み取り
+            const docSnap = await getDocFromServer(docRef)
+
+            // 失敗
+            if (!docSnap.exists()) {
+                return null
+            }
+
+            //成功
+            console.log(`Read 1 Thread from server.`)
+            return this.toThread(docSnap)
+
+        } catch (e) {
+            return null
+        }
+    }
+
     static async readRecentTags(): Promise<string[] | null> {
 
         const q = query(collection(db, "threads"), orderBy("createdAt", "desc"), limit(50))
@@ -182,6 +204,24 @@ export default class FireThreads {
     }
 
     static async createThread(title: string, tags: string[]): Promise<string | null> {
+
+        const titleMax = 50
+        const tagsMax = 5
+        const tagMax = 30
+
+        // titleをチェック
+        if (title.length === 0 || title.length > titleMax) {
+            return null
+        }
+
+        // tagsをチェック
+        if (tags.length > tagsMax) {
+            return null
+        }
+
+        if ((tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0) {
+            return null
+        }
 
         // サインインしていないなら終了　
         const uid = FireAuth.uid()

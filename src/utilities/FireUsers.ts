@@ -229,6 +229,12 @@ export default class FireUsers {
 
     static async createUser(uid: string, displayName: string): Promise<string | null> {
 
+        const displayNameMax = 30
+
+        if (displayName.length === 0 || displayName.length > displayNameMax) {
+            return null
+        }
+
         try {
 
             await setDoc(doc(db, "users", uid), {
@@ -248,6 +254,29 @@ export default class FireUsers {
     }
 
     static async updateUser(userId: string, displayName: string, userTag: string, introduction: string, iconUrl: string | null): Promise<string | null> {
+
+        const displayNameMax = 30
+        const userTagMax = 30
+        const introductionMax = 300
+
+        // displayNameをチェック
+        if (displayName.length === 0 || displayName.length > displayNameMax) {
+            return null
+        }
+
+        // userTagをチェック
+        if (!userTag.match(/^\w{5,}$/)) {
+            return null
+        }
+
+        if (userTag.length < 2 || userTag.length > userTagMax) {
+            return null
+        }
+
+        // introductionを確認
+        if (introduction.length > introductionMax) {
+            return null
+        }
 
         const ref = doc(db, "users", userId)
 
