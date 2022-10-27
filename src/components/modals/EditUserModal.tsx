@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
+import User from "../../entities/User"
 import FireAuth from "../../utilities/FireAuth"
 import FireUsers from "../../utilities/FireUsers"
 import SubmitButton from "../parts/buttons/SubmitButton"
@@ -15,6 +16,7 @@ export default function EditUserModal() {
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
     const [introduction, setIntroduction] = useState("")
+    const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
     const [isLoading, setIsLoading] = useState(false)
@@ -49,11 +51,14 @@ export default function EditUserModal() {
 
         const uid = FireAuth.uid()
         if (uid === null) {
+            setIsLoaded(true)
             return
         }
 
         const user = await FireUsers.readUser(uid)
+        setUser(user)
         if (user === null) {
+            setIsLoaded(true)
             return
         }
 
@@ -130,10 +135,16 @@ export default function EditUserModal() {
                     </div>
                 }
 
-                {isLoaded &&
+                {isLoaded && user === null &&
+                    <div className="p-2">
+                        <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
+                    </div>
+                }
+
+                {isLoaded && user !== null &&
 
                     <div>
-                        
+
                         <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
                         <form onSubmit={(e) => onSubmit(e)}>
@@ -142,7 +153,7 @@ export default function EditUserModal() {
                                 <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                                 <input type="text" value={userTag} onChange={(e) => setUserTag(e.target.value)} placeholder="ユーザータグ" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                                <DynamicTextarea value={introduction} setValue={setIntroduction} placeholder="自己紹介" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
+                                <DynamicTextarea value={introduction} setValue={setIntroduction} placeholder="自己紹介" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                             </div>
 
                             <div className="mt-3 flex justify-end">
