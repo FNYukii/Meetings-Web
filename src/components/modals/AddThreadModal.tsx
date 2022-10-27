@@ -18,9 +18,9 @@ export default function AddThreadModal() {
     const [isLoading, setIsLoading] = useState(false)
 
     const titleMax = 100
-    const titleTagsMax = 5
-    const titleTagMax = 30
-    const commentTextMax = 300
+    const tagsMax = 5
+    // const tagMax = 30
+    const textMax = 300
 
     useEffect(() => {
 
@@ -116,7 +116,7 @@ export default function AddThreadModal() {
 
                     <div className="px-1">
 
-                        <button type="button" onClick={addTag} disabled={tags.length >= 5} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 ${tags.length >= 5 ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>
+                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 ${tags.length >= tagsMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>
                             <AiOutlinePlus />
                             <span>タグを追加</span>
                         </button>
@@ -127,7 +127,7 @@ export default function AddThreadModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax} />
+                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > textMax} />
                     </div>
                 </form>
             </div>
