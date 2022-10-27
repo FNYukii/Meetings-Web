@@ -1,12 +1,35 @@
-export default function DynamicTextarea(props: {value: string, setValue: React.Dispatch<React.SetStateAction<string>>, placeholder?: string, className?: string}) {
+import { useEffect, useRef } from "react"
 
-    function numberOfRow(value: string){
+export default function DynamicTextarea(props: { value: string, setValue: React.Dispatch<React.SetStateAction<string>>, placeholder?: string, className?: string }) {
 
-        let num = value.split('\n').length
-        return num
-    }
+    const textAreaRef = useResizeTextArea(props.value)
 
     return (
-        <textarea value={props.value} onChange={(e) => props.setValue(e.target.value)} rows={numberOfRow(props.value)}  placeholder={props.placeholder ?? ""} className={`resize-none ${props.className}`}/>
+
+        <textarea
+            value={props.value}
+            onChange={(e) => props.setValue(e.target.value)}
+            ref={textAreaRef}
+            placeholder={props.placeholder ?? ""}
+            className={`resize-none ${props.className}`}
+        />
     )
+}
+
+function useResizeTextArea(value: string) {
+
+    const ref = useRef<HTMLTextAreaElement>(null)
+
+    useEffect(() => {
+
+        const element = ref.current
+        if (!element) {
+            return
+        }
+
+        element.style.height = "1rem"
+        element.style.height = `calc(${element.scrollHeight}px)`
+    }, [value])
+
+    return ref
 }
