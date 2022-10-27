@@ -128,7 +128,7 @@ export default function ReportModal(props: { className?: string }) {
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="送信" isLoading={isLoading} disabled={probremIndex === null || detail === "" || detail.length > detailMax} />
+                        <SubmitButton text="送信" isLoading={isLoading} disabled={probremIndex === null || !detail.match(/\S/g) || detail.length > detailMax} />
                     </div>
                 </form>
             </div>

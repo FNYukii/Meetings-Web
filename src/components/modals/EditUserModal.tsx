@@ -146,7 +146,7 @@ export default function EditUserModal() {
                             </div>
 
                             <div className="mt-3 flex justify-end">
-                                <SubmitButton text="保存" isLoading={isLoading} disabled={displayName === "" || displayName.length > displayNameMax || userTag === "" || userTag.length > userTagMax || introduction.length > introductionMax} />
+                                <SubmitButton text="保存" isLoading={isLoading} disabled={!displayName.match(/\S/g) || displayName.length > displayNameMax || !userTag.match(/\S/g) || userTag.length > userTagMax || introduction.length > introductionMax} />
                             </div>
                         </form>
                     </div>

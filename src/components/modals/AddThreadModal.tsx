@@ -127,7 +127,7 @@ export default function AddThreadModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || tags.includes("") || text === "" || text.length > textMax} />
+                        <SubmitButton text="作成" isLoading={isLoading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>
             </div>
