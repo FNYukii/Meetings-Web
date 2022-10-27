@@ -205,6 +205,24 @@ export default class FireThreads {
 
     static async createThread(title: string, tags: string[]): Promise<string | null> {
 
+        const titleMax = 50
+        const tagsMax = 5
+        const tagMax = 30
+
+        // titleをチェック
+        if (title.length === 0 || title.length > titleMax) {
+            return null
+        }
+
+        // tagsをチェック
+        if (tags.length > tagsMax) {
+            return null
+        }
+
+        if ((tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0) {
+            return null
+        }
+
         // サインインしていないなら終了　
         const uid = FireAuth.uid()
 
