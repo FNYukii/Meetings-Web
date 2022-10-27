@@ -2,6 +2,7 @@ import { addDoc, collection, deleteDoc, doc, endAt, getDocFromCache, getDocFromS
 import Comment from "../entities/Comment"
 import FireAuth from "./FireAuth"
 import { db } from "./firebase"
+import FireThreads from "./FireThreads"
 import FireUsers from "./FireUsers"
 
 export default class FireComments {
@@ -229,6 +230,26 @@ export default class FireComments {
     }
 
     static async createComment(threadId: string, text: string, imageUrls: string[]): Promise<string | null> {
+
+        // 制限
+        const textMax = 300
+        const imageUrlsMax = 4
+
+        // threadIdを確認
+        const thread = await FireThreads.readThreadFromServer(threadId)
+        if (!thread) {
+            return null
+        }
+
+        // textを確認
+        if (text.length === 0 || text.length > textMax || !text.match(/\S/g)) {
+            return null
+        }
+
+        // imageUrlsを確認
+        if (imageUrls.length > imageUrlsMax) {
+            return null
+        }
 
         // サインインしていないなら終了　
         const uid = FireAuth.uid()

@@ -75,7 +75,7 @@ export default function AddCommentModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax}/>
+                        <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)}/>
                     </div>
                 </form>
             </div>

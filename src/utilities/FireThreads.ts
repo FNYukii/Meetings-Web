@@ -52,6 +52,28 @@ export default class FireThreads {
         }
     }
 
+    static async readThreadFromServer(threadId: string) : Promise<Thread | null> {
+
+        const docRef = doc(db, "threads", threadId)
+
+        try {
+            // キャッシュから読み取り
+            const docSnap = await getDocFromServer(docRef)
+
+            // 失敗
+            if (!docSnap.exists()) {
+                return null
+            }
+
+            //成功
+            console.log(`Read 1 Thread from server.`)
+            return this.toThread(docSnap)
+
+        } catch (e) {
+            return null
+        }
+    }
+
     static async readRecentTags(): Promise<string[] | null> {
 
         const q = query(collection(db, "threads"), orderBy("createdAt", "desc"), limit(50))
