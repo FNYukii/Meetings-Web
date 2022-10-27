@@ -229,6 +229,12 @@ export default class FireUsers {
 
     static async createUser(uid: string, displayName: string): Promise<string | null> {
 
+        const displayNameMax = 30
+
+        if (displayName.length === 0 || displayName.length > displayNameMax) {
+            return null
+        }
+
         try {
 
             await setDoc(doc(db, "users", uid), {
