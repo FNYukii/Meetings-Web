@@ -183,7 +183,12 @@ export default class FireUsers {
         }
     }
 
-    static async readNumberOfUserTagUsed(userTag: string): Promise<number | null> {
+    static async readIsUserTagDuplicate(userTag: string): Promise<boolean | null> {
+
+        const uid = FireAuth.uid()
+        if (uid === null) {
+            return null
+        }
 
         const q = query(collection(db, "users"), where("userTag", "==", userTag))
 
@@ -194,7 +199,26 @@ export default class FireUsers {
             // 成功
             console.log(`Read ${querySnapshot.size} Users from server.`)
 
-            return querySnapshot.size
+            // Users
+            let users: User[] = []
+            querySnapshot.forEach((doc) => {
+                const thread = this.toUser(doc)
+                users.push(thread)
+            })
+
+            let usersWithoutMe: User[] = []
+            users.forEach((user) => {
+                const userId = user.id
+                if (userId !== uid) {
+                    usersWithoutMe.push(user)
+                }
+            })
+
+            if (usersWithoutMe.length > 0) {
+                return true
+            } else {
+                return false
+            }
 
         } catch (error) {
 
@@ -231,7 +255,7 @@ export default class FireUsers {
 
             await updateDoc(ref, {
                 displayName: displayName,
-                // userTag: userTag,
+                userTag: userTag,
                 introduction: introduction
             })
 
