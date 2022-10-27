@@ -5,6 +5,12 @@ export default class FireReports {
 
     static async createReport(targetId: string, targetCollectionName: string, probremIndex: number, detail: string): Promise<string | null> {
 
+        const detailMax = 300
+
+        if (detail.length === 0 || detail.length > detailMax) {
+            return null
+        }
+
         const probrems = ["暴力的", "センシティブ", "スパム", "事実に反する"]
 
         const probrem = probrems[probremIndex]
