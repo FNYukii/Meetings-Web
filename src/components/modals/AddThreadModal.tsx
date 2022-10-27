@@ -18,7 +18,9 @@ export default function AddThreadModal() {
     const [isLoading, setIsLoading] = useState(false)
 
     const titleMax = 100
-    const commentTextMax = 300
+    const tagsMax = 5
+    const tagMax = 30
+    const textMax = 300
 
     useEffect(() => {
 
@@ -100,10 +102,10 @@ export default function AddThreadModal() {
 
                         {tags.map((tag, index) => (
 
-                            <div key={index} className="mt-3 flex items-center">
+                            <div key={index} className="mt-3 flex items-center w-1/2">
 
                                 <AiOutlineTag className="text-gray-500" />
-                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} placeholder="タグ" className="ml-3 py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} maxLength={tagMax} placeholder="タグ" className="ml-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
                                 <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
                                     <MdOutlineClose className="text-xl text-gray-500" />
@@ -114,7 +116,7 @@ export default function AddThreadModal() {
 
                     <div className="px-1">
 
-                        <button type="button" onClick={addTag} className="mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 ${tags.length >= tagsMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>
                             <AiOutlinePlus />
                             <span>タグを追加</span>
                         </button>
@@ -125,7 +127,7 @@ export default function AddThreadModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > commentTextMax} />
+                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || tags.includes("") || text === "" || text.length > textMax} />
                     </div>
                 </form>
             </div>
