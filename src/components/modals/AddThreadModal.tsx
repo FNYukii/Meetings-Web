@@ -19,7 +19,7 @@ export default function AddThreadModal() {
 
     const titleMax = 100
     const tagsMax = 5
-    // const tagMax = 30
+    const tagMax = 30
     const textMax = 300
 
     useEffect(() => {
@@ -127,7 +127,7 @@ export default function AddThreadModal() {
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || text === "" || text.length > textMax} />
+                        <SubmitButton text="作成" isLoading={isLoading} disabled={title === "" || title.length > titleMax || tags.includes("") || text === "" || text.length > textMax} />
                     </div>
                 </form>
             </div>
