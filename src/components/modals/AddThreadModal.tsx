@@ -116,7 +116,7 @@ export default function AddThreadModal() {
 
                     <div className="px-1">
 
-                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900 ${tags.length >= tagsMax ? "text-gray-400 dark:text-gray-600 hover:bg-transparent dark:hover:bg-transparent" : ""}`}>
+                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900    disabled:text-gray-400  disabled:dark:text-gray-600 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent`}>
                             <AiOutlinePlus />
                             <span>タグを追加</span>
                         </button>
