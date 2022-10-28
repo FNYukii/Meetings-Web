@@ -23,4 +23,8 @@
     .width-600 {
         width: 600px;
     }
+
+    .max-height-screen-90 {
+        max-height: 90%;
+    }
 }
