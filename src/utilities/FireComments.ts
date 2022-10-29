@@ -170,6 +170,7 @@ export default class FireComments {
             likedComments.push(comment)
         }))
 
+        likedComments = likedComments.reverse()
         return likedComments
     }
 
