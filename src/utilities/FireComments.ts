@@ -8,7 +8,7 @@ import FireUsers from "./FireUsers"
 export default class FireComments {
 
     static toComment(document: QueryDocumentSnapshot): Comment {
-        
+
         const id: string = document.id ?? ""
         const userId: string = document.data().userId ?? ""
         const createdAt: Date = document.data({ serverTimestamps: "estimate" }).createdAt.toDate() ?? new Date()
@@ -57,11 +57,11 @@ export default class FireComments {
 
     static async readFirstCommentFromCache(commentId: string): Promise<Comment | null> {
 
+
         // クエリを作成
         const q = query(collection(db, "comments"), where("threadId", "==", commentId), orderBy("createdAt"), limit(1))
 
         try {
-
             // キャッシュから読み取り
             const querySnapshot = await getDocsFromCache(q)
 
@@ -77,7 +77,8 @@ export default class FireComments {
 
             // 0件なら終了
             if (comments.length === 0) {
-                return null
+                // eslint-disable-next-line
+                throw 'e'
             }
 
             // 成功
@@ -85,26 +86,32 @@ export default class FireComments {
 
         } catch (e) {
 
-            // サーバーから読み取り
-            const querySnapshot = await getDocsFromServer(q)
-
-            // 成功
-            console.log(`Read ${querySnapshot.size} Comments from server.`)
-
-            // 配列comments
-            let comments: Comment[] = []
-            querySnapshot.forEach((doc) => {
-                const comment = this.toComment(doc)
-                comments.push(comment)
-            })
-
-            // 0件なら終了
-            if (comments.length === 0) {
+            try {
+                // キャッシュから読み取り
+                const querySnapshot = await getDocsFromServer(q)
+    
+                // 成功
+                console.log(`Read ${querySnapshot.size} Comments from server.`)
+    
+                // 配列comments
+                let comments: Comment[] = []
+                querySnapshot.forEach((doc) => {
+                    const comment = this.toComment(doc)
+                    comments.push(comment)
+                })
+    
+                // 0件なら終了
+                if (comments.length === 0) {
+                    return null
+                }
+    
+                // 成功
+                return comments[0]
+    
+            } catch (e) {
+    
                 return null
             }
-
-            // 成功
-            return comments[0]
         }
     }
 
@@ -288,7 +295,7 @@ export default class FireComments {
                 return commentId
             })
             .catch((error) => {
-                
+
                 console.log(`Failed to comment deletion. ${error}`)
                 return null
             })
