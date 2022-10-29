@@ -9,6 +9,8 @@
 OSのテーマと連動してアプリのテーマが切り替わります。
 レスポンシブ対応しており、画面のサイズが小さくても問題なく利用できます。
 
+iOS版は[こちら](https://github.com/Yu357/Meetings-iOS)
+
 ## 主な使用技術
 - React
 - TypeScript
