@@ -68,7 +68,7 @@ export default function ReportModal(props: { className?: string }) {
 
             <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={() => navigate(-1)}></div>
 
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90 overflow-scroll">
+            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
                 <button onClick={() => navigate(-1)} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
@@ -124,7 +124,7 @@ export default function ReportModal(props: { className?: string }) {
 
                         <legend className="text-xl">詳細</legend>
                         
-                        <DynamicTextarea value={detail} setValue={setDetail} placeholder="具体的に入力してください" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
+                        <DynamicTextarea value={detail} setValue={setDetail} placeholder="具体的に入力してください" className="mt-3 max-h-40 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">

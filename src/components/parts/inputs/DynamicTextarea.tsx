@@ -11,7 +11,7 @@ export default function DynamicTextarea(props: { value: string, setValue: React.
             onChange={(e) => props.setValue(e.target.value)}
             ref={textAreaRef}
             placeholder={props.placeholder ?? ""}
-            className={`resize-none overflow-hidden ${props.className}`}
+            className={`resize-none ${props.className}`}
         />
     )
 }
@@ -28,7 +28,7 @@ function useResizeTextArea(value: string) {
         }
 
         element.style.height = "1rem"
-        element.style.height = `calc(${element.scrollHeight}px)`
+        element.style.height = `calc(${element.scrollHeight}px + 1px)`
     }, [value])
 
     return ref
