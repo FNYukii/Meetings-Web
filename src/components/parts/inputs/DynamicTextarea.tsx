@@ -11,7 +11,7 @@ export default function DynamicTextarea(props: { value: string, setValue: React.
             onChange={(e) => props.setValue(e.target.value)}
             ref={textAreaRef}
             placeholder={props.placeholder ?? ""}
-            className={`resize-none ${props.className}`}
+            className={`resize-none max-h-40 ${props.className}`}
         />
     )
 }
