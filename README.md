@@ -14,7 +14,7 @@ iOS版は[こちら](https://github.com/Yu357/Meetings-iOS)
 ## 主な使用技術
 - React
 - TypeScript
-- Tailwind CSS 3
+- Tailwind CSS
 - Firebase SDK 9
 
 ## スクリーンショット
