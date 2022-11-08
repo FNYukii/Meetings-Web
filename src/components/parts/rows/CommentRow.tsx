@@ -56,12 +56,6 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
                     </div>
                 </div>
             }
-
-            {isHidden &&
-                <div className="p-3">
-                    <p className="text-gray-500 text-center">コメントが削除されました</p>
-                </div>
-            }
         </div>
     )
 }
