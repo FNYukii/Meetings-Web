@@ -8,6 +8,8 @@ import UserMenu from "../parts/menus/UserMenu"
 import CommentsPostedByUserList from "../parts/lists/CommentsPostedByUserList"
 import CommentsLikedByUserList from "../parts/lists/CommentsLikedByUserList"
 import ProgressImage from "../parts/images/ProgressImage"
+import { doc, onSnapshot } from "firebase/firestore"
+import { db } from "../../utilities/firebase"
 
 export default function UserScreen() {
 
@@ -18,14 +20,16 @@ export default function UserScreen() {
     const [tab, setTab] = useState(0)
 
     async function readUser() {
-        let user = await FireUsers.readUserFromCache(userId!)
-        setUser(user)
-        setIsLoaded(true)
-        document.title = `${user?.displayName ?? "User not found"} - Meetings`
 
-        user = await FireUsers.readUser(userId!)
-        setUser(user)
-        document.title = `${user?.displayName ?? "User not found"} - Meetings`
+        onSnapshot(doc(db, "users", userId!), (doc) => {
+
+            const user = FireUsers.toUserFromDocumentSnapshot(doc)
+            setUser(user)
+            setIsLoaded(true)
+        }, (error) => {
+
+            setIsLoaded(true)
+        })
     }
 
     useEffect(() => {

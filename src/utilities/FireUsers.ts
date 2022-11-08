@@ -1,5 +1,5 @@
 import User from "../entities/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc, arrayUnion, arrayRemove, DocumentSnapshot } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "./firebase"
 import FireAuth from "./FireAuth"
@@ -17,6 +17,21 @@ export default class FireUsers {
 
         const iconUrl: string = document.data().iconUrl
         const likedCommentIds: string[] = document.data().likedCommentIds ?? []
+
+        const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds }
+        return user
+    }
+
+    static toUserFromDocumentSnapshot(document: DocumentSnapshot<DocumentData>) {
+
+        const id: string = document.id ?? ""
+
+        const userTag: string = document.get("userTag") ?? ""
+        const displayName: string = document.get("displayName") ?? ""
+        const introduction: string = document.get("introduction") ?? ""
+
+        const iconUrl: string = document.get("iconUrl")
+        const likedCommentIds: string[] = document.get("likedCommentIds") ?? []
 
         const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds }
         return user
