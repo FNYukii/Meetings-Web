@@ -17,7 +17,7 @@ export default function AddThreadModal() {
     const [text, setText] = useState("")
     const [isLoading, setIsLoading] = useState(false)
 
-    const titleMax = 100
+    const titleMax = 50
     const tagsMax = 5
     const tagMax = 30
     const textMax = 300
