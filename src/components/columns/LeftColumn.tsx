@@ -37,7 +37,7 @@ export default function LeftColumn(props: { className?: string }) {
 
                 <div className='xl:block xl:px-4 flex justify-end px-2 pt-1'>
 
-                    <NavLink to='/' className="text-inherit no-underline w-fit p-3 text-3xl font-sans xl:block hidden" onClick={() => window.scrollTo(0, 0)}>Meetings</NavLink>
+                    <NavLink to='/' className="text-inherit no-underline w-fit p-3 text-3xl font-sans rounded-full xl:block hidden" onClick={() => window.scrollTo(0, 0)}>Meetings</NavLink>
 
                     <div>
 
