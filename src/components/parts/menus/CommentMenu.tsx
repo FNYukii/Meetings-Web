@@ -10,7 +10,7 @@ import { auth } from '../../../utilities/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import FireComments from '../../../utilities/FireComments'
 
-export default function CommentMenu(props: { comment: Comment, iconClassName?: string }) {
+export default function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHidden?: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const location = useLocation()
     const [isDark, setIsDark] = useState(false)
@@ -36,10 +36,24 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
     }
 
     const menuButton = (
+
         <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 transition rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
             <VscEllipsis className={`${props.iconClassName} pointer-events-auto`} />
         </MenuButton>
     )
+
+    async function deleteComment() {
+
+        // コメントを削除
+        const commentId = await FireComments.deleteComment(props.comment.id)
+
+        // 失敗
+        if (!commentId || !props.setIsHidden) {
+            return
+        }
+
+        props.setIsHidden(true)
+    }
 
     return (
         <div className="z-10">
@@ -49,7 +63,7 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
                 {uid === props.comment.userId &&
 
                     <MenuItem>
-                        <button onClick={() => FireComments.deleteComment(props.comment.id)} className="flex items-center gap-3 text-red-500">
+                        <button onClick={deleteComment} className="flex items-center gap-3 text-red-500">
                             <FiTrash className='text-xl'/>
                             <span>コメントを削除</span>
                         </button>
