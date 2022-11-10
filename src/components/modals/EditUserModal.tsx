@@ -7,6 +7,7 @@ import FireUsers from "../../utilities/FireUsers"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import ProgressImage from "../parts/images/ProgressImage"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
+import PickImageSection from "../parts/sections/PickImageSection"
 
 export default function EditUserModal() {
 
@@ -146,6 +147,8 @@ export default function EditUserModal() {
                     <div>
 
                         <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
+
+                        <PickImageSection/>
 
                         <form onSubmit={(e) => onSubmit(e)}>
                             <div className="px-3 mt-3">
