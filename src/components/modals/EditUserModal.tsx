@@ -148,7 +148,7 @@ export default function EditUserModal() {
 
                         <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
-                        <PickImageSection/>
+                        <PickImageSection className="mt-3 mx-3"/>
 
                         <form onSubmit={(e) => onSubmit(e)}>
                             <div className="px-3 mt-3">

@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function PickImageSection() {
+function PickImageSection(props: {className?: string}) {
 
-    const [profileImage, setProfileImage] = useState('default-profile.png');
+    const [iconImage, setIconImage] = useState<string | null>(null);
 
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -11,13 +11,22 @@ function PickImageSection() {
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
         const fileObject = e.target.files[0];
         // オブジェクトURLを生成し、useState()を更新
-        setProfileImage(window.URL.createObjectURL(fileObject));
+        setIconImage(window.URL.createObjectURL(fileObject));
     };
 
     return (
-        <div>
-            <img src={profileImage} alt="Icon"/>
-            <input type="file" accept="image/*" onChange={onFileInputChange}/>
+        <div className={props.className}>
+
+            <div className="relative aspect-square w-16">
+
+                <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
+
+                {iconImage &&
+                    <img src={iconImage} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
+                }
+            </div>
+
+            <input type="file" accept="image/*" onChange={onFileInputChange} className="mt-3"/>
         </div>
     )
 }
