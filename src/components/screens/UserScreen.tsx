@@ -68,7 +68,7 @@ export default function UserScreen() {
 
             {isLoaded && user !== null &&
                 <div>
-                    <div className="flex justify-between mx-3">
+                    <div className="flex justify-between mx-3 mt-3">
                         <div className="flex gap-3">
                             <UserIcon iconUrl={user!.iconUrl} className="h-16" />
 
