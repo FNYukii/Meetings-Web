@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import User from "../../../entities/User";
-import UserDisplayNameSpan from "../spans/UserDisplayNameSpan";
+import UserDisplayNameLink from "../links/UserDisplayNameLink";
 import UserIcon from "../images/UserIcon";
 import UserUserTagLink from "../links/UserUserTagLink";
 
@@ -17,7 +17,7 @@ export default function UserRow(props: {user: User, className?: string}) {
                 <div className="ml-3 mr-2 flex justify-between items-center">
 
                     <div>
-                        <UserDisplayNameSpan userId={props.user.id} />
+                        <UserDisplayNameLink userId={props.user.id} />
 
                         <UserUserTagLink userId={props.user.id} className="ml-3"/>
                     </div>

@@ -6,7 +6,7 @@ import FireComments from "../../utilities/FireComments"
 import BackButton from "../parts/buttons/BackButton"
 import CommentMenu from "../parts/menus/CommentMenu"
 import CommentImagesGrid from "../parts/sections/CommentImagesGrid"
-import UserDisplayNameSpan from "../parts/spans/UserDisplayNameSpan"
+import UserDisplayNameLink from "../parts/links/UserDisplayNameLink"
 import UserIconLink from "../parts/links/UserIconLink"
 import UserUserTagLink from "../parts/links/UserUserTagLink"
 import ThreadTitleLink from "../parts/links/ThreadTitleLink"
@@ -71,7 +71,7 @@ export default function CommentScreen() {
                             <UserIconLink userId={comment?.userId ?? ""} />
 
                             <div className="flex flex-col">
-                                <UserDisplayNameSpan userId={comment!.userId} />
+                                <UserDisplayNameLink userId={comment!.userId} />
                                 <UserUserTagLink userId={comment!.userId} />
                             </div>
                         </div>
