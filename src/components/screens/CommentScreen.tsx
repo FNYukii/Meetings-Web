@@ -8,7 +8,7 @@ import CommentMenu from "../parts/menus/CommentMenu"
 import CommentImagesGrid from "../parts/sections/CommentImagesGrid"
 import UserDisplayNameSpan from "../parts/spans/UserDisplayNameSpan"
 import UserIconLink from "../parts/links/UserIconLink"
-import UserUserTagSpan from "../parts/spans/UserUserTagSpan"
+import UserUserTagLink from "../parts/links/UserUserTagLink"
 import ThreadTitleLink from "../parts/links/ThreadTitleLink"
 import CommentLikeButton from "../parts/buttons/CommentLikeButton"
 import ProgressImage from "../parts/images/ProgressImage"
@@ -72,7 +72,7 @@ export default function CommentScreen() {
 
                             <div className="flex flex-col">
                                 <UserDisplayNameSpan userId={comment!.userId} />
-                                <UserUserTagSpan userId={comment!.userId} />
+                                <UserUserTagLink userId={comment!.userId} />
                             </div>
                         </div>
                     </div>

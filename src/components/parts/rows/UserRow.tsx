@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import User from "../../../entities/User";
 import UserDisplayNameSpan from "../spans/UserDisplayNameSpan";
 import UserIcon from "../images/UserIcon";
-import UserUserTagSpan from "../spans/UserUserTagSpan";
+import UserUserTagLink from "../links/UserUserTagLink";
 
 export default function UserRow(props: {user: User, className?: string}) {
     return (
@@ -19,7 +19,7 @@ export default function UserRow(props: {user: User, className?: string}) {
                     <div>
                         <UserDisplayNameSpan userId={props.user.id} />
 
-                        <UserUserTagSpan userId={props.user.id} className="ml-3"/>
+                        <UserUserTagLink userId={props.user.id} className="ml-3"/>
                     </div>
                 </div>
 
