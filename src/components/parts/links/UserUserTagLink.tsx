@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
+import { NavLink } from "react-router-dom"
 import User from "../../../entities/User"
 import FireUsers from "../../../utilities/FireUsers"
 
-export default function UserUserTagSpan(props: {userId: string, className?: string}) {
+export default function UserUserTagLink(props: {userId: string, className?: string}) {
 
     const [user, setUser] = useState<User | null>()
 
@@ -17,6 +18,10 @@ export default function UserUserTagSpan(props: {userId: string, className?: stri
     }, [])
 
     return (
-        <span className={`text-gray-500 ${props.className}`}>@{user?.userTag}</span>
+        <NavLink to={`/users/${props.userId}`} className={`z-10 pointer-events-auto text-gray-500 ${props.className}`}>
+
+            <span>@</span>
+            <span className="hover:underline">{user?.userTag}</span>
+        </NavLink>
     )
 }

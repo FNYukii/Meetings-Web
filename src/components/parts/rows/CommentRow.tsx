@@ -1,7 +1,7 @@
 import Comment from "../../../entities/Comment"
-import UserDisplayNameSpan from "../spans/UserDisplayNameSpan"
+import UserDisplayNameLink from "../links/UserDisplayNameLink"
 import UserIconLink from "../links/UserIconLink"
-import UserUserTagSpan from "../spans/UserUserTagSpan"
+import UserUserTagLink from "../links/UserUserTagLink"
 import ExDate from "../../../utilities/ExDate"
 import { NavLink } from "react-router-dom"
 import CommentMenu from "../menus/CommentMenu"
@@ -31,9 +31,9 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
                             <div className="ml-3 mr-2 flex justify-between">
 
                                 <div className="flex flex-wrap gap-x-3">
-                                    <UserDisplayNameSpan userId={props.comment.userId} />
+                                    <UserDisplayNameLink userId={props.comment.userId} />
 
-                                    <UserUserTagSpan userId={props.comment.userId} />
+                                    <UserUserTagLink userId={props.comment.userId} />
 
                                     <span className="text-gray-500">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                                 </div>

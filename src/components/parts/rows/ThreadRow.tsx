@@ -5,7 +5,7 @@ import ExDate from "../../../utilities/ExDate"
 import FireComments from "../../../utilities/FireComments"
 import ThreadMenu from "../menus/ThreadMenu"
 import UserIconLink from "../links/UserIconLink"
-import UserUserTagSpan from "../spans/UserUserTagSpan"
+import UserUserTagLink from "../links/UserUserTagLink"
 import Comment from "../../../entities/Comment"
 
 export default function ThreadRow(props: { thread: Thread }) {
@@ -44,7 +44,7 @@ export default function ThreadRow(props: { thread: Thread }) {
 
                     <div className="flex gap-2 flex-wrap mr-3">
 
-                        <UserUserTagSpan userId={props.thread.userId} />
+                        <UserUserTagLink userId={props.thread.userId} />
                         <span className="text-gray-500">{ExDate.toHowManyAgoString(props.thread.createdAt)}</span>
 
                         {Object.values(props.thread.tags).map((tag) => (

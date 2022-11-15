@@ -4,7 +4,7 @@ import Comment from "../../../entities/Comment"
 import Thread from "../../../entities/Thread"
 import ExDate from "../../../utilities/ExDate"
 import FireThreads from "../../../utilities/FireThreads"
-import UserUserTagSpan from "../spans/UserUserTagSpan"
+import UserUserTagLink from "../links/UserUserTagLink"
 
 export default function RecentImageSmallRow(props: { comment: Comment }) {
 
@@ -48,7 +48,7 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
                             <span className="text-gray-500">{ExDate.toHowManyAgoString(thread.createdAt)}</span>
                         </div>
 
-                        <p className="text-gray-500">{props.comment.text} - <UserUserTagSpan userId={props.comment.userId}/></p>
+                        <p className="text-gray-500">{props.comment.text} - <UserUserTagLink userId={props.comment.userId}/></p>
                     </div>
 
                     <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="ml-3 w-20 h-20 object-cover rounded-xl border border-zinc-200 dark:border-zinc-800" />
