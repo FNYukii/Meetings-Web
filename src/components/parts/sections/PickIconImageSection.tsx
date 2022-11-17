@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useState } from "react"
 
-function PickImageSection(props: {className?: string}) {
+function PickIconImageSection(props: {className?: string}) {
 
-    const [iconImage, setIconImage] = useState<string | null>(null);
+    const [iconImage, setIconImage] = useState<string | null>(null)
 
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
-        if (!e.target.files) return;
+        if (!e.target.files) return
 
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
-        const fileObject = e.target.files[0];
+        const fileObject = e.target.files[0]
         // オブジェクトURLを生成し、useState()を更新
-        setIconImage(window.URL.createObjectURL(fileObject));
-    };
+        setIconImage(window.URL.createObjectURL(fileObject))
+    }
 
     return (
         <div className={props.className}>
@@ -31,4 +31,4 @@ function PickImageSection(props: {className?: string}) {
     )
 }
 
-export default PickImageSection
+export default PickIconImageSection
