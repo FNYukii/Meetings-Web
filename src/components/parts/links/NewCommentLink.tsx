@@ -32,7 +32,7 @@ export default function NewCommentLink(props: { threadId: string }) {
 
                 <Link to={`/threads/${props.threadId}/new`} state={{ previousPath: location.pathname }}>
 
-                    <div className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                    <div className="p-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900">
 
                         <AiOutlinePlus className="text-2xl" />
                     </div>

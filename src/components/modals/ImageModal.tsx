@@ -67,7 +67,7 @@ export default function ImageModal(props: { className?: string }) {
                 }
             </div>
 
-            <button onClick={() => navigate(-1)} className="absolute top-0 left-0 m-3 p-3 bg-black/10 hover:bg-white/20 rounded-full">
+            <button onClick={() => navigate(-1)} className="absolute top-0 left-0 m-3 p-3 bg-black/10 transition hover:bg-white/20 rounded-full">
                 <MdOutlineClose className="text-2xl text-white"/>
             </button>
         </div>

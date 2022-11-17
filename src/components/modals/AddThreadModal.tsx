@@ -88,7 +88,7 @@ export default function AddThreadModal() {
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
-                <button onClick={() => navigate(-1)} className="p-3 hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
+                <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
@@ -107,7 +107,7 @@ export default function AddThreadModal() {
                                 <AiOutlineTag className="text-gray-500" />
                                 <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} maxLength={tagMax} placeholder="タグ" className="ml-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                                <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                                <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900">
                                     <MdOutlineClose className="text-xl text-gray-500" />
                                 </button>
                             </div>
@@ -116,7 +116,7 @@ export default function AddThreadModal() {
 
                     <div className="px-1">
 
-                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-900    disabled:text-gray-400  disabled:dark:text-gray-600 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent`}>
+                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900 disabled:text-gray-400 disabled:dark:text-gray-600 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent`}>
                             <AiOutlinePlus />
                             <span>タグを追加</span>
                         </button>

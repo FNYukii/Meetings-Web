@@ -83,7 +83,7 @@ export default function UserScreen() {
 
                     <div className="flex border-b border-zinc-200 dark:border-zinc-800 mt-3">
 
-                        <button onClick={() => setTab(0)} className="w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                        <button onClick={() => setTab(0)} className="w-1/2 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
 
                             <div className="text-center p-3">
 
@@ -95,7 +95,7 @@ export default function UserScreen() {
                             </div>
                         </button>
 
-                        <button onClick={() => setTab(1)} className="w-1/2 hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+                        <button onClick={() => setTab(1)} className="w-1/2 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
 
                             <div className="text-center p-3">
 
