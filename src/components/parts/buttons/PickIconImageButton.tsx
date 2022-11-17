@@ -1,9 +1,8 @@
 import { useRef, useState } from "react"
 
-function PickIconImageButton(props: { className?: string }) {
+function PickIconImageButton(props: { currentIconUrl: string | null, className?: string }) {
 
     const [iconImage, setIconImage] = useState<string | null>(null)
-
     const inputRef = useRef<HTMLInputElement>(null)
 
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,8 +18,12 @@ function PickIconImageButton(props: { className?: string }) {
     return (
         <div className={`relative aspect-square w-16 ${props.className}`}>
 
-            {!iconImage &&
+            {!iconImage && !props.currentIconUrl &&
                 <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
+            }
+
+            {!iconImage && props.currentIconUrl &&
+                <img src={props.currentIconUrl} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
             }
 
             {iconImage &&

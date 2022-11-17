@@ -83,7 +83,7 @@ function EditUserSection(props: {user: User}) {
 
             <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
-            <PickIconImageButton className="mt-3 mx-3" />
+            <PickIconImageButton currentIconUrl={props.user.iconUrl} className="mt-3 mx-3" />
 
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="px-3 mt-3">
