@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 
-function PickIconImageSection(props: {className?: string}) {
+function PickIconImageSection(props: { className?: string }) {
 
     const [iconImage, setIconImage] = useState<string | null>(null)
 
@@ -19,18 +19,22 @@ function PickIconImageSection(props: {className?: string}) {
     return (
         <div className={props.className}>
 
-            <div className="relative aspect-square w-16">
+            <button onClick={() => inputRef.current?.click()}>
+                <div className="relative aspect-square w-16">
 
-                <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
+                    {!iconImage &&
+                        <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
+                    }
 
-                {iconImage &&
-                    <img src={iconImage} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
-                }
-            </div>
+                    {iconImage &&
+                        <img src={iconImage} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
+                    }
 
-            <button onClick={() => inputRef.current?.click()} className="mt-3 py-1 px-3 bg-blue-500 rounded-md text-white hover:opacity-90">画像を選択</button>
+                    <div className="absolute top-0 left-0 hover:bg-black/20 dark:hover:bg-white/20 transition w-full h-full rounded-full"></div>
+                </div>
+            </button>
 
-            <input ref={inputRef} hidden type="file" accept="image/*" onChange={onFileInputChange} className="mt-3"/>
+            <input hidden ref={inputRef} type="file" accept="image/*" onChange={onFileInputChange} className="mt-3" />
         </div>
     )
 }
