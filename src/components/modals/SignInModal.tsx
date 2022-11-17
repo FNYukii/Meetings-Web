@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { MdOutlineClose } from "react-icons/md"
 import SignInSection from "../parts/sections/SignInSection"
 import SignUpSection from "../parts/sections/SignUpSection"
+import CloseButton from "../parts/buttons/CloseButton"
 
 
 export default function SignInModal() {
@@ -17,7 +17,7 @@ export default function SignInModal() {
         document.title = "サインイン - Meetings"
         document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        
+
         return () => {
             body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
@@ -40,16 +40,14 @@ export default function SignInModal() {
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
-                <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
-                    <MdOutlineClose className="text-2xl text-gray-500" />
-                </button>
+                <CloseButton />
 
                 {!isShowSignUpSection &&
-                    <SignInSection setIsShowSignUpSection={setIsShowSignUpSection}/>
+                    <SignInSection setIsShowSignUpSection={setIsShowSignUpSection} />
                 }
 
                 {isShowSignUpSection &&
-                    <SignUpSection setIsShowSignUpSection={setIsShowSignUpSection}/>
+                    <SignUpSection setIsShowSignUpSection={setIsShowSignUpSection} />
                 }
             </div>
         </div>

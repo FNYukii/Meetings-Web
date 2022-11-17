@@ -4,6 +4,7 @@ import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import FireThreads from "../../utilities/FireThreads"
+import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
@@ -88,9 +89,7 @@ export default function AddThreadModal() {
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
-                <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
-                    <MdOutlineClose className="text-2xl text-gray-500" />
-                </button>
+                <CloseButton />
 
                 <form onSubmit={(e) => onSubmit(e)}>
 

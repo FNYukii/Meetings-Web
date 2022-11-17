@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
 import FireReports from "../../utilities/FireReports"
+import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
@@ -33,7 +33,7 @@ export default function ReportModal(props: { className?: string }) {
         // 失敗
         if (reportId === null) {
             alert("報告の送信に失敗。")
-            
+
             setIsLoading(false)
             return
         }
@@ -54,7 +54,7 @@ export default function ReportModal(props: { className?: string }) {
         document.title = "報告 - Meetings"
         document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        
+
         return () => {
             body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
@@ -70,9 +70,7 @@ export default function ReportModal(props: { className?: string }) {
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
-                <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
-                    <MdOutlineClose className="text-2xl text-gray-500" />
-                </button>
+                <CloseButton />
 
                 <p className="mt-3 text-2xl font-bold ml-3">
 
@@ -123,8 +121,8 @@ export default function ReportModal(props: { className?: string }) {
                     <fieldset className="mt-5 mx-3">
 
                         <legend className="text-xl">詳細</legend>
-                        
-                        <DynamicTextarea value={detail} setValue={setDetail} placeholder="具体的に入力してください" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
+
+                        <DynamicTextarea value={detail} setValue={setDetail} placeholder="具体的に入力してください" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">

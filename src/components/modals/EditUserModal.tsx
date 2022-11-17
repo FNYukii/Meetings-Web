@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import User from "../../entities/User"
 import FireAuth from "../../utilities/FireAuth"
 import FireUsers from "../../utilities/FireUsers"
+import CloseButton from "../parts/buttons/CloseButton"
 import ProgressImage from "../parts/images/ProgressImage"
 import EditUserSection from "../parts/sections/EditUserSection"
 
@@ -61,10 +61,7 @@ export default function EditUserModal() {
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
-                <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
-                    <MdOutlineClose className="text-2xl text-gray-500" />
-                </button>
-
+                <CloseButton />
 
                 {!isLoaded &&
                     <div className='flex justify-center p-3'>
@@ -79,7 +76,7 @@ export default function EditUserModal() {
                 }
 
                 {isLoaded && user !== null &&
-                    <EditUserSection user={user}/>
+                    <EditUserSection user={user} />
                 }
             </div>
         </div>

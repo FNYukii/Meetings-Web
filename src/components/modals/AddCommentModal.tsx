@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { MdOutlineClose } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
+import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
@@ -21,7 +21,7 @@ export default function AddCommentModal() {
         document.title = "新規コメント - Meetings"
         document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
-        
+
         return () => {
             document.removeEventListener("keydown", onKeyDown, false)
             body.style.overflowY = ""
@@ -62,20 +62,18 @@ export default function AddCommentModal() {
 
             <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
 
-                <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
-                    <MdOutlineClose className="text-2xl text-gray-500" />
-                </button>
+                <CloseButton />
 
                 <form onSubmit={(e) => onSubmit(e)}>
                     <div className="mt-3 px-3">
 
                         <p className="text-2xl font-bold">新しいコメント</p>
 
-                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"/>
+                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </div>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)}/>
+                        <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>
             </div>
