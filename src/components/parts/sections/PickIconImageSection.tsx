@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 function PickIconImageSection(props: {className?: string}) {
 
     const [iconImage, setIconImage] = useState<string | null>(null)
+
+    const inputRef = useRef<HTMLInputElement>(null)
 
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -26,7 +28,9 @@ function PickIconImageSection(props: {className?: string}) {
                 }
             </div>
 
-            <input type="file" accept="image/*" onChange={onFileInputChange} className="mt-3"/>
+            <button onClick={() => inputRef.current?.click()} className="mt-3 py-1 px-3 bg-blue-500 rounded-md text-white hover:opacity-90">画像を選択</button>
+
+            <input ref={inputRef} hidden type="file" accept="image/*" onChange={onFileInputChange} className="mt-3"/>
         </div>
     )
 }
