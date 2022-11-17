@@ -14,8 +14,9 @@ function EditUserSection(props: {user: User}) {
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
     const [introduction, setIntroduction] = useState("")
+    const [newIconImage, setNewIconImage] = useState<string | null>(null)
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isUploading, setIsUploading] = useState(false)
 
     const displayNameMax = 30
     const userTagMax = 30
@@ -32,20 +33,20 @@ function EditUserSection(props: {user: User}) {
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        setIsLoading(true)
+        setIsUploading(true)
 
         // ログイン状態を確認
         const uid = FireAuth.uid()
         if (uid === null) {
 
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
         // userTagの形式を確認
         if (!userTag.match(/^\w{5,}$/)) {
             alert("ユーザータグの形式が不正です。")
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
@@ -54,13 +55,13 @@ function EditUserSection(props: {user: User}) {
 
         if (isUserTagDuplicate === null) {
             alert("ユーザータグの重複の確認に失敗しました。")
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
         if (isUserTagDuplicate) {
             alert("そのユーザータグは既に利用されています。")
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
@@ -70,7 +71,7 @@ function EditUserSection(props: {user: User}) {
         // 失敗
         if (userId === null) {
             alert("プロフィールの更新に失敗しました。")
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
@@ -83,7 +84,7 @@ function EditUserSection(props: {user: User}) {
 
             <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
-            <PickIconImageButton currentIconUrl={props.user.iconUrl} className="mt-3 mx-3" />
+            <PickIconImageButton currentIconUrl={props.user.iconUrl} setNewIconImage={setNewIconImage} className="mt-3 mx-3" />
 
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="px-3 mt-3">
@@ -95,7 +96,7 @@ function EditUserSection(props: {user: User}) {
                 </div>
 
                 <div className="mt-3 flex justify-end">
-                    <SubmitButton text="保存" isLoading={isLoading} disabled={!displayName.match(/\S/g) || displayName.length > displayNameMax || !userTag.match(/\S/g) || userTag.length > userTagMax || introduction.length > introductionMax} />
+                    <SubmitButton text="保存" isLoading={isUploading} disabled={!displayName.match(/\S/g) || displayName.length > displayNameMax || !userTag.match(/\S/g) || userTag.length > userTagMax || introduction.length > introductionMax} />
                 </div>
             </form>
         </div>

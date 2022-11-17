@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 
-function PickIconImageButton(props: { currentIconUrl: string | null, className?: string }) {
+function PickIconImageButton(props: { currentIconUrl: string | null, setNewIconImage:React.Dispatch<React.SetStateAction<string | null>>, className?: string }) {
 
     const [iconImage, setIconImage] = useState<string | null>(null)
     const inputRef = useRef<HTMLInputElement>(null)
@@ -11,8 +11,11 @@ function PickIconImageButton(props: { currentIconUrl: string | null, className?:
 
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
         const fileObject = e.target.files[0]
+        const pickedImage: string = window.URL.createObjectURL(fileObject)
+
         // オブジェクトURLを生成し、useState()を更新
-        setIconImage(window.URL.createObjectURL(fileObject))
+        setIconImage(pickedImage)
+        props.setNewIconImage(pickedImage)
     }
 
     return (
