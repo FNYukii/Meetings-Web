@@ -321,7 +321,8 @@ export default class FireUsers {
             await updateDoc(ref, {
                 displayName: displayName,
                 userTag: userTag,
-                introduction: introduction
+                introduction: introduction,
+                iconUrl: iconUrl
             })
 
             console.log(`Updated 1 User.`)

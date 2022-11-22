@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import User from "../../../entities/User"
+import FireImages from "../../../utilities/FireImages"
 import FireUsers from "../../../utilities/FireUsers"
 import PickIconImageButton from "../buttons/PickIconImageButton"
 import SubmitButton from "../buttons/SubmitButton"
 import DynamicTextarea from "../inputs/DynamicTextarea"
 
-function EditUserSection(props: {user: User}) {
+function EditUserSection(props: { user: User }) {
 
     const navigate = useNavigate()
 
@@ -34,14 +35,43 @@ function EditUserSection(props: {user: User}) {
         e.preventDefault()
         setIsUploading(true)
 
-        // userドキュメントを更新
-        const userId = await FireUsers.updateUser(displayName, userTag, introduction, null)
+        // アイコンが変更されない場合
+        if (!pickedIcon) {
 
-        // 失敗
-        if (userId === null) {
-            alert("プロフィールの更新に失敗しました。")
-            setIsUploading(false)
-            return
+            // userドキュメントを更新
+            const userId = await FireUsers.updateUser(displayName, userTag, introduction, props.user.iconUrl)
+
+            // 失敗
+            if (userId === null) {
+                alert("プロフィールの更新に失敗しました。")
+                setIsUploading(false)
+                return
+            }
+        }
+
+        // アイコンが変更された場合
+        if (pickedIcon) {
+
+            // 新しいアイコンをアップロード
+            const newIconUrl = await FireImages.uploadIconImage(pickedIcon)
+
+            // 失敗
+            if (!newIconUrl) {
+                alert("プロフィール画像の更新に失敗しました。")
+                setIsUploading(false)
+                return
+            }
+
+            // 成功
+            // userドキュメントを更新
+            const userId = await FireUsers.updateUser(displayName, userTag, introduction, props.user.iconUrl)
+
+            // 失敗
+            if (userId === null) {
+                alert("プロフィールの更新に失敗しました。")
+                setIsUploading(false)
+                return
+            }
         }
 
         // 成功
