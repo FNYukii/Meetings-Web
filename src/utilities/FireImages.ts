@@ -3,13 +3,19 @@ import { storage } from "./firebase"
 
 class FireImages {
 
-    static uploadIconImage(file: Blob) {
+    static async uploadIconImage(file: File): Promise<string | null> {
 
-        const storageRef = ref(storage, 'some-child')
+        const storageRef = ref(storage, `icons/${file.name}`)
 
-        uploadBytes(storageRef, file).then((snapshot) => {
-            console.log('Uploaded a blob or file!');
-        })
+        return await uploadBytes(storageRef, file)
+            .then((snapshot) => {
+                console.log("Uploaded 1 file.");
+                return file.name
+            })
+            .catch((error) => {
+                console.log(`Failed to uploading file. ${error}`);
+                return null
+            })
     }
 }
 
