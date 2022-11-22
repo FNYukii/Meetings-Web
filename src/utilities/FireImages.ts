@@ -1,10 +1,15 @@
-import { ref } from "firebase/storage"
+import { ref, uploadBytes } from "firebase/storage"
 import { storage } from "./firebase"
 
 class FireImages {
 
-    static uploadImage(image: string) {
-        const storageRef = ref(storage, `icons/sample`)
+    static uploadIconImage(file: Blob) {
+
+        const storageRef = ref(storage, 'some-child')
+
+        uploadBytes(storageRef, file).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        })
     }
 }
 
