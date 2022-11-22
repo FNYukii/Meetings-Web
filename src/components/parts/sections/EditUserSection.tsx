@@ -42,7 +42,7 @@ function EditUserSection(props: { user: User }) {
             const userId = await FireUsers.updateUser(displayName, userTag, introduction, props.user.iconUrl)
 
             // 失敗
-            if (userId === null) {
+            if (!userId) {
                 alert("プロフィールの更新に失敗しました。")
                 setIsUploading(false)
                 return
@@ -64,10 +64,10 @@ function EditUserSection(props: { user: User }) {
 
             // 成功
             // userドキュメントを更新
-            const userId = await FireUsers.updateUser(displayName, userTag, introduction, props.user.iconUrl)
+            const userId = await FireUsers.updateUser(displayName, userTag, introduction, newIconUrl)
 
             // 失敗
-            if (userId === null) {
+            if (!userId) {
                 alert("プロフィールの更新に失敗しました。")
                 setIsUploading(false)
                 return

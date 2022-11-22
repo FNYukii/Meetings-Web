@@ -7,7 +7,8 @@ class FireImages {
     static async uploadIconImage(file: File): Promise<string | null> {
 
         // UUIDを使ってランダムなファイル名を生成
-        const fileName: string = `${v4}.jpg`
+        const fileName: string = `${v4()}.jpg`
+        console.log(`fileName: ${fileName}`)
 
         // Firebase Cloud Storageの参照を作成
         const storageRef = ref(storage, `icons/${fileName}`)
@@ -20,6 +21,8 @@ class FireImages {
 
                 // DownloadURLを取得
                 const downloadURL = await getDownloadURL(storageRef)
+
+                console.log(`downloadURL: ${downloadURL}`)
                 return downloadURL
             })
             .catch((error) => {
