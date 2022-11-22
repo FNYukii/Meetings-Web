@@ -49,7 +49,7 @@ function PickIconImageButton(props: { currentIconUrl: string | null, pickedIcon:
                 <div className="absolute top-0 left-0 hover:bg-black/20 dark:hover:bg-white/20 transition w-full h-full rounded-full"></div>
             </button>
 
-            <input hidden ref={inputRef} type="file" accept="image/*" onChange={onFileInputChange} className="mt-3" />
+            <input hidden ref={inputRef} type="file" accept=".jpg" onChange={onFileInputChange} className="mt-3" />
         </div>
     )
 }
