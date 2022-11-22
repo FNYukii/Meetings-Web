@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import User from "../../../entities/User"
-import FireAuth from "../../../utilities/FireAuth"
 import FireUsers from "../../../utilities/FireUsers"
 import PickIconImageButton from "../buttons/PickIconImageButton"
 import SubmitButton from "../buttons/SubmitButton"
@@ -33,41 +32,10 @@ function EditUserSection(props: {user: User}) {
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-
         setIsUploading(true)
 
-        // ログイン状態を確認
-        const uid = FireAuth.uid()
-        if (uid === null) {
-
-            setIsUploading(false)
-            return
-        }
-
-        // userTagの形式を確認
-        if (!userTag.match(/^\w{5,}$/)) {
-            alert("ユーザータグの形式が不正です。")
-            setIsUploading(false)
-            return
-        }
-
-        // userTagの重複を確認
-        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
-
-        if (isUserTagDuplicate === null) {
-            alert("ユーザータグの重複の確認に失敗しました。")
-            setIsUploading(false)
-            return
-        }
-
-        if (isUserTagDuplicate) {
-            alert("そのユーザータグは既に利用されています。")
-            setIsUploading(false)
-            return
-        }
-
         // userドキュメントを更新
-        const userId = await FireUsers.updateUser(uid, displayName, userTag, introduction, null)
+        const userId = await FireUsers.updateUser(displayName, userTag, introduction, null)
 
         // 失敗
         if (userId === null) {
