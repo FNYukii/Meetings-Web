@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-function PickIconImageButton(props: { currentIconUrl: string | null, newIconImage: string | null, setNewIconImage:React.Dispatch<React.SetStateAction<string | null>>, className?: string }) {
+function PickIconImageButton(props: { currentIconUrl: string | null, pickedIcon: File | null, setPickedIcon:React.Dispatch<React.SetStateAction<File | null>>, className?: string }) {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -9,27 +9,25 @@ function PickIconImageButton(props: { currentIconUrl: string | null, newIconImag
         if (!e.target.files) return
 
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
-        const fileObject = e.target.files[0]
-        const pickedImage: string = window.URL.createObjectURL(fileObject)
+        const file = e.target.files[0]
 
         // オブジェクトURLを生成し、useState()を更新
-        // setIconImage(pickedImage)
-        props.setNewIconImage(pickedImage)
+        props.setPickedIcon(file)
     }
 
     return (
         <div className={`relative aspect-square w-16 ${props.className}`}>
 
-            {!props.newIconImage && !props.currentIconUrl &&
+            {!props.pickedIcon && !props.currentIconUrl &&
                 <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
             }
 
-            {!props.newIconImage && props.currentIconUrl &&
+            {!props.pickedIcon && props.currentIconUrl &&
                 <img src={props.currentIconUrl} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
             }
 
-            {props.newIconImage &&
-                <img src={props.newIconImage} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
+            {props.pickedIcon &&
+                <img src={ window.URL.createObjectURL(props.pickedIcon) } alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
             }
 
             <button onClick={() => inputRef.current?.click()}>

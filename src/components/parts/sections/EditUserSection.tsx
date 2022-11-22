@@ -14,7 +14,8 @@ function EditUserSection(props: {user: User}) {
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
     const [introduction, setIntroduction] = useState("")
-    const [newIconImage, setNewIconImage] = useState<string | null>(null)
+
+    const [pickedIcon, setPickedIcon] = useState<File | null>(null)
 
     const [isUploading, setIsUploading] = useState(false)
 
@@ -84,7 +85,7 @@ function EditUserSection(props: {user: User}) {
 
             <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
-            <PickIconImageButton currentIconUrl={props.user.iconUrl} newIconImage={newIconImage} setNewIconImage={setNewIconImage} className="mt-3 mx-3" />
+            <PickIconImageButton currentIconUrl={props.user.iconUrl} pickedIcon={pickedIcon} setPickedIcon={setPickedIcon} className="mt-3 mx-3" />
 
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="px-3 mt-3">
