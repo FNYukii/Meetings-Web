@@ -268,7 +268,7 @@ export default class FireUsers {
         }
     }
 
-    static async updateUser(userId: string, displayName: string, userTag: string, introduction: string, iconUrl: string | null): Promise<string | null> {
+    static async updateUser(displayName: string, userTag: string, introduction: string, iconUrl: string | null): Promise<string | null> {
 
         const displayNameMax = 30
         const userTagMax = 30
@@ -279,7 +279,7 @@ export default class FireUsers {
             return null
         }
 
-        // userTagをチェック
+        // userTagの形式をチェック
         if (!userTag.match(/^\w{5,}$/)) {
             return null
         }
@@ -288,24 +288,46 @@ export default class FireUsers {
             return null
         }
 
+        // userTagの重複をチェック
+        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
+
+        if (isUserTagDuplicate === null) {
+            alert("ユーザータグの重複の確認に失敗しました。")
+            return null
+        }
+
+        if (isUserTagDuplicate) {
+            alert("そのユーザータグは既に利用されています。")
+            return null
+        }
+
         // introductionを確認
         if (introduction.length > introductionMax) {
             return null
         }
 
-        const ref = doc(db, "users", userId)
+        // ログイン状態をチェック
+        const uid = FireAuth.uid()
+        if (uid === null) {
+            
+            return null
+        }
+
+        // Userドキュメントを更新
+        const ref = doc(db, "users", uid)
 
         try {
 
             await updateDoc(ref, {
                 displayName: displayName,
                 userTag: userTag,
-                introduction: introduction
+                introduction: introduction,
+                iconUrl: iconUrl
             })
 
             console.log(`Updated 1 User.`)
 
-            return userId
+            return uid
 
         } catch (error) {
 

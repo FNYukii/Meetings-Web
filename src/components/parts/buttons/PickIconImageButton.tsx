@@ -1,42 +1,55 @@
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
-function PickIconImageButton(props: { currentIconUrl: string | null, newIconImage: string | null, setNewIconImage:React.Dispatch<React.SetStateAction<string | null>>, className?: string }) {
+function PickIconImageButton(props: { currentIconUrl: string | null, pickedIcon: File | null, setPickedIcon:React.Dispatch<React.SetStateAction<File | null>>, className?: string }) {
 
     const inputRef = useRef<HTMLInputElement>(null)
+    const [iconObjectUrl, setIconObjectUrl] = useState<string | null>(null)
 
     const onFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
         if (!e.target.files) return
 
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
-        const fileObject = e.target.files[0]
-        const pickedImage: string = window.URL.createObjectURL(fileObject)
+        const file = e.target.files[0]
+        props.setPickedIcon(file)
 
-        // オブジェクトURLを生成し、useState()を更新
-        // setIconImage(pickedImage)
-        props.setNewIconImage(pickedImage)
+        // オブジェクトURLを生成し
+        const objectUrl = window.URL.createObjectURL(file)
+        setIconObjectUrl(objectUrl)
     }
+
+    useEffect(() => {
+
+        return () => {
+
+            if (iconObjectUrl) {
+                URL.revokeObjectURL(iconObjectUrl);
+            }
+        }
+
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className={`relative aspect-square w-16 ${props.className}`}>
 
-            {!props.newIconImage && !props.currentIconUrl &&
+            {!props.pickedIcon && !props.currentIconUrl &&
                 <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
             }
 
-            {!props.newIconImage && props.currentIconUrl &&
+            {!props.pickedIcon && props.currentIconUrl &&
                 <img src={props.currentIconUrl} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
             }
 
-            {props.newIconImage &&
-                <img src={props.newIconImage} alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
+            {props.pickedIcon &&
+                <img src={ iconObjectUrl! } alt="Icon" className="rounded-full absolute top-0 left-0 w-full h-full" />
             }
 
             <button onClick={() => inputRef.current?.click()}>
                 <div className="absolute top-0 left-0 hover:bg-black/20 dark:hover:bg-white/20 transition w-full h-full rounded-full"></div>
             </button>
 
-            <input hidden ref={inputRef} type="file" accept="image/*" onChange={onFileInputChange} className="mt-3" />
+            <input hidden ref={inputRef} type="file" accept=".jpg" onChange={onFileInputChange} className="mt-3" />
         </div>
     )
 }

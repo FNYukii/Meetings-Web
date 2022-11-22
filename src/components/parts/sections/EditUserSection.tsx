@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import User from "../../../entities/User"
-import FireAuth from "../../../utilities/FireAuth"
+import FireImages from "../../../utilities/FireImages"
 import FireUsers from "../../../utilities/FireUsers"
 import PickIconImageButton from "../buttons/PickIconImageButton"
 import SubmitButton from "../buttons/SubmitButton"
 import DynamicTextarea from "../inputs/DynamicTextarea"
 
-function EditUserSection(props: {user: User}) {
+function EditUserSection(props: { user: User }) {
 
     const navigate = useNavigate()
 
     const [displayName, setDisplayName] = useState("")
     const [userTag, setUserTag] = useState("")
     const [introduction, setIntroduction] = useState("")
-    const [newIconImage, setNewIconImage] = useState<string | null>(null)
+
+    const [pickedIcon, setPickedIcon] = useState<File | null>(null)
 
     const [isUploading, setIsUploading] = useState(false)
 
@@ -32,47 +33,45 @@ function EditUserSection(props: {user: User}) {
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-
         setIsUploading(true)
 
-        // ログイン状態を確認
-        const uid = FireAuth.uid()
-        if (uid === null) {
+        // アイコンが変更されない場合
+        if (!pickedIcon) {
 
-            setIsUploading(false)
-            return
+            // userドキュメントを更新
+            const userId = await FireUsers.updateUser(displayName, userTag, introduction, props.user.iconUrl)
+
+            // 失敗
+            if (!userId) {
+                alert("プロフィールの更新に失敗しました。")
+                setIsUploading(false)
+                return
+            }
         }
 
-        // userTagの形式を確認
-        if (!userTag.match(/^\w{5,}$/)) {
-            alert("ユーザータグの形式が不正です。")
-            setIsUploading(false)
-            return
-        }
+        // アイコンが変更された場合
+        if (pickedIcon) {
 
-        // userTagの重複を確認
-        const isUserTagDuplicate = await FireUsers.readIsUserTagDuplicate(userTag)
+            // 新しいアイコンをアップロード
+            const newIconUrl = await FireImages.uploadIconImage(pickedIcon)
 
-        if (isUserTagDuplicate === null) {
-            alert("ユーザータグの重複の確認に失敗しました。")
-            setIsUploading(false)
-            return
-        }
+            // 失敗
+            if (!newIconUrl) {
+                alert("プロフィール画像の更新に失敗しました。")
+                setIsUploading(false)
+                return
+            }
 
-        if (isUserTagDuplicate) {
-            alert("そのユーザータグは既に利用されています。")
-            setIsUploading(false)
-            return
-        }
+            // 成功
+            // userドキュメントを更新
+            const userId = await FireUsers.updateUser(displayName, userTag, introduction, newIconUrl)
 
-        // userドキュメントを更新
-        const userId = await FireUsers.updateUser(uid, displayName, userTag, introduction, null)
-
-        // 失敗
-        if (userId === null) {
-            alert("プロフィールの更新に失敗しました。")
-            setIsUploading(false)
-            return
+            // 失敗
+            if (!userId) {
+                alert("プロフィールの更新に失敗しました。")
+                setIsUploading(false)
+                return
+            }
         }
 
         // 成功
@@ -84,7 +83,7 @@ function EditUserSection(props: {user: User}) {
 
             <p className="ml-3 mt-3 font-bold text-2xl">プロフィールを編集</p>
 
-            <PickIconImageButton currentIconUrl={props.user.iconUrl} newIconImage={newIconImage} setNewIconImage={setNewIconImage} className="mt-3 mx-3" />
+            <PickIconImageButton currentIconUrl={props.user.iconUrl} pickedIcon={pickedIcon} setPickedIcon={setPickedIcon} className="mt-3 mx-3" />
 
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="px-3 mt-3">
