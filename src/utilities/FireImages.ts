@@ -1,4 +1,4 @@
-import { ref, uploadBytes } from "firebase/storage"
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { storage } from "./firebase"
 import { v4 } from "uuid"
 
@@ -14,12 +14,17 @@ class FireImages {
 
         // ファイルをアップロード
         return await uploadBytes(storageRef, file)
-            .then((snapshot) => {
-                console.log("Uploaded 1 file.");
-                return file.name
+            .then(async () => {
+                
+                console.log("Uploaded 1 file.")
+
+                // DownloadURLを取得
+                const downloadURL = await getDownloadURL(storageRef)
+                return downloadURL
             })
             .catch((error) => {
-                console.log(`Failed to uploading file. ${error}`);
+
+                console.log(`Failed to uploading file. ${error}`)
                 return null
             })
     }
