@@ -24,7 +24,7 @@ function CommentsLikedByUserList(props: {user: User}) {
 
         readComments()
         // eslint-disable-next-line
-    }, [props.user])
+    }, [props.user.displayName, props.user.userTag, props.user.iconUrl, props.user.likedCommentIds])
 
     return (
         <div>
