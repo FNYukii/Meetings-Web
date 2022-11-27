@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import CloseButton from "../parts/buttons/CloseButton"
+import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
  
@@ -72,7 +73,9 @@ function AddCommentModal() {
                         <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </div>
 
-                    <div className="mt-3 flex justify-end">
+                    <div className="mt-3 flex justify-between">
+
+                        <PickCommentImagesButton className="ml-3"/>
                         <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>
