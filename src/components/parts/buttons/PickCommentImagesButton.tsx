@@ -13,6 +13,9 @@ function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetState
         const fileList = e.target.files
         const files: File[] = Array.from(fileList)
 
+        // 何も選択されていなかったら終了
+        if (files.length === 0) return
+
         // 5番目以降の要素は配列から削除
         files.splice(4)
 
