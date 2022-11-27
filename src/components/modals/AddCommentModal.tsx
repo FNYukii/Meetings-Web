@@ -75,7 +75,7 @@ function AddCommentModal() {
                         <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </div>
 
-                    <div className="mx-3 flex flex-wrap gap-3">
+                    <div className="mt-3 mx-3 flex flex-wrap gap-3">
 
                         {images.map((image) => (
                             <img src={window.URL.createObjectURL(image)} alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
