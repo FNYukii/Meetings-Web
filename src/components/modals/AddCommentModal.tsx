@@ -83,7 +83,7 @@ function AddCommentModal() {
 
                     <div className="mt-3 flex justify-between">
 
-                        <PickCommentImagesButton setImage={setImage} className="ml-3"/>
+                        <PickCommentImagesButton setImage={setImage} className="ml-1"/>
                         <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>
