@@ -74,16 +74,16 @@ function UserScreen() {
 
                         <div className="flex gap-3">
 
-                            <UserIcon iconUrl={user!.iconUrl} className="h-16" />
+                            <UserIcon iconUrl={user.iconUrl} className="h-16" />
 
                             <div className="flex flex-col">
-                                <span className="font-bold">{user!.displayName}</span>
-                                <span className="text-gray-500">@{user!.userTag}</span>
+                                <span className="font-bold">{user.displayName}</span>
+                                <span className="text-gray-500">@{user.userTag}</span>
                             </div>
                         </div>
                     </div>
 
-                    <p className="mt-2 mx-3">{user!.introduction}</p>
+                    <p className="mt-2 mx-3">{user.introduction}</p>
 
                     <CommentsByUserTabBar selection={selection} setSelection={setSelection} />
 
