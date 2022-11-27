@@ -10,6 +10,7 @@ import CommentsLikedByUserList from "../parts/lists/CommentsLikedByUserList"
 import ProgressImage from "../parts/images/ProgressImage"
 import { doc, onSnapshot } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
+import CommentsByUserTabBar from "../parts/sections/CommentsByUserTabBar"
 
 function UserScreen() {
 
@@ -17,7 +18,7 @@ function UserScreen() {
     const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    const [tab, setTab] = useState(0)
+    const [selection, setSelection] = useState(0)
 
     async function readUser() {
 
@@ -68,8 +69,11 @@ function UserScreen() {
 
             {isLoaded && user !== null &&
                 <div>
+                    
                     <div className="flex justify-between mx-3 mt-3">
+
                         <div className="flex gap-3">
+
                             <UserIcon iconUrl={user!.iconUrl} className="h-16" />
 
                             <div className="flex flex-col">
@@ -81,38 +85,13 @@ function UserScreen() {
 
                     <p className="mt-2 mx-3">{user!.introduction}</p>
 
-                    <div className="flex border-b border-zinc-200 dark:border-zinc-800 mt-3">
+                    <CommentsByUserTabBar selection={selection} setSelection={setSelection} />
 
-                        <button onClick={() => setTab(0)} className="w-1/2 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
-
-                            <div className="text-center p-3">
-
-                                <span className={tab === 0 ? "font-bold" : ""}>コメント</span>
-
-                                <div className="absolute bottom-0 left-0 w-full">
-                                    <div className={`h-0.5 mx-3 ${tab === 0 ? "bg-black dark:bg-white" : ""}`}></div>
-                                </div>
-                            </div>
-                        </button>
-
-                        <button onClick={() => setTab(1)} className="w-1/2 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
-
-                            <div className="text-center p-3">
-
-                                <span className={tab === 1 ? "font-bold" : ""}>いいね</span>
-
-                                <div className="absolute bottom-0 left-0 w-full">
-                                    <div className={`h-0.5 mx-3 ${tab === 1 ? "bg-black dark:bg-white" : ""}`}></div>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-
-                    {tab === 0 &&
+                    {selection === 0 &&
                         <CommentsPostedByUserList/>
                     }
 
-                    {tab === 1 &&
+                    {selection === 1 &&
                         <CommentsLikedByUserList/>
                     }
 
