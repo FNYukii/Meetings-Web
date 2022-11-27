@@ -92,7 +92,7 @@ function UserScreen() {
                     }
 
                     {selection === 1 &&
-                        <CommentsLikedByUserList/>
+                        <CommentsLikedByUserList user={user}/>
                     }
 
                 </div>
