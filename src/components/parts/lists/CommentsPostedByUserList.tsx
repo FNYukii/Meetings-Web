@@ -23,7 +23,7 @@ function CommentsPostedByUserList(props: {user: User}) {
     useEffect(() => {
         readComments()
         // eslint-disable-next-line
-    }, [props.user])
+    }, [props.user.iconUrl])
 
     return (
         <div>
