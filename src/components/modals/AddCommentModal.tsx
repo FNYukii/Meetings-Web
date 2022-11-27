@@ -5,7 +5,7 @@ import CloseButton from "../parts/buttons/CloseButton"
 import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
- 
+
 function AddCommentModal() {
 
     const { threadId } = useParams()
@@ -13,7 +13,7 @@ function AddCommentModal() {
     const body = document.body
 
     const [text, setText] = useState("")
-    const [image, setImage] = useState<null | File>(null)
+    const [images, setImages] = useState<File[]>([])
 
     const [isSubmited, setIsSubmited] = useState(false)
 
@@ -76,14 +76,15 @@ function AddCommentModal() {
                     </div>
 
                     <div className="mx-3">
-                        {image &&
-                            <img src={ window.URL.createObjectURL(image) } alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
-                        }
+
+                        {images.map((image) => (
+                            <img src={window.URL.createObjectURL(image)} alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
+                        ))}
                     </div>
 
                     <div className="mt-3 flex justify-between">
 
-                        <PickCommentImagesButton setImage={setImage} className="ml-1"/>
+                        <PickCommentImagesButton setImage={setImages} className="ml-1" />
                         <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>

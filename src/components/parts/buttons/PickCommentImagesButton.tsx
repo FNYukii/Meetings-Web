@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { AiOutlinePlus } from "react-icons/ai"
 
-function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetStateAction<File | null>>, className?: string}) {
+function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetStateAction<File[]>>, className?: string}) {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -10,8 +10,9 @@ function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetState
         if (!e.target.files) return
 
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
-        const file = e.target.files[0]
-        props.setImage(file)
+        const fileList = e.target.files
+        const files: File[] = Array.from(fileList)
+        props.setImage(files)
     }
 
     return (
@@ -22,7 +23,7 @@ function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetState
                 <span>画像を追加</span>    
             </button>
 
-            <input hidden ref={inputRef} type="file" accept=".jpg" onChange={onFileInputChange} className="mt-3" />
+            <input hidden ref={inputRef} type="file" multiple accept=".jpg" onChange={onFileInputChange} className="mt-3" />
         </div>
     )
 }
