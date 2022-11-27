@@ -9,9 +9,13 @@ function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetState
 
         if (!e.target.files) return
 
-        // React.ChangeEvent<HTMLInputElement>よりファイルを取得
+        // 選択されたファイルを取得
         const fileList = e.target.files
         const files: File[] = Array.from(fileList)
+
+        // 5番目以降の要素は配列から削除
+        files.splice(4)
+
         props.setImage(files)
     }
 
