@@ -4,8 +4,8 @@ import FireComments from "../../utilities/FireComments"
 import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
-
-export default function AddCommentModal() {
+ 
+function AddCommentModal() {
 
     const { threadId } = useParams()
     const navigate = useNavigate()
@@ -80,3 +80,5 @@ export default function AddCommentModal() {
         </div>
     )
 }
+
+export default AddCommentModal

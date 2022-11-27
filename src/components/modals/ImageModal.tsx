@@ -5,7 +5,7 @@ import FireComments from "../../utilities/FireComments"
 import ProgressImage from "../parts/images/ProgressImage"
 import { MdOutlineClose } from "react-icons/md"
 
-export default function ImageModal(props: { className?: string }) {
+function ImageModal(props: { className?: string }) {
 
     const body = document.body
     const navigate = useNavigate()
@@ -73,3 +73,5 @@ export default function ImageModal(props: { className?: string }) {
         </div>
     )
 }
+
+export default ImageModal

@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import User from "../../../entities/User";
 import FireAuth from "../../../utilities/FireAuth";
 
-export default function UserMenu(props: { user: User }) {
+function UserMenu(props: { user: User }) {
 
     const location = useLocation()
     const [isDark, setIsDark] = useState(false)
@@ -78,3 +78,5 @@ export default function UserMenu(props: { user: User }) {
         </div>
     )
 }
+
+export default UserMenu

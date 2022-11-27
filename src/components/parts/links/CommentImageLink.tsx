@@ -1,9 +1,9 @@
 import { FC } from "react"
-import { Link, useLocation } from "react-router-dom";
-import Comment from "../../../entities/Comment";
+import { Link, useLocation } from "react-router-dom"
+import Comment from "../../../entities/Comment"
 
 interface Props {
-    comment: Comment;
+    comment: Comment
     imageIndex: number
 }
 
@@ -20,4 +20,4 @@ const CommentImageLink: FC<Props> = ({comment, imageIndex}) => {
     )
 }
 
-export default CommentImageLink;
+export default CommentImageLink

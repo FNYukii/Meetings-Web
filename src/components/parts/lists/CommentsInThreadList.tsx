@@ -6,7 +6,7 @@ import FireComments from "../../../utilities/FireComments"
 import ProgressImage from "../images/ProgressImage"
 import CommentRow from "../rows/CommentRow"
 
-export default function CommentsInThreadList(props: { threadId: string }) {
+function CommentsInThreadList(props: { threadId: string }) {
 
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -72,3 +72,5 @@ export default function CommentsInThreadList(props: { threadId: string }) {
         </div>
     )
 }
+
+export default CommentsInThreadList

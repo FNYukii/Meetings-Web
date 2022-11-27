@@ -4,7 +4,7 @@ import FireThreads from "../../../utilities/FireThreads"
 import ProgressImage from "../images/ProgressImage"
 import ThreadRow from "../rows/ThreadRow"
 
-export default function SearchThreadsList(props: {keyword: string, className?: string}) {
+function SearchThreadsList(props: {keyword: string, className?: string}) {
 
     const [threads, setThreads] = useState<Thread[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -54,3 +54,5 @@ export default function SearchThreadsList(props: {keyword: string, className?: s
         </div>
     )
 }
+
+export default SearchThreadsList

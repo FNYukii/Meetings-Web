@@ -5,7 +5,7 @@ import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 import { AiOutlineCheck } from 'react-icons/ai'
 
-export default function HomeMenu(props: { selection: number, setSelection: React.Dispatch<React.SetStateAction<number>>, className?: string }) {
+function HomeMenu(props: { selection: number, setSelection: React.Dispatch<React.SetStateAction<number>>, className?: string }) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -43,3 +43,5 @@ export default function HomeMenu(props: { selection: number, setSelection: React
         </div>
     )
 }
+
+export default HomeMenu

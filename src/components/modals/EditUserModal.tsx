@@ -7,7 +7,7 @@ import CloseButton from "../parts/buttons/CloseButton"
 import ProgressImage from "../parts/images/ProgressImage"
 import EditUserSection from "../parts/sections/EditUserSection"
 
-export default function EditUserModal() {
+function EditUserModal() {
 
     const navigate = useNavigate()
     const body = document.body
@@ -82,3 +82,5 @@ export default function EditUserModal() {
         </div>
     )
 }
+
+export default EditUserModal

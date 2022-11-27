@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { AiOutlineProfile } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
-import Thread from "../../../entities/Thread";
-import FireThreads from "../../../utilities/FireThreads";
+import { useEffect, useState } from "react"
+import { AiOutlineProfile } from "react-icons/ai"
+import { NavLink } from "react-router-dom"
+import Thread from "../../../entities/Thread"
+import FireThreads from "../../../utilities/FireThreads"
 
-export default function ThreadTitleLink(props: { threadId: string, className?: string }) {
+function ThreadTitleLink(props: { threadId: string, className?: string }) {
 
     const [thread, setThread] = useState<Thread | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -37,3 +37,5 @@ export default function ThreadTitleLink(props: { threadId: string, className?: s
         </div>
     )
 }
+
+export default ThreadTitleLink

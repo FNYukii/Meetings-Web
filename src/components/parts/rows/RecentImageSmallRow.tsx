@@ -6,7 +6,7 @@ import ExDate from "../../../utilities/ExDate"
 import FireThreads from "../../../utilities/FireThreads"
 import UserUserTagLink from "../links/UserUserTagLink"
 
-export default function RecentImageSmallRow(props: { comment: Comment }) {
+function RecentImageSmallRow(props: { comment: Comment }) {
 
     const [thread, setThread] = useState<Thread | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -57,3 +57,5 @@ export default function RecentImageSmallRow(props: { comment: Comment }) {
         </div>
     )
 }
+
+export default RecentImageSmallRow

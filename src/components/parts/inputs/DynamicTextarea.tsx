@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-export default function DynamicTextarea(props: { value: string, setValue: React.Dispatch<React.SetStateAction<string>>, placeholder?: string, className?: string }) {
+function DynamicTextarea(props: { value: string, setValue: React.Dispatch<React.SetStateAction<string>>, placeholder?: string, className?: string }) {
 
     const textAreaRef = useResizeTextArea(props.value)
 
@@ -33,3 +33,5 @@ function useResizeTextArea(value: string) {
 
     return ref
 }
+
+export default DynamicTextarea

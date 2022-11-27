@@ -1,6 +1,6 @@
 import BackButton from "../parts/buttons/BackButton"
 
-export default function NotFoundScreen() {
+function NotFoundScreen() {
 
     document.title = "Not Found - Meetings"
 
@@ -23,3 +23,5 @@ export default function NotFoundScreen() {
         </div>
     )
 }
+
+export default NotFoundScreen

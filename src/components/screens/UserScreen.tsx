@@ -11,7 +11,7 @@ import ProgressImage from "../parts/images/ProgressImage"
 import { doc, onSnapshot } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
 
-export default function UserScreen() {
+function UserScreen() {
 
     const { userId } = useParams()
     const [user, setUser] = useState<User | null>(null)
@@ -121,3 +121,5 @@ export default function UserScreen() {
         </div>
     )
 }
+
+export default UserScreen

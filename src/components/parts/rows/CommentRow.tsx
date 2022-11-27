@@ -10,7 +10,7 @@ import ThreadTitleLink from "../links/ThreadTitleLink"
 import CommentLikeButton from "../buttons/CommentLikeButton"
 import { useState } from "react"
 
-export default function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
+function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
 
     const [isHidden, setIsHidden] = useState(false)
 
@@ -59,3 +59,5 @@ export default function CommentRow(props: { comment: Comment, showThreadTitle?: 
         </div>
     )
 }
+
+export default CommentRow

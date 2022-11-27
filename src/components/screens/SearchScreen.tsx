@@ -5,7 +5,7 @@ import BackButton from "../parts/buttons/BackButton";
 import RecentImagesList from "../parts/lists/RecentImagesList"
 import SearchResultsScreen from "./SearchResultsScreen";
 
-export default function SearchScreen() {
+function SearchScreen() {
 
     const searchedKeyword = (new URLSearchParams(useLocation().search)).get("keyword")
     const navigate = useNavigate()
@@ -57,3 +57,5 @@ export default function SearchScreen() {
         </div>
     )
 }
+
+export default SearchScreen

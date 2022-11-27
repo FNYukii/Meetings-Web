@@ -4,7 +4,7 @@ import FireAuth from "../../../utilities/FireAuth"
 import FireUsers from "../../../utilities/FireUsers"
 import SubmitButton from "../buttons/SubmitButton"
 
-export default function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
+function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const navigate = useNavigate()
     
@@ -78,3 +78,5 @@ export default function SignUpSection(props: { setIsShowSignUpSection: React.Dis
         </div>
     )
 }
+
+export default SignUpSection

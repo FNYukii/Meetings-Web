@@ -1,11 +1,11 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import FireAuth from "../../../utilities/FireAuth";
-import { auth } from "../../../utilities/firebase";
+import { onAuthStateChanged } from "firebase/auth"
+import { useEffect, useState } from "react"
+import { AiOutlinePlus } from "react-icons/ai"
+import { Link } from "react-router-dom"
+import FireAuth from "../../../utilities/FireAuth"
+import { auth } from "../../../utilities/firebase"
 
-export default function NewThreadLink() {
+function NewThreadLink() {
 
     const [uid, setUid] = useState<string | null>(FireAuth.uidFromLocalStorage())
 
@@ -39,3 +39,5 @@ export default function NewThreadLink() {
         </div>
     )
 }
+
+export default NewThreadLink

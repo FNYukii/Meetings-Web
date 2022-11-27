@@ -5,7 +5,7 @@ import ProgressImage from "../images/ProgressImage"
 import RecentImageLargeRow from "../rows/RecentImageLargeRow"
 import RecentImageSmallRow from "../rows/RecentImageSmallRow"
 
-export default function RecentImagesList(props: {className?: string}) {
+function RecentImagesList(props: {className?: string}) {
 
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -60,3 +60,5 @@ export default function RecentImagesList(props: {className?: string}) {
         </div>
     )
 }
+
+export default RecentImagesList

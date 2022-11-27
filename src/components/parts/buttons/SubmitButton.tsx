@@ -1,6 +1,6 @@
 import ProgressImage from "../images/ProgressImage";
 
-export default function SubmitButton(props: { text: string, isLoading: boolean, disabled: boolean }) {
+function SubmitButton(props: { text: string, isLoading: boolean, disabled: boolean }) {
 
     return (
         <div>
@@ -17,3 +17,5 @@ export default function SubmitButton(props: { text: string, isLoading: boolean, 
         </div>
     )
 }
+
+export default SubmitButton

@@ -5,7 +5,7 @@ import FireComments from "../../../utilities/FireComments"
 import CommentRow from "../rows/CommentRow"
 import ProgressImage from "../images/ProgressImage"
 
-export default function CommentsLikedByUserList() {
+function CommentsLikedByUserList() {
 
     const { userId } = useParams()
     const [comments, setComments] = useState<Comment[] | null>(null)
@@ -52,3 +52,5 @@ export default function CommentsLikedByUserList() {
         </div>
     )
 }
+
+export default CommentsLikedByUserList

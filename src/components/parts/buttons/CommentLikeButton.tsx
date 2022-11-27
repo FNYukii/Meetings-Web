@@ -7,7 +7,7 @@ import FireAuth from "../../../utilities/FireAuth";
 import { auth } from "../../../utilities/firebase";
 import FireUsers from "../../../utilities/FireUsers";
 
-export default function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean, className?: string }) {
+function CommentLikeButton(props: { comment: Comment, isReadFromSeaver: boolean, className?: string }) {
 
     const [likedUsers, setLikedUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -141,3 +141,5 @@ export default function CommentLikeButton(props: { comment: Comment, isReadFromS
         </div>
     )
 }
+
+export default CommentLikeButton

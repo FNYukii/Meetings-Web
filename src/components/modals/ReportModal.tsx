@@ -5,7 +5,7 @@ import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
-export default function ReportModal(props: { className?: string }) {
+function ReportModal(props: { className?: string }) {
 
     const navigate = useNavigate()
     const { collectionName, documentId } = useParams()
@@ -133,3 +133,5 @@ export default function ReportModal(props: { className?: string }) {
         </div>
     )
 }
+
+export default ReportModal

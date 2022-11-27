@@ -5,7 +5,7 @@ import Thread from "../../../entities/Thread";
 import ExDate from "../../../utilities/ExDate";
 import FireThreads from "../../../utilities/FireThreads";
 
-export default function RecentImageLargeRow(props: { comment: Comment }) {
+function RecentImageLargeRow(props: { comment: Comment }) {
 
     const [thread, setThread] = useState<Thread | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -58,3 +58,5 @@ export default function RecentImageLargeRow(props: { comment: Comment }) {
         </div>
     )
 }
+
+export default RecentImageLargeRow

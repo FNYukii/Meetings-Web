@@ -5,7 +5,7 @@ import RightColumn from './columns/RightColumn'
 import { BrowserRouter } from 'react-router-dom'
 
 
-export default function App() {
+function App() {
     
     return (
         <div className='flex mx-auto xl:width-xl lg:width-lg md:width-md sm:width-sm w-full'>
@@ -17,3 +17,5 @@ export default function App() {
         </div>
     )
 }
+
+export default App

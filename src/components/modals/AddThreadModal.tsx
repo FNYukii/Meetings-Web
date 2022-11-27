@@ -8,7 +8,7 @@ import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 
-export default function AddThreadModal() {
+function AddThreadModal() {
 
     const navigate = useNavigate()
     const body = document.body
@@ -133,3 +133,5 @@ export default function AddThreadModal() {
         </div>
     )
 }
+
+export default AddThreadModal

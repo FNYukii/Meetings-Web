@@ -4,7 +4,7 @@ import FireComments from "../../../utilities/FireComments"
 import ProgressImage from "../images/ProgressImage"
 import CommentRow from "../rows/CommentRow"
 
-export default function SearchCommentsList(props: {keyword: string, className?: string}) {
+function SearchCommentsList(props: {keyword: string, className?: string}) {
     
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -54,3 +54,5 @@ export default function SearchCommentsList(props: {keyword: string, className?: 
         </div>
     )
 }
+
+export default SearchCommentsList

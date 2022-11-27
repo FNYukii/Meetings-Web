@@ -3,7 +3,7 @@ import SearchCommentsList from "../parts/lists/SearchCommentsList"
 import SearchThreadsList from "../parts/lists/SearchThreadsList"
 import SearchUsersList from "../parts/lists/SearchUsersList"
 
-export default function SearchResultsScreen(props: { keyword: string }) {
+function SearchResultsScreen(props: { keyword: string }) {
 
     document.title = `${props.keyword} - 検索 - Meetings`
 
@@ -65,3 +65,5 @@ export default function SearchResultsScreen(props: { keyword: string }) {
         </div>
     )
 }
+
+export default SearchResultsScreen

@@ -6,7 +6,7 @@ import FireThreads from "../../../utilities/FireThreads"
 import ThreadRow from "../rows/ThreadRow"
 import ProgressImage from "../images/ProgressImage"
 
-export default function ThreadsRecentlyCreatedList() {
+function ThreadsRecentlyCreatedList() {
     // States
     const [threads, setThreads] = useState<Thread[] | null>(null)
     const [isLoaded, setIsloaded] = useState(false)
@@ -72,3 +72,5 @@ export default function ThreadsRecentlyCreatedList() {
         </div>
     )
 }
+
+export default ThreadsRecentlyCreatedList

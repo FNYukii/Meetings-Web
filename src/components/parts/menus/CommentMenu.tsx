@@ -10,7 +10,7 @@ import { auth } from '../../../utilities/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import FireComments from '../../../utilities/FireComments'
 
-export default function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHidden?: React.Dispatch<React.SetStateAction<boolean>> }) {
+function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHidden?: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const location = useLocation()
     const [isDark, setIsDark] = useState(false)
@@ -83,3 +83,5 @@ export default function CommentMenu(props: { comment: Comment, iconClassName?: s
         </div>
     )
 }
+
+export default CommentMenu

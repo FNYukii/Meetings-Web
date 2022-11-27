@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import FireThreads from "../../../utilities/FireThreads"
 import RecentTagMenu from "../menus/RecentTagMenu"
 
-export default function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) {
+function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) {
 
     const [numberOfThread, setNumberOfThread] = useState<number | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -55,3 +55,5 @@ export default function RecentTagRow(props: { tag: string, removeTag: (tag: stri
         </div>
     )
 }
+
+export default RecentTagRow

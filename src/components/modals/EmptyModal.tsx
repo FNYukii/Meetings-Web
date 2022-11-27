@@ -1,6 +1,8 @@
-export default function EmptyModal() {
+function EmptyModal() {
 
     return (
         <div></div>
     )
 }
+
+export default EmptyModal

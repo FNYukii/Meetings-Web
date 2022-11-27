@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import NewThreadLink from '../parts/links/NewThreadLink'
 import ThreadsRecentlyCreatedList from '../parts/lists/ThreadsRecentlyCreatedList'
 
-export default function HomeScreen() {
+function HomeScreen() {
 
     useEffect(() => {
         
@@ -26,3 +26,6 @@ export default function HomeScreen() {
         </div >
     )
 }
+
+
+export default HomeScreen

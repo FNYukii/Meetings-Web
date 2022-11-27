@@ -8,7 +8,7 @@ import UserIconLink from "../links/UserIconLink"
 import UserUserTagLink from "../links/UserUserTagLink"
 import Comment from "../../../entities/Comment"
 
-export default function ThreadRow(props: { thread: Thread }) {
+function ThreadRow(props: { thread: Thread }) {
 
     const [firstComment, setFirstComment] = useState<Comment | null>(null)
 
@@ -56,3 +56,5 @@ export default function ThreadRow(props: { thread: Thread }) {
         </div>
     )
 }
+
+export default ThreadRow

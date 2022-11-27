@@ -10,7 +10,7 @@ import { onAuthStateChanged } from "firebase/auth"
 import FireThreads from "../../../utilities/FireThreads"
 import { auth } from "../../../utilities/firebase"
 
-export default function ThreadMenu(props: { thread: Thread }) {
+function ThreadMenu(props: { thread: Thread }) {
 
     const location = useLocation()
     const [isDark, setIsDark] = useState(false)
@@ -69,3 +69,5 @@ export default function ThreadMenu(props: { thread: Thread }) {
         </div>
     )
 }
+
+export default ThreadMenu

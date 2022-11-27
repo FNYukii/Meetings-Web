@@ -3,7 +3,7 @@ import FireThreads from "../../../utilities/FireThreads"
 import ProgressImage from "../images/ProgressImage"
 import RecentTagRow from "../rows/RecentTagRow"
 
-export default function RecentTagsCard() {
+function RecentTagsCard() {
 
     const [tags, setTags] = useState<string[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -101,3 +101,5 @@ export default function RecentTagsCard() {
         </div>
     )
 }
+
+export default RecentTagsCard

@@ -4,7 +4,7 @@ import FireUsers from "../../../utilities/FireUsers"
 import ProgressImage from "../images/ProgressImage"
 import UserRow from "../rows/UserRow"
 
-export default function SearchUsersList(props: { keyword: string, className?: string }) {
+function SearchUsersList(props: { keyword: string, className?: string }) {
 
     const [users, setUsers] = useState<User[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -54,3 +54,5 @@ export default function SearchUsersList(props: { keyword: string, className?: st
         </div>
     )
 }
+
+export default SearchUsersList

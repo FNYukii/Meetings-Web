@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
 import SubmitButton from "../buttons/SubmitButton"
 
-export default function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
+function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const navigate = useNavigate()
 
@@ -55,3 +55,5 @@ export default function SignInSection(props: { setIsShowSignUpSection: React.Dis
         </div>
     )
 }
+
+export default SignInSection

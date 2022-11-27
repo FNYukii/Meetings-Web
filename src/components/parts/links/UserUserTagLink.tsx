@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom"
 import User from "../../../entities/User"
 import FireUsers from "../../../utilities/FireUsers"
 
-export default function UserUserTagLink(props: {userId: string, className?: string}) {
+function UserUserTagLink(props: {userId: string, className?: string}) {
 
     const [user, setUser] = useState<User | null>()
 
@@ -25,3 +25,5 @@ export default function UserUserTagLink(props: {userId: string, className?: stri
         </NavLink>
     )
 }
+
+export default UserUserTagLink

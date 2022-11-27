@@ -13,7 +13,7 @@ import ThreadTitleLink from "../parts/links/ThreadTitleLink"
 import CommentLikeButton from "../parts/buttons/CommentLikeButton"
 import ProgressImage from "../parts/images/ProgressImage"
 
-export default function CommentScreen() {
+function CommentScreen() {
 
     document.title = "コメント - Meetings"
 
@@ -91,3 +91,5 @@ export default function CommentScreen() {
         </div>
     )
 }
+
+export default CommentScreen

@@ -5,7 +5,7 @@ import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 import { AiOutlineMeh } from 'react-icons/ai'
 
-export default function RecentTagMenu(props: { tag: string, removeTag: (tag: string) => void }) {
+function RecentTagMenu(props: { tag: string, removeTag: (tag: string) => void }) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -37,3 +37,5 @@ export default function RecentTagMenu(props: { tag: string, removeTag: (tag: str
         </div>
     )
 }
+
+export default RecentTagMenu

@@ -1,4 +1,4 @@
-export default function UserIcon(props: { iconUrl: string | null, className?: string }) {
+function UserIcon(props: { iconUrl: string | null, className?: string }) {
     return (
         <div className={`relative aspect-square ${props.className}`}>
 
@@ -10,3 +10,5 @@ export default function UserIcon(props: { iconUrl: string | null, className?: st
         </div>
     )
 }
+
+export default UserIcon

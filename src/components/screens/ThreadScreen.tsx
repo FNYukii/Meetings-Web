@@ -4,7 +4,7 @@ import CommentsInThreadList from "../parts/lists/CommentsInThreadList"
 import ThreadTitleSpan from "../parts/spans/ThreadTitleSpan"
 import NewCommentLink from "../parts/links/NewCommentLink"
 
-export default function ThreadScreen() {
+function ThreadScreen() {
 
     const { threadId } = useParams()
 
@@ -29,3 +29,5 @@ export default function ThreadScreen() {
         </div>
     )
 }
+
+export default ThreadScreen

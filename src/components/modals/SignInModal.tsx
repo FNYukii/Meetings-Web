@@ -4,8 +4,7 @@ import SignInSection from "../parts/sections/SignInSection"
 import SignUpSection from "../parts/sections/SignUpSection"
 import CloseButton from "../parts/buttons/CloseButton"
 
-
-export default function SignInModal() {
+function SignInModal() {
 
     const navigate = useNavigate()
     const body = document.body
@@ -53,3 +52,6 @@ export default function SignInModal() {
         </div>
     )
 }
+
+
+export default SignInModal

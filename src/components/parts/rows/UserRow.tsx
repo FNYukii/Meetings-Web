@@ -4,7 +4,7 @@ import UserDisplayNameLink from "../links/UserDisplayNameLink";
 import UserIcon from "../images/UserIcon";
 import UserUserTagLink from "../links/UserUserTagLink";
 
-export default function UserRow(props: {user: User, className?: string}) {
+function UserRow(props: {user: User, className?: string}) {
     return (
         <div className={`flex p-3 relative ${props.className}`}>
 
@@ -28,3 +28,5 @@ export default function UserRow(props: {user: User, className?: string}) {
         </div>
     )
 }
+
+export default UserRow

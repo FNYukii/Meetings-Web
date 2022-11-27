@@ -1,7 +1,7 @@
 import Comment from "../../../entities/Comment";
 import CommentImageLink from "../links/CommentImageLink";
 
-export default function CommentImagesGrid(props: { comment: Comment, className?: string }) {
+function CommentImagesGrid(props: { comment: Comment, className?: string }) {
 
     return (
         <div className={props.className}>
@@ -78,3 +78,5 @@ export default function CommentImagesGrid(props: { comment: Comment, className?:
         </div>
     )
 }
+
+export default CommentImagesGrid

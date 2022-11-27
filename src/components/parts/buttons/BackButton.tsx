@@ -1,7 +1,7 @@
 import { FiArrowLeft } from "react-icons/fi"
 import { useNavigate } from "react-router-dom"
 
-export default function BackButton(props: {className?: string}) {
+function BackButton(props: {className?: string}) {
 
     const navigate = useNavigate()
 
@@ -11,3 +11,5 @@ export default function BackButton(props: {className?: string}) {
         </button>
     )
 }
+
+export default BackButton
