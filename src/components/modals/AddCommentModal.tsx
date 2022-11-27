@@ -2,9 +2,10 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import CloseButton from "../parts/buttons/CloseButton"
+import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
- 
+
 function AddCommentModal() {
 
     const { threadId } = useParams()
@@ -12,6 +13,8 @@ function AddCommentModal() {
     const body = document.body
 
     const [text, setText] = useState("")
+    const [images, setImages] = useState<File[]>([])
+
     const [isSubmited, setIsSubmited] = useState(false)
 
     const textMax = 300
@@ -72,7 +75,16 @@ function AddCommentModal() {
                         <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </div>
 
-                    <div className="mt-3 flex justify-end">
+                    <div className="mx-3 flex flex-wrap gap-3">
+
+                        {images.map((image) => (
+                            <img src={window.URL.createObjectURL(image)} alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
+                        ))}
+                    </div>
+
+                    <div className="mt-3 flex justify-between">
+
+                        <PickCommentImagesButton setImage={setImages} className="ml-1" />
                         <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>
