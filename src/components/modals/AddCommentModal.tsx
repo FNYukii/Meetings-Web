@@ -13,6 +13,8 @@ function AddCommentModal() {
     const body = document.body
 
     const [text, setText] = useState("")
+    const [image, setImage] = useState<null | File>(null)
+
     const [isSubmited, setIsSubmited] = useState(false)
 
     const textMax = 300
@@ -73,9 +75,15 @@ function AddCommentModal() {
                         <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                     </div>
 
+                    <div className="mx-3">
+                        {image &&
+                            <img src={ window.URL.createObjectURL(image) } alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
+                        }
+                    </div>
+
                     <div className="mt-3 flex justify-between">
 
-                        <PickCommentImagesButton className="ml-3"/>
+                        <PickCommentImagesButton setImage={setImage} className="ml-3"/>
                         <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                     </div>
                 </form>

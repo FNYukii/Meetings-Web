@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-function PickCommentImagesButton(props: {className?: string}) {
+function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetStateAction<File | null>>, className?: string}) {
 
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -10,11 +10,7 @@ function PickCommentImagesButton(props: {className?: string}) {
 
         // React.ChangeEvent<HTMLInputElement>よりファイルを取得
         const file = e.target.files[0]
-
-        // オブジェクトURLを生成し
-        const objectUrl = window.URL.createObjectURL(file)
-
-        alert(`objectUrl; ${objectUrl}`)
+        props.setImage(file)
     }
 
     return (
