@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
 import Comment from "../../../entities/Comment"
 import FireComments from "../../../utilities/FireComments"
 import CommentRow from "../rows/CommentRow"
 import ProgressImage from "../images/ProgressImage"
+import User from "../../../entities/User"
 
-function CommentsPostedByUserList() {
+function CommentsPostedByUserList(props: {user: User}) {
 
-    const { userId } = useParams()
+    const userId = props.user.id
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readComments() {
+
+        setIsLoaded(false)
+        
         const comments = await FireComments.readCommentsPostedByUser(userId!)
         setComments(comments)
         setIsLoaded(true)
@@ -20,7 +23,7 @@ function CommentsPostedByUserList() {
     useEffect(() => {
         readComments()
         // eslint-disable-next-line
-    }, [])
+    }, [props.user])
 
     return (
         <div>

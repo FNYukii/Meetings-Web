@@ -88,7 +88,7 @@ function UserScreen() {
                     <CommentsByUserTabBar selection={selection} setSelection={setSelection} />
 
                     {selection === 0 &&
-                        <CommentsPostedByUserList/>
+                        <CommentsPostedByUserList user={user}/>
                     }
 
                     {selection === 1 &&
