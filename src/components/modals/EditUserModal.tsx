@@ -4,7 +4,7 @@ import FireAuth from "../../utilities/FireAuth"
 import FireUsers from "../../utilities/FireUsers"
 import ProgressImage from "../parts/images/ProgressImage"
 import EditUserSection from "../parts/sections/EditUserSection"
-import Modal from "./Modal"
+import FormModal from "../parts/modals/FormModal"
 
 function EditUserModal() {
 
@@ -34,7 +34,7 @@ function EditUserModal() {
     }
 
     return (
-        <Modal title="プロフィールを編集 - Meetings">
+        <FormModal title="プロフィールを編集 - Meetings">
             <div>
                 {!isLoaded &&
                     <div className='flex justify-center p-3'>
@@ -52,7 +52,7 @@ function EditUserModal() {
                     <EditUserSection user={user} />
                 }
             </div>
-        </Modal>
+        </FormModal>
     )
 }
 

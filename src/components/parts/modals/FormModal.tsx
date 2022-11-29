@@ -1,9 +1,9 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import CloseButton from "../parts/buttons/CloseButton"
+import CloseButton from "../buttons/CloseButton"
 
 
-function Modal(props: { children: JSX.Element, title: string }) {
+function FormModal(props: { children: JSX.Element, title: string }) {
 
     const navigate = useNavigate()
     const body = document.body
@@ -41,4 +41,4 @@ function Modal(props: { children: JSX.Element, title: string }) {
     )
 }
 
-export default Modal
+export default FormModal

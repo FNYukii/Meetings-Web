@@ -6,7 +6,7 @@ import FireComments from "../../utilities/FireComments"
 import FireThreads from "../../utilities/FireThreads"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
-import Modal from "./Modal"
+import FormModal from "../parts/modals/FormModal"
 
 function AddThreadModal() {
 
@@ -65,7 +65,7 @@ function AddThreadModal() {
     }
 
     return (
-        <Modal title="新規スレッド - Meetings">
+        <FormModal title="新規スレッド - Meetings">
             <form onSubmit={(e) => onSubmit(e)}>
 
                 <div className="mt-3 px-3">
@@ -104,7 +104,7 @@ function AddThreadModal() {
                     <SubmitButton text="作成" isLoading={isLoading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
                 </div>
             </form>
-        </Modal>
+        </FormModal>
     )
 }
 

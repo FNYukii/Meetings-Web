@@ -4,7 +4,7 @@ import FireComments from "../../utilities/FireComments"
 import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
-import Modal from "./Modal"
+import FormModal from "../parts/modals/FormModal"
 
 function AddCommentModal() {
 
@@ -42,7 +42,7 @@ function AddCommentModal() {
     }
 
     return (
-        <Modal title="新規コメント - Meetings">
+        <FormModal title="新規コメント - Meetings">
             
             <form onSubmit={(e) => onSubmit(e)}>
                 <div className="mt-3 px-3">
@@ -65,7 +65,7 @@ function AddCommentModal() {
                     <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                 </div>
             </form>
-        </Modal>
+        </FormModal>
     )
 }
 
