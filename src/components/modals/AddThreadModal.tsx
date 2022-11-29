@@ -38,9 +38,13 @@ function AddThreadModal() {
         )
     }
 
-    async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-
+    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
+        addThread()
+    }
+
+    async function addThread() {
+        
         setIsLoading(true)
 
         // スレッドを作成

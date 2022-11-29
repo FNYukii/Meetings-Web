@@ -18,9 +18,13 @@ function AddCommentModal() {
 
     const textMax = 300
 
-    async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-
+    function onSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
+        addComment()
+    }
+
+    async function addComment() {
+        
         setIsSubmited(true)
 
         const commentId = await FireComments.createComment(threadId!, text, [])
