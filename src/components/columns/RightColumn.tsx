@@ -1,4 +1,3 @@
-import MyBox from "../modals/Modal";
 import RecentTagsCard from "../parts/sections/RecentTagsCard";
 
 export default function RightColumn(props: {className?: string}) {
@@ -15,10 +14,6 @@ export default function RightColumn(props: {className?: string}) {
                     <span>© <a href="https://github.com/Yu357" target="blank" className="hover:underline">Yu357</a> 2022.</span>
                     
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source</a>
-
-                    <MyBox className="text-xl">
-                        <span>hello</span>
-                    </MyBox>
                 </div>
             </div>
         </div>
