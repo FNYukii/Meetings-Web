@@ -3,7 +3,9 @@ import { AiOutlinePlus, AiOutlineTag } from "react-icons/ai"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
+import FireImages from "../../utilities/FireImages"
 import FireThreads from "../../utilities/FireThreads"
+import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
 import FormModal from "../parts/modals/FormModal"
@@ -14,7 +16,10 @@ function AddThreadModal() {
 
     const [title, setTitle] = useState("")
     const [tags, setTags] = useState<string[]>([])
+
     const [text, setText] = useState("")
+    const [images, setImages] = useState<File[]>([])
+
     const [isLoading, setIsLoading] = useState(false)
 
     const titleMax = 50
@@ -59,8 +64,19 @@ function AddThreadModal() {
         }
 
         // 成功
+        // 画像をアップロード
+        const imageUrls = await FireImages.uploadImages(images, "images")
+
+        // 失敗
+        if (!imageUrls) {
+            setIsLoading(false)
+            alert("コメントの作成に失敗しました。")
+            return
+        }
+
+        // 成功
         // コメントを作成
-        await FireComments.createComment(threadId, text, [])
+        await FireComments.createComment(threadId, text, imageUrls)
         navigate(-1)
     }
 
@@ -100,7 +116,16 @@ function AddThreadModal() {
                     <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                 </div>
 
-                <div className="mt-3 flex justify-end">
+                <div className="mt-3 mx-3 flex flex-wrap gap-3">
+
+                    {images.map((image) => (
+                        <img src={window.URL.createObjectURL(image)} alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
+                    ))}
+                </div>
+
+                <div className="mt-3 flex justify-between">
+
+                    <PickCommentImagesButton setImage={setImages} className="ml-1" />
                     <SubmitButton text="作成" isLoading={isLoading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
                 </div>
             </form>
