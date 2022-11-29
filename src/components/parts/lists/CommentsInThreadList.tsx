@@ -17,6 +17,8 @@ function CommentsInThreadList(props: { threadId: string }) {
 
         onSnapshot(q, (querySnapshot) => {
 
+            if (querySnapshot.metadata.hasPendingWrites) return
+
             // 成功
             console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 

@@ -17,6 +17,8 @@ function ThreadsRecentlyCreatedList() {
 
         onSnapshot(q, (querySnapshot) => {
 
+            if (querySnapshot.metadata.hasPendingWrites) return
+
             // 成功
             console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
