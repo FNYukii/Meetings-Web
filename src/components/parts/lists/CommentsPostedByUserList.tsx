@@ -5,7 +5,7 @@ import CommentRow from "../rows/CommentRow"
 import ProgressImage from "../images/ProgressImage"
 import User from "../../../entities/User"
 
-function CommentsPostedByUserList(props: {user: User}) {
+function CommentsPostedByUserList(props: {user: User, className?: string}) {
 
     const userId = props.user.id
     const [comments, setComments] = useState<Comment[] | null>(null)
@@ -26,7 +26,7 @@ function CommentsPostedByUserList(props: {user: User}) {
     }, [props.user.displayName, props.user.userTag, props.user.iconUrl])
 
     return (
-        <div>
+        <div className={props.className}>
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
                     <ProgressImage/>

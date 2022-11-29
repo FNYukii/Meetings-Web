@@ -57,7 +57,7 @@ function UserScreen() {
 
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
-                    <ProgressImage/>
+                    <ProgressImage />
                 </div>
             }
 
@@ -69,7 +69,7 @@ function UserScreen() {
 
             {isLoaded && user !== null &&
                 <div>
-                    
+
                     <div className="flex justify-between mx-3 mt-3">
 
                         <div className="flex gap-3">
@@ -87,14 +87,8 @@ function UserScreen() {
 
                     <CommentsByUserTabBar selection={selection} setSelection={setSelection} />
 
-                    {selection === 0 &&
-                        <CommentsPostedByUserList user={user}/>
-                    }
-
-                    {selection === 1 &&
-                        <CommentsLikedByUserList user={user}/>
-                    }
-
+                    <CommentsPostedByUserList user={user} className={selection === 0 ? "" : "hidden"}/>
+                    <CommentsLikedByUserList user={user} className={selection === 1 ? "" : "hidden"}/>
                 </div>
             }
         </div>

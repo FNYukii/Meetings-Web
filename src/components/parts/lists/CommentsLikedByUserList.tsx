@@ -5,7 +5,7 @@ import CommentRow from "../rows/CommentRow"
 import ProgressImage from "../images/ProgressImage"
 import User from "../../../entities/User"
 
-function CommentsLikedByUserList(props: {user: User}) {
+function CommentsLikedByUserList(props: {user: User, className?: string}) {
 
     const userId = props.user.id
     const [comments, setComments] = useState<Comment[] | null>(null)
@@ -27,7 +27,7 @@ function CommentsLikedByUserList(props: {user: User}) {
     }, [props.user.displayName, props.user.userTag, props.user.iconUrl, props.user.likedCommentIds])
 
     return (
-        <div>
+        <div className={props.className}>
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
                     <ProgressImage/>
