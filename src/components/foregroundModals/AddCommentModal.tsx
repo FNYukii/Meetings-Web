@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
+import FireImages from "../../utilities/FireImages"
 import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
@@ -27,7 +28,19 @@ function AddCommentModal() {
         
         setIsSubmited(true)
 
-        const commentId = await FireComments.createComment(threadId!, text, [])
+        // 画像をアップロード
+        const imageUrls = await FireImages.uploadImages(images, "images")
+
+        // 失敗
+        if (!imageUrls) {
+            alert("コメントの追加に失敗しました。")
+            setIsSubmited(false)
+            return
+        }
+        
+        // 成功
+        // コメントを追加
+        const commentId = await FireComments.createComment(threadId!, text, imageUrls)
 
         // 失敗
         if (commentId === null) {
