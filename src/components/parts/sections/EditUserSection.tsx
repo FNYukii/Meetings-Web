@@ -53,7 +53,7 @@ function EditUserSection(props: { user: User }) {
         if (pickedIcon) {
 
             // 新しいアイコンをアップロード
-            const newIconUrl = await FireImages.uploadIconImage(pickedIcon)
+            const newIconUrl = await FireImages.uploadImage(pickedIcon, "icons")
 
             // 失敗
             if (!newIconUrl) {

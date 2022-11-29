@@ -4,14 +4,14 @@ import { v4 } from "uuid"
 
 class FireImages {
 
-    static async uploadIconImage(file: File): Promise<string | null> {
+    static async uploadImage(file: File, folderName: string): Promise<string | null> {
 
         // UUIDを使ってランダムなファイル名を生成
         const fileName: string = `${v4()}.jpg`
         console.log(`fileName: ${fileName}`)
 
         // Firebase Cloud Storageの参照を作成
-        const storageRef = ref(storage, `icons/${fileName}`)
+        const storageRef = ref(storage, `${folderName}/${fileName}`)
 
         // ファイルをアップロード
         return await uploadBytes(storageRef, file)
