@@ -22,5 +22,4 @@ function SignInModal() {
     )
 }
 
-
 export default SignInModal
