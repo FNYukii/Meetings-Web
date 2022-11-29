@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
+import FireImages from "../../utilities/FireImages"
 import PickCommentImagesButton from "../parts/buttons/PickCommentImagesButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
@@ -14,7 +15,7 @@ function AddCommentModal() {
     const [text, setText] = useState("")
     const [images, setImages] = useState<File[]>([])
 
-    const [isSubmited, setIsSubmited] = useState(false)
+    const [isUploading, setIsUploading] = useState(false)
 
     const textMax = 300
 
@@ -25,15 +26,27 @@ function AddCommentModal() {
 
     async function addComment() {
         
-        setIsSubmited(true)
+        setIsUploading(true)
 
-        const commentId = await FireComments.createComment(threadId!, text, [])
+        // 画像をアップロード
+        const imageUrls = await FireImages.uploadImages(images, "images")
+
+        // 失敗
+        if (!imageUrls) {
+            alert("コメントの追加に失敗しました。")
+            setIsUploading(false)
+            return
+        }
+        
+        // 成功
+        // コメントを追加
+        const commentId = await FireComments.createComment(threadId!, text, imageUrls)
 
         // 失敗
         if (commentId === null) {
 
             alert("コメントの追加に失敗しました。")
-            setIsSubmited(false)
+            setIsUploading(false)
             return
         }
 
@@ -62,7 +75,7 @@ function AddCommentModal() {
                 <div className="mt-3 flex justify-between">
 
                     <PickCommentImagesButton setImage={setImages} className="ml-1" />
-                    <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
+                    <SubmitButton text="追加" isLoading={isUploading} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                 </div>
             </form>
         </FormModal>

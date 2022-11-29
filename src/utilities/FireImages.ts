@@ -16,7 +16,7 @@ class FireImages {
         // ファイルをアップロード
         return await uploadBytes(storageRef, file)
             .then(async () => {
-                
+
                 console.log("Uploaded 1 file.")
 
                 // DownloadURLを取得
@@ -30,6 +30,27 @@ class FireImages {
                 console.log(`Failed to uploading file. ${error}`)
                 return null
             })
+    }
+
+    static async uploadImages(files: File[], folderName: string): Promise<string[] | null> {
+
+        let imageUrls: string[] = []
+
+        // 画像を順にアップロードしていく
+        for (let file of files) {
+
+            // 画像をアップロード
+            const imageUrl = await this.uploadImage(file, folderName)
+
+            // 失敗
+            if (!imageUrl)
+                return null
+
+            // 成功
+            imageUrls.push(imageUrl)
+        }
+
+        return imageUrls
     }
 }
 
