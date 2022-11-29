@@ -1,35 +1,29 @@
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
-import SignInSection from "../parts/sections/SignInSection"
-import SignUpSection from "../parts/sections/SignUpSection"
-import CloseButton from "../parts/buttons/CloseButton"
+import CloseButton from "../buttons/CloseButton"
 
-function SignInModal() {
+
+function FormModal(props: { children: JSX.Element, title: string }) {
 
     const navigate = useNavigate()
     const body = document.body
 
-    const [isShowSignUpSection, setIsShowSignUpSection] = useState(false)
-
     useEffect(() => {
 
-        document.title = "サインイン - Meetings"
+        document.title = props.title
         document.addEventListener("keydown", onKeyDown, false)
         body.style.overflowY = "hidden"
 
         return () => {
-            body.style.overflowY = ""
             document.removeEventListener("keydown", onKeyDown, false)
+            body.style.overflowY = ""
         }
-
         // eslint-disable-next-line
     }, [])
-
+    
     const onKeyDown = (event: KeyboardEvent) => {
 
-        if (event.key === "Escape") {
-            navigate(-1)
-        }
+        if (event.key === "Escape") navigate(-1)
     }
 
     return (
@@ -41,17 +35,10 @@ function SignInModal() {
 
                 <CloseButton />
 
-                {!isShowSignUpSection &&
-                    <SignInSection setIsShowSignUpSection={setIsShowSignUpSection} />
-                }
-
-                {isShowSignUpSection &&
-                    <SignUpSection setIsShowSignUpSection={setIsShowSignUpSection} />
-                }
+                {props.children}
             </div>
         </div>
     )
 }
 
-
-export default SignInModal
+export default FormModal

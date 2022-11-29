@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import FireReports from "../../utilities/FireReports"
-import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
+import FormModal from "../parts/modals/FormModal"
 
 function ReportModal(props: { className?: string }) {
 
     const navigate = useNavigate()
     const { collectionName, documentId } = useParams()
-    const body = document.body
 
     const [probremIndex, setProbremIndex] = useState<number | null>(null)
     const [detail, setDetail] = useState("")
@@ -18,8 +17,12 @@ function ReportModal(props: { className?: string }) {
     const detailMax = 300
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-
         e.preventDefault()
+        addReport()
+    }
+
+    async function addReport() {
+
         setIsLoading(true)
 
         if (probremIndex === null) {
@@ -42,36 +45,9 @@ function ReportModal(props: { className?: string }) {
         navigate(-1)
     }
 
-    const onKeyDown = (event: KeyboardEvent) => {
-
-        if (event.key === "Escape") {
-            navigate(-1)
-        }
-    }
-
-    useEffect(() => {
-
-        document.title = "報告 - Meetings"
-        document.addEventListener("keydown", onKeyDown, false)
-        body.style.overflowY = "hidden"
-
-        return () => {
-            body.style.overflowY = ""
-            document.removeEventListener("keydown", onKeyDown, false)
-        }
-
-        // eslint-disable-next-line
-    }, [])
-
     return (
-        <div className={`z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center ${props.className}`}>
-
-            <div className="w-full h-full bg-black/20 dark:bg-white/20" onClick={() => navigate(-1)}></div>
-
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
-
-                <CloseButton />
-
+        <FormModal title="報告 - Meetings">
+            <div>
                 <p className="mt-3 text-2xl font-bold ml-3">
 
                     <span>
@@ -130,7 +106,7 @@ function ReportModal(props: { className?: string }) {
                     </div>
                 </form>
             </div>
-        </div>
+        </FormModal>
     )
 }
 

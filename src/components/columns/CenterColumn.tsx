@@ -1,18 +1,19 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 
-import HomeScreen from '../screens/HomeScreen'
-import ThreadScreen from '../screens/ThreadScreen'
-import NotFoundScreen from '../screens/NotFoundScreen'
-import SearchScreen from '../screens/SearchScreen'
-import CommentScreen from '../screens/CommentScreen'
-import UserScreen from '../screens/UserScreen'
-import ImageModal from '../modals/ImageModal'
-import ReportModal from '../modals/ReportModal'
-import EmptyModal from '../modals/EmptyModal'
-import SignInModal from '../modals/SignInModal'
-import AddCommentModal from '../modals/AddCommentModal'
-import AddThreadModal from '../modals/AddThreadModal'
-import EditUserModal from '../modals/EditUserModal'
+import HomeScreen from '../backgroundScreens/HomeScreen'
+import ThreadScreen from '../backgroundScreens/ThreadScreen'
+import NotFoundScreen from '../backgroundScreens/NotFoundScreen'
+import SearchScreen from '../backgroundScreens/SearchScreen'
+import CommentScreen from '../backgroundScreens/CommentScreen'
+import UserScreen from '../backgroundScreens/UserScreen'
+
+import ImageModal from '../foregroundModals/ImageModal'
+import ReportModal from '../foregroundModals/ReportModal'
+import EmptyModal from '../foregroundModals/EmptyModal'
+import SignInModal from '../foregroundModals/SignInModal'
+import AddCommentModal from '../foregroundModals/AddCommentModal'
+import AddThreadModal from '../foregroundModals/AddThreadModal'
+import EditUserModal from '../foregroundModals/EditUserModal'
 
 export default function CenterColumn(props: {className?: string}) {
 
