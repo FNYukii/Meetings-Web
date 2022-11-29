@@ -1,7 +1,7 @@
-function MyBox(props: any) {
+function MyBox(props: {children: JSX.Element, className?: string}) {
 
     return (
-        <div className="border">
+        <div className={`border ${props.className}`}>
             {props.children}
         </div>
     )

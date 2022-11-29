@@ -16,7 +16,7 @@ export default function RightColumn(props: {className?: string}) {
                     
                     <a href="https://github.com/Yu357/Meetings-Web" target="blank" className="hover:underline">Source</a>
 
-                    <MyBox>
+                    <MyBox className="text-xl">
                         <span>hello</span>
                     </MyBox>
                 </div>
