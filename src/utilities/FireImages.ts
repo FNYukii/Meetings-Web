@@ -31,6 +31,26 @@ class FireImages {
                 return null
             })
     }
+
+    static async uploadImages(files: File[], folderName: string): Promise<string[] | null> {
+
+        let imageUrls: string[] = []
+
+        // 画像を順にアップロードしていく
+        files.forEach( async file => {
+
+            // 画像をアップロード
+            const imageUrl = await this.uploadImage(file, folderName)
+
+            // 失敗
+            if (!imageUrl) return null
+
+            // 成功
+            imageUrls.push(imageUrl)
+        })
+
+        return imageUrls
+    }
 }
 
 export default FireImages
