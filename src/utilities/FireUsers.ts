@@ -66,7 +66,7 @@ export default class FireUsers {
             }
 
             // 成功
-            console.log("Read 1 User from server.")
+            // console.log("Read 1 User from server.")
             return this.toUser(docSnapFromServer)
         }
     }
@@ -85,7 +85,7 @@ export default class FireUsers {
             }
 
             // 成功
-            console.log("Read 1 User from server / cache.")
+            // console.log("Read 1 User from server / cache.")
             return this.toUser(docSnap)
 
         } catch (error) {
@@ -123,7 +123,7 @@ export default class FireUsers {
                 const querySnapshot = await getDocsFromServer(q)
 
                 // 成功
-                console.log(`Read ${querySnapshot.size} Users from server.`)
+                // console.log(`Read ${querySnapshot.size} Users from server.`)
 
                 // 配列users
                 let users: User[] = []
@@ -152,7 +152,7 @@ export default class FireUsers {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Users from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Users from server / cache.`)
 
             // 配列users
             let users: User[] = []
@@ -180,7 +180,7 @@ export default class FireUsers {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Users from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Users from server / cache.`)
 
             // Users
             let users: User[] = []
@@ -212,7 +212,7 @@ export default class FireUsers {
             const querySnapshot = await getDocsFromServer(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Users from server.`)
+            // console.log(`Read ${querySnapshot.size} Users from server.`)
 
             // Users
             let users: User[] = []
@@ -258,7 +258,7 @@ export default class FireUsers {
                 userTag: ExString.randomText()
             })
 
-            console.log("Added 1 User.")
+            // console.log("Added 1 User.")
 
             return uid
 
@@ -325,13 +325,13 @@ export default class FireUsers {
                 iconUrl: iconUrl
             })
 
-            console.log(`Updated 1 User.`)
+            // console.log(`Updated 1 User.`)
 
             return uid
 
         } catch (error) {
 
-            console.log(`Failed to update User. ${error}`)
+            // console.log(`Failed to update User. ${error}`)
             return null
         }
     }
@@ -353,13 +353,13 @@ export default class FireUsers {
                 likedCommentIds: arrayUnion(commentId)
             })
 
-            console.log(`Updated 1 User.`)
+            // console.log(`Updated 1 User.`)
 
             return uid
 
         } catch (error) {
 
-            console.log(`Failed to update User. ${error}`)
+            // console.log(`Failed to update User. ${error}`)
             return null
         }
     }
@@ -381,13 +381,13 @@ export default class FireUsers {
                 likedCommentIds: arrayRemove(commentId)
             })
 
-            console.log(`Updated 1 User.`)
+            // console.log(`Updated 1 User.`)
 
             return uid
 
         } catch (error) {
 
-            console.log(`Failed to update User. ${error}`)
+            // console.log(`Failed to update User. ${error}`)
             return null
         }
     }

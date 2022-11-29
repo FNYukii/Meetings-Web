@@ -20,7 +20,7 @@ function CommentsInThreadList(props: { threadId: string }) {
             if (querySnapshot.metadata.hasPendingWrites) return
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // 配列comments
             let comments: Comment[] = []

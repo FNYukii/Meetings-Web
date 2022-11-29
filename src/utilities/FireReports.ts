@@ -25,7 +25,7 @@ export default class FireReports {
                 detail: detail
             })
 
-            console.log("Added 1 Report.")
+            // console.log("Added 1 Report.")
 
             return ref.id
 

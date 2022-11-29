@@ -50,7 +50,7 @@ export default class FireComments {
             }
 
             // 成功
-            console.log(`Read 1 Comment from server.`)
+            // console.log(`Read 1 Comment from server.`)
             return this.toComment(docSnapFromServer)
         }
     }
@@ -91,7 +91,7 @@ export default class FireComments {
                 const querySnapshot = await getDocsFromServer(q)
     
                 // 成功
-                console.log(`Read ${querySnapshot.size} Comments from server.`)
+                // console.log(`Read ${querySnapshot.size} Comments from server.`)
     
                 // 配列comments
                 let comments: Comment[] = []
@@ -125,7 +125,7 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // 配列comments
             let comments: Comment[] = []
@@ -191,7 +191,7 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // 配列comments
             let comments: Comment[] = []
@@ -219,7 +219,7 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
 
             // Comments
             let comments: Comment[] = []
@@ -276,12 +276,12 @@ export default class FireComments {
                 imageUrls: imageUrls
             })
 
-            console.log("Added 1 Comment.")
+            // console.log("Added 1 Comment.")
             return ref.id
 
         } catch (error) {
 
-            console.log(`Failed to comment creation. ${error}`)
+            // console.log(`Failed to comment creation. ${error}`)
             return null
         }
     }
@@ -291,12 +291,12 @@ export default class FireComments {
         return deleteDoc(doc(db, "comments", commentId))
             .then(() => {
 
-                console.log("Deleted 1 Comment.")
+                // console.log("Deleted 1 Comment.")
                 return commentId
             })
             .catch((error) => {
 
-                console.log(`Failed to comment deletion. ${error}`)
+                // console.log(`Failed to comment deletion. ${error}`)
                 return null
             })
     }

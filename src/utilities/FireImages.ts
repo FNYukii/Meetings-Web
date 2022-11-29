@@ -8,7 +8,7 @@ class FireImages {
 
         // UUIDを使ってランダムなファイル名を生成
         const fileName: string = `${v4()}.jpg`
-        console.log(`fileName: ${fileName}`)
+        // console.log(`fileName: ${fileName}`)
 
         // Firebase Cloud Storageの参照を作成
         const storageRef = ref(storage, `${folderName}/${fileName}`)
@@ -17,17 +17,17 @@ class FireImages {
         return await uploadBytes(storageRef, file)
             .then(async () => {
 
-                console.log("Uploaded 1 file.")
+                // console.log("Uploaded 1 file.")
 
                 // DownloadURLを取得
                 const downloadURL = await getDownloadURL(storageRef)
 
-                console.log(`downloadURL: ${downloadURL}`)
+                // console.log(`downloadURL: ${downloadURL}`)
                 return downloadURL
             })
             .catch((error) => {
 
-                console.log(`Failed to uploading file. ${error}`)
+                // console.log(`Failed to uploading file. ${error}`)
                 return null
             })
     }

@@ -47,7 +47,7 @@ export default class FireThreads {
             }
 
             // 成功
-            console.log(`Read 1 Thread from server.`)
+            // console.log(`Read 1 Thread from server.`)
             return this.toThread(docSnapFromServer)
         }
     }
@@ -66,7 +66,7 @@ export default class FireThreads {
             }
 
             //成功
-            console.log(`Read 1 Thread from server.`)
+            // console.log(`Read 1 Thread from server.`)
             return this.toThread(docSnap)
 
         } catch (e) {
@@ -84,7 +84,7 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 読み取り成功
-            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []
@@ -128,7 +128,7 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []
@@ -156,7 +156,7 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
+            // console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
 
             // 配列threads
             let threads: Thread[] = []
@@ -239,12 +239,12 @@ export default class FireThreads {
                 tags: tags
             })
 
-            console.log("Added 1 Thread.")
+            // console.log("Added 1 Thread.")
             return ref.id
 
         } catch (error) {
 
-            console.log(`Failed to thread creation. ${error}`)
+            // console.log(`Failed to thread creation. ${error}`)
             return null
         }
     }
@@ -254,12 +254,12 @@ export default class FireThreads {
         return deleteDoc(doc(db, "threads", threadId))
             .then(() => {
 
-                console.log("Deleted 1 Thread.")
+                // console.log("Deleted 1 Thread.")
                 return threadId
             })
             .catch((error) => {
                 
-                console.log(`Failed to thread deletion. ${error}`)
+                // console.log(`Fsailed to thread deletion. ${error}`)
                 return null
             })
     }
