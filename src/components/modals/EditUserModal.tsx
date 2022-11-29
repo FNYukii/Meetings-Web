@@ -1,40 +1,19 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import User from "../../entities/User"
 import FireAuth from "../../utilities/FireAuth"
 import FireUsers from "../../utilities/FireUsers"
-import CloseButton from "../parts/buttons/CloseButton"
 import ProgressImage from "../parts/images/ProgressImage"
 import EditUserSection from "../parts/sections/EditUserSection"
+import Modal from "./Modal"
 
 function EditUserModal() {
-
-    const navigate = useNavigate()
-    const body = document.body
 
     const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         readUser()
-
-        document.title = "プロフィールを編集 - Meetings"
-        document.addEventListener("keydown", onKeyDown, false)
-        body.style.overflowY = "hidden"
-
-        return () => {
-            body.style.overflowY = ""
-            document.removeEventListener("keydown", onKeyDown, false)
-        }
-        // eslint-disable-next-line
     }, [])
-
-    const onKeyDown = (event: KeyboardEvent) => {
-
-        if (event.key === "Escape") {
-            navigate(-1)
-        }
-    }
 
     async function readUser() {
 
@@ -55,14 +34,8 @@ function EditUserModal() {
     }
 
     return (
-        <div className="z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center">
-
-            <div onClick={() => navigate(-1)} className="w-full h-full bg-black/20 dark:bg-white/20"></div>
-
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
-
-                <CloseButton />
-
+        <Modal title="プロフィールを編集 - Meetings">
+            <div>
                 {!isLoaded &&
                     <div className='flex justify-center p-3'>
                         <ProgressImage />
@@ -79,7 +52,7 @@ function EditUserModal() {
                     <EditUserSection user={user} />
                 }
             </div>
-        </div>
+        </Modal>
     )
 }
 
