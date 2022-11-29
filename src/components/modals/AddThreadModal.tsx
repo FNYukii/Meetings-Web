@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { AiOutlinePlus, AiOutlineTag } from "react-icons/ai"
 import { MdOutlineClose } from "react-icons/md"
 import { useNavigate } from "react-router-dom"
 import FireComments from "../../utilities/FireComments"
 import FireThreads from "../../utilities/FireThreads"
-import CloseButton from "../parts/buttons/CloseButton"
 import SubmitButton from "../parts/buttons/SubmitButton"
 import DynamicTextarea from "../parts/inputs/DynamicTextarea"
+import Modal from "./Modal"
 
 function AddThreadModal() {
 
     const navigate = useNavigate()
-    const body = document.body
 
     const [title, setTitle] = useState("")
     const [tags, setTags] = useState<string[]>([])
@@ -22,20 +21,6 @@ function AddThreadModal() {
     const tagsMax = 5
     const tagMax = 30
     const textMax = 300
-
-    useEffect(() => {
-
-        document.title = "新規コメント - Meetings"
-        document.addEventListener("keydown", onKeyDown, false)
-        body.style.overflowY = "hidden"
-
-        return () => {
-            document.removeEventListener("keydown", onKeyDown, false)
-            body.style.overflowY = ""
-        }
-
-        // eslint-disable-next-line
-    }, [])
 
     function addTag() {
         setTags([...tags, ""])
@@ -51,13 +36,6 @@ function AddThreadModal() {
         setTags(
             tags.filter((tag, i) => (i !== index))
         )
-    }
-
-    function onKeyDown(event: KeyboardEvent) {
-
-        if (event.key === "Escape") {
-            navigate(-1)
-        }
     }
 
     async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -83,54 +61,46 @@ function AddThreadModal() {
     }
 
     return (
-        <div className="z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center">
+        <Modal title="新規スレッド - Meetings">
+            <form onSubmit={(e) => onSubmit(e)}>
 
-            <div onClick={() => navigate(-1)} className="w-full h-full bg-black/20 dark:bg-white/20"></div>
+                <div className="mt-3 px-3">
 
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90">
+                    <p className="text-2xl font-bold">新しいスレッド</p>
 
-                <CloseButton />
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                <form onSubmit={(e) => onSubmit(e)}>
+                    {tags.map((tag, index) => (
 
-                    <div className="mt-3 px-3">
+                        <div key={index} className="mt-3 flex items-center w-1/2">
 
-                        <p className="text-2xl font-bold">新しいスレッド</p>
+                            <AiOutlineTag className="text-gray-500" />
+                            <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} maxLength={tagMax} placeholder="タグ" className="ml-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="タイトル" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                            <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900">
+                                <MdOutlineClose className="text-xl text-gray-500" />
+                            </button>
+                        </div>
+                    ))}
+                </div>
 
-                        {tags.map((tag, index) => (
+                <div className="px-1">
 
-                            <div key={index} className="mt-3 flex items-center w-1/2">
+                    <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900 disabled:text-gray-400 disabled:dark:text-gray-600 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent`}>
+                        <AiOutlinePlus />
+                        <span>タグを追加</span>
+                    </button>
+                </div>
 
-                                <AiOutlineTag className="text-gray-500" />
-                                <input type="text" onChange={(e) => editTag(index, e.target.value)} value={tags[index]} maxLength={tagMax} placeholder="タグ" className="ml-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                <div className="px-3">
+                    <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                </div>
 
-                                <button type="button" onClick={() => removeTag(index)} className="ml-1 p-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900">
-                                    <MdOutlineClose className="text-xl text-gray-500" />
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="px-1">
-
-                        <button type="button" onClick={addTag} disabled={tags.length >= tagsMax} className={`mt-3 flex items-center gap-3 text-gray-500 py-1 px-2 rounded-full transition hover:bg-zinc-100 dark:hover:bg-zinc-900 disabled:text-gray-400 disabled:dark:text-gray-600 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent`}>
-                            <AiOutlinePlus />
-                            <span>タグを追加</span>
-                        </button>
-                    </div>
-
-                    <div className="px-3">
-                        <DynamicTextarea value={text} setValue={setText} placeholder="コメント" className="mt-3 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
-                    </div>
-
-                    <div className="mt-3 flex justify-end">
-                        <SubmitButton text="作成" isLoading={isLoading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
-                    </div>
-                </form>
-            </div>
-        </div>
+                <div className="mt-3 flex justify-end">
+                    <SubmitButton text="作成" isLoading={isLoading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
+                </div>
+            </form>
+        </Modal>
     )
 }
 
