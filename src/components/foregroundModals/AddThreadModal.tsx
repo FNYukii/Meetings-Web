@@ -20,7 +20,7 @@ function AddThreadModal() {
     const [text, setText] = useState("")
     const [images, setImages] = useState<File[]>([])
 
-    const [isLoading, setIsLoading] = useState(false)
+    const [isUploading, setIsUploading] = useState(false)
 
     const titleMax = 50
     const tagsMax = 5
@@ -50,7 +50,7 @@ function AddThreadModal() {
 
     async function addThread() {
         
-        setIsLoading(true)
+        setIsUploading(true)
 
         // スレッドを作成
         const threadId = await FireThreads.createThread(title, tags)
@@ -58,7 +58,7 @@ function AddThreadModal() {
         // 失敗
         if (threadId === null) {
 
-            setIsLoading(false)
+            setIsUploading(false)
             alert("スレッドの作成に失敗しました。")
             return
         }
@@ -69,7 +69,7 @@ function AddThreadModal() {
 
         // 失敗
         if (!imageUrls) {
-            setIsLoading(false)
+            setIsUploading(false)
             alert("コメントの作成に失敗しました。")
             return
         }
@@ -126,7 +126,7 @@ function AddThreadModal() {
                 <div className="mt-3 flex justify-between">
 
                     <PickCommentImagesButton setImage={setImages} className="ml-1" />
-                    <SubmitButton text="作成" isLoading={isLoading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
+                    <SubmitButton text="作成" isLoading={isUploading} disabled={title.length > titleMax || !title.match(/\S/g) || tags.length > tagsMax || (tags.filter(item => item.length === 0 || item.length > tagMax)).length > 0 || text.length > textMax || !text.match(/\S/g)} />
                 </div>
             </form>
         </FormModal>

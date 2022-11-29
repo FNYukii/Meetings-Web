@@ -12,7 +12,8 @@ function ReportModal(props: { className?: string }) {
 
     const [probremIndex, setProbremIndex] = useState<number | null>(null)
     const [detail, setDetail] = useState("")
-    const [isLoading, setIsLoading] = useState(false)
+
+    const [isUploading, setIsUploading] = useState(false)
 
     const detailMax = 300
 
@@ -23,11 +24,11 @@ function ReportModal(props: { className?: string }) {
 
     async function addReport() {
 
-        setIsLoading(true)
+        setIsUploading(true)
 
         if (probremIndex === null) {
 
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
@@ -37,7 +38,7 @@ function ReportModal(props: { className?: string }) {
         if (reportId === null) {
             alert("報告の送信に失敗。")
 
-            setIsLoading(false)
+            setIsUploading(false)
             return
         }
 
@@ -102,7 +103,7 @@ function ReportModal(props: { className?: string }) {
                     </fieldset>
 
                     <div className="mt-3 flex justify-end">
-                        <SubmitButton text="送信" isLoading={isLoading} disabled={probremIndex === null || !detail.match(/\S/g) || detail.length > detailMax} />
+                        <SubmitButton text="送信" isLoading={isUploading} disabled={probremIndex === null || !detail.match(/\S/g) || detail.length > detailMax} />
                     </div>
                 </form>
             </div>

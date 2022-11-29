@@ -15,7 +15,7 @@ function AddCommentModal() {
     const [text, setText] = useState("")
     const [images, setImages] = useState<File[]>([])
 
-    const [isSubmited, setIsSubmited] = useState(false)
+    const [isUploading, setIsUploading] = useState(false)
 
     const textMax = 300
 
@@ -26,7 +26,7 @@ function AddCommentModal() {
 
     async function addComment() {
         
-        setIsSubmited(true)
+        setIsUploading(true)
 
         // 画像をアップロード
         const imageUrls = await FireImages.uploadImages(images, "images")
@@ -34,7 +34,7 @@ function AddCommentModal() {
         // 失敗
         if (!imageUrls) {
             alert("コメントの追加に失敗しました。")
-            setIsSubmited(false)
+            setIsUploading(false)
             return
         }
         
@@ -46,7 +46,7 @@ function AddCommentModal() {
         if (commentId === null) {
 
             alert("コメントの追加に失敗しました。")
-            setIsSubmited(false)
+            setIsUploading(false)
             return
         }
 
@@ -75,7 +75,7 @@ function AddCommentModal() {
                 <div className="mt-3 flex justify-between">
 
                     <PickCommentImagesButton setImage={setImages} className="ml-1" />
-                    <SubmitButton text="追加" isLoading={isSubmited} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
+                    <SubmitButton text="追加" isLoading={isUploading} disabled={text === "" || text.length > textMax || !text.match(/\S/g)} />
                 </div>
             </form>
         </FormModal>
