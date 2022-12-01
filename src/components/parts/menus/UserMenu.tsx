@@ -1,22 +1,21 @@
-import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { AiOutlineEdit, AiOutlineLogout } from "react-icons/ai";
-import { FiFlag } from "react-icons/fi";
-import { VscEllipsis } from "react-icons/vsc";
-import { Link, useLocation } from "react-router-dom";
-import User from "../../../entities/User";
-import FireAuth from "../../../utilities/FireAuth";
+import { MenuItem } from "@szhsin/react-menu"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { useEffect, useState } from "react"
+import { AiOutlineEdit, AiOutlineLogout } from "react-icons/ai"
+import { FiFlag } from "react-icons/fi"
+import { Link, useLocation } from "react-router-dom"
+import User from "../../../entities/User"
+import FireAuth from "../../../utilities/FireAuth"
+import PopupMenu from "./PopupMenu"
 
 function UserMenu(props: { user: User }) {
 
     const location = useLocation()
-    const [isDark, setIsDark] = useState(false)
     const [uid, setUid] = useState<string | null>(null)
 
     useEffect(() => {
 
-        const auth = getAuth();
+        const auth = getAuth()
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUid(user.uid)
@@ -26,25 +25,9 @@ function UserMenu(props: { user: User }) {
         })
     }, [])
 
-    function checkTheme() {
-        const isDark = matchMedia(
-            '(prefers-color-scheme: dark)'
-        ).matches;
-
-        setIsDark(isDark)
-    }
-
-    const menuButton = (
-        <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 transition rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
-            <VscEllipsis className="text-3xl" />
-        </MenuButton>
-    )
-
     return (
-        <div className="z-10">
-
-            <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined}>
-
+        <PopupMenu menuButtonClassName="text-3xl hover:bg-zinc-100 dark:hover:bg-zinc-900">
+            <div>
                 {uid !== props.user.id &&
 
                     <MenuItem>
@@ -74,8 +57,8 @@ function UserMenu(props: { user: User }) {
                         </MenuItem>
                     </div>
                 }
-            </Menu>
-        </div>
+            </div>
+        </PopupMenu>
     )
 }
 
