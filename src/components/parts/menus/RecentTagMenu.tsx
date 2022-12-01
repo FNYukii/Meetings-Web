@@ -1,6 +1,4 @@
 import { MenuItem } from '@szhsin/react-menu'
-import '@szhsin/react-menu/dist/index.css'
-import "@szhsin/react-menu/dist/theme-dark.css"
 import { AiOutlineMeh } from 'react-icons/ai'
 import PopupMenu from './PopupMenu'
 
