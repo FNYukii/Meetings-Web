@@ -118,8 +118,8 @@ function AddThreadModal() {
 
                 <div className="mt-3 mx-3 flex flex-wrap gap-3">
 
-                    {images.map((image) => (
-                        <img src={window.URL.createObjectURL(image)} alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
+                    {images.map((image, index) => (
+                        <img key={index} src={window.URL.createObjectURL(image)} alt="Attached to comment" className="max-h-32 aspect-ratio rounded-xl" />
                     ))}
                 </div>
 
