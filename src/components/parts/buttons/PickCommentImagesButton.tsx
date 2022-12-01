@@ -30,7 +30,7 @@ function PickCommentImagesButton(props: {setImage: React.Dispatch<React.SetState
                 <span>画像を追加</span>    
             </button>
 
-            <input hidden ref={inputRef} type="file" multiple accept=".jpg,.png" onChange={onFileInputChange} className="mt-3" />
+            <input hidden ref={inputRef} type="file" multiple accept=".jpg,.png,.gif" onChange={onFileInputChange} className="mt-3" />
         </div>
     )
 }
