@@ -18,7 +18,7 @@ function PopupMenu(props: { children: JSX.Element, menuButtonClassName?: string}
 
     const menuButton = (
         <MenuButton className={`transition rounded-full aspect-square flex items-center p-1 ${props.menuButtonClassName}`} onClick={checkTheme}>
-            <VscEllipsis className={`text-xl text-gray-500 pointer-events-auto`} />
+            <VscEllipsis className="text-gray-500 pointer-events-auto" />
         </MenuButton>
     )
 

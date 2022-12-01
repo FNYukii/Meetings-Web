@@ -5,7 +5,7 @@ import PopupMenu from './PopupMenu'
 function RecentTagMenu(props: { tag: string, removeTag: (tag: string) => void }) {
 
     return (
-        <PopupMenu menuButtonClassName='hover:bg-zinc-200 dark:hover:bg-zinc-800'>
+        <PopupMenu menuButtonClassName='text-xl hover:bg-zinc-200 dark:hover:bg-zinc-800'>
             <MenuItem>
 
                 <button onClick={() => props.removeTag(props.tag)} className="flex items-center gap-3 ">
