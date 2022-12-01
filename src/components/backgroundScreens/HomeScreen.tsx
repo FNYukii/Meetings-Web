@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import NewThreadLink from '../parts/links/NewThreadLink'
-import ThreadsRecentlyCreatedList from '../parts/lists/ThreadsRecentlyCreatedList'
+import ThreadsList from '../parts/lists/ThreadsList'
 
 function HomeScreen() {
 
@@ -22,7 +22,7 @@ function HomeScreen() {
                 </div>
             </div>
 
-            <ThreadsRecentlyCreatedList />
+            <ThreadsList />
         </div >
     )
 }
