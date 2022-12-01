@@ -1,7 +1,4 @@
-import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu'
-import { VscEllipsis } from 'react-icons/vsc'
-import '@szhsin/react-menu/dist/index.css'
-import "@szhsin/react-menu/dist/theme-dark.css"
+import { MenuItem } from '@szhsin/react-menu'
 import { useEffect, useState } from "react"
 import Comment from "../../../entities/Comment"
 import { Link, useLocation } from 'react-router-dom'
@@ -9,11 +6,11 @@ import { FiFlag, FiTrash } from 'react-icons/fi'
 import { auth } from '../../../utilities/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 import FireComments from '../../../utilities/FireComments'
+import PopupMenu from './PopupMenu'
 
 function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHidden?: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const location = useLocation()
-    const [isDark, setIsDark] = useState(false)
     const [uid, setUid] = useState<string | null>(null)
 
     useEffect(() => {
@@ -26,21 +23,6 @@ function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHid
             }
         })
     }, [])
-
-    function checkTheme() {
-        const isDark = matchMedia(
-            '(prefers-color-scheme: dark)'
-        ).matches;
-
-        setIsDark(isDark)
-    }
-
-    const menuButton = (
-
-        <MenuButton className="hover:bg-zinc-100 dark:hover:bg-zinc-900 transition rounded-full aspect-square flex items-center p-1" onClick={checkTheme}>
-            <VscEllipsis className={`${props.iconClassName} pointer-events-auto`} />
-        </MenuButton>
-    )
 
     async function deleteComment() {
 
@@ -56,15 +38,13 @@ function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHid
     }
 
     return (
-        <div className="z-10">
-            
-            <Menu menuButton={menuButton} theming={isDark ? "dark" : undefined} className="pointer-events-auto">
-
+        <PopupMenu menuButtonClassName='hover:bg-zinc-100 dark:hover:bg-zinc-900'>
+            <div>
                 {uid === props.comment.userId &&
 
                     <MenuItem>
                         <button onClick={deleteComment} className="flex items-center gap-3 text-red-500">
-                            <FiTrash className='text-xl'/>
+                            <FiTrash className='text-xl' />
                             <span>コメントを削除</span>
                         </button>
                     </MenuItem>
@@ -79,8 +59,8 @@ function CommentMenu(props: { comment: Comment, iconClassName?: string, setIsHid
                         </Link>
                     </MenuItem>
                 }
-            </Menu>
-        </div>
+            </div>
+        </PopupMenu>
     )
 }
 
