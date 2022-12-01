@@ -47,8 +47,8 @@ function ThreadRow(props: { thread: Thread }) {
                         <UserUserTagLink userId={props.thread.userId} />
                         <span className="text-gray-500">{ExDate.toHowManyAgoString(props.thread.createdAt)}</span>
 
-                        {Object.values(props.thread.tags).map((tag) => (
-                            <NavLink key={tag} to={`/search?keyword=${tag}`} className="z-10 pointer-events-auto hover:underline">{tag}</NavLink>
+                        {Object.values(props.thread.tags).map((tag, index) => (
+                            <NavLink key={index} to={`/search?keyword=${tag}`} className="z-10 pointer-events-auto hover:underline">{tag}</NavLink>
                         ))}
                     </div>
                 </div>
