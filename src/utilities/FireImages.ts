@@ -6,6 +6,10 @@ class FireImages {
 
     static async uploadImage(file: File, folderName: string): Promise<string | null> {
 
+        // ファイルサイズが10MB未満かどうかを確認
+        const fileSizeMax = 10485760
+        if (file.size > fileSizeMax) return null
+
         // ファイルの拡張子を取得
         const fileName = file.name
         const fileType: string = fileName.split('.').pop()!
