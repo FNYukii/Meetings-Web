@@ -6,12 +6,20 @@ class FireImages {
 
     static async uploadImage(file: File, folderName: string): Promise<string | null> {
 
-        // UUIDを使ってランダムなファイル名を生成
-        const fileName: string = `${v4()}.jpg`
-        // console.log(`fileName: ${fileName}`)
+        // ファイルサイズが10MB未満かどうかを確認
+        const fileSizeMax = 10485760
+        if (file.size > fileSizeMax) return null
+
+        // ファイルの拡張子を取得
+        const fileName = file.name
+        const fileType: string = fileName.split('.').pop()!
+
+        // UUIDを使って新しいファイル名を生成
+        const randomStr = v4()
+        const newFileName: string = `${randomStr}.${fileType}`
 
         // Firebase Cloud Storageの参照を作成
-        const storageRef = ref(storage, `${folderName}/${fileName}`)
+        const storageRef = ref(storage, `${folderName}/${newFileName}`)
 
         // ファイルをアップロード
         return await uploadBytes(storageRef, file)
