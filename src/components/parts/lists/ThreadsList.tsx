@@ -11,7 +11,7 @@ function ThreadsList() {
     const [threads, setThreads] = useState<Thread[] | null>(null)
     const [isLoaded, setIsloaded] = useState(false)
 
-    async function startReadingThreads() {
+    async function listenThreads() {
 
         const q = query(collection(db, "threads"), orderBy("createdAt", "desc"), limit(50))
 
@@ -48,7 +48,7 @@ function ThreadsList() {
 
     useEffect(() => {
 
-        startReadingThreads()
+        listenThreads()
     }, [])
 
     return (

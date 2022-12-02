@@ -11,7 +11,7 @@ function CommentsInThreadList(props: { threadId: string }) {
     const [comments, setComments] = useState<Comment[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    async function startReadingComments() {
+    async function listenComments() {
 
         const q = query(collection(db, "comments"), where("threadId", "==", props.threadId), orderBy("createdAt"), limit(1000))
 
@@ -47,7 +47,7 @@ function CommentsInThreadList(props: { threadId: string }) {
 
     useEffect(() => {
 
-        startReadingComments()
+        listenComments()
         // eslint-disable-next-line
     }, [])
 

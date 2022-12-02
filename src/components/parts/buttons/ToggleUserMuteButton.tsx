@@ -12,7 +12,7 @@ function ToggleUserMuteButton(props: { user: User }) {
     const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    async function readUser() {
+    async function listenUser() {
 
         const uid = FireAuth.uid()
         if (!uid) return
@@ -31,7 +31,7 @@ function ToggleUserMuteButton(props: { user: User }) {
 
     useEffect(() => {
 
-        readUser()
+        listenUser()
         // eslint-disable-next-line
     }, [])
 

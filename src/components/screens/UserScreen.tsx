@@ -20,7 +20,7 @@ function UserScreen() {
 
     const [selection, setSelection] = useState(0)
 
-    async function readUser() {
+    async function listenUser() {
 
         onSnapshot(doc(db, "users", userId!), (doc) => {
 
@@ -34,7 +34,7 @@ function UserScreen() {
     }
 
     useEffect(() => {
-        readUser()
+        listenUser()
         // eslint-disable-next-line
     }, [])
 
