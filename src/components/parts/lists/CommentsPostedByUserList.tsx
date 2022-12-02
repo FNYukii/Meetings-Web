@@ -4,6 +4,10 @@ import FireComments from "../../../utilities/FireComments"
 import CommentRow from "../rows/CommentRow"
 import ProgressImage from "../images/ProgressImage"
 import User from "../../../entities/User"
+import { onSnapshot, doc } from "firebase/firestore"
+import FireAuth from "../../../utilities/FireAuth"
+import { db } from "../../../utilities/firebase"
+import FireUsers from "../../../utilities/FireUsers"
 
 function CommentsPostedByUserList(props: {user: User, className?: string}) {
 
@@ -20,10 +24,33 @@ function CommentsPostedByUserList(props: {user: User, className?: string}) {
         setIsLoaded(true)
     }
 
+    const [mutedUserIds, setMutedUserIds] = useState<string[] | null>(null)
+
+    async function listenMutedUserIds() {
+
+        const uid = FireAuth.uid()
+        if (!uid) return
+
+        onSnapshot(doc(db, "users", uid), (doc) => {
+
+            const user = FireUsers.toUserFromDocumentSnapshot(doc)
+            setMutedUserIds(user.mutedUserIds)
+            setIsLoaded(true)
+        }, (error) => {
+
+            console.log(`User reading failed. ${error}`)
+            setIsLoaded(true)
+        })
+    }
+
+    useEffect(() => {
+        listenMutedUserIds()
+    }, [])
+
     useEffect(() => {
         readComments()
         // eslint-disable-next-line
-    }, [props.user.displayName, props.user.userTag, props.user.iconUrl])
+    }, [props.user.displayName, props.user.userTag, props.user.iconUrl, mutedUserIds])
 
     return (
         <div className={props.className}>
