@@ -21,6 +21,24 @@ export default class FireComments {
         return comment
     }
 
+    static async toUnmutedComments(from: Comment[]): Promise<Comment[] | null> {
+
+        const comments = from
+
+        const mutedUserIds = await FireUsers.readMutedUserIds()
+        if (!mutedUserIds) return null 
+
+        let unmutedComments: Comment[] = []
+        comments.forEach(comment => {
+
+            if (!mutedUserIds.includes(comment.userId)) {
+                unmutedComments.push(comment)
+            }
+        })
+
+        return unmutedComments
+    }
+
     static async readCommentFromCache(commentId: string): Promise<Comment | null> {
 
         const docRef = doc(db, "comments", commentId)

@@ -28,16 +28,16 @@ export default class FireThreads {
         const mutedUserIds = await FireUsers.readMutedUserIds()
         if (!mutedUserIds) return null
 
-        let mutedThreads: Thread[] = []
+        let unmutedThreads: Thread[] = []
         threads.forEach(thread => {
 
             // ミュート中のユーザーの物以外のスレッドのみ残す
             if (!mutedUserIds.includes(thread.userId)) {
-                mutedThreads.push(thread)
+                unmutedThreads.push(thread)
             }
         })
 
-        return mutedThreads
+        return unmutedThreads
     }
 
     static async readThreadFromCache(threadId: string): Promise<Thread | null> {
