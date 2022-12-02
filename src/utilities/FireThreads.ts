@@ -21,7 +21,9 @@ export default class FireThreads {
         return thread
     }
 
-    static async muteThreads(threads: Thread[]): Promise<Thread[] | null> {
+    static async toUnmutedThreads(from: Thread[]): Promise<Thread[] | null> {
+
+        const threads = from
 
         const mutedUserIds = await FireUsers.readMutedUserIds()
         if (!mutedUserIds) return null
@@ -218,10 +220,10 @@ export default class FireThreads {
             }
         })
 
-        const mutedThreads = await this.muteThreads(uniqueThreads)
-        if (!mutedThreads) return null
+        const unmutedThreads = await this.toUnmutedThreads(uniqueThreads)
+        if (!unmutedThreads) return null
 
-        return mutedThreads
+        return unmutedThreads
     }
 
     static async createThread(title: string, tags: string[]): Promise<string | null> {

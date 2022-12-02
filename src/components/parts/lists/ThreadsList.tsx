@@ -29,11 +29,11 @@ function ThreadsList() {
                 threads.push(thread)
             })
 
-            const mutedThreads = await FireThreads.muteThreads(threads)
-            if (!mutedThreads) return
+            const unmutedThreads = await FireThreads.toUnmutedThreads(threads)
+            if (!unmutedThreads) return
 
             // Stateを更新
-            setThreads(mutedThreads)
+            setThreads(unmutedThreads)
             setIsloaded(true)
 
         }, (error) => {
