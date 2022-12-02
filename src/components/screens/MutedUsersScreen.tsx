@@ -1,4 +1,5 @@
 import BackButton from "../parts/buttons/BackButton"
+import MutedUsersList from "../parts/lists/MutedusersList"
 
 function MutedUsersScreen() {
 
@@ -15,6 +16,8 @@ function MutedUsersScreen() {
                     </div>
                 </div>
             </div>
+
+            <MutedUsersList/>
         </div>
     )
 }
