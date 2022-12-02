@@ -1,5 +1,5 @@
 import User from "../entities/User"
-import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc, arrayUnion, arrayRemove, DocumentSnapshot } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, getDocFromCache, getDocFromServer, getDoc, query, collection, where, getDocs, getDocsFromCache, getDocsFromServer, orderBy, startAt, endAt, limit, setDoc, serverTimestamp, updateDoc, arrayUnion, arrayRemove, DocumentSnapshot, documentId } from "firebase/firestore"
 import { doc } from "firebase/firestore"
 import { db } from "./firebase"
 import FireAuth from "./FireAuth"
@@ -93,6 +93,33 @@ export default class FireUsers {
         } catch (error) {
 
             // 失敗
+            return null
+        }
+    }
+
+    static async readUsers(userIds: string[]): Promise<User[] | null> {
+
+        const q = query(collection(db, "users"), where(documentId(), "in", userIds), limit(9999))
+
+        try {
+
+            // サーバーorキャッシュから読み取り
+            const querySnapshot = await getDocs(q)
+
+            // 成功
+            // 配列users
+            let users: User[] = []
+            querySnapshot.forEach((doc) => {
+                const user = this.toUser(doc)
+                users.push(user)
+            })
+
+            return users
+
+        } catch (error) {
+
+            // 失敗
+            console.log(`Users reading failed. ${error}`)
             return null
         }
     }
@@ -257,6 +284,23 @@ export default class FireUsers {
         return user.mutedUserIds
     }
 
+    static async readMutedUsers(): Promise<User[] | null> {
+
+        // UID
+        const uid = FireAuth.uid()
+        if (!uid) return null
+
+        // User
+        const user = await this.readUser(uid)
+        if (!user) return null
+
+        // Muted Users
+        const mutedUsers = await this.readUsers(user.mutedUserIds)
+        if (!mutedUsers) return null
+
+        return mutedUsers
+    }
+
     static async createUser(uid: string, displayName: string): Promise<string | null> {
 
         const displayNameMax = 30
@@ -324,7 +368,7 @@ export default class FireUsers {
         // ログイン状態をチェック
         const uid = FireAuth.uid()
         if (uid === null) {
-            
+
             return null
         }
 
