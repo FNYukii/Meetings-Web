@@ -27,7 +27,7 @@ export default class FireThreads {
 
         const uid = FireAuth.uid()
         if (!uid) return threads
-        
+
         // Muted user IDs
         const mutedUserIds = await FireUsers.readMutedUserIds()
         if (!mutedUserIds) return null
@@ -55,6 +55,7 @@ export default class FireThreads {
 
             // 失敗
             if (!docSnapFromCache.exists()) {
+                // console.log(`Thread does not exists.`)
                 return null
             }
 
@@ -63,21 +64,32 @@ export default class FireThreads {
             return this.toThread(docSnapFromCache)
 
         } catch (e) {
-            // サーバーから読み取り
-            const docSnapFromServer = await getDocFromServer(docRef)
 
-            // 失敗
-            if (!docSnapFromServer.exists()) {
+            try {
+
+                // サーバーから読み取り
+                const docSnapFromServer = await getDocFromServer(docRef)
+
+                // 失敗
+                if (!docSnapFromServer.exists()) {
+                    // console.log(`Thread does not exists.`)
+                    return null
+                }
+
+                // 成功
+                // console.log(`Read 1 Thread from server.`)
+                return this.toThread(docSnapFromServer)
+
+            } catch (error) {
+                
+                console.log(`Thread reading failed. ${error}`)
                 return null
             }
 
-            // 成功
-            // console.log(`Read 1 Thread from server.`)
-            return this.toThread(docSnapFromServer)
         }
     }
 
-    static async readThreadFromServer(threadId: string) : Promise<Thread | null> {
+    static async readThreadFromServer(threadId: string): Promise<Thread | null> {
 
         const docRef = doc(db, "threads", threadId)
 
@@ -94,7 +106,9 @@ export default class FireThreads {
             // console.log(`Read 1 Thread from server.`)
             return this.toThread(docSnap)
 
-        } catch (e) {
+        } catch (error) {
+
+            console.log(`Thread reading failed. ${error}`)
             return null
         }
     }
@@ -139,6 +153,7 @@ export default class FireThreads {
         } catch (error) {
 
             // 読み取り失敗
+            console.log(`Threads reading failed. ${error}`)
             return null
         }
     }
@@ -167,6 +182,7 @@ export default class FireThreads {
         } catch (error) {
 
             // 失敗
+            console.log(`Threads reading failed. ${error}`)
             return null
         }
     }
@@ -195,6 +211,7 @@ export default class FireThreads {
         } catch (error) {
 
             // 失敗
+            console.log(`Threads reading failed. ${error}`)
             return null
         }
     }
@@ -272,7 +289,7 @@ export default class FireThreads {
 
         } catch (error) {
 
-            // console.log(`Failed to thread creation. ${error}`)
+            console.log(`Failed to thread creation. ${error}`)
             return null
         }
     }
@@ -286,8 +303,8 @@ export default class FireThreads {
                 return threadId
             })
             .catch((error) => {
-                
-                // console.log(`Fsailed to thread deletion. ${error}`)
+
+                console.log(`Fsailed to thread deletion. ${error}`)
                 return null
             })
     }

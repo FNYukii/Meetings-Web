@@ -35,7 +35,7 @@ class FireImages {
             })
             .catch((error) => {
 
-                // console.log(`Failed to uploading file. ${error}`)
+                console.log(`File uploading failed. ${error}`)
                 return null
             })
     }

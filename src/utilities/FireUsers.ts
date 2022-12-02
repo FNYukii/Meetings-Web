@@ -59,17 +59,25 @@ export default class FireUsers {
 
         } catch (e) {
 
-            // サーバーから読み取り
-            const docSnapFromServer = await getDocFromServer(docRef)
+            try {
 
-            // 失敗
-            if (!docSnapFromServer.exists()) {
+                // サーバーから読み取り
+                const docSnapFromServer = await getDocFromServer(docRef)
+
+                // 失敗
+                if (!docSnapFromServer.exists()) {
+                    return null
+                }
+
+                // 成功
+                // console.log("Read 1 User from server.")
+                return this.toUser(docSnapFromServer)
+
+            } catch (error) {
+
+                console.log(`User reading failed. ${error}`)
                 return null
             }
-
-            // 成功
-            // console.log("Read 1 User from server.")
-            return this.toUser(docSnapFromServer)
         }
     }
 
@@ -93,6 +101,7 @@ export default class FireUsers {
         } catch (error) {
 
             // 失敗
+            console.log(`User reading failed. ${error}`)
             return null
         }
     }
@@ -166,6 +175,7 @@ export default class FireUsers {
             } catch (error) {
 
                 // 失敗
+                console.log(`Users reading failed. ${error}`)
                 return null
             }
         }
@@ -195,6 +205,7 @@ export default class FireUsers {
         } catch (error) {
 
             // 失敗
+            console.log(`Users reading failed. ${error}`)
             return null
         }
     }
@@ -223,6 +234,7 @@ export default class FireUsers {
         } catch (error) {
 
             // 失敗
+            console.log(`Users reading failed. ${error}`)
             return null
         }
     }
@@ -267,6 +279,7 @@ export default class FireUsers {
         } catch (error) {
 
             // 失敗
+            console.log(`Users reading failed. ${error}`)
             return null
         }
     }
@@ -323,6 +336,7 @@ export default class FireUsers {
 
         } catch (error) {
 
+            console.log(`Failed to User creation. ${error}`)
             return null
         }
     }
@@ -390,7 +404,7 @@ export default class FireUsers {
 
         } catch (error) {
 
-            // console.log(`Failed to update User. ${error}`)
+            console.log(`Failed to update User. ${error}`)
             return null
         }
     }
@@ -418,7 +432,7 @@ export default class FireUsers {
 
         } catch (error) {
 
-            // console.log(`Failed to update User. ${error}`)
+            console.log(`Failed to update User. ${error}`)
             return null
         }
     }
@@ -446,7 +460,7 @@ export default class FireUsers {
 
         } catch (error) {
 
-            // console.log(`Failed to update User. ${error}`)
+            console.log(`Failed to update User. ${error}`)
             return null
         }
     }

@@ -32,6 +32,7 @@ export default class FireAuth {
             .catch((error) => {
 
                 // 失敗
+                console.log(`Failed to sign in. ${error}`)
                 return null
             })
     }
@@ -66,6 +67,8 @@ export default class FireAuth {
                 return uid
             })
             .catch((error) => {
+
+                console.log(`Failed to sign out. ${error}`)
                 return null
             })
     }

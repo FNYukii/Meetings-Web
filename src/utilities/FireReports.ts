@@ -31,6 +31,7 @@ export default class FireReports {
 
         } catch (error) {
 
+            console.log(`Failed to Report creation. ${error}`)
             return null
         }
     }

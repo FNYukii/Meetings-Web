@@ -24,6 +24,7 @@ function ToggleUserMuteButton(props: { user: User }) {
             setIsLoaded(true)
         }, (error) => {
 
+            console.log(`User reading failed. ${error}`)
             setIsLoaded(true)
         })
     }

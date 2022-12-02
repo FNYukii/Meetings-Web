@@ -53,6 +53,7 @@ export default class FireComments {
 
             // 失敗
             if (!docSnapFromCache.exists()) {
+                // console.log(`Comment does not exists.`)
                 return null
             }
 
@@ -62,17 +63,26 @@ export default class FireComments {
 
         } catch (e) {
 
-            // サーバーから読み取り
+            try {
+
+                // サーバーから読み取り
             const docSnapFromServer = await getDocFromServer(docRef)
 
             // 失敗
             if (!docSnapFromServer.exists()) {
+                // console.log(`Comment does not exists.`)
                 return null
             }
 
             // 成功
             // console.log(`Read 1 Comment from server.`)
             return this.toComment(docSnapFromServer)
+                
+            } catch (error) {
+                
+                console.log(`Comment reading failed. ${error}`)
+                return null
+            }            
         }
     }
 
@@ -129,8 +139,9 @@ export default class FireComments {
                 // 成功
                 return comments[0]
 
-            } catch (e) {
+            } catch (error) {
 
+                console.log(`Comment reading failed. ${error}`)
                 return null
             }
         }
@@ -163,6 +174,7 @@ export default class FireComments {
         } catch (error) {
 
             // 失敗
+            console.log(`Comments reading failed. ${error}`)
             return null
         }
     }
@@ -236,6 +248,7 @@ export default class FireComments {
         } catch (error) {
 
             // 失敗
+            console.log(`Comments reading failed. ${error}`)
             return null
         }
     }
@@ -267,6 +280,7 @@ export default class FireComments {
         } catch (error) {
 
             // 失敗
+            console.log(`Comments reading failed. ${error}`)
             return null
         }
     }
@@ -315,7 +329,7 @@ export default class FireComments {
 
         } catch (error) {
 
-            // console.log(`Failed to comment creation. ${error}`)
+            console.log(`Failed to comment creation. ${error}`)
             return null
         }
     }
@@ -330,7 +344,7 @@ export default class FireComments {
             })
             .catch((error) => {
 
-                // console.log(`Failed to comment deletion. ${error}`)
+                console.log(`Failed to comment deletion. ${error}`)
                 return null
             })
     }

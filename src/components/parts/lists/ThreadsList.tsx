@@ -41,6 +41,7 @@ function ThreadsList() {
 
         }, (error) => {
 
+            console.log(`Threads reading failed. ${error}`)
             setIsloaded(true)
         })
     }

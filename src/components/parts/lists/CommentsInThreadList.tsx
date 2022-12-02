@@ -40,6 +40,7 @@ function CommentsInThreadList(props: { threadId: string }) {
 
         }, (error) => {
 
+            console.log(`Comments reading failed. ${error}`)
             setIsLoaded(true)
         })
     }
