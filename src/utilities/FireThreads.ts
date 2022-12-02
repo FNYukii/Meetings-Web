@@ -4,6 +4,7 @@ import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromSe
 import { db } from './firebase'
 import ExArray from './ExArray'
 import FireAuth from './FireAuth'
+import FireUsers from './FireUsers'
 
 export default class FireThreads {
 
@@ -18,6 +19,23 @@ export default class FireThreads {
 
         const thread: Thread = { id: id, userId: userId, createdAt: createdAt, commentedAt: commentedAt, title: title, tags: tags }
         return thread
+    }
+
+    static async muteThreads(threads: Thread[]): Promise<Thread[] | null> {
+
+        const mutedUserIds = await FireUsers.readMutedUserIds()
+        if (!mutedUserIds) return null
+
+        let mutedThreads: Thread[] = []
+        threads.forEach(thread => {
+
+            // ミュート中のユーザーの物以外のスレッドのみ残す
+            if (!mutedUserIds.includes(thread.userId)) {
+                mutedThreads.push(thread)
+            }
+        })
+
+        return mutedThreads
     }
 
     static async readThreadFromCache(threadId: string): Promise<Thread | null> {
@@ -200,7 +218,10 @@ export default class FireThreads {
             }
         })
 
-        return uniqueThreads
+        const mutedThreads = await this.muteThreads(uniqueThreads)
+        if (!mutedThreads) return null
+
+        return mutedThreads
     }
 
     static async createThread(title: string, tags: string[]): Promise<string | null> {

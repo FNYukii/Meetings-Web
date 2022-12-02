@@ -17,8 +17,9 @@ export default class FireUsers {
 
         const iconUrl: string = document.data().iconUrl
         const likedCommentIds: string[] = document.data().likedCommentIds ?? []
+        const mutedUserIds: string[] = document.data().mutedUserIds ?? []
 
-        const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds }
+        const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds, mutedUserIds }
         return user
     }
 
@@ -32,8 +33,9 @@ export default class FireUsers {
 
         const iconUrl: string = document.get("iconUrl")
         const likedCommentIds: string[] = document.get("likedCommentIds") ?? []
+        const mutedUserIds: string[] = document.get("mutedUserIds") ?? []
 
-        const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds }
+        const user: User = { id: id, userTag: userTag, displayName: displayName, introduction: introduction, iconUrl: iconUrl, likedCommentIds: likedCommentIds, mutedUserIds }
         return user
     }
 
@@ -240,6 +242,19 @@ export default class FireUsers {
             // 失敗
             return null
         }
+    }
+
+    static async readMutedUserIds(): Promise<string[] | null> {
+
+        // 非ログイン状態なら失敗
+        const uid = FireAuth.uid()
+        if (!uid) return null
+
+        // ミュートしているユーザーのIDを取得
+        const user = await this.readUser(uid)
+        if (!user) return null
+
+        return user.mutedUserIds
     }
 
     static async createUser(uid: string, displayName: string): Promise<string | null> {
