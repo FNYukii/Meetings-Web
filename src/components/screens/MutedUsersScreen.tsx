@@ -12,7 +12,7 @@ function MutedUsersScreen() {
 
                     <div className="flex items-center">
                         <BackButton />
-                        <span className='font-bold text-lg ml-11'>ミュート中のユーザー</span>
+                        <span className='font-bold text-lg ml-7'>ミュート中のユーザー</span>
                     </div>
                 </div>
             </div>
