@@ -218,7 +218,10 @@ export default class FireThreads {
             }
         })
 
-        return uniqueThreads
+        const mutedThreads = await this.muteThreads(uniqueThreads)
+        if (!mutedThreads) return null
+
+        return mutedThreads
     }
 
     static async createThread(title: string, tags: string[]): Promise<string | null> {
