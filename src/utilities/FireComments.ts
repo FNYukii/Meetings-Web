@@ -26,7 +26,7 @@ export default class FireComments {
         const comments = from
 
         const mutedUserIds = await FireUsers.readMutedUserIds()
-        if (!mutedUserIds) return null 
+        if (!mutedUserIds) return null
 
         let unmutedComments: Comment[] = []
         comments.forEach(comment => {
@@ -107,27 +107,27 @@ export default class FireComments {
             try {
                 // キャッシュから読み取り
                 const querySnapshot = await getDocsFromServer(q)
-    
+
                 // 成功
                 // console.log(`Read ${querySnapshot.size} Comments from server.`)
-    
+
                 // 配列comments
                 let comments: Comment[] = []
                 querySnapshot.forEach((doc) => {
                     const comment = this.toComment(doc)
                     comments.push(comment)
                 })
-    
+
                 // 0件なら終了
                 if (comments.length === 0) {
                     return null
                 }
-    
+
                 // 成功
                 return comments[0]
-    
+
             } catch (e) {
-    
+
                 return null
             }
         }
@@ -152,7 +152,10 @@ export default class FireComments {
                 comments.push(comment)
             })
 
-            return comments
+            const unmutedComments = await this.toUnmutedComments(comments)
+            if (!unmutedComments) return null
+
+            return unmutedComments
 
         } catch (error) {
 
@@ -196,7 +199,11 @@ export default class FireComments {
         }))
 
         likedComments = likedComments.reverse()
-        return likedComments
+
+        const unmutedComments = await this.toUnmutedComments(likedComments)
+        if (!unmutedComments) return null
+
+        return unmutedComments
     }
 
     static async readCommentsWithImages(): Promise<Comment[] | null> {
