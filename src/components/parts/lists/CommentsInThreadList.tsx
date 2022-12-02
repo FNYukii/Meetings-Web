@@ -15,7 +15,7 @@ function CommentsInThreadList(props: { threadId: string }) {
 
         const q = query(collection(db, "comments"), where("threadId", "==", props.threadId), orderBy("createdAt"), limit(1000))
 
-        onSnapshot(q, (querySnapshot) => {
+        onSnapshot(q, async (querySnapshot) => {
 
             if (querySnapshot.metadata.hasPendingWrites) return
 
@@ -29,7 +29,10 @@ function CommentsInThreadList(props: { threadId: string }) {
                 comments.push(comment)
             })
 
-            setComments(comments)
+            const unmutedComments = await FireComments.toUnmutedComments(comments)
+            if (!unmutedComments) return
+
+            setComments(unmutedComments)
             setIsLoaded(true)
 
         }, (error) => {
