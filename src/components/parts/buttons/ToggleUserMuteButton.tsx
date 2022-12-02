@@ -1,24 +1,36 @@
+import { doc, onSnapshot } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import User from "../../../entities/User"
+import FireAuth from "../../../utilities/FireAuth"
+import { db } from "../../../utilities/firebase"
 import FireUsers from "../../../utilities/FireUsers"
 import ProgressImage from "../images/ProgressImage"
 
 function ToggleUserMuteButton(props: { user: User }) {
 
-    const [mutedUserIds, setMutedUserIds] = useState<string[] | null>(null)
+    const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
-    async function readMutedUserIds() {
+    async function readUser() {
 
-        const users = await FireUsers.readMutedUserIds()
-        setMutedUserIds(users)
-        setIsLoaded(true)
+        const uid = FireAuth.uid()
+        if (!uid) return
+
+        onSnapshot(doc(db, "users", uid), (doc) => {
+
+            const user = FireUsers.toUserFromDocumentSnapshot(doc)
+            setUser(user)
+            setIsLoaded(true)
+        }, (error) => {
+
+            setIsLoaded(true)
+        })
     }
 
     useEffect(() => {
 
-        readMutedUserIds()
+        readUser()
         // eslint-disable-next-line
     }, [])
 
@@ -29,7 +41,7 @@ function ToggleUserMuteButton(props: { user: User }) {
                 <ProgressImage className="w-6"/>
             }
 
-            {isLoaded && mutedUserIds && !mutedUserIds.includes(props.user.id) &&
+            {isLoaded && user && !user.mutedUserIds.includes(props.user.id) &&
 
                 <button onClick={() => FireUsers.muteUser(props.user.id)} className="flex items-center gap-3">
 
@@ -39,7 +51,7 @@ function ToggleUserMuteButton(props: { user: User }) {
                 </button>
             }
 
-            {isLoaded && mutedUserIds && mutedUserIds.includes(props.user.id) &&
+            {isLoaded && user && user.mutedUserIds.includes(props.user.id) &&
             
                 <button onClick={() => FireUsers.unmuteUser(props.user.id)} className="flex items-center gap-3">
 
