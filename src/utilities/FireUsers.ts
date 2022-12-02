@@ -450,4 +450,54 @@ export default class FireUsers {
             return null
         }
     }
+
+    static async muteUser(userId: string): Promise<string | null> {
+
+        // UID
+        const uid = FireAuth.uid()
+        if (!uid) return null
+
+        // Document Reference
+        const ref = doc(db, "users", uid)
+
+        // Update document
+        try {
+
+            await updateDoc(ref, {
+                mutedUserIds: arrayUnion(userId)
+            })
+
+            return uid
+
+        } catch (error) {
+
+            console.log(`Failed to update User. ${error}`)
+            return null
+        }
+    }
+
+    static async unmuteUser(userId: string): Promise<string | null> {
+
+        // UID
+        const uid = FireAuth.uid()
+        if (!uid) return null
+
+        // Document Reference
+        const ref = doc(db, "users", uid)
+
+        // Update document
+        try {
+
+            await updateDoc(ref, {
+                mutedUserIds: arrayRemove(userId)
+            })
+
+            return uid
+
+        } catch (error) {
+
+            console.log(`Failed to update User. ${error}`)
+            return null
+        }
+    }
 }
