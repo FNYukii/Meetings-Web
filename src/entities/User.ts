@@ -5,7 +5,9 @@ type User = {
     displayName: string
     introduction: string
     iconUrl: string | null
+
     likedCommentIds: string[]
+    mutedUserIds: string[]
 }
 
 export default User
