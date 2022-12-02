@@ -29,7 +29,20 @@ function UserMenu(props: { user: User }) {
     return (
         <PopupMenu menuButtonClassName="text-3xl hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <div>
-                {uid !== props.user.id &&
+                {!uid &&
+
+                    <div>
+                        <MenuItem>
+
+                            <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                                <FiFlag className='text-gray-500 text-xl' />
+                                <span>ユーザーを報告</span>
+                            </Link>
+                        </MenuItem>
+                    </div>
+                }
+
+                {uid && uid !== props.user.id &&
 
                     <div>
                         <MenuItem>
@@ -41,7 +54,7 @@ function UserMenu(props: { user: User }) {
                         </MenuItem>
 
                         <MenuItem>
-                            <ToggleUserMuteButton user={props.user}/>
+                            <ToggleUserMuteButton user={props.user} />
                         </MenuItem>
                     </div>
                 }
