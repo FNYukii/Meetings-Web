@@ -108,6 +108,9 @@ export default class FireUsers {
 
     static async readUsers(userIds: string[]): Promise<User[] | null> {
 
+        if (userIds.length === 0) return []
+        if (userIds.length > 10) return null
+
         const q = query(collection(db, "users"), where(documentId(), "in", userIds), limit(9999))
 
         try {
