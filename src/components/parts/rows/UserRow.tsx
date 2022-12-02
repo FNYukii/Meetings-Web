@@ -1,31 +1,35 @@
 import { NavLink } from "react-router-dom";
 import User from "../../../entities/User";
 import UserDisplayNameLink from "../links/UserDisplayNameLink";
-import UserIcon from "../images/UserIcon";
 import UserUserTagLink from "../links/UserUserTagLink";
+import UserIconLink from "../links/UserIconLink";
 
-function UserRow(props: {user: User, className?: string}) {
+function UserRow(props: { user: User, className?: string }) {
     return (
-        <div className={`flex p-3 relative ${props.className}`}>
+        <NavLink to={`/users/${props.user.id}`} className="dark:hover:bg-zinc-500/20 transition">
 
-            <NavLink to={`/users/${props.user.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20 transition" />
+            <div className={`flex p-3 relative hover:bg-zinc-500/10 ${props.className}`}>
+                
+                <UserIconLink userId={props.user.id}/>
 
-            <UserIcon iconUrl={props.user.iconUrl} className="h-12"/>
+                <div className="w-full">
 
-            <div className="w-full">
+                    <div className="ml-3 mr-2 flex justify-between items-center">
 
-                <div className="ml-3 mr-2 flex justify-between items-center">
+                        <div>
+                            <UserDisplayNameLink userId={props.user.id} />
 
-                    <div>
-                        <UserDisplayNameLink userId={props.user.id} />
-
-                        <UserUserTagLink userId={props.user.id} className="ml-3"/>
+                            <UserUserTagLink userId={props.user.id} className="ml-3" />
+                        </div>
                     </div>
-                </div>
 
-                <p className="ml-3 mr-3">{props.user.introduction}</p>
+                    <p className="ml-3 mr-3">{props.user.introduction}</p>
+                </div>
             </div>
-        </div>
+
+        </NavLink>
+
+
     )
 }
 
