@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
 import User from "../../../entities/User"
 import FireUsers from "../../../utilities/FireUsers"
+import ProgressImage from "../images/ProgressImage"
 
 function ToggleUserMuteButton(props: { user: User }) {
 
@@ -23,6 +24,10 @@ function ToggleUserMuteButton(props: { user: User }) {
 
     return (
         <div>
+
+            {!isLoaded &&
+                <ProgressImage className="w-6"/>
+            }
 
             {isLoaded && mutedUserIds && !mutedUserIds.includes(props.user.id) &&
 
