@@ -25,6 +25,9 @@ export default class FireComments {
 
         const comments = from
 
+        const uid = FireAuth.uid()
+        if (!uid) return comments
+
         const mutedUserIds = await FireUsers.readMutedUserIds()
         if (!mutedUserIds) return null
 

@@ -30,7 +30,10 @@ function CommentsInThreadList(props: { threadId: string }) {
             })
 
             const unmutedComments = await FireComments.toUnmutedComments(comments)
-            if (!unmutedComments) return
+            if (!unmutedComments) {
+                setIsLoaded(true)
+                return
+            }
 
             setComments(unmutedComments)
             setIsLoaded(true)

@@ -25,9 +25,14 @@ export default class FireThreads {
 
         const threads = from
 
+        const uid = FireAuth.uid()
+        if (!uid) return threads
+        
+        // Muted user IDs
         const mutedUserIds = await FireUsers.readMutedUserIds()
         if (!mutedUserIds) return null
 
+        // Convert all threads to only unmuted threads
         let unmutedThreads: Thread[] = []
         threads.forEach(thread => {
 

@@ -6,6 +6,7 @@ import { FiFlag } from "react-icons/fi"
 import { Link, NavLink, useLocation } from "react-router-dom"
 import User from "../../../entities/User"
 import FireAuth from "../../../utilities/FireAuth"
+import ToggleUserMuteButton from "../buttons/ToggleUserMuteButton"
 import PopupMenu from "./PopupMenu"
 
 function UserMenu(props: { user: User }) {
@@ -28,15 +29,34 @@ function UserMenu(props: { user: User }) {
     return (
         <PopupMenu menuButtonClassName="text-3xl hover:bg-zinc-100 dark:hover:bg-zinc-900">
             <div>
-                {uid !== props.user.id &&
+                {!uid &&
 
-                    <MenuItem>
+                    <div>
+                        <MenuItem>
 
-                        <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
-                            <FiFlag className='text-gray-500 text-xl' />
-                            <span>ユーザーを報告</span>
-                        </Link>
-                    </MenuItem>
+                            <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                                <FiFlag className='text-gray-500 text-xl' />
+                                <span>ユーザーを報告</span>
+                            </Link>
+                        </MenuItem>
+                    </div>
+                }
+
+                {uid && uid !== props.user.id &&
+
+                    <div>
+                        <MenuItem>
+
+                            <Link to={`/report/users/${props.user.id}`} state={{ previousPath: location.pathname }} className="flex items-center gap-3">
+                                <FiFlag className='text-gray-500 text-xl' />
+                                <span>ユーザーを報告</span>
+                            </Link>
+                        </MenuItem>
+
+                        <MenuItem>
+                            <ToggleUserMuteButton user={props.user} />
+                        </MenuItem>
+                    </div>
                 }
 
                 {uid === props.user.id &&
@@ -53,14 +73,14 @@ function UserMenu(props: { user: User }) {
                         <MenuItem>
                             <NavLink to="/settings/muted" className="flex items-center gap-3">
 
-                                <AiOutlineEyeInvisible className='text-xl text-gray-500'/>
+                                <AiOutlineEyeInvisible className='text-xl text-gray-500' />
                                 <span>ミュート中のユーザー</span>
                             </NavLink>
                         </MenuItem>
 
                         <MenuItem>
                             <button onClick={() => FireAuth.signOut()} className="flex items-center gap-3 text-red-500">
-                                
+
                                 <AiOutlineLogout className='text-xl' />
                                 <span>サインアウト</span>
                             </button>
