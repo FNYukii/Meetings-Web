@@ -225,7 +225,10 @@ export default class FireComments {
                 comments.push(comment)
             })
 
-            return comments
+            const unmutedComments = await this.toUnmutedComments(comments)
+            if (!unmutedComments) return null
+
+            return unmutedComments
 
         } catch (error) {
 
