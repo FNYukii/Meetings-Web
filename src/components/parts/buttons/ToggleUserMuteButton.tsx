@@ -25,7 +25,8 @@ function ToggleUserMuteButton(props: { user: User }) {
         <div>
 
             {isLoaded && mutedUserIds && !mutedUserIds.includes(props.user.id) &&
-                <button className="flex items-center gap-3">
+
+                <button onClick={() => FireUsers.muteUser(props.user.id)} className="flex items-center gap-3">
 
                     <AiOutlineEyeInvisible className='text-gray-500 text-xl' />
 
@@ -34,7 +35,8 @@ function ToggleUserMuteButton(props: { user: User }) {
             }
 
             {isLoaded && mutedUserIds && mutedUserIds.includes(props.user.id) &&
-                <button className="flex items-center gap-3">
+            
+                <button onClick={() => FireUsers.unmuteUser(props.user.id)} className="flex items-center gap-3">
 
                     <AiOutlineEye className='text-gray-500 text-xl' />
                     
