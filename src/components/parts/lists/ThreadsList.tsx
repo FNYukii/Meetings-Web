@@ -15,7 +15,7 @@ function ThreadsList() {
 
         const q = query(collection(db, "threads"), orderBy("createdAt", "desc"), limit(50))
 
-        onSnapshot(q, (querySnapshot) => {
+        onSnapshot(q, async (querySnapshot) => {
 
             if (querySnapshot.metadata.hasPendingWrites) return
 
@@ -29,8 +29,11 @@ function ThreadsList() {
                 threads.push(thread)
             })
 
+            const mutedThreads = await FireThreads.muteThreads(threads)
+            if (!mutedThreads) return
+
             // Stateを更新
-            setThreads(threads)
+            setThreads(mutedThreads)
             setIsloaded(true)
 
         }, (error) => {
