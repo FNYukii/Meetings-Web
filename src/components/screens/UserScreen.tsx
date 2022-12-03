@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import User from "../../entities/User"
 import FireUsers from "../../utilities/FireUsers"
 import BackButton from "../parts/buttons/BackButton"
@@ -15,6 +15,8 @@ import CommentsByUserTabBar from "../parts/sections/CommentsByUserTabBar"
 function UserScreen() {
 
     const { userId } = useParams()
+    const location = useLocation()
+
     const [user, setUser] = useState<User | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -29,6 +31,7 @@ function UserScreen() {
             setIsLoaded(true)
         }, (error) => {
 
+            console.log(`User reading failed. ${error}`)
             setIsLoaded(true)
         })
     }
@@ -36,7 +39,7 @@ function UserScreen() {
     useEffect(() => {
         listenUser()
         // eslint-disable-next-line
-    }, [])
+    }, [location])
 
     return (
         <div>
