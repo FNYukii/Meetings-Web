@@ -18,7 +18,7 @@ function ThreadScreen() {
                     <div className="flex items-center">
 
                         <BackButton />
-                        <ThreadTitleSpan threadId={threadId!} />
+                        <ThreadTitleSpan threadId={threadId!} className="ml-7" />
                     </div>
 
                     <NewCommentLink threadId={threadId!} />

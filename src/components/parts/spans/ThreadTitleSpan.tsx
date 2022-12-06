@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import Thread from "../../../entities/Thread"
 import FireThreads from "../../../utilities/FireThreads"
 
-function ThreadTitleSpan(props: {threadId: string}) {
+function ThreadTitleSpan(props: {threadId: string, className?: string}) {
 
     const [thread, setThread] = useState<Thread | null>(null)
 
@@ -21,7 +21,7 @@ function ThreadTitleSpan(props: {threadId: string}) {
     }, [])
 
     return (
-        <span className='font-bold text-lg ml-6'>{thread?.title ?? ""}</span>
+        <span className={`font-bold text-lg ${props.className}`}>{thread?.title ?? ""}</span>
     )
 }
 
