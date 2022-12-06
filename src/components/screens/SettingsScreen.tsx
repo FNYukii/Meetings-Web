@@ -1,9 +1,24 @@
+import { useEffect } from "react"
 import { AiOutlineEyeInvisible } from "react-icons/ai"
-import { IoIosArrowForward } from "react-icons/io"
-import { NavLink } from "react-router-dom"
+import { BsPerson } from "react-icons/bs"
+import { useNavigate } from "react-router-dom"
+import FireAuth from "../../utilities/FireAuth"
 import SignOutButton from "../parts/buttons/SignOutButton"
+import SettingsItemLink from "../parts/links/SettingsItemLink"
 
 function SettingsScreen() {
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+
+        // 非ログイン状態でこの画面にアクセスされたら、トップ画面へリダイレクト
+        const uid = FireAuth.uid()
+        if (!uid) {
+            navigate('/')
+        }
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>
@@ -17,20 +32,15 @@ function SettingsScreen() {
                 </div>
             </div>
 
-            <NavLink to="/settings/muted">
+            <SettingsItemLink title="アカウント情報" to="/settings/account">
+                <BsPerson className="text-gray-500 text-2xl" />
+            </SettingsItemLink>
 
-                <div className="p-3 flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-900">
+            <SettingsItemLink title="ミュートしているユーザー" to="/settings/muted">
+                <AiOutlineEyeInvisible className="text-gray-500 text-2xl" />
+            </SettingsItemLink>
 
-                    <div className="flex gap-3 items-center">
-                        <AiOutlineEyeInvisible className="text-gray-500 text-2xl" />
-                        <span>ミュートしているユーザー</span>
-                    </div>
-
-                    <IoIosArrowForward className="text-gray-500 text-1xl" />
-                </div>
-            </NavLink>
-
-            <SignOutButton/>
+            <SignOutButton />
         </div>
     )
 }
