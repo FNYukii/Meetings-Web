@@ -6,9 +6,9 @@ import UserIconLink from "../links/UserIconLink";
 
 function UserRow(props: { user: User, className?: string }) {
     return (
-        <NavLink to={`/users/${props.user.id}`} className="dark:hover:bg-zinc-500/20 transition">
+        <NavLink to={`/users/${props.user.id}`} className="dark:hover:bg-gray-500/20 transition">
 
-            <div className={`flex p-3 relative hover:bg-zinc-500/10 ${props.className}`}>
+            <div className={`flex p-3 relative hover:bg-gray-500/10 ${props.className}`}>
                 
                 <UserIconLink userId={props.user.id}/>
 

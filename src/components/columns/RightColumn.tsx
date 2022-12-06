@@ -1,4 +1,4 @@
-import RecentTagsCard from "../parts/sections/RecentTagsCard";
+import RecentTagsSection from "../parts/sections/RecentTagsSection";
 
 export default function RightColumn(props: {className?: string}) {
 
@@ -7,7 +7,7 @@ export default function RightColumn(props: {className?: string}) {
 
             <div className="sticky top-0 px-4 pt-2">
                 
-                <RecentTagsCard />
+                <RecentTagsSection />
 
                 <div className="mt-3 text-gray-500 text-sm flex flex-wrap gap-3">
 

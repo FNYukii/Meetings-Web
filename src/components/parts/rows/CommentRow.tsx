@@ -20,7 +20,7 @@ function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
             {!isHidden &&
                 <div className="relative">
 
-                    <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-100 dark:hover:bg-zinc-900 transition" />
+                    <NavLink to={`/comments/${props.comment.id}`} className="absolute top-0 left-0 w-full h-full hover:bg-gray-100 dark:hover:bg-gray-900 transition" />
 
                     <div className="flex pt-3 pb-1 pl-3">
 

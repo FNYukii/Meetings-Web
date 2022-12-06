@@ -27,7 +27,7 @@ function UserMenu(props: { user: User }) {
     }, [])
 
     return (
-        <PopupMenu menuButtonClassName="text-3xl hover:bg-zinc-100 dark:hover:bg-zinc-900">
+        <PopupMenu menuButtonClassName="text-3xl hover:bg-gray-100 dark:hover:bg-gray-900">
             <div>
                 {!uid &&
 

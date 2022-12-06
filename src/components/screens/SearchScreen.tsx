@@ -44,7 +44,7 @@ function SearchScreen() {
 
                     <form onSubmit={(e) => onSubmit(e)} className="z-10 w-full ml-3 relative flex items-center">
 
-                        <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-zinc-100 dark:bg-zinc-800 outline-blue-500 rounded-full"/>
+                        <input name="keyword" value={keyword} onChange={(e) => setKeyword(e.target.value)} placeholder="キーワード" autoComplete="off" className="w-full py-2 px-4 bg-gray-100 dark:bg-gray-800 outline-blue-500 rounded-full"/>
                     </form>
                 </div>
             </div>

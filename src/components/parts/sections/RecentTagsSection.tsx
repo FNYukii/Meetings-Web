@@ -3,7 +3,7 @@ import FireThreads from "../../../utilities/FireThreads"
 import ProgressImage from "../images/ProgressImage"
 import RecentTagRow from "../rows/RecentTagRow"
 
-function RecentTagsCard() {
+function RecentTagsSection() {
 
     const [tags, setTags] = useState<string[] | null>(null)
     const [isLoaded, setIsLoaded] = useState(false)
@@ -70,7 +70,7 @@ function RecentTagsCard() {
     }, [])
 
     return (
-        <div className="bg-zinc-100 dark:bg-zinc-900 w-full min-h-96 rounded-xl py-3">
+        <div className="bg-gray-100 dark:bg-gray-900 w-full min-h-96 rounded-xl py-3">
             <p className="font-bold text-lg mx-3">最近</p>
 
             {!isLoaded &&
@@ -102,4 +102,4 @@ function RecentTagsCard() {
     )
 }
 
-export default RecentTagsCard
+export default RecentTagsSection

@@ -34,7 +34,7 @@ function PickIconImageButton(props: { currentIconUrl: string | null, pickedIcon:
         <div className={`relative aspect-square w-16 ${props.className}`}>
 
             {!props.pickedIcon && !props.currentIconUrl &&
-                <div className="bg-zinc-200 dark:bg-zinc-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
+                <div className="bg-gray-200 dark:bg-gray-800 rounded-full absolute top-0 left-0 w-full h-full"></div>
             }
 
             {!props.pickedIcon && props.currentIconUrl &&
