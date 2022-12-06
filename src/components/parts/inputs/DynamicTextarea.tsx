@@ -11,7 +11,7 @@ function DynamicTextarea(props: { value: string, setValue: React.Dispatch<React.
             onChange={(e) => props.setValue(e.target.value)}
             ref={textAreaRef}
             placeholder={props.placeholder ?? ""}
-            className={`resize-none max-h-40 ${props.className}`}
+            className={`resize-none ${props.className}`}
         />
     )
 }
