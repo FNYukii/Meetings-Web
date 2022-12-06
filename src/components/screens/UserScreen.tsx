@@ -26,6 +26,13 @@ function UserScreen() {
 
         onSnapshot(doc(db, "users", userId!), (doc) => {
 
+            if (!doc.exists()) {
+
+                console.log(`User does not exists.`)
+                setIsLoaded(true)
+                return
+            }
+
             const user = FireUsers.toUserFromDocumentSnapshot(doc)
             setUser(user)
             setIsLoaded(true)
