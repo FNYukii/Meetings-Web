@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { AiOutlineHome, AiFillHome, AiOutlineLogin } from 'react-icons/ai'
+import { AiOutlineHome, AiFillHome, AiOutlineLogin, AiOutlineSetting, AiFillSetting } from 'react-icons/ai'
 import { HiSearch, HiOutlineSearch } from "react-icons/hi"
 import { useEffect, useState } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -11,7 +11,7 @@ export default function LeftColumn(props: { className?: string }) {
 
     const location = useLocation()
     const [uid, setUid] = useState<string | null>(FireAuth.uidFromLocalStorage())
-    
+
     useEffect(() => {
 
         onAuthStateChanged(auth, (user) => {
@@ -81,19 +81,37 @@ export default function LeftColumn(props: { className?: string }) {
                         }
 
                         {uid !== null &&
-                            <NavLink to={`/users/${uid}`} className="block mt-1 rounded-full" onClick={() => window.scrollTo(0, 0)}>
 
-                                {({ isActive }) => (
+                            <div>
 
-                                    <div className='flex items-center hover:bg-gray-100 dark:hover:bg-gray-900 transition p-3 rounded-full'>
+                                <NavLink to={`/users/${uid}`} className="block mt-1 rounded-full" onClick={() => window.scrollTo(0, 0)}>
 
-                                        <BsPerson className={`text-3xl ${isActive ? "hidden" : "block"}`} />
-                                        <BsPersonFill className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+                                    {({ isActive }) => (
 
-                                        <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>プロフィール</span>
-                                    </div>
-                                )}
-                            </NavLink>
+                                        <div className='flex items-center hover:bg-gray-100 dark:hover:bg-gray-900 transition p-3 rounded-full'>
+
+                                            <BsPerson className={`text-3xl ${isActive ? "hidden" : "block"}`} />
+                                            <BsPersonFill className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+
+                                            <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>プロフィール</span>
+                                        </div>
+                                    )}
+                                </NavLink>
+
+                                <NavLink to="/settings" className="block mt-1 rounded-full" onClick={() => window.scrollTo(0, 0)}>
+
+                                    {({ isActive }) => (
+
+                                        <div className='flex items-center hover:bg-gray-100 dark:hover:bg-gray-900 transition p-3 rounded-full'>
+                                            
+                                            <AiOutlineSetting className={`text-3xl ${isActive ? "hidden" : "block"}`} />
+                                            <AiFillSetting className={`text-3xl ${isActive ? "block" : "hidden"}`} />
+
+                                            <span className={`ml-5 text-xl xl:block hidden ${isActive ? "font-bold" : ""}`}>設定</span>
+                                        </div>
+                                    )}
+                                </NavLink>
+                            </div>
                         }
                     </div>
                 </div>
