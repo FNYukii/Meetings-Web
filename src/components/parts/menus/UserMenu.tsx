@@ -1,11 +1,10 @@
 import { MenuItem } from "@szhsin/react-menu"
 import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { useEffect, useState } from "react"
-import { AiOutlineEdit, AiOutlineEyeInvisible, AiOutlineLogout } from "react-icons/ai"
+import { AiOutlineEdit } from "react-icons/ai"
 import { FiFlag } from "react-icons/fi"
-import { Link, NavLink, useLocation } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import User from "../../../entities/User"
-import FireAuth from "../../../utilities/FireAuth"
 import ToggleUserMuteButton from "../buttons/ToggleUserMuteButton"
 import PopupMenu from "./PopupMenu"
 
@@ -68,22 +67,6 @@ function UserMenu(props: { user: User }) {
                                 <AiOutlineEdit className='text-xl text-gray-500' />
                                 <span>プロフィールを編集</span>
                             </Link>
-                        </MenuItem>
-
-                        <MenuItem>
-                            <NavLink to="/settings/muted" className="flex items-center gap-3">
-
-                                <AiOutlineEyeInvisible className='text-xl text-gray-500' />
-                                <span>ミュート中のユーザー</span>
-                            </NavLink>
-                        </MenuItem>
-
-                        <MenuItem>
-                            <button onClick={() => FireAuth.signOut()} className="flex items-center gap-3 text-red-500">
-
-                                <AiOutlineLogout className='text-xl' />
-                                <span>サインアウト</span>
-                            </button>
                         </MenuItem>
                     </div>
                 }
