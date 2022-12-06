@@ -62,13 +62,13 @@ function CommentsPostedByUserList(props: {user: User, className?: string}) {
 
             {isLoaded && comments === null &&
                 <div className="p-3">
-                    <p className="text-gray-500 text-center">読み取りに失敗しました。</p>
+                    <p className="text-gray-500 text-center">読み取りに失敗しました</p>
                 </div>
             }
 
             {isLoaded && comments !== null && comments.length === 0 &&
                 <div className="p-3">
-                    <p className="text-gray-500 text-center">結果なし</p>
+                    <p className="text-gray-500 text-center">コメントはありません</p>
                 </div>
             }
 
