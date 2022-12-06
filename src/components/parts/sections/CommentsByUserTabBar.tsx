@@ -1,9 +1,9 @@
 function CommentsByUserTabBar(props: {selection: number, setSelection: React.Dispatch<React.SetStateAction<number>>}) {
 
     return (
-        <div className="flex border-b border-zinc-200 dark:border-zinc-800 mt-3">
+        <div className="flex border-b border-gray-200 dark:border-gray-800 mt-3">
 
-            <button onClick={() => props.setSelection(0)} className="w-1/2 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+            <button onClick={() => props.setSelection(0)} className="w-1/2 transition hover:bg-gray-100 dark:hover:bg-gray-900 relative">
 
                 <div className="text-center p-3">
 
@@ -15,7 +15,7 @@ function CommentsByUserTabBar(props: {selection: number, setSelection: React.Dis
                 </div>
             </button>
 
-            <button onClick={() => props.setSelection(1)} className="w-1/2 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 relative">
+            <button onClick={() => props.setSelection(1)} className="w-1/2 transition hover:bg-gray-100 dark:hover:bg-gray-900 relative">
 
                 <div className="text-center p-3">
 

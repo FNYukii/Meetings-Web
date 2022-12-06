@@ -6,7 +6,7 @@ function CloseButton() {
     const navigate = useNavigate()
 
     return (
-        <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-zinc-100 dark:hover:bg-zinc-900 rounded-full">
+        <button onClick={() => navigate(-1)} className="p-3 transition hover:bg-gray-100 dark:hover:bg-gray-900 rounded-full">
             <MdOutlineClose className="text-2xl text-gray-500" />
         </button>
     )

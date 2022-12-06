@@ -20,7 +20,7 @@ function UserIconLink(props: { userId: string }) {
     return (
         <div className="z-10 relative h-12 aspect-square rounded-full">
 
-            <div className="w-full h-full bg-zinc-200 dark:bg-zinc-800 rounded-full"></div>
+            <div className="w-full h-full bg-gray-200 dark:bg-gray-800 rounded-full"></div>
 
             <NavLink to={`/users/${props.userId}`} className="absolute top-0 left-0 w-full h-full rounded-full">
 

@@ -29,8 +29,8 @@ function ThreadTitleLink(props: { threadId: string, className?: string }) {
 
                     <NavLink to={`/threads/${props.threadId}`} className="z-10 flex items-center gap-2 hover:underline hover:decoration-gray-500">
 
-                        <AiOutlineProfile className="text-zinc-500 text-xl" />
-                        <span className="text-zinc-500">{thread.title}</span>
+                        <AiOutlineProfile className="text-gray-500 text-xl" />
+                        <span className="text-gray-500">{thread.title}</span>
                     </NavLink>
                 </div>
             }

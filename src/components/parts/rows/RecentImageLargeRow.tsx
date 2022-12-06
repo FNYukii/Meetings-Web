@@ -25,7 +25,7 @@ function RecentImageLargeRow(props: { comment: Comment }) {
         <div>
 
             {!isLoaded &&
-                <div className="w-full aspect-video bg-zinc-100 dark:bg-zinc-900"></div>
+                <div className="w-full aspect-video bg-gray-100 dark:bg-gray-900"></div>
             }
 
             {isLoaded && thread === null &&
@@ -37,7 +37,7 @@ function RecentImageLargeRow(props: { comment: Comment }) {
             {isLoaded && thread !== null &&
                 <div className="relative w-full aspect-video">
 
-                    <div className="absolute top-0 left-0 w-full h-full bg-zinc-100 dark:bg-zinc-900"></div>
+                    <div className="absolute top-0 left-0 w-full h-full bg-gray-100 dark:bg-gray-900"></div>
 
                     <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="absolute top-0 left-0 w-full h-full object-cover" />
 

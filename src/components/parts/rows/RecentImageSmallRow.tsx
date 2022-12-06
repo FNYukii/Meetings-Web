@@ -26,7 +26,7 @@ function RecentImageSmallRow(props: { comment: Comment }) {
 
         <div>
             {!isLoaded &&
-                <div className="w-full h-20 bg-zinc-100 dark:bg-zinc-900"></div>
+                <div className="w-full h-20 bg-gray-100 dark:bg-gray-900"></div>
             }
 
             {isLoaded && thread === null &&
@@ -38,7 +38,7 @@ function RecentImageSmallRow(props: { comment: Comment }) {
             {isLoaded && thread !== null &&
                 <div className="relative w-full flex justify-between p-3">
 
-                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20 transition" />
+                    <NavLink to={`/threads/${props.comment.threadId}`} className="absolute top-0 left-0 w-full h-full hover:bg-gray-500/10 dark:hover:bg-gray-500/20 transition" />
 
                     <div className="w-full">
 
@@ -51,7 +51,7 @@ function RecentImageSmallRow(props: { comment: Comment }) {
                         <p className="text-gray-500">{props.comment.text} - <UserUserTagLink userId={props.comment.userId}/></p>
                     </div>
 
-                    <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="ml-3 w-20 h-20 object-cover rounded-xl border border-zinc-200 dark:border-zinc-800" />
+                    <img src={props.comment.imageUrls[0]} alt="Attached to comment" className="ml-3 w-20 h-20 object-cover rounded-xl border border-gray-200 dark:border-gray-800" />
                 </div>
             }
         </div>

@@ -22,12 +22,12 @@ function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) 
     return (
         <div className={`relative pl-3 pr-2 py-2`}>
 
-            <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-zinc-500/10 dark:hover:bg-zinc-500/20 transition" />
+            <NavLink to={`/search?keyword=${props.tag}`} className="absolute top-0 left-0 w-full h-full hover:bg-gray-500/10 dark:hover:bg-gray-500/20 transition" />
 
             <div>
                 {!isLoaded &&
                     <div className="flex justify-between">
-                        <span className="text-transparent bg-zinc-200 dark:bg-zinc-800">------</span>
+                        <span className="text-transparent bg-gray-200 dark:bg-gray-800">------</span>
                     </div>
                 }
 
@@ -41,7 +41,7 @@ function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) 
 
             <div className="mt-1">
                 {!isLoaded &&
-                    <span className="text-sm text-transparent bg-zinc-200 dark:bg-zinc-800">----------</span>
+                    <span className="text-sm text-transparent bg-gray-200 dark:bg-gray-800">----------</span>
                 }
 
                 {isLoaded && numberOfThread === null &&
