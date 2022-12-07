@@ -14,15 +14,15 @@ function ThreadScreen() {
             <TitleBar justifyBetween>
 
                 <div className="flex items-center">
-                    <BackButton className="ml-1"/>
 
-                    <ThreadTitleSpan threadId={threadId!} className="ml-7"/>
+                    <BackButton className="ml-1" />
+                    <ThreadTitleSpan threadId={threadId!} className="ml-7" />
                 </div>
 
                 <NewCommentLink threadId={threadId!} className="mr-1" />
             </TitleBar>
 
-            <CommentsInThreadList threadId={threadId!}/>
+            <CommentsInThreadList threadId={threadId!} />
         </div>
     )
 }
