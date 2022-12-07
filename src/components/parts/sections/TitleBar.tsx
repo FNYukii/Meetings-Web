@@ -1,4 +1,4 @@
-function TitleBar(props: { children?: JSX.Element | JSX.Element[], justifyBetween?: boolean | undefined }) {
+function TitleBar(props: { children?: JSX.Element | JSX.Element[], justifyBetween?: boolean }) {
 
     return (
         <div className='sticky top-0 z-20'>

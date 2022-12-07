@@ -26,7 +26,7 @@ function UserMenu(props: { user: User, className?: string }) {
     }, [])
 
     return (
-        <PopupMenu menuButtonClassName={`text-3xl hover:bg-gray-100 dark:hover:bg-gray-900 ${props.className}`}>
+        <PopupMenu large className={props.className}>
             <div>
                 {!uid &&
 

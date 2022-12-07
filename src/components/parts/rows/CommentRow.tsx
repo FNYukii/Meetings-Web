@@ -38,7 +38,7 @@ function CommentRow(props: { comment: Comment, showThreadTitle?: boolean }) {
                                     <span className="text-gray-500">{ExDate.toHowManyAgoString(props.comment.createdAt)}</span>
                                 </div>
 
-                                <CommentMenu comment={props.comment} setIsHidden={setIsHidden} iconClassName="text-xl text-gray-500" />
+                                <CommentMenu comment={props.comment} setIsHidden={setIsHidden} />
                             </div>
 
                             <p className="ml-3 mr-3">{props.comment.text}</p>
