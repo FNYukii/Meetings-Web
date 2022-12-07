@@ -3,7 +3,6 @@ import { AiOutlineEyeInvisible } from "react-icons/ai"
 import { BsPerson } from "react-icons/bs"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../utilities/FireAuth"
-import SignOutButton from "../parts/buttons/SignOutButton"
 import SettingsItemLink from "../parts/links/SettingsItemLink"
 import TitleBar from "../parts/sections/TitleBar"
 
@@ -34,8 +33,6 @@ function SettingsScreen() {
             <SettingsItemLink title="ミュートしているユーザー" to="/settings/muted">
                 <AiOutlineEyeInvisible className="text-gray-500 text-2xl" />
             </SettingsItemLink>
-
-            <SignOutButton />
         </div>
     )
 }
