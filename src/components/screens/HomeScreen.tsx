@@ -13,11 +13,9 @@ function HomeScreen() {
     return (
         <div>
             <TitleBar>
-                <div className='flex items-center justify-between w-full'>
-                    <span className='font-bold text-lg'>ホーム</span>
+                <span className='ml-3 font-bold text-lg'>ホーム</span>
 
-                    <NewThreadLink />
-                </div>
+                <NewThreadLink className='mr-1' />
             </TitleBar>
 
             <ThreadsList />

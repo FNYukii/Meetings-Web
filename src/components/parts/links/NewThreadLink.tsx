@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
 import { auth } from "../../../utilities/firebase"
 
-function NewThreadLink() {
+function NewThreadLink(props: {className?: string}) {
 
     const [uid, setUid] = useState<string | null>(FireAuth.uidFromLocalStorage())
 
@@ -25,7 +25,7 @@ function NewThreadLink() {
     }, [])
 
     return (
-        <div className="z-10">
+        <div className={`z-10 ${props.className}`}>
 
             {uid !== null &&
 
