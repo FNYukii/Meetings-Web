@@ -11,6 +11,7 @@ import ProgressImage from "../parts/images/ProgressImage"
 import { doc, onSnapshot } from "firebase/firestore"
 import { db } from "../../utilities/firebase"
 import CommentsByUserTabBar from "../parts/sections/CommentsByUserTabBar"
+import TitleBar from "../parts/sections/TitleBar"
 
 function UserScreen() {
 
@@ -50,20 +51,20 @@ function UserScreen() {
 
     return (
         <div>
-            <div className='sticky top-0 z-20'>
-                <div className='relative h-14 pl-1 pr-3 flex items-center justify-between bg-white/70 dark:bg-black/70 backdrop-blur'>
-                    <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
+            <TitleBar justifyBetween>
 
-                    <div className="flex items-center">
-                        <BackButton />
-                        <span className='font-bold text-lg ml-11'>プロフィール</span>
-                    </div>
+                <div className="flex items-center">
 
+                    <BackButton className="ml-1"/>
+                    <span className='ml-11 font-bold text-lg'>プロフィール</span>
+                </div>
+
+                <div className="z-10">
                     {isLoaded && user !== null &&
-                        <UserMenu user={user!} />
+                        <UserMenu user={user!} className="mr-2"/>
                     }
                 </div>
-            </div>
+            </TitleBar>
 
             {!isLoaded &&
                 <div className='flex justify-center p-3'>
@@ -97,8 +98,8 @@ function UserScreen() {
 
                     <CommentsByUserTabBar selection={selection} setSelection={setSelection} />
 
-                    <CommentsPostedByUserList user={user} className={selection === 0 ? "" : "hidden"}/>
-                    <CommentsLikedByUserList user={user} className={selection === 1 ? "" : "hidden"}/>
+                    <CommentsPostedByUserList user={user} className={selection === 0 ? "" : "hidden"} />
+                    <CommentsLikedByUserList user={user} className={selection === 1 ? "" : "hidden"} />
                 </div>
             }
         </div>

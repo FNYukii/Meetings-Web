@@ -12,6 +12,7 @@ import UserUserTagLink from "../parts/links/UserUserTagLink"
 import ThreadTitleLink from "../parts/links/ThreadTitleLink"
 import CommentLikeButton from "../parts/buttons/CommentLikeButton"
 import ProgressImage from "../parts/images/ProgressImage"
+import TitleBar from "../parts/sections/TitleBar"
 
 function CommentScreen() {
 
@@ -34,23 +35,19 @@ function CommentScreen() {
 
     return (
         <div>
+            <TitleBar justifyBetween>
 
-            <div className='sticky top-0 z-20'>
+                <div className="flex items-center">
+                    <BackButton className="ml-1"/>
+                    <span className='ml-7 font-bold text-lg'>コメント</span>
+                </div>
 
-                <div className='relative h-14 pl-1 pr-3 flex items-center justify-between bg-white/70 dark:bg-black/70 backdrop-blur'>
-
-                    <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
-
-                    <div className="flex items-center">
-                        <BackButton />
-                        <span className='font-bold text-lg ml-7'>コメント</span>
-                    </div>
-
+                <div className="z-10">
                     {isLoaded && comment !== null &&
-                        <CommentMenu comment={comment} iconClassName="text-3xl" />
+                        <CommentMenu comment={comment} iconClassName="text-3xl" className="mr-1" />
                     }
                 </div>
-            </div>
+            </TitleBar>
 
             {!isLoaded &&
                 <div className='flex justify-center'>
