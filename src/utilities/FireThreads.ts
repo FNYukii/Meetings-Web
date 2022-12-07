@@ -1,6 +1,6 @@
 import Thread from '../entities/Thread'
 
-import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt, deleteDoc, addDoc, serverTimestamp } from "firebase/firestore"
+import { QueryDocumentSnapshot, DocumentData, doc, getDocFromCache, getDocFromServer, query, collection, orderBy, limit, getDocs, where, startAt, endAt, deleteDoc, addDoc, serverTimestamp, getDocsFromCache } from "firebase/firestore"
 import { db } from './firebase'
 import ExArray from './ExArray'
 import FireAuth from './FireAuth'
@@ -153,6 +153,35 @@ export default class FireThreads {
         } catch (error) {
 
             // 読み取り失敗
+            console.log(`Threads reading failed. ${error}`)
+            return null
+        }
+    }
+
+    static async readThreadsByTagFromCache(tag: string): Promise<Thread[] | null> {
+
+        const q = query(collection(db, "threads"), where("tags", "array-contains", tag), limit(9999))
+
+        try {
+
+            // サーバー / キャッシュから読み取り
+            const querySnapshot = await getDocsFromCache(q)
+
+            // 成功
+            // console.log(`Read ${querySnapshot.size} Threads from cache.`)
+
+            // 配列threads
+            let threads: Thread[] = []
+            querySnapshot.forEach((doc) => {
+                const thread = this.toThread(doc)
+                threads.push(thread)
+            })
+
+            return threads
+
+        } catch (error) {
+
+            // 失敗
             console.log(`Threads reading failed. ${error}`)
             return null
         }

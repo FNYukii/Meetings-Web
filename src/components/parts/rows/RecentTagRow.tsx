@@ -9,6 +9,12 @@ function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) 
     const [isLoaded, setIsLoaded] = useState(false)
 
     async function readThreads() {
+
+        // まずはキャッシュから読み取り
+        const threadsFromCache = await FireThreads.readThreadsByTagFromCache(props.tag)
+        setNumberOfThread(threadsFromCache?.length ?? null)
+
+        // その後サーバーから読み取り
         const threads = await FireThreads.readThreadsByTag(props.tag)
         setNumberOfThread(threads?.length ?? null)
         setIsLoaded(true)
@@ -26,30 +32,33 @@ function RecentTagRow(props: { tag: string, removeTag: (tag: string) => void }) 
 
             <div>
                 {!isLoaded &&
-                    <div className="flex justify-between">
-                        <span className="text-transparent bg-gray-200 dark:bg-gray-800">------</span>
+                    <div>
+                        <div className="flex justify-between">
+
+                            <span>{props.tag}</span>
+                            <RecentTagMenu tag={props.tag} removeTag={props.removeTag} />
+                        </div>
+
+                        <p className="text-gray-500 text-sm">{numberOfThread}件のスレッド</p>
                     </div>
                 }
 
-                {isLoaded && numberOfThread !== null &&
-                    <div className="flex justify-between">
-                        <span>{props.tag}</span>
-                        <RecentTagMenu tag={props.tag} removeTag={props.removeTag} />
+                {isLoaded && !numberOfThread &&
+                    <div className="p-3">
+                        <p className="text-gray-500 text-center">読み取りに失敗しました</p>
                     </div>
                 }
-            </div>
 
-            <div className="mt-1">
-                {!isLoaded &&
-                    <span className="text-sm text-transparent bg-gray-200 dark:bg-gray-800">----------</span>
-                }
+                {isLoaded && numberOfThread &&
+                    <div>
+                        <div className="flex justify-between">
 
-                {isLoaded && numberOfThread === null &&
-                    <p className="text-gray-500">---</p>
-                }
+                            <span>{props.tag}</span>
+                            <RecentTagMenu tag={props.tag} removeTag={props.removeTag} />
+                        </div>
 
-                {isLoaded && numberOfThread !== null &&
-                    <p className="text-gray-500 text-sm">{numberOfThread}件のスレッド</p>
+                        <p className="text-gray-500 text-sm">{numberOfThread}件のスレッド</p>
+                    </div>
                 }
             </div>
         </div>
