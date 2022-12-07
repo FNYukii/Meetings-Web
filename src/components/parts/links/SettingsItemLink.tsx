@@ -1,7 +1,7 @@
 import { IoIosArrowForward } from "react-icons/io"
 import { NavLink } from "react-router-dom"
 
-function SettingsItemLink(props: {children: JSX.Element, title: string, to: string}) {
+function SettingsItemLink(props: { title: string, subTitle?: string, to: string, children: JSX.Element }) {
 
     return (
         <NavLink to={props.to}>
@@ -10,7 +10,11 @@ function SettingsItemLink(props: {children: JSX.Element, title: string, to: stri
 
                 <div className="flex gap-3 items-center">
                     {props.children}
-                    <span>{props.title}</span>
+
+                    <div className="flex flex-col">
+                        <span>{props.title}</span>
+                        <span className="text-gray-500">{props.subTitle}</span>
+                    </div>
                 </div>
 
                 <IoIosArrowForward className="text-gray-500 text-1xl" />
