@@ -8,7 +8,7 @@ import User from "../../../entities/User"
 import ToggleUserMuteButton from "../buttons/ToggleUserMuteButton"
 import PopupMenu from "./PopupMenu"
 
-function UserMenu(props: { user: User }) {
+function UserMenu(props: { user: User, className?: string }) {
 
     const location = useLocation()
     const [uid, setUid] = useState<string | null>(null)
@@ -26,7 +26,7 @@ function UserMenu(props: { user: User }) {
     }, [])
 
     return (
-        <PopupMenu menuButtonClassName="text-3xl hover:bg-gray-100 dark:hover:bg-gray-900">
+        <PopupMenu menuButtonClassName={`text-3xl hover:bg-gray-100 dark:hover:bg-gray-900 ${props.className}`}>
             <div>
                 {!uid &&
 
