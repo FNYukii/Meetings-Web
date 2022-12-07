@@ -20,6 +20,14 @@ export default class FireAuth {
         return uid
     }
 
+    static email(): string | null {
+
+        const email = auth.currentUser?.email
+        if (!email) return null
+
+        return email
+    }
+
     static async signIn(email: string, password: string): Promise<string | null> {
 
         return signInWithEmailAndPassword(auth, email, password)

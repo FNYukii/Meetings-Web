@@ -27,7 +27,7 @@ function SettingsScreen() {
                 <span className='ml-3 font-bold text-lg'>設定</span>
             </TitleBar>
 
-            <SettingsItemLink title="アカウント情報" to="/settings/account">
+            <SettingsItemLink title="アカウント" to="/settings/account">
                 <BsPerson className="text-gray-500 text-2xl" />
             </SettingsItemLink>
 
