@@ -1,4 +1,6 @@
-function TitleBar(props: { children?: JSX.Element | JSX.Element[], justifyBetween?: boolean }) {
+import BackButton from "../buttons/BackButton"
+
+function TitleBar(props: { justifyBetween?: boolean, showBackButton?: boolean, children?: JSX.Element | JSX.Element[] }) {
 
     return (
         <div className='sticky top-0 z-20'>
@@ -6,8 +8,15 @@ function TitleBar(props: { children?: JSX.Element | JSX.Element[], justifyBetwee
 
                 <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                <div className={`flex items-center  w-full ${props.justifyBetween ? "justify-between" : null}`}>
-                    {props.children}
+                <div className={`w-full flex items-center`}>
+
+                    {props.showBackButton &&
+                        <BackButton className="ml-1"/>
+                    }
+
+                    <div className={`w-full flex items-center ${props.justifyBetween ? "justify-between" : ""}`}>
+                        {props.children}
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,3 @@
-import BackButton from "../parts/buttons/BackButton"
 import TitleBar from "../parts/sections/TitleBar"
 
 function NotFoundScreen() {
@@ -7,8 +6,7 @@ function NotFoundScreen() {
 
     return (
         <div>
-            <TitleBar>
-                <BackButton className="ml-1"/>
+            <TitleBar showBackButton>
                 <span className='ml-1 font-bold text-lg'>Not Found</span>
             </TitleBar>
 

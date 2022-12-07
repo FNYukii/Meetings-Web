@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useLocation, useParams } from "react-router-dom"
 import User from "../../entities/User"
 import FireUsers from "../../utilities/FireUsers"
-import BackButton from "../parts/buttons/BackButton"
 import UserIcon from "../parts/images/UserIcon"
 import UserMenu from "../parts/menus/UserMenu"
 import CommentsPostedByUserList from "../parts/lists/CommentsPostedByUserList"
@@ -51,17 +50,13 @@ function UserScreen() {
 
     return (
         <div>
-            <TitleBar justifyBetween>
+            <TitleBar justifyBetween showBackButton>
 
-                <div className="flex items-center">
-
-                    <BackButton className="ml-1"/>
-                    <span className='ml-11 font-bold text-lg'>プロフィール</span>
-                </div>
+                <span className='ml-11 font-bold text-lg'>プロフィール</span>
 
                 <div className="z-10">
                     {isLoaded && user !== null &&
-                        <UserMenu user={user!} className="mr-2"/>
+                        <UserMenu user={user!} className="mr-2" />
                     }
                 </div>
             </TitleBar>

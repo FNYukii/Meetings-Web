@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom"
 import Comment from "../../entities/Comment"
 import ExDate from "../../utilities/ExDate"
 import FireComments from "../../utilities/FireComments"
-import BackButton from "../parts/buttons/BackButton"
 import CommentMenu from "../parts/menus/CommentMenu"
 import CommentImagesGrid from "../parts/sections/CommentImagesGrid"
 import UserDisplayNameLink from "../parts/links/UserDisplayNameLink"
@@ -35,16 +34,13 @@ function CommentScreen() {
 
     return (
         <div>
-            <TitleBar justifyBetween>
+            <TitleBar justifyBetween showBackButton>
 
-                <div className="flex items-center">
-                    <BackButton className="ml-1"/>
-                    <span className='ml-7 font-bold text-lg'>コメント</span>
-                </div>
+                <span className='ml-7 font-bold text-lg'>コメント</span>
 
                 <div className="z-10">
                     {isLoaded && comment !== null &&
-                        <CommentMenu comment={comment} className="mr-2" large/>
+                        <CommentMenu comment={comment} className="mr-2" large />
                     }
                 </div>
             </TitleBar>
