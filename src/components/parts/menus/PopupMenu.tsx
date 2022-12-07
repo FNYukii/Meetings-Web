@@ -4,7 +4,7 @@ import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 
-function PopupMenu(props: { children: JSX.Element, large?: boolean | undefined, bg200?: boolean | undefined, className?: string}) {
+function PopupMenu(props: { children: JSX.Element, large?: boolean, bg200?: boolean, className?: string}) {
 
     const [isDark, setIsDark] = useState(false)
 
