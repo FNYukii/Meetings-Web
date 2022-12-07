@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import BackButton from "../parts/buttons/BackButton";
 import RecentImagesList from "../parts/lists/RecentImagesList"
-import SearchResultsScreen from "./SearchResultsScreen";
+import SearchResultsSection from "../parts/sections/SearchResultsSection";
 
 function SearchScreen() {
 
@@ -52,7 +52,7 @@ function SearchScreen() {
             <RecentImagesList className={searchedKeyword === null ? "" : "hidden"} />
 
             {searchedKeyword !== null &&
-                <SearchResultsScreen keyword={`${searchedKeyword}`} />
+                <SearchResultsSection keyword={`${searchedKeyword}`} />
             }
         </div>
     )

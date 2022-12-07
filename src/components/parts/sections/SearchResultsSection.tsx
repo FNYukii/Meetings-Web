@@ -1,9 +1,9 @@
 import { useState } from "react"
-import SearchCommentsList from "../parts/lists/SearchCommentsList"
-import SearchThreadsList from "../parts/lists/SearchThreadsList"
-import SearchUsersList from "../parts/lists/SearchUsersList"
+import SearchCommentsList from "../lists/SearchCommentsList"
+import SearchThreadsList from "../lists/SearchThreadsList"
+import SearchUsersList from "../lists/SearchUsersList"
 
-function SearchResultsScreen(props: { keyword: string }) {
+function SearchResultsSection(props: { keyword: string }) {
 
     document.title = `${props.keyword} - 検索 - Meetings`
 
@@ -66,4 +66,4 @@ function SearchResultsScreen(props: { keyword: string }) {
     )
 }
 
-export default SearchResultsScreen
+export default SearchResultsSection
