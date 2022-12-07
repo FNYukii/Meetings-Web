@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
 import { auth } from "../../../utilities/firebase"
 
-function NewCommentLink(props: { threadId: string }) {
+function NewCommentLink(props: { threadId: string, className?: string }) {
 
     const location = useLocation()
     const [uid, setUid] = useState<string | null>(FireAuth.uidFromLocalStorage())
@@ -26,7 +26,7 @@ function NewCommentLink(props: { threadId: string }) {
     }, [])
 
     return (
-        <div className="z-10">
+        <div className={`z-10 ${props.className}`}>
 
             {uid !== null &&
 

@@ -3,6 +3,7 @@ import BackButton from "../parts/buttons/BackButton"
 import CommentsInThreadList from "../parts/lists/CommentsInThreadList"
 import ThreadTitleSpan from "../parts/spans/ThreadTitleSpan"
 import NewCommentLink from "../parts/links/NewCommentLink"
+import TitleBar from "../parts/sections/TitleBar"
 
 function ThreadScreen() {
 
@@ -10,20 +11,16 @@ function ThreadScreen() {
 
     return (
         <div>
-            <div className='sticky top-0 z-20'>
-                <div className='relative h-14 pl-1 pr-1 flex items-center justify-between bg-white/70 dark:bg-black/70 backdrop-blur'>
+            <TitleBar justifyBetween>
 
-                    <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
+                <div className="flex items-center">
+                    <BackButton className="ml-1"/>
 
-                    <div className="flex items-center">
-
-                        <BackButton />
-                        <ThreadTitleSpan threadId={threadId!} className="ml-7" />
-                    </div>
-
-                    <NewCommentLink threadId={threadId!} />
+                    <ThreadTitleSpan threadId={threadId!} className="ml-7"/>
                 </div>
-            </div>
+
+                <NewCommentLink threadId={threadId!} className="mr-1" />
+            </TitleBar>
 
             <CommentsInThreadList threadId={threadId!}/>
         </div>

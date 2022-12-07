@@ -12,7 +12,7 @@ function HomeScreen() {
 
     return (
         <div>
-            <TitleBar>
+            <TitleBar justifyBetween>
                 <span className='ml-3 font-bold text-lg'>ホーム</span>
 
                 <NewThreadLink className='mr-1' />

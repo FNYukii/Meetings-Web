@@ -1,4 +1,4 @@
-function TitleBar(props: { children?: JSX.Element | JSX.Element[] }) {
+function TitleBar(props: { children?: JSX.Element | JSX.Element[], justifyBetween?: boolean | undefined }) {
 
     return (
         <div className='sticky top-0 z-20'>
@@ -6,7 +6,7 @@ function TitleBar(props: { children?: JSX.Element | JSX.Element[] }) {
 
                 <div className='absolute top-0 left-0 w-full h-full cursor-pointer' onClick={() => window.scrollTo(0, 0)}></div>
 
-                <div className='flex items-center justify-between w-full'>
+                <div className={`flex items-center  w-full ${props.justifyBetween ? "justify-between" : null}`}>
                     {props.children}
                 </div>
             </div>
