@@ -54,7 +54,6 @@ export default class FireUsers {
             }
 
             //成功
-            // console.log("Read 1 User from cache.")
             return this.toUser(docSnapFromCache)
 
         } catch (e) {
@@ -70,7 +69,6 @@ export default class FireUsers {
                 }
 
                 // 成功
-                // console.log("Read 1 User from server.")
                 return this.toUser(docSnapFromServer)
 
             } catch (error) {
@@ -95,7 +93,6 @@ export default class FireUsers {
             }
 
             // 成功
-            // console.log("Read 1 User from server / cache.")
             return this.toUser(docSnap)
 
         } catch (error) {
@@ -146,8 +143,6 @@ export default class FireUsers {
             const querySnapshot = await getDocsFromCache(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Users from cache.`)
-
             // 配列users
             let users: User[] = []
             querySnapshot.forEach((doc) => {
@@ -164,8 +159,6 @@ export default class FireUsers {
                 const querySnapshot = await getDocsFromServer(q)
 
                 // 成功
-                // console.log(`Read ${querySnapshot.size} Users from server.`)
-
                 // 配列users
                 let users: User[] = []
                 querySnapshot.forEach((doc) => {
@@ -194,8 +187,6 @@ export default class FireUsers {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Users from server / cache.`)
-
             // 配列users
             let users: User[] = []
             querySnapshot.forEach((doc) => {
@@ -223,8 +214,6 @@ export default class FireUsers {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Users from server / cache.`)
-
             // Users
             let users: User[] = []
             querySnapshot.forEach((doc) => {
@@ -256,8 +245,6 @@ export default class FireUsers {
             const querySnapshot = await getDocsFromServer(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Users from server.`)
-
             // Users
             let users: User[] = []
             querySnapshot.forEach((doc) => {
@@ -333,8 +320,6 @@ export default class FireUsers {
                 userTag: ExString.randomText()
             })
 
-            // console.log("Added 1 User.")
-
             return uid
 
         } catch (error) {
@@ -401,8 +386,6 @@ export default class FireUsers {
                 iconUrl: iconUrl
             })
 
-            // console.log(`Updated 1 User.`)
-
             return uid
 
         } catch (error) {
@@ -429,8 +412,6 @@ export default class FireUsers {
                 likedCommentIds: arrayUnion(commentId)
             })
 
-            // console.log(`Updated 1 User.`)
-
             return uid
 
         } catch (error) {
@@ -456,8 +437,6 @@ export default class FireUsers {
             await updateDoc(ref, {
                 likedCommentIds: arrayRemove(commentId)
             })
-
-            // console.log(`Updated 1 User.`)
 
             return uid
 

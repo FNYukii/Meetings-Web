@@ -25,12 +25,9 @@ class FireImages {
         return await uploadBytes(storageRef, file)
             .then(async () => {
 
-                // console.log("Uploaded 1 file.")
-
                 // DownloadURLを取得
                 const downloadURL = await getDownloadURL(storageRef)
 
-                // console.log(`downloadURL: ${downloadURL}`)
                 return downloadURL
             })
             .catch((error) => {

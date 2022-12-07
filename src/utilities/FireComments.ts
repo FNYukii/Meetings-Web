@@ -53,12 +53,11 @@ export default class FireComments {
 
             // 失敗
             if (!docSnapFromCache.exists()) {
-                // console.log(`Comment does not exists.`)
+                console.log(`Comment does not exists.`)
                 return null
             }
 
             //成功
-            // console.log(`Read 1 Comment from cache.`)
             return this.toComment(docSnapFromCache)
 
         } catch (e) {
@@ -66,23 +65,22 @@ export default class FireComments {
             try {
 
                 // サーバーから読み取り
-            const docSnapFromServer = await getDocFromServer(docRef)
+                const docSnapFromServer = await getDocFromServer(docRef)
 
-            // 失敗
-            if (!docSnapFromServer.exists()) {
-                // console.log(`Comment does not exists.`)
-                return null
-            }
+                // 失敗
+                if (!docSnapFromServer.exists()) {
+                    console.log(`Comment does not exists.`)
+                    return null
+                }
 
-            // 成功
-            // console.log(`Read 1 Comment from server.`)
-            return this.toComment(docSnapFromServer)
-                
+                // 成功
+                return this.toComment(docSnapFromServer)
+
             } catch (error) {
-                
+
                 console.log(`Comment reading failed. ${error}`)
                 return null
-            }            
+            }
         }
     }
 
@@ -97,8 +95,6 @@ export default class FireComments {
             const querySnapshot = await getDocsFromCache(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Comments from cache.`)
-
             // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
@@ -122,8 +118,6 @@ export default class FireComments {
                 const querySnapshot = await getDocsFromServer(q)
 
                 // 成功
-                // console.log(`Read ${querySnapshot.size} Comments from server.`)
-
                 // 配列comments
                 let comments: Comment[] = []
                 querySnapshot.forEach((doc) => {
@@ -157,8 +151,6 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
-
             // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
@@ -231,8 +223,6 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
-
             // 配列comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
@@ -263,8 +253,6 @@ export default class FireComments {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Comments from server / cache.`)
-
             // Comments
             let comments: Comment[] = []
             querySnapshot.forEach((doc) => {
@@ -324,7 +312,6 @@ export default class FireComments {
                 imageUrls: imageUrls
             })
 
-            // console.log("Added 1 Comment.")
             return ref.id
 
         } catch (error) {
@@ -339,7 +326,6 @@ export default class FireComments {
         return deleteDoc(doc(db, "comments", commentId))
             .then(() => {
 
-                // console.log("Deleted 1 Comment.")
                 return commentId
             })
             .catch((error) => {

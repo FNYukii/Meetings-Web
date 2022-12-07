@@ -55,12 +55,11 @@ export default class FireThreads {
 
             // 失敗
             if (!docSnapFromCache.exists()) {
-                // console.log(`Thread does not exists.`)
+                console.log(`Thread does not exists.`)
                 return null
             }
 
             //成功
-            // console.log(`Read 1 Thread from cache.`)
             return this.toThread(docSnapFromCache)
 
         } catch (e) {
@@ -72,16 +71,15 @@ export default class FireThreads {
 
                 // 失敗
                 if (!docSnapFromServer.exists()) {
-                    // console.log(`Thread does not exists.`)
+                    console.log(`Thread does not exists.`)
                     return null
                 }
 
                 // 成功
-                // console.log(`Read 1 Thread from server.`)
                 return this.toThread(docSnapFromServer)
 
             } catch (error) {
-                
+
                 console.log(`Thread reading failed. ${error}`)
                 return null
             }
@@ -103,7 +101,6 @@ export default class FireThreads {
             }
 
             //成功
-            // console.log(`Read 1 Thread from server.`)
             return this.toThread(docSnap)
 
         } catch (error) {
@@ -122,9 +119,7 @@ export default class FireThreads {
             // サーバー / キャッシュから読み取り
             const querySnapshot = await getDocs(q)
 
-            // 読み取り成功
-            // console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
-
+            // 成功
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
@@ -168,8 +163,6 @@ export default class FireThreads {
             const querySnapshot = await getDocsFromCache(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Threads from cache.`)
-
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
@@ -197,8 +190,6 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
-
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
@@ -226,8 +217,6 @@ export default class FireThreads {
             const querySnapshot = await getDocs(q)
 
             // 成功
-            // console.log(`Read ${querySnapshot.size} Threads from server / cache.`)
-
             // 配列threads
             let threads: Thread[] = []
             querySnapshot.forEach((doc) => {
@@ -313,7 +302,6 @@ export default class FireThreads {
                 tags: tags
             })
 
-            // console.log("Added 1 Thread.")
             return ref.id
 
         } catch (error) {
@@ -328,7 +316,6 @@ export default class FireThreads {
         return deleteDoc(doc(db, "threads", threadId))
             .then(() => {
 
-                // console.log("Deleted 1 Thread.")
                 return threadId
             })
             .catch((error) => {
