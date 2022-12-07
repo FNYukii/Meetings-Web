@@ -61,7 +61,7 @@ function UserScreen() {
 
                 <div className="z-10">
                     {isLoaded && user !== null &&
-                        <UserMenu user={user!} className="mr-2"/>
+                        <UserMenu user={user!} className="mr-1"/>
                     }
                 </div>
             </TitleBar>

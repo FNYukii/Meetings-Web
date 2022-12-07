@@ -38,7 +38,7 @@ function CommentMenu(props: { comment: Comment, iconClassName?: string, classNam
     }
 
     return (
-        <PopupMenu menuButtonClassName={`text-xl hover:bg-gray-100 dark:hover:bg-gray-900 ${props.className}`}>
+        <PopupMenu >
             <div>
                 {uid === props.comment.userId &&
 

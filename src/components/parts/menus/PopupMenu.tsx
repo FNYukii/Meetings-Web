@@ -4,7 +4,7 @@ import '@szhsin/react-menu/dist/index.css'
 import "@szhsin/react-menu/dist/theme-dark.css"
 import { useState } from "react"
 
-function PopupMenu(props: { children: JSX.Element, menuButtonClassName?: string}) {
+function PopupMenu(props: { children: JSX.Element, large?: boolean | undefined, bg200?: boolean | undefined, className?: string}) {
 
     const [isDark, setIsDark] = useState(false)
 
@@ -17,8 +17,8 @@ function PopupMenu(props: { children: JSX.Element, menuButtonClassName?: string}
     }
 
     const menuButton = (
-        <MenuButton className={`transition rounded-full aspect-square flex items-center p-1 ${props.menuButtonClassName}`} onClick={checkTheme}>
-            <VscEllipsis className="text-gray-500 pointer-events-auto" />
+        <MenuButton className={`transition rounded-full aspect-square flex items-center p-1 ${props.bg200 ? "hover:bg-gray-200 dark:hover:bg-gray-800" : "hover:bg-gray-100 dark:hover:bg-gray-900"} ${props.className}`} onClick={checkTheme}>
+            <VscEllipsis className={`pointer-events-auto ${props.large ? "text-3xl" : "text-xl text-gray-500"}`} />
         </MenuButton>
     )
 
