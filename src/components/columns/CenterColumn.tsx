@@ -16,6 +16,7 @@ import AddThreadModal from '../modals/AddThreadModal'
 import EditUserModal from '../modals/EditUserModal'
 import MutedUsersScreen from '../screens/MutedUsersScreen'
 import SettingsScreen from '../screens/SettingsScreen'
+import AccountScreen from '../screens/AccountScreen'
 
 export default function CenterColumn(props: {className?: string}) {
 
@@ -46,11 +47,14 @@ export default function CenterColumn(props: {className?: string}) {
 
                 <Route path='/' element={<HomeScreen />} />
                 <Route path='/search' element={<SearchScreen />} />
+
+                <Route path='/settings' element={<SettingsScreen />} />
+                <Route path='/settings/muted' element={<MutedUsersScreen />} />
+                <Route path='/settings/account' element={<AccountScreen />} />
+
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />
                 <Route path='/comments/:commentId' element={<CommentScreen />} />
                 <Route path='/users/:userId' element={<UserScreen />} />
-                <Route path='/settings' element={<SettingsScreen />} />
-                <Route path='/settings/muted' element={<MutedUsersScreen />} />
 
                 <Route path='*' element={<NotFoundScreen />} />
             </Routes>
