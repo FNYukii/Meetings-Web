@@ -56,7 +56,7 @@ function UserScreen() {
                 <div className="flex items-center">
 
                     <BackButton className="ml-1"/>
-                    <span className='font-bold text-lg ml-11'>プロフィール</span>
+                    <span className='ml-11 font-bold text-lg'>プロフィール</span>
                 </div>
 
                 <div className="z-10">

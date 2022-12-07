@@ -24,7 +24,7 @@ function SettingsScreen() {
     return (
         <div>
             <TitleBar>
-                <span className='font-bold text-lg ml-3'>設定</span>
+                <span className='ml-3 font-bold text-lg'>設定</span>
             </TitleBar>
 
             <SettingsItemLink title="アカウント情報" to="/settings/account">
