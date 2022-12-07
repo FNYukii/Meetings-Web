@@ -44,7 +44,7 @@ function CommentScreen() {
 
                 <div className="z-10">
                     {isLoaded && comment !== null &&
-                        <CommentMenu comment={comment} iconClassName="text-3xl" className="mr-1" />
+                        <CommentMenu comment={comment} className="mr-2" large/>
                     }
                 </div>
             </TitleBar>

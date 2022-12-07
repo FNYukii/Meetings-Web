@@ -8,7 +8,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import FireComments from '../../../utilities/FireComments'
 import PopupMenu from './PopupMenu'
 
-function CommentMenu(props: { comment: Comment, iconClassName?: string, className?: string, setIsHidden?: React.Dispatch<React.SetStateAction<boolean>> }) {
+function CommentMenu(props: { comment: Comment, setIsHidden?: React.Dispatch<React.SetStateAction<boolean>>, className?: string, large?: boolean | undefined }) {
 
     const location = useLocation()
     const [uid, setUid] = useState<string | null>(null)
@@ -38,7 +38,7 @@ function CommentMenu(props: { comment: Comment, iconClassName?: string, classNam
     }
 
     return (
-        <PopupMenu >
+        <PopupMenu large={props.large} className={props.className}>
             <div>
                 {uid === props.comment.userId &&
 
