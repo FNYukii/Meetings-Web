@@ -63,11 +63,14 @@ export default function CenterColumn(props: {className?: string}) {
 
             <Routes location={isShowModal ? undefined : ""}>
 
-                <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
-                <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
-                <Route path='/sign-in' element={<SignInModal />} />
                 <Route path='/new' element={<AddThreadModal />} />
                 <Route path='/threads/:threadId/new' element={<AddCommentModal />} />
+                <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
+
+                <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
+
+                <Route path='/sign-in' element={<SignInModal />} />
+                
                 <Route path='/settings/profile' element={<EditUserModal />} />
                 <Route path='/settings/account/email' element={<EditEmailModal />} />
 
