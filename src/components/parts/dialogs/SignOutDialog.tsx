@@ -1,6 +1,20 @@
 import { MdOutlineClose } from "react-icons/md"
+import { useNavigate } from "react-router-dom"
+import FireAuth from "../../../utilities/FireAuth"
 
 function SignOutDialog(props: { setIsShowDialog: React.Dispatch<React.SetStateAction<boolean>> }) {
+
+    const navigate = useNavigate()
+
+    async function signOut() {
+
+        // サインアウト
+        const userId = await FireAuth.signOut()
+        if (!userId) return
+
+        // リダイレクト
+        navigate('/')
+    }
 
     return (
         <div className="z-30 fixed top-0 left-0 w-full h-full flex justify-center items-center">
@@ -20,7 +34,7 @@ function SignOutDialog(props: { setIsShowDialog: React.Dispatch<React.SetStateAc
                 <div className="flex justify-between">
 
                     <button onClick={() => props.setIsShowDialog(false)} className="py-1 px-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900">キャンセル</button>
-                    <button className="text-red-500 py-1 px-3 font-bold rounded-full hover:bg-red-100 dark:hover:bg-red-900">サインアウト</button>
+                    <button onClick={signOut} className="text-red-500 py-1 px-3 font-bold rounded-full hover:bg-red-100 dark:hover:bg-red-900">サインアウト</button>
                 </div>
             </div>
         </div>
