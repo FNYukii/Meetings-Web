@@ -1,24 +1,14 @@
-import { AiOutlineLogout } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-import FireAuth from "../../../utilities/FireAuth";
+import { useState } from "react"
+import { AiOutlineLogout } from "react-icons/ai"
+import SignOutDialog from "../dialogs/SignOutDialog"
 
 function SignOutButton() {
 
-    const navigate = useNavigate()
-
-    async function signOut() {
-
-        // サインアウト
-        const userId = await FireAuth.signOut()
-        if (!userId) return
-
-        // リダイレクト
-        navigate('/')
-    }
+    const [isShowDialog, setIsShowDialog] = useState(false)
 
     return (
         <div>
-            <button onClick={signOut} className="w-full">
+            <button onClick={() => setIsShowDialog(true)} className="w-full">
                 <div className="p-3 hover:bg-gray-100 dark:hover:bg-gray-900">
 
                     <div className="flex gap-3 items-center text-red-500">
@@ -27,6 +17,10 @@ function SignOutButton() {
                     </div>
                 </div>
             </button>
+
+            {isShowDialog &&
+                <SignOutDialog setIsShowDialog={setIsShowDialog} />
+            }
         </div>
     )
 }
