@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { AiOutlineMail } from "react-icons/ai"
+import { AiOutlineLock, AiOutlineMail } from "react-icons/ai"
 import FireAuth from "../../utilities/FireAuth"
 import SignOutButton from "../parts/buttons/SignOutButton"
 import SettingsItemLink from "../parts/links/SettingsItemLink"
@@ -26,7 +26,7 @@ function AccountScreen() {
             </SettingsItemLink>
 
             <SettingsItemLink title="パスワードを変更" to="/settings/account/password">
-                <AiOutlineMail className="text-gray-500 text-2xl" />
+                <AiOutlineLock className="text-gray-500 text-2xl" />
             </SettingsItemLink>
 
             <SignOutButton />
