@@ -17,6 +17,7 @@ import EditUserModal from '../modals/EditUserModal'
 import MutedUsersScreen from '../screens/MutedUsersScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import AccountScreen from '../screens/AccountScreen'
+import EditEmailScreen from '../screens/EditEmailScreen'
 
 export default function CenterColumn(props: {className?: string}) {
 
@@ -51,6 +52,7 @@ export default function CenterColumn(props: {className?: string}) {
                 <Route path='/settings' element={<SettingsScreen />} />
                 <Route path='/settings/muted' element={<MutedUsersScreen />} />
                 <Route path='/settings/account' element={<AccountScreen />} />
+                <Route path='/settings/account/email' element={<EditEmailScreen />} />
 
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />
                 <Route path='/comments/:commentId' element={<CommentScreen />} />

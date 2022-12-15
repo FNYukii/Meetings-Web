@@ -5,8 +5,10 @@ function EditEmailScreen() {
     return (
         <div>
             <TitleBar showBackButton>
-                <span>メールアドレスを編集</span>
+                <span className="ml-1 font-bold text-lg">メールアドレスを編集</span>
             </TitleBar>
         </div>
     )
 }
+
+export default EditEmailScreen
