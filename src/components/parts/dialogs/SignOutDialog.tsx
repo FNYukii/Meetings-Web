@@ -7,14 +7,15 @@ function SignOutDialog(props: {setIsShowDialog: React.Dispatch<React.SetStateAct
 
             <div onClick={() => props.setIsShowDialog(false)} className="w-full h-full bg-black/20 dark:bg-white/20"></div>
 
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90 overflow-y-scroll">
+            <div className="absolute bg-white dark:bg-black p-6 rounded-xl sm:w-96 w-11/12 max-height-screen-90 overflow-y-scroll">
 
                 <button onClick={() => props.setIsShowDialog(false)} className="p-3 transition hover:bg-gray-100 dark:hover:bg-gray-900 rounded-full">
                     <MdOutlineClose className="text-2xl text-gray-500" />
                 </button>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, eligendi. Molestiae facere architecto tempore adipisci ipsa, ipsam culpa minima inventore? Tempora ab, hic aspernatur explicabo dolores repudiandae facere mollitia soluta.</p>
-
+                <div className="px-3">
+                    <p>サインアウトしてもよろしいですか?</p>
+                </div>
             </div>
         </div>
     )
