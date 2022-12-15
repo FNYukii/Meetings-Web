@@ -4,7 +4,10 @@ function EditPasswordModal() {
 
     return (
         <FormModal title="パスワードを編集 - Meetings">
-            <span>パスワードを編集</span>
+
+            <div className="px-3">
+                <p className="text-2xl font-bold">パスワードを編集</p>
+            </div>
         </FormModal>
     )
 }
