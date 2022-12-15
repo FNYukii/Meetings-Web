@@ -3,10 +3,10 @@ import FormModal from "../parts/modals/FormModal"
 function EditPasswordModal() {
 
     return (
-        <FormModal title="パスワードを編集 - Meetings">
+        <FormModal title="パスワードを変更 - Meetings">
 
             <div className="px-3">
-                <p className="text-2xl font-bold">パスワードを編集</p>
+                <p className="text-2xl font-bold">パスワードを変更</p>
             </div>
         </FormModal>
     )
