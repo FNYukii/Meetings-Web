@@ -18,6 +18,7 @@ import MutedUsersScreen from '../screens/MutedUsersScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import AccountScreen from '../screens/AccountScreen'
 import EditEmailModal from '../modals/EditEmailModal'
+import EditPasswordModal from '../modals/EditPasswordModal'
 
 export default function CenterColumn(props: {className?: string}) {
 
@@ -33,14 +34,18 @@ export default function CenterColumn(props: {className?: string}) {
     
     // Modalの表示のboolean
     const isShowImageModal = currentPath.match(/^\/comments\/\w{20}\/images\/\d{1}$/)
-    const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
+
     const isShowSignInModal = currentPath === "/sign-in"
-    const isShowAddCommentModal = currentPath.match(/^\/threads\/\w{20}\/new$/)
+    
     const isShowAddThreadModal = currentPath === "/new"
+    const isShowAddCommentModal = currentPath.match(/^\/threads\/\w{20}\/new$/)
+    const isShowReportModal = currentPath.match(/^\/report\/(threads|comments|users)\/\w{20,}$/)
+
     const isShowEditUserModal = currentPath === "/settings/profile"
     const isShowEditEmailModal = currentPath === "/settings/account/email"
+    const isShowEditPasswordModal = currentPath === "/settings/account/password"
 
-    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal || isShowEditUserModal || isShowEditEmailModal ? true : false
+    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal || isShowEditUserModal || isShowEditEmailModal || isShowEditPasswordModal ? true : false
 
     return (
         <div className={`min-h-screen border-l sm:border-r border-gray-200 dark:border-gray-800 ${props.className}`}>
@@ -63,13 +68,17 @@ export default function CenterColumn(props: {className?: string}) {
 
             <Routes location={isShowModal ? undefined : ""}>
 
-                <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
-                <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
-                <Route path='/sign-in' element={<SignInModal />} />
                 <Route path='/new' element={<AddThreadModal />} />
                 <Route path='/threads/:threadId/new' element={<AddCommentModal />} />
+                <Route path='/report/:collectionName/:documentId' element={<ReportModal />} />
+
+                <Route path='/comments/:commentId/images/:imageNumber' element={<ImageModal />} />
+
+                <Route path='/sign-in' element={<SignInModal />} />
+
                 <Route path='/settings/profile' element={<EditUserModal />} />
                 <Route path='/settings/account/email' element={<EditEmailModal />} />
+                <Route path='/settings/account/password' element={<EditPasswordModal />} />
 
                 <Route path='*' element={<EmptyModal/>}/>
             </Routes>
