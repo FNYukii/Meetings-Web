@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import CloseButton from "../buttons/CloseButton"
 
-function FormModal(props: { children: JSX.Element, title: string }) {
+function FormModal(props: { children: JSX.Element | JSX.Element[], title: string }) {
 
     const navigate = useNavigate()
     const body = document.body
