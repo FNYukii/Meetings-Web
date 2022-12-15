@@ -17,7 +17,7 @@ import EditUserModal from '../modals/EditUserModal'
 import MutedUsersScreen from '../screens/MutedUsersScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import AccountScreen from '../screens/AccountScreen'
-import EditEmailScreen from '../screens/EditEmailScreen'
+import EditEmailModal from '../modals/EditEmailModal'
 
 export default function CenterColumn(props: {className?: string}) {
 
@@ -38,8 +38,9 @@ export default function CenterColumn(props: {className?: string}) {
     const isShowAddCommentModal = currentPath.match(/^\/threads\/\w{20}\/new$/)
     const isShowAddThreadModal = currentPath === "/new"
     const isShowEditUserModal = currentPath === "/settings/profile"
+    const isShowEditEmailModal = currentPath === "/settings/account/email"
 
-    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal || isShowEditUserModal ? true : false
+    const isShowModal = isShowImageModal || isShowReportModal || isShowSignInModal || isShowAddCommentModal || isShowAddThreadModal || isShowEditUserModal || isShowEditEmailModal ? true : false
 
     return (
         <div className={`min-h-screen border-l sm:border-r border-gray-200 dark:border-gray-800 ${props.className}`}>
@@ -52,7 +53,6 @@ export default function CenterColumn(props: {className?: string}) {
                 <Route path='/settings' element={<SettingsScreen />} />
                 <Route path='/settings/muted' element={<MutedUsersScreen />} />
                 <Route path='/settings/account' element={<AccountScreen />} />
-                <Route path='/settings/account/email' element={<EditEmailScreen />} />
 
                 <Route path='/threads/:threadId' element={<ThreadScreen />} />
                 <Route path='/comments/:commentId' element={<CommentScreen />} />
@@ -69,6 +69,7 @@ export default function CenterColumn(props: {className?: string}) {
                 <Route path='/new' element={<AddThreadModal />} />
                 <Route path='/threads/:threadId/new' element={<AddCommentModal />} />
                 <Route path='/settings/profile' element={<EditUserModal />} />
+                <Route path='/settings/account/email' element={<EditEmailModal />} />
 
                 <Route path='*' element={<EmptyModal/>}/>
             </Routes>

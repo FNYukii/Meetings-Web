@@ -1,10 +1,12 @@
 import { IoIosArrowForward } from "react-icons/io"
-import { NavLink } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 function SettingsItemLink(props: { title: string, subTitle?: string, to: string, children: JSX.Element }) {
 
+    const location = useLocation()
+
     return (
-        <NavLink to={props.to}>
+        <Link to={props.to} state={{ previousPath: location.pathname }}>
 
             <div className="p-3 flex justify-between items-center hover:bg-gray-100 dark:hover:bg-gray-900">
 
@@ -16,10 +18,8 @@ function SettingsItemLink(props: { title: string, subTitle?: string, to: string,
                         <span className="text-gray-500">{props.subTitle}</span>
                     </div>
                 </div>
-
-                <IoIosArrowForward className="text-gray-500 text-1xl" />
             </div>
-        </NavLink>
+        </Link>
     )
 }
 
