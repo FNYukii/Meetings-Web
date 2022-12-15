@@ -1,4 +1,3 @@
-import { IoIosArrowForward } from "react-icons/io"
 import { Link, useLocation } from "react-router-dom"
 
 function SettingsItemLink(props: { title: string, subTitle?: string, to: string, children: JSX.Element }) {
