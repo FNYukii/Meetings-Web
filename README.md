@@ -12,9 +12,9 @@ OSのテーマと連動してアプリのテーマが切り替わります。
 iOS版は[こちら](https://github.com/Yu357/Meetings-iOS)
 
 ## 主な使用技術
-- React
-- TypeScript
-- Tailwind CSS
+- React 18
+- TypeScript 4
+- Tailwind CSS 3
 - Firebase SDK 9
 
 ## スクリーンショット
