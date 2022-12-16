@@ -9,6 +9,7 @@ function EditPasswordModal() {
     const [newPassword, setNewPassword] = useState("")
     const [newPassworConfirm, setNewPasswordConfirm] = useState("")
 
+    // eslint-disable-next-line
     const [isLoading, setIsLoading] = useState(false)
 
     return (

@@ -9,6 +9,7 @@ function EditEmailModal() {
 
     const [password, setPassword] = useState("")
 
+    // eslint-disable-next-line
     const [isLoading, setIsLoading] = useState(false)
 
     return (
