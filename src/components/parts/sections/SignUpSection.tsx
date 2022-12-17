@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
 import FireUsers from "../../../utilities/FireUsers"
 import SubmitButton from "../buttons/SubmitButton"
+import PasswordInput from "../inputs/PasswordInput"
 
 function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
@@ -10,7 +11,7 @@ function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.Set
     
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [password2, setPassword2] = useState("")
+    const [passwordConfirm, setPasswordConfirm] = useState("")
 
     const [displayName, setDisplayName] = useState("")
     const [isLoading, setIsLoading] = useState(false)
@@ -62,8 +63,8 @@ function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.Set
 
                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="メールアドレス" className="mt-5 py-2 w-full bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
 
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="パスワード" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
-                    <input type="password" value={password2} onChange={(e) => setPassword2(e.target.value)} placeholder="パスワードを確認" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                    <PasswordInput value={password} onChange={setPassword} />
+                    <PasswordInput value={passwordConfirm} onChange={setPasswordConfirm} placeholder="パスワードを確認" />
 
                     <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="mt-10 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                 </div>
@@ -72,7 +73,7 @@ function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.Set
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(false)} className="hover:underline h-fit">既存のアカウントを使う</button>
 
-                    <SubmitButton text="サインアップ" isLoading={isLoading} disabled={email === "" || password === "" || password !== password2 || !displayName.match(/\S/g) || displayName.length > displayNameMax} />
+                    <SubmitButton text="サインアップ" isLoading={isLoading} disabled={email === "" || password === "" || password !== passwordConfirm || !displayName.match(/\S/g) || displayName.length > displayNameMax} />
                 </div>
             </form>
         </div>
