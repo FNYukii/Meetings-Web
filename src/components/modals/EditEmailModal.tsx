@@ -22,10 +22,10 @@ function EditEmailModal() {
                 <div className="px-3">
                     <p className="text-2xl font-bold">メールアドレスを変更</p>
                     
-                    <EmailInput value={currentEmail} onChange={setCurrentEmail} placeholder="現在のメールアドレス"/>
-                    <EmailInput value={newEmail} onChange={setNewEmail} placeholder="新しいメールアドレス"/>
+                    <EmailInput value={currentEmail} onChange={setCurrentEmail} placeholder="現在のメールアドレス" className="mt-3"/>
+                    <EmailInput value={newEmail} onChange={setNewEmail} placeholder="新しいメールアドレス" className="mt-3"/>
 
-                    <PasswordInput value={password} onChange={setPassword} />
+                    <PasswordInput value={password} onChange={setPassword} className="mt-3" />
                 </div>
 
                 <div className="mt-3 pl-3 flex justify-end items-center">

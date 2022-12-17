@@ -20,9 +20,9 @@ function EditPasswordModal() {
                 <div className="px-3">
                     <p className="text-2xl font-bold">パスワードを変更</p>
 
-                    <PasswordInput value={currentPassword} onChange={setCurrentPassword} placeholder="現在のパスワード" />
-                    <PasswordInput value={newPassword} onChange={setNewPassword} placeholder="新しいパスワード" />
-                    <PasswordInput value={newPasswordConfirm} onChange={setNewPasswordConfirm} placeholder="新しいパスワードを確認" />
+                    <PasswordInput value={currentPassword} onChange={setCurrentPassword} placeholder="現在のパスワード" className="mt-3" />
+                    <PasswordInput value={newPassword} onChange={setNewPassword} placeholder="新しいパスワード" className="mt-3" />
+                    <PasswordInput value={newPasswordConfirm} onChange={setNewPasswordConfirm} placeholder="新しいパスワードを確認" className="mt-3" />
                 </div>
 
                 <div className="mt-3 pl-3 flex justify-end items-center">
