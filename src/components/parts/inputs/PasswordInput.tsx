@@ -6,7 +6,7 @@ function PasswordInput(props: { value: string, onChange: React.Dispatch<React.Se
     const [isPasswordVisible, setIsPasswordVisible] = useState(false)
 
     return (
-        <div className={`flex items-center ${props.className}`}>
+        <div className={`relative ${props.className}`}>
 
             <input
                 type={isPasswordVisible ? "text" : "password"}
@@ -16,7 +16,7 @@ function PasswordInput(props: { value: string, onChange: React.Dispatch<React.Se
                 className="w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600"
             />
 
-            <button type="button" onClick={() => setIsPasswordVisible(!isPasswordVisible)} className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900">
+            <button type="button" onClick={() => setIsPasswordVisible(!isPasswordVisible)} className="absolute top-0 right-0 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-900">
                 {!isPasswordVisible &&
                     <AiOutlineEyeInvisible className="text-xl text-gray-500" />
                 }
