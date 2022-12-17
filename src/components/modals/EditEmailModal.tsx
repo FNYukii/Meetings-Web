@@ -1,10 +1,12 @@
 import { useState } from "react"
 import SubmitButton from "../parts/buttons/SubmitButton"
+import EmailInput from "../parts/inputs/EmailInput"
+import PasswordInput from "../parts/inputs/PasswordInput"
 import FormModal from "../parts/modals/FormModal"
 
 function EditEmailModal() {
 
-    const [currentEmail, setCurrentEmailmail] = useState("")
+    const [currentEmail, setCurrentEmail] = useState("")
     const [newEmail, setNewEmail] = useState("")
 
     const [password, setPassword] = useState("")
@@ -19,11 +21,11 @@ function EditEmailModal() {
                 
                 <div className="px-3">
                     <p className="text-2xl font-bold">メールアドレスを変更</p>
+                    
+                    <EmailInput value={currentEmail} onChange={setCurrentEmail} placeholder="現在のメールアドレス"/>
+                    <EmailInput value={newEmail} onChange={setNewEmail} placeholder="新しいメールアドレス"/>
 
-                    <input type="email" value={currentEmail} onChange={(e) => setCurrentEmailmail(e.target.value)} placeholder="現在のメールアドレス" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
-                    <input type="email" value={newEmail} onChange={(e) => setNewEmail(e.target.value)} placeholder="新しいメールアドレス" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
-
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="パスワード" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                    <PasswordInput value={password} onChange={setPassword} />
                 </div>
 
                 <div className="mt-3 pl-3 flex justify-end items-center">

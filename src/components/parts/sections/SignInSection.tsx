@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import FireAuth from "../../../utilities/FireAuth"
 import SubmitButton from "../buttons/SubmitButton"
+import EmailInput from "../inputs/EmailInput"
 import PasswordInput from "../inputs/PasswordInput"
 
 function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
@@ -41,8 +42,8 @@ function SignInSection(props: { setIsShowSignUpSection: React.Dispatch<React.Set
                 <div className="px-3 mt-3">
 
                     <p className="text-2xl font-bold">サインイン</p>
-
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="メールアドレス" className="mt-5 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
+                    
+                    <EmailInput value={email} onChange={setEmail} />
                     <PasswordInput value={password} onChange={setPassword} />
                 </div>
 
