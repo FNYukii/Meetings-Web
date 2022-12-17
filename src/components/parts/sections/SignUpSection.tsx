@@ -9,7 +9,7 @@ import PasswordInput from "../inputs/PasswordInput"
 function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.SetStateAction<boolean>> }) {
 
     const navigate = useNavigate()
-    
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
@@ -61,15 +61,15 @@ function SignUpSection(props: { setIsShowSignUpSection: React.Dispatch<React.Set
                 <div className="px-3 mt-3">
 
                     <p className="text-2xl font-bold">アカウントを作成</p>
-                    
-                    <EmailInput value={email} onChange={setEmail} />
-                    <PasswordInput value={password} onChange={setPassword} />
-                    <PasswordInput value={passwordConfirm} onChange={setPasswordConfirm} placeholder="パスワードを確認" />
+
+                    <EmailInput value={email} onChange={setEmail} className="mt-3" />
+                    <PasswordInput value={password} onChange={setPassword} className="mt-3" />
+                    <PasswordInput value={passwordConfirm} onChange={setPasswordConfirm} placeholder="パスワードを確認" className="mt-3" />
 
                     <input type="text" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="ディスプレイネーム" className="mt-10 w-full py-2 bg-transparent border-b border-gray-300 dark:border-gray-600 focus:outline-none focus:border-blue-500 placeholder:text-gray-400 dark:placeholder:text-gray-600" />
                 </div>
 
-                <div className="mt-3 pl-3 flex justify-between items-center">
+                <div className="mt-5 pl-3 flex justify-between items-center">
 
                     <button type="button" onClick={() => props.setIsShowSignUpSection(false)} className="hover:underline h-fit">既存のアカウントを使う</button>
 
