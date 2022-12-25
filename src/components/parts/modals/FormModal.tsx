@@ -30,7 +30,7 @@ function FormModal(props: { children: JSX.Element | JSX.Element[], title: string
 
             <div onClick={() => navigate(-1)} className="w-full h-full bg-black/20 dark:bg-white/20"></div>
 
-            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90 overflow-y-scroll">
+            <div className="absolute bg-white dark:bg-black p-6 rounded-xl md:width-600 w-11/12 max-height-screen-90 overflow-y-auto">
 
                 <CloseButton />
 
