@@ -26,11 +26,11 @@ function SettingsScreen() {
                 <span className='ml-3 font-bold text-lg'>設定</span>
             </TitleBar>
 
-            <SettingsItemLink title="アカウント" to="/settings/account">
+            <SettingsItemLink title="アカウント" to="/settings/account" isShowArrow>
                 <BsPerson className="text-gray-500 text-2xl" />
             </SettingsItemLink>
 
-            <SettingsItemLink title="ミュートしているユーザー" to="/settings/muted">
+            <SettingsItemLink title="ミュートしているユーザー" to="/settings/muted" isShowArrow>
                 <AiOutlineEyeInvisible className="text-gray-500 text-2xl" />
             </SettingsItemLink>
         </div>

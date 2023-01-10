@@ -1,6 +1,7 @@
+import { MdArrowForwardIos } from "react-icons/md"
 import { Link, useLocation } from "react-router-dom"
 
-function SettingsItemLink(props: { title: string, subTitle?: string, to: string, children: JSX.Element }) {
+function SettingsItemLink(props: { title: string, subTitle?: string, to: string, isShowArrow?: boolean, children: JSX.Element }) {
 
     const location = useLocation()
 
@@ -17,6 +18,10 @@ function SettingsItemLink(props: { title: string, subTitle?: string, to: string,
                         <span className="text-gray-500">{props.subTitle}</span>
                     </div>
                 </div>
+
+                {props.isShowArrow &&
+                    <MdArrowForwardIos className="text-gray-500" />
+                }
             </div>
         </Link>
     )
