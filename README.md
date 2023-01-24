@@ -29,3 +29,26 @@ iOS版は[こちら](https://github.com/Yu357/Meetings-iOS)
   <img style="display: block; width: 48%;" src="https://user-images.githubusercontent.com/65577595/198840452-e1ad44f3-c9f5-4a94-b938-9e2fd8d20951.png"/>
   <img style="display: block; width: 48%;" src="https://user-images.githubusercontent.com/65577595/198840455-9d74f016-40b8-4f88-8ff8-a02b196625b8.png"/>
 </div>
+
+## 環境構築
+1. レポジトリをクローンする
+```
+git clone https://github.com/Yu357/Meetings-Web
+```
+
+2. npmモジュールをインストール
+```
+cd Meetings-Web
+npm i
+```
+
+1. Tailwind CSSのコマンドを実行し、CSSファイルを生成
+```
+npm run tailwind
+```
+
+1. プロジェクトを実行
+```
+npm start
+```
+
