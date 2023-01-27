@@ -12,10 +12,10 @@ OSのテーマと連動してアプリのテーマが切り替わります。
 iOS版は[こちら](https://github.com/Yu357/Meetings-iOS)
 
 ## 主な使用技術
-- React 18
-- TypeScript 4
-- Tailwind CSS 3
-- Firebase SDK 9
+- React ver 18
+- TypeScript ver 4
+- Tailwind CSS ver 3
+- Firebase SDK ver 9
   
 ## 環境構築手順
 1. Node.jsをインストールしておく
